@@ -1,0 +1,23 @@
+Start time: 00:59
+Reading (with alignment) bin file ../../dataset/sift/data_query.bin ...Metadata: #pts = 10000, #dims = 128, aligned_dim = 128... allocating aligned memory of 5120000 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: ../../dataset/sift/sift_gt_10.bin, size: 400008, cache_size: 400008
+Reading truthset file ../../dataset/sift/sift_gt_10.bin ...
+Metadata: #pts = 10000, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.0309117s
+From graph header, expected_file_size: 131992860, _max_observed_degree: 32, _start: 123742, file_frozen_pts: 0
+Loading vamana graph ../../dataset/sift//diskann/data_diskann...done. Index has 1000000 nodes and 31998209 out-edges, _start is set to 123742
+Identified 12 distinct label(s)
+Num frozen points:0 _nd: 1000000 _start: 123742 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 1000000
+Index loaded
+Using 128 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 100    87735.21            481.77             1339.86        9625.37        5.45
+Done searching. Now saving results 
+Writing bin: diskann_result/result_100_idx_uint32.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+Writing bin: diskann_result/result_100_dists_float.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.

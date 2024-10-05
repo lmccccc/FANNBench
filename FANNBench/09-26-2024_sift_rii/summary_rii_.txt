@@ -1,0 +1,1108 @@
+Start time: 01:20
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 100
+K: 10
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 100, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+Traceback (most recent call last):
+  File "utils/test_rii.py", line 92, in <module>
+    codec = nanopq.PQ(M=M).fit(vecs=train)  # Trained using Xt
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/nanopq/pq.py", line 109, in fit
+    assert D % self.M == 0, "input dimension must be dividable by M"
+AssertionError: input dimension must be dividable by M
+Start time: 01:21
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 4
+K: 10
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 4, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 4
+Training the subspace: 1 / 4
+Training the subspace: 2 / 4
+Training the subspace: 3 / 4
+SIMD support: avx512
+Encoding the subspace: 0 / 4
+Encoding the subspace: 1 / 4
+Encoding the subspace: 2 / 4
+Encoding the subspace: 3 / 4
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 37882
+find_nn_time,37
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,45
+Iteration start: 1 / 5
+find_nn finished. Error: 35371.7
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,25
+Iteration start: 2 / 5
+find_nn finished. Error: 35048.8
+find_nn_time,19
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,28
+Iteration start: 3 / 5
+find_nn finished. Error: 34954.5
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 4 / 5
+find_nn finished. Error: 34924.2
+find_nn_time,18
+find_nn+update_center_time,18
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 128, 22016]
+polyfit coeff: [ 1.44154839e+00 -4.43200000e+03]
+resultant func:  
+1.442 x - 4432
+rii get  20903  postive res from  100000  results, recall@ 10 : 0.20903
+recall dist(10\% per bucket):  [0.1203 0.2542 0.2768 0.19   0.1033 0.038  0.0136 0.003  0.0005 0.0003]
+Start time: 01:25
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 4
+K: 10
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 4, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 4
+Training the subspace: 1 / 4
+Training the subspace: 2 / 4
+Training the subspace: 3 / 4
+SIMD support: avx512
+Encoding the subspace: 0 / 4
+Encoding the subspace: 1 / 4
+Encoding the subspace: 2 / 4
+Encoding the subspace: 3 / 4
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 37882
+find_nn_time,32
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,40
+Iteration start: 1 / 5
+find_nn finished. Error: 35371.7
+find_nn_time,20
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 2 / 5
+find_nn finished. Error: 35048.8
+find_nn_time,21
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,32
+Iteration start: 3 / 5
+find_nn finished. Error: 34954.5
+find_nn_time,19
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,26
+Iteration start: 4 / 5
+find_nn finished. Error: 34924.2
+find_nn_time,20
+find_nn+update_center_time,20
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 128, 128]
+polyfit coeff: [-6.11495661e-18  1.28000000e+02]
+resultant func:  
+-6.115e-18 x + 128
+rii get  20903  postive res from  100000  results, recall@ 10 : 0.20903
+recall dist(10\% per bucket):  [0.1203 0.2542 0.2768 0.19   0.1033 0.038  0.0136 0.003  0.0005 0.0003
+ 0.    ]
+qps:  667.1612273108057
+Start time: 01:28
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 4
+K: 10
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 4, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 4
+Training the subspace: 1 / 4
+Training the subspace: 2 / 4
+Training the subspace: 3 / 4
+SIMD support: avx512
+Encoding the subspace: 0 / 4
+Encoding the subspace: 1 / 4
+Encoding the subspace: 2 / 4
+Encoding the subspace: 3 / 4
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 37882
+find_nn_time,37
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,44
+Iteration start: 1 / 5
+find_nn finished. Error: 35371.7
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,25
+Iteration start: 2 / 5
+find_nn finished. Error: 35048.8
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,25
+Iteration start: 3 / 5
+find_nn finished. Error: 34954.5
+find_nn_time,20
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 4 / 5
+find_nn finished. Error: 34924.2
+find_nn_time,20
+find_nn+update_center_time,20
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 128, 128]
+polyfit coeff: [-6.11495661e-18  1.28000000e+02]
+resultant func:  
+-6.115e-18 x + 128
+train time:  9.570815801620483  add time:  3.7121198177337646  construction time:  13.282935619354248
+rii get  20903  postive res from  100000  results, recall@ 10 : 0.20903
+recall dist(10\% per bucket):  [0.1203 0.2542 0.2768 0.19   0.1033 0.038  0.0136 0.003  0.0005 0.0003
+ 0.    ]
+qps:  663.376951925074
+Start time: 01:36
+error wrong argument
+Start time: 01:36
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 4
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 4, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 4
+Training the subspace: 1 / 4
+Training the subspace: 2 / 4
+Training the subspace: 3 / 4
+SIMD support: avx512
+Encoding the subspace: 0 / 4
+Encoding the subspace: 1 / 4
+Encoding the subspace: 2 / 4
+Encoding the subspace: 3 / 4
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 37882
+find_nn_time,42
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,49
+Iteration start: 1 / 5
+find_nn finished. Error: 35371.7
+find_nn_time,21
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,31
+Iteration start: 2 / 5
+find_nn finished. Error: 35048.8
+find_nn_time,20
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 3 / 5
+find_nn finished. Error: 34954.5
+find_nn_time,20
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,28
+Iteration start: 4 / 5
+find_nn finished. Error: 34924.2
+find_nn_time,20
+find_nn+update_center_time,20
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 128, 128]
+polyfit coeff: [-6.11495661e-18  1.28000000e+02]
+resultant func:  
+-6.115e-18 x + 128
+train time:  12.089386940002441  add time:  3.8867809772491455  construction time:  15.976167917251587
+index save to  ../../dataset/sift/rii_index/index_rii
+rii get  20903  postive res from  100000  results, recall@ 10 : 0.20903
+recall dist(10\% per bucket):  [0.1203 0.2542 0.2768 0.19   0.1033 0.038  0.0136 0.003  0.0005 0.0003
+ 0.    ]
+qps:  672.9033688709869
+Start time: 01:39
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 8
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii8
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 8, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 8
+Training the subspace: 1 / 8
+Training the subspace: 2 / 8
+Training the subspace: 3 / 8
+Training the subspace: 4 / 8
+Training the subspace: 5 / 8
+Training the subspace: 6 / 8
+Training the subspace: 7 / 8
+SIMD support: avx512
+Encoding the subspace: 0 / 8
+Encoding the subspace: 1 / 8
+Encoding the subspace: 2 / 8
+Encoding the subspace: 3 / 8
+Encoding the subspace: 4 / 8
+Encoding the subspace: 5 / 8
+Encoding the subspace: 6 / 8
+Encoding the subspace: 7 / 8
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 57659.8
+find_nn_time,48
+find_nn+update_center_time,67
+Iteration start: 1 / 5
+find_nn finished. Error: 48900.7
+find_nn_time,27
+find_nn+update_center_time,46
+Iteration start: 2 / 5
+find_nn finished. Error: 48256.3
+find_nn_time,28
+find_nn+update_center_time,53
+Iteration start: 3 / 5
+find_nn finished. Error: 48088.3
+find_nn_time,28
+find_nn+update_center_time,49
+Iteration start: 4 / 5
+find_nn finished. Error: 48025
+find_nn_time,27
+find_nn+update_center_time,27
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [256, 128, 128, 128, 128]
+polyfit coeff: [-4.47311828e-03  1.81333333e+02]
+resultant func:  
+-0.004473 x + 181.3
+train time:  18.491089820861816  add time:  15.366356611251831  construction time:  33.85744643211365
+index save to  ../../dataset/sift/rii_index/index_rii8
+rii get  38607  postive res from  100000  results, recall@ 10 : 0.38607
+recall dist(10\% per bucket):  [0.013  0.0629 0.1393 0.2161 0.224  0.1756 0.1071 0.0444 0.0149 0.0027
+ 0.    ]
+qps:  658.3102895653751
+Start time: 01:41
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 8
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii_8
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+load index from  ../../dataset/sift/rii_index/index_rii_8
+rii get  38607  postive res from  100000  results, recall@ 10 : 0.38607
+recall dist(10\% per bucket):  [0.013  0.0629 0.1393 0.2161 0.224  0.1756 0.1071 0.0444 0.0149 0.0027
+ 0.    ]
+qps:  657.076633237979
+Start time: 01:43
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 4
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii_4
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 4, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 4
+Training the subspace: 1 / 4
+Training the subspace: 2 / 4
+Training the subspace: 3 / 4
+SIMD support: avx512
+Encoding the subspace: 0 / 4
+Encoding the subspace: 1 / 4
+Encoding the subspace: 2 / 4
+Encoding the subspace: 3 / 4
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 37882
+find_nn_time,32
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,41
+Iteration start: 1 / 5
+find_nn finished. Error: 35371.7
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,28
+Iteration start: 2 / 5
+find_nn finished. Error: 35048.8
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 3 / 5
+find_nn finished. Error: 34954.5
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,25
+Iteration start: 4 / 5
+find_nn finished. Error: 34924.2
+find_nn_time,19
+find_nn+update_center_time,19
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 128, 128]
+polyfit coeff: [-6.11495661e-18  1.28000000e+02]
+resultant func:  
+-6.115e-18 x + 128
+train time:  9.930662870407104  add time:  4.10755181312561  construction time:  14.038214683532715
+index save to  ../../dataset/sift/rii_index/index_rii_4
+rii get  20903  postive res from  100000  results, recall@ 10 : 0.20903
+recall dist(10\% per bucket):  [0.1203 0.2542 0.2768 0.19   0.1033 0.038  0.0136 0.003  0.0005 0.0003
+ 0.    ]
+qps:  667.5932605471731
+Start time: 01:45
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 64
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii_64
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 64, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 64
+/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/scipy/cluster/vq.py:602: UserWarning: One of the clusters is empty. Re-run kmeans with a different initialization.
+  warnings.warn("One of the clusters is empty. "
+Training the subspace: 1 / 64
+Training the subspace: 2 / 64
+Training the subspace: 3 / 64
+Training the subspace: 4 / 64
+Training the subspace: 5 / 64
+Training the subspace: 6 / 64
+Training the subspace: 7 / 64
+Training the subspace: 8 / 64
+Training the subspace: 9 / 64
+Training the subspace: 10 / 64
+Training the subspace: 11 / 64
+Training the subspace: 12 / 64
+Training the subspace: 13 / 64
+Training the subspace: 14 / 64
+Training the subspace: 15 / 64
+Training the subspace: 16 / 64
+Training the subspace: 17 / 64
+Training the subspace: 18 / 64
+Training the subspace: 19 / 64
+Training the subspace: 20 / 64
+Training the subspace: 21 / 64
+Training the subspace: 22 / 64
+Training the subspace: 23 / 64
+Training the subspace: 24 / 64
+Training the subspace: 25 / 64
+Training the subspace: 26 / 64
+Training the subspace: 27 / 64
+Training the subspace: 28 / 64
+Training the subspace: 29 / 64
+Training the subspace: 30 / 64
+Training the subspace: 31 / 64
+Training the subspace: 32 / 64
+Training the subspace: 33 / 64
+Training the subspace: 34 / 64
+Training the subspace: 35 / 64
+Training the subspace: 36 / 64
+Training the subspace: 37 / 64
+Training the subspace: 38 / 64
+Training the subspace: 39 / 64
+Training the subspace: 40 / 64
+Training the subspace: 41 / 64
+Training the subspace: 42 / 64
+Training the subspace: 43 / 64
+Training the subspace: 44 / 64
+Training the subspace: 45 / 64
+Training the subspace: 46 / 64
+Training the subspace: 47 / 64
+Training the subspace: 48 / 64
+Training the subspace: 49 / 64
+Training the subspace: 50 / 64
+Training the subspace: 51 / 64
+Training the subspace: 52 / 64
+Training the subspace: 53 / 64
+Training the subspace: 54 / 64
+Training the subspace: 55 / 64
+Training the subspace: 56 / 64
+Training the subspace: 57 / 64
+Training the subspace: 58 / 64
+Training the subspace: 59 / 64
+Training the subspace: 60 / 64
+Training the subspace: 61 / 64
+Training the subspace: 62 / 64
+Training the subspace: 63 / 64
+SIMD support: avx512
+Encoding the subspace: 0 / 64
+Encoding the subspace: 1 / 64
+Encoding the subspace: 2 / 64
+Encoding the subspace: 3 / 64
+Encoding the subspace: 4 / 64
+Encoding the subspace: 5 / 64
+Encoding the subspace: 6 / 64
+Encoding the subspace: 7 / 64
+Encoding the subspace: 8 / 64
+Encoding the subspace: 9 / 64
+Encoding the subspace: 10 / 64
+Encoding the subspace: 11 / 64
+Encoding the subspace: 12 / 64
+Encoding the subspace: 13 / 64
+Encoding the subspace: 14 / 64
+Encoding the subspace: 15 / 64
+Encoding the subspace: 16 / 64
+Encoding the subspace: 17 / 64
+Encoding the subspace: 18 / 64
+Encoding the subspace: 19 / 64
+Encoding the subspace: 20 / 64
+Encoding the subspace: 21 / 64
+Encoding the subspace: 22 / 64
+Encoding the subspace: 23 / 64
+Encoding the subspace: 24 / 64
+Encoding the subspace: 25 / 64
+Encoding the subspace: 26 / 64
+Encoding the subspace: 27 / 64
+Encoding the subspace: 28 / 64
+Encoding the subspace: 29 / 64
+Encoding the subspace: 30 / 64
+Encoding the subspace: 31 / 64
+Encoding the subspace: 32 / 64
+Encoding the subspace: 33 / 64
+Encoding the subspace: 34 / 64
+Encoding the subspace: 35 / 64
+Encoding the subspace: 36 / 64
+Encoding the subspace: 37 / 64
+Encoding the subspace: 38 / 64
+Encoding the subspace: 39 / 64
+Encoding the subspace: 40 / 64
+Encoding the subspace: 41 / 64
+Encoding the subspace: 42 / 64
+Encoding the subspace: 43 / 64
+Encoding the subspace: 44 / 64
+Encoding the subspace: 45 / 64
+Encoding the subspace: 46 / 64
+Encoding the subspace: 47 / 64
+Encoding the subspace: 48 / 64
+Encoding the subspace: 49 / 64
+Encoding the subspace: 50 / 64
+Encoding the subspace: 51 / 64
+Encoding the subspace: 52 / 64
+Encoding the subspace: 53 / 64
+Encoding the subspace: 54 / 64
+Encoding the subspace: 55 / 64
+Encoding the subspace: 56 / 64
+Encoding the subspace: 57 / 64
+Encoding the subspace: 58 / 64
+Encoding the subspace: 59 / 64
+Encoding the subspace: 60 / 64
+Encoding the subspace: 61 / 64
+Encoding the subspace: 62 / 64
+Encoding the subspace: 63 / 64
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 75027.1
+find_nn_time,241
+find_nn+update_center_time,450
+Iteration start: 1 / 5
+find_nn finished. Error: 53432.2
+find_nn_time,224
+find_nn+update_center_time,445
+Iteration start: 2 / 5
+find_nn finished. Error: 52012.8
+find_nn_time,224
+find_nn+update_center_time,441
+Iteration start: 3 / 5
+find_nn finished. Error: 51435.5
+find_nn_time,228
+find_nn+update_center_time,455
+Iteration start: 4 / 5
+find_nn finished. Error: 51126.6
+find_nn_time,246
+find_nn+update_center_time,246
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 128, 128]
+polyfit coeff: [-6.11495661e-18  1.28000000e+02]
+resultant func:  
+-6.115e-18 x + 128
+train time:  60.14238882064819  add time:  35.12272071838379  construction time:  95.26510953903198
+index save to  ../../dataset/sift/rii_index/index_rii_64
+rii get  75745  postive res from  100000  results, recall@ 10 : 0.75745
+recall dist(10\% per bucket):  [2.000e-04 6.000e-04 3.400e-03 1.390e-02 3.460e-02 6.470e-02 1.127e-01
+ 1.790e-01 2.600e-01 2.547e-01 7.620e-02]
+qps:  484.72237833373583
+Start time: 01:50
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 256
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii_256
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 256, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+Traceback (most recent call last):
+  File "utils/test_rii.py", line 104, in <module>
+    codec = nanopq.PQ(M=M).fit(vecs=train)  # Trained using Xt
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/nanopq/pq.py", line 109, in fit
+    assert D % self.M == 0, "input dimension must be dividable by M"
+AssertionError: input dimension must be dividable by M
+Start time: 01:50
+N: 1000000
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+train file: ../../dataset/sift/sift_learn.fvecs
+attr file: ../../dataset/sift/sift_attr.json
+query range file: ../../dataset/sift/sift_qrange.json
+ground truth file: ../../dataset/sift/sift_gt_10.json
+partition size M: 128
+K: 10
+index file location: ../../dataset/sift/rii_index/index_rii_128
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 128, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 128
+/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/scipy/cluster/vq.py:602: UserWarning: One of the clusters is empty. Re-run kmeans with a different initialization.
+  warnings.warn("One of the clusters is empty. "
+Training the subspace: 1 / 128
+Training the subspace: 2 / 128
+Training the subspace: 3 / 128
+Training the subspace: 4 / 128
+Training the subspace: 5 / 128
+Training the subspace: 6 / 128
+Training the subspace: 7 / 128
+Training the subspace: 8 / 128
+Training the subspace: 9 / 128
+Training the subspace: 10 / 128
+Training the subspace: 11 / 128
+Training the subspace: 12 / 128
+Training the subspace: 13 / 128
+Training the subspace: 14 / 128
+Training the subspace: 15 / 128
+Training the subspace: 16 / 128
+Training the subspace: 17 / 128
+Training the subspace: 18 / 128
+Training the subspace: 19 / 128
+Training the subspace: 20 / 128
+Training the subspace: 21 / 128
+Training the subspace: 22 / 128
+Training the subspace: 23 / 128
+Training the subspace: 24 / 128
+Training the subspace: 25 / 128
+Training the subspace: 26 / 128
+Training the subspace: 27 / 128
+Training the subspace: 28 / 128
+Training the subspace: 29 / 128
+Training the subspace: 30 / 128
+Training the subspace: 31 / 128
+Training the subspace: 32 / 128
+Training the subspace: 33 / 128
+Training the subspace: 34 / 128
+Training the subspace: 35 / 128
+Training the subspace: 36 / 128
+Training the subspace: 37 / 128
+Training the subspace: 38 / 128
+Training the subspace: 39 / 128
+Training the subspace: 40 / 128
+Training the subspace: 41 / 128
+Training the subspace: 42 / 128
+Training the subspace: 43 / 128
+Training the subspace: 44 / 128
+Training the subspace: 45 / 128
+Training the subspace: 46 / 128
+Training the subspace: 47 / 128
+Training the subspace: 48 / 128
+Training the subspace: 49 / 128
+Training the subspace: 50 / 128
+Training the subspace: 51 / 128
+Training the subspace: 52 / 128
+Training the subspace: 53 / 128
+Training the subspace: 54 / 128
+Training the subspace: 55 / 128
+Training the subspace: 56 / 128
+Training the subspace: 57 / 128
+Training the subspace: 58 / 128
+Training the subspace: 59 / 128
+Training the subspace: 60 / 128
+Training the subspace: 61 / 128
+Training the subspace: 62 / 128
+Training the subspace: 63 / 128
+Training the subspace: 64 / 128
+Training the subspace: 65 / 128
+Training the subspace: 66 / 128
+Training the subspace: 67 / 128
+Training the subspace: 68 / 128
+Training the subspace: 69 / 128
+Training the subspace: 70 / 128
+Training the subspace: 71 / 128
+Training the subspace: 72 / 128
+Training the subspace: 73 / 128
+Training the subspace: 74 / 128
+Training the subspace: 75 / 128
+Training the subspace: 76 / 128
+Training the subspace: 77 / 128
+Training the subspace: 78 / 128
+Training the subspace: 79 / 128
+Training the subspace: 80 / 128
+Training the subspace: 81 / 128
+Training the subspace: 82 / 128
+Training the subspace: 83 / 128
+Training the subspace: 84 / 128
+Training the subspace: 85 / 128
+Training the subspace: 86 / 128
+Training the subspace: 87 / 128
+Training the subspace: 88 / 128
+Training the subspace: 89 / 128
+Training the subspace: 90 / 128
+Training the subspace: 91 / 128
+Training the subspace: 92 / 128
+Training the subspace: 93 / 128
+Training the subspace: 94 / 128
+Training the subspace: 95 / 128
+Training the subspace: 96 / 128
+Training the subspace: 97 / 128
+Training the subspace: 98 / 128
+Training the subspace: 99 / 128
+Training the subspace: 100 / 128
+Training the subspace: 101 / 128
+Training the subspace: 102 / 128
+Training the subspace: 103 / 128
+Training the subspace: 104 / 128
+Training the subspace: 105 / 128
+Training the subspace: 106 / 128
+Training the subspace: 107 / 128
+Training the subspace: 108 / 128
+Training the subspace: 109 / 128
+Training the subspace: 110 / 128
+Training the subspace: 111 / 128
+Training the subspace: 112 / 128
+Training the subspace: 113 / 128
+Training the subspace: 114 / 128
+Training the subspace: 115 / 128
+Training the subspace: 116 / 128
+Training the subspace: 117 / 128
+Training the subspace: 118 / 128
+Training the subspace: 119 / 128
+Training the subspace: 120 / 128
+Training the subspace: 121 / 128
+Training the subspace: 122 / 128
+Training the subspace: 123 / 128
+Training the subspace: 124 / 128
+Training the subspace: 125 / 128
+Training the subspace: 126 / 128
+Training the subspace: 127 / 128
+SIMD support: avx512
+Encoding the subspace: 0 / 128
+Encoding the subspace: 1 / 128
+Encoding the subspace: 2 / 128
+Encoding the subspace: 3 / 128
+Encoding the subspace: 4 / 128
+Encoding the subspace: 5 / 128
+Encoding the subspace: 6 / 128
+Encoding the subspace: 7 / 128
+Encoding the subspace: 8 / 128
+Encoding the subspace: 9 / 128
+Encoding the subspace: 10 / 128
+Encoding the subspace: 11 / 128
+Encoding the subspace: 12 / 128
+Encoding the subspace: 13 / 128
+Encoding the subspace: 14 / 128
+Encoding the subspace: 15 / 128
+Encoding the subspace: 16 / 128
+Encoding the subspace: 17 / 128
+Encoding the subspace: 18 / 128
+Encoding the subspace: 19 / 128
+Encoding the subspace: 20 / 128
+Encoding the subspace: 21 / 128
+Encoding the subspace: 22 / 128
+Encoding the subspace: 23 / 128
+Encoding the subspace: 24 / 128
+Encoding the subspace: 25 / 128
+Encoding the subspace: 26 / 128
+Encoding the subspace: 27 / 128
+Encoding the subspace: 28 / 128
+Encoding the subspace: 29 / 128
+Encoding the subspace: 30 / 128
+Encoding the subspace: 31 / 128
+Encoding the subspace: 32 / 128
+Encoding the subspace: 33 / 128
+Encoding the subspace: 34 / 128
+Encoding the subspace: 35 / 128
+Encoding the subspace: 36 / 128
+Encoding the subspace: 37 / 128
+Encoding the subspace: 38 / 128
+Encoding the subspace: 39 / 128
+Encoding the subspace: 40 / 128
+Encoding the subspace: 41 / 128
+Encoding the subspace: 42 / 128
+Encoding the subspace: 43 / 128
+Encoding the subspace: 44 / 128
+Encoding the subspace: 45 / 128
+Encoding the subspace: 46 / 128
+Encoding the subspace: 47 / 128
+Encoding the subspace: 48 / 128
+Encoding the subspace: 49 / 128
+Encoding the subspace: 50 / 128
+Encoding the subspace: 51 / 128
+Encoding the subspace: 52 / 128
+Encoding the subspace: 53 / 128
+Encoding the subspace: 54 / 128
+Encoding the subspace: 55 / 128
+Encoding the subspace: 56 / 128
+Encoding the subspace: 57 / 128
+Encoding the subspace: 58 / 128
+Encoding the subspace: 59 / 128
+Encoding the subspace: 60 / 128
+Encoding the subspace: 61 / 128
+Encoding the subspace: 62 / 128
+Encoding the subspace: 63 / 128
+Encoding the subspace: 64 / 128
+Encoding the subspace: 65 / 128
+Encoding the subspace: 66 / 128
+Encoding the subspace: 67 / 128
+Encoding the subspace: 68 / 128
+Encoding the subspace: 69 / 128
+Encoding the subspace: 70 / 128
+Encoding the subspace: 71 / 128
+Encoding the subspace: 72 / 128
+Encoding the subspace: 73 / 128
+Encoding the subspace: 74 / 128
+Encoding the subspace: 75 / 128
+Encoding the subspace: 76 / 128
+Encoding the subspace: 77 / 128
+Encoding the subspace: 78 / 128
+Encoding the subspace: 79 / 128
+Encoding the subspace: 80 / 128
+Encoding the subspace: 81 / 128
+Encoding the subspace: 82 / 128
+Encoding the subspace: 83 / 128
+Encoding the subspace: 84 / 128
+Encoding the subspace: 85 / 128
+Encoding the subspace: 86 / 128
+Encoding the subspace: 87 / 128
+Encoding the subspace: 88 / 128
+Encoding the subspace: 89 / 128
+Encoding the subspace: 90 / 128
+Encoding the subspace: 91 / 128
+Encoding the subspace: 92 / 128
+Encoding the subspace: 93 / 128
+Encoding the subspace: 94 / 128
+Encoding the subspace: 95 / 128
+Encoding the subspace: 96 / 128
+Encoding the subspace: 97 / 128
+Encoding the subspace: 98 / 128
+Encoding the subspace: 99 / 128
+Encoding the subspace: 100 / 128
+Encoding the subspace: 101 / 128
+Encoding the subspace: 102 / 128
+Encoding the subspace: 103 / 128
+Encoding the subspace: 104 / 128
+Encoding the subspace: 105 / 128
+Encoding the subspace: 106 / 128
+Encoding the subspace: 107 / 128
+Encoding the subspace: 108 / 128
+Encoding the subspace: 109 / 128
+Encoding the subspace: 110 / 128
+Encoding the subspace: 111 / 128
+Encoding the subspace: 112 / 128
+Encoding the subspace: 113 / 128
+Encoding the subspace: 114 / 128
+Encoding the subspace: 115 / 128
+Encoding the subspace: 116 / 128
+Encoding the subspace: 117 / 128
+Encoding the subspace: 118 / 128
+Encoding the subspace: 119 / 128
+Encoding the subspace: 120 / 128
+Encoding the subspace: 121 / 128
+Encoding the subspace: 122 / 128
+Encoding the subspace: 123 / 128
+Encoding the subspace: 124 / 128
+Encoding the subspace: 125 / 128
+Encoding the subspace: 126 / 128
+Encoding the subspace: 127 / 128
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 75132.2
+find_nn_time,464
+find_nn+update_center_time,780
+Iteration start: 1 / 5
+find_nn finished. Error: 53201.1
+find_nn_time,446
+find_nn+update_center_time,782
+Iteration start: 2 / 5
+find_nn finished. Error: 51715.6
+find_nn_time,442
+find_nn+update_center_time,781
+Iteration start: 3 / 5
+find_nn finished. Error: 51102
+find_nn_time,449
+find_nn+update_center_time,795
+Iteration start: 4 / 5
+find_nn finished. Error: 50758.5
+find_nn_time,447
+find_nn+update_center_time,447
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 512, 128, 128, 128]
+polyfit coeff: [-1.08387097e-02  2.72000000e+02]
+resultant func:  
+-0.01084 x + 272
+train time:  76.1355082988739  add time:  60.73332905769348  construction time:  136.86883735656738
+index save to  ../../dataset/sift/rii_index/index_rii_128
+rii get  79764  postive res from  100000  results, recall@ 10 : 0.79764
+recall dist(10\% per bucket):  [2.000e-04 7.000e-04 4.200e-03 1.270e-02 3.040e-02 5.600e-02 9.540e-02
+ 1.432e-01 1.845e-01 2.502e-01 2.225e-01]
+qps:  383.0846885334385

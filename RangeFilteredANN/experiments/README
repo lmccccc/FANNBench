@@ -1,0 +1,69 @@
+## Milvus
+
+Install: pymilvus (pip install), [Docker Engine](https://docs.docker.com/engine/install/ubuntu/), and [Docker Compose](https://docs.docker.com/compose/install/linux/).
+
+Need milvus to be at least version 2.3.5. Need pymilvus version to be at least 2.3.5.
+
+If you are doing your experiments in "experiment_folder", you will need to replace all instance of /home/ubuntu with experiment_folder in experiments/docker-compose.yml.
+
+```bash
+# start docker
+sudo systemctl start docker
+
+# copy yaml and yml file to home directory / from experiments/
+cp RangeFilteredANN/experiments/*.yaml ./
+cp RangeFilteredANN/experiments/*.yml ./
+
+# start milvus
+sudo docker compose up -d
+
+# prepare to connect to milvus
+sudo docker port milvus-standalone 19530/tcp
+
+# test
+python3 tests/test_milvus_connection.py 
+```
+
+Run
+```bash
+python3 run_milvus.py 
+```
+Note that if you want to change the number of threads used, you need to change both THREADS in run_milvus.py and OMP_NUM_THREADS in docker-copmose.yml, and re-start docker. 
+
+stop milvus
+```bash
+sudo docker compose down
+```
+
+## MSVBASE
+
+Install python packages:
+```bash
+# to connect to PostgreSQL from Python
+pip3 install psycopg2-binary
+```
+
+```bash
+git clone https://github.com/microsoft/MSVBASE.git
+cd MSVBASE
+git submodule update --init --recursive
+./scripts/patch.sh
+
+# start docker
+sudo systemctl start docker
+# build. I have to copy paste it to terminal for it to work.
+# ./scripts/dockerbuild.sh
+sudo docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t vbase_open_source -f Dockerfile .
+
+# start MSVBASE docker container
+sudo ./scripts/dockerrun.sh
+
+# test if success
+python3 tests/test_msvbase_connection.py 
+```
+
+
+Run 
+```bash
+python3 run_msvbase.py
+```

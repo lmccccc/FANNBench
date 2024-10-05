@@ -1,0 +1,448 @@
+Start time: 21:57
+====================
+START: running ACORN_INDEX_CONSTRUCTION for hnsw, sift data --
+
+dataset: sift
+N: 1000000
+gamma: 12
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: ../../dataset/sift/sift_base.fvecs
+attr file: ../../dataset/sift/sel_1_128_in_dist/attr_sel_1_128_in_dist.json
+index file: ../../dataset/sift/acorn_result/index_acorn_sel_1_128_in_dist_1000
+metadata or vector loaded from json, size: 1000000
+loaded base attributes, size:1000000
+[ 0.096s ] Loaded attributions, 1000000 found
+[ 0.096s ] Index Params -- d: 128, M: 40, N: 1000000, gamma: 12
+--ACORN index created
+====================Vectors====================
+
+[ 0.096s ] Loading database
+[ 0.416s ] Loaded base vectors from file: ../../dataset/sift/sift_base.fvecs
+data loaded, with dim: 128, nb=1000000
+[ 0.417s ] Indexing database, size 1000000*128 from max 1000000
+[ 0.417s ] Adding the vectors to the index
+[ 131.846s ] Vectors added to hybrid index1000000
+Hybrid index vectors added:1000000
+====================Write Index================
+
+[ 132.440s ] Wrote hybrid index to file: ../../dataset/sift/acorn_result/index_acorn_sel_1_128_in_dist_1000
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 604
+		indx 3: 1084
+		indx 4: 1564
+		indx 5: 2044
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 480
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 118295
+	* gamma: 12
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 1000000
+   2. neighbors per node: 86.65 (86653960)
+   3. nb of reciprocal neighbors: 59.88
+   4. nb of neighbors that are also neighbor-of-neighbors: 84.71 (84710784)
+========= LEVEL 1 =======
+* stats on level 1, max 480 neighbors per vertex:
+   1. nb of nodes: 24956
+   2. neighbors per node: 480.00 (11978780)
+   3. nb of reciprocal neighbors: 76.89
+   4. nb of neighbors that are also neighbor-of-neighbors: 398.51 (9945267)
+========= LEVEL 2 =======
+* stats on level 2, max 480 neighbors per vertex:
+   1. nb of nodes: 623
+   2. neighbors per node: 472.47 (294348)
+   3. nb of reciprocal neighbors: 433.67
+   4. nb of neighbors that are also neighbor-of-neighbors: 471.91 (293997)
+========= LEVEL 3 =======
+* stats on level 3, max 480 neighbors per vertex:
+   1. nb of nodes: 16
+   2. neighbors per node: 14.94 (239)
+   3. nb of reciprocal neighbors: 13.31
+   4. nb of neighbors that are also neighbor-of-neighbors: 14.00 (224)
+========= LEVEL 4 =======
+* stats on level 4, max 480 neighbors per vertex:
+   1. nb of nodes: 1
+   2. neighbors per node: 0.00 (0)
+   3. nb of reciprocal neighbors: 0.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 0.00 (0)
+METADATA VEC for number nodes per level
+	level 0: 999915 nodes
+	level 1: 24955 nodes
+	level 2: 622 nodes
+	level 3: 16 nodes
+	level 4: 1 nodes
+	level 5: 0 nodes
+acorn size: 545144320, memory: 1019.615MB
+[134.913 s] -----DONE-----
+[ 134.913s ] -----DONE-----
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift
+N: 1000000
+gamma: 12
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+attr file: ../../dataset/sift/sel_1_128_in_dist/attr_sel_1_128_in_dist.json
+qrange file: ../../dataset/sift/sel_1_128_in_dist/qrangesel_1_128_in_dist.json
+gt file: ../../dataset/sift/sel_1_128_in_dist/sif_gt_10.json
+index file: ../../dataset/sift/acorn_result/index_acorn_sel_1_128_in_dist_1000
+ef_search: 100 
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:../../dataset/sift/sel_1_128_in_dist/attr_sel_1_128_in_dist.json
+[ 0.090s ] Loaded metadata, 1000000 attr's found
+[ 0.090s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 0.092s ] Loaded query vectors from ../../dataset/sift/sift_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: ../../dataset/sift/sel_1_128_in_dist/qrangesel_1_128_in_dist.json
+[ 0.094s ] Loaded 10000 sift queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: ../../dataset/sift/sel_1_128_in_dist/sif_gt_10.json
+[ 0.104s ] Loaded ground truth, gt_size: 10
+[ 0.104s ] Index Params -- d: 128, M: 40, N: 1000000, gamma: 12
+--ACORN index created
+acorn size: 545144320, memory: 1019.615MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 604
+		indx 3: 1084
+		indx 4: 1564
+		indx 5: 2044
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 480
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 118295
+	* gamma: 12
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 1000000
+   2. neighbors per node: 86.65 (86653960)
+   3. nb of reciprocal neighbors: 59.88
+   4. nb of neighbors that are also neighbor-of-neighbors: 84.71 (84710784)
+========= LEVEL 1 =======
+* stats on level 1, max 480 neighbors per vertex:
+   1. nb of nodes: 24956
+   2. neighbors per node: 480.00 (11978780)
+   3. nb of reciprocal neighbors: 76.89
+   4. nb of neighbors that are also neighbor-of-neighbors: 398.51 (9945267)
+========= LEVEL 2 =======
+* stats on level 2, max 480 neighbors per vertex:
+   1. nb of nodes: 623
+   2. neighbors per node: 472.47 (294348)
+   3. nb of reciprocal neighbors: 433.67
+   4. nb of neighbors that are also neighbor-of-neighbors: 471.91 (293997)
+========= LEVEL 3 =======
+* stats on level 3, max 480 neighbors per vertex:
+   1. nb of nodes: 16
+   2. neighbors per node: 14.94 (239)
+   3. nb of reciprocal neighbors: 13.31
+   4. nb of neighbors that are also neighbor-of-neighbors: 14.00 (224)
+========= LEVEL 4 =======
+* stats on level 4, max 480 neighbors per vertex:
+   1. nb of nodes: 1
+   2. neighbors per node: 0.00 (0)
+   3. nb of reciprocal neighbors: 0.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 0.00 (0)
+METADATA VEC for number nodes per level
+	level 0: 999915 nodes
+	level 1: 24955 nodes
+	level 2: 622 nodes
+	level 3: 16 nodes
+	level 4: 1 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.544s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 0.008
+[ 39.997s ] Query results (vector ids, then distances):
+query 0 nn's (5): 695756 (5) 455537 (5) 562594 (5) 619660 (5) 565419 (5) 236647 (5) 36267 (5) 721706 (5) 619829 (5) 224263 (5) 
+     dis: 	67010.000 71441.000 73537.000 74356.000 75634.000 75704.000 76583.000 78655.000 79309.000 80246.000 
+query 1 nn's (5): 880592 (118) 249062 (118) 400194 (118) 880462 (118) 833054 (118) 248426 (118) 849742 (118) 987215 (118) 832927 (118) 20845 (118) 
+     dis: 	54987.000 55586.000 55595.000 56396.000 58464.000 58741.000 59323.000 59904.000 60029.000 60053.000 
+query 2 nn's (118): 669835 (91) 551661 (91) 551743 (91) 402106 (91) 239766 (91) 906773 (91) 401804 (91) 905339 (91) 678042 (91) 150588 (91) 
+     dis: 	30792.000 34698.000 36325.000 36458.000 36631.000 39266.000 39297.000 39308.000 39953.000 39984.000 
+query 3 nn's (118): 970797 (65) 125539 (65) 48044 (65) 191115 (65) 889039 (65) 546470 (65) 123985 (65) 546496 (65) 207768 (65) 831905 (65) 
+     dis: 	30510.000 30863.000 32777.000 34876.000 34909.000 35734.000 36107.000 36113.000 36229.000 36624.000 
+query 4 nn's (91): 748397 (104) 716433 (104) 112586 (104) 107281 (104) 416604 (104) 175407 (104) 491554 (104) 807785 (104) 403978 (104) 549505 (104) 
+     dis: 	47367.000 52559.000 53980.000 54643.000 55814.000 58065.000 58390.000 58908.000 59193.000 59638.000 
+[ 39.997s ] *** Query time: 0.512
+qps: 19541.138
+ *** acorn recall 
+efs:100
+acorn get 99492 postive res from 100000 results, recall@10:0.995
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.004 0.043 0.953 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[40.582s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 24615182
+ndis: 0
+nreorder: 0
+average distance computations per query: 2461.518
+[ 40.582s ] -----DONE-----
+Start time: 02:16
+====================
+START: running ACORN_INDEX_CONSTRUCTION for hnsw, sift data --
+
+dataset: sift
+N: 1000000
+gamma: 12
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: ../../dataset/sift/sift_base.fvecs
+attr file: ../../dataset/sift/sel_1_128_out_dist/attr_sel_1_128_out_dist.json
+index file: ../../dataset/sift/acorn_result/index_acorn_sel_1_128_out_dist_1000
+metadata or vector loaded from json, size: 1000000
+loaded base attributes, size:1000000
+[ 0.093s ] Loaded attributions, 1000000 found
+[ 0.093s ] Index Params -- d: 128, M: 40, N: 1000000, gamma: 12
+--ACORN index created
+====================Vectors====================
+
+[ 0.094s ] Loading database
+[ 0.413s ] Loaded base vectors from file: ../../dataset/sift/sift_base.fvecs
+data loaded, with dim: 128, nb=1000000
+[ 0.413s ] Indexing database, size 1000000*128 from max 1000000
+[ 0.413s ] Adding the vectors to the index
+[ 128.891s ] Vectors added to hybrid index1000000
+Hybrid index vectors added:1000000
+====================Write Index================
+
+[ 129.446s ] Wrote hybrid index to file: ../../dataset/sift/acorn_result/index_acorn_sel_1_128_out_dist_1000
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 604
+		indx 3: 1084
+		indx 4: 1564
+		indx 5: 2044
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 480
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 118295
+	* gamma: 12
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 1000000
+   2. neighbors per node: 86.65 (86650450)
+   3. nb of reciprocal neighbors: 59.88
+   4. nb of neighbors that are also neighbor-of-neighbors: 84.71 (84707290)
+========= LEVEL 1 =======
+* stats on level 1, max 480 neighbors per vertex:
+   1. nb of nodes: 24956
+   2. neighbors per node: 479.99 (11978742)
+   3. nb of reciprocal neighbors: 77.65
+   4. nb of neighbors that are also neighbor-of-neighbors: 398.77 (9951805)
+========= LEVEL 2 =======
+* stats on level 2, max 480 neighbors per vertex:
+   1. nb of nodes: 623
+   2. neighbors per node: 469.87 (292726)
+   3. nb of reciprocal neighbors: 431.05
+   4. nb of neighbors that are also neighbor-of-neighbors: 469.33 (292392)
+========= LEVEL 3 =======
+* stats on level 3, max 480 neighbors per vertex:
+   1. nb of nodes: 16
+   2. neighbors per node: 15.00 (240)
+   3. nb of reciprocal neighbors: 13.12
+   4. nb of neighbors that are also neighbor-of-neighbors: 14.31 (229)
+========= LEVEL 4 =======
+* stats on level 4, max 480 neighbors per vertex:
+   1. nb of nodes: 1
+   2. neighbors per node: 0.00 (0)
+   3. nb of reciprocal neighbors: 0.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 0.00 (0)
+METADATA VEC for number nodes per level
+	level 0: 999939 nodes
+	level 1: 24956 nodes
+	level 2: 623 nodes
+	level 3: 16 nodes
+	level 4: 1 nodes
+	level 5: 0 nodes
+acorn size: 545144320, memory: 1019.615MB
+[131.851 s] -----DONE-----
+[ 131.851s ] -----DONE-----
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift
+N: 1000000
+gamma: 12
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: ../../dataset/sift/sift_base.fvecs
+query file: ../../dataset/sift/sift_query.fvecs
+attr file: ../../dataset/sift/sel_1_128_out_dist/attr_sel_1_128_out_dist.json
+qrange file: ../../dataset/sift/sel_1_128_out_dist/qrangesel_1_128_out_dist.json
+gt file: ../../dataset/sift/sel_1_128_out_dist/sif_gt_10.json
+index file: ../../dataset/sift/acorn_result/index_acorn_sel_1_128_out_dist_1000
+ef_search: 100 
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:../../dataset/sift/sel_1_128_out_dist/attr_sel_1_128_out_dist.json
+[ 0.090s ] Loaded metadata, 1000000 attr's found
+[ 0.090s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 0.093s ] Loaded query vectors from ../../dataset/sift/sift_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: ../../dataset/sift/sel_1_128_out_dist/qrangesel_1_128_out_dist.json
+[ 0.094s ] Loaded 10000 sift queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: ../../dataset/sift/sel_1_128_out_dist/sif_gt_10.json
+[ 0.104s ] Loaded ground truth, gt_size: 10
+[ 0.104s ] Index Params -- d: 128, M: 40, N: 1000000, gamma: 12
+--ACORN index created
+acorn size: 545144320, memory: 1019.615MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 604
+		indx 3: 1084
+		indx 4: 1564
+		indx 5: 2044
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 480
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 118295
+	* gamma: 12
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 1000000
+   2. neighbors per node: 86.65 (86650450)
+   3. nb of reciprocal neighbors: 59.88
+   4. nb of neighbors that are also neighbor-of-neighbors: 84.71 (84707290)
+========= LEVEL 1 =======
+* stats on level 1, max 480 neighbors per vertex:
+   1. nb of nodes: 24956
+   2. neighbors per node: 479.99 (11978742)
+   3. nb of reciprocal neighbors: 77.65
+   4. nb of neighbors that are also neighbor-of-neighbors: 398.77 (9951805)
+========= LEVEL 2 =======
+* stats on level 2, max 480 neighbors per vertex:
+   1. nb of nodes: 623
+   2. neighbors per node: 469.87 (292726)
+   3. nb of reciprocal neighbors: 431.05
+   4. nb of neighbors that are also neighbor-of-neighbors: 469.33 (292392)
+========= LEVEL 3 =======
+* stats on level 3, max 480 neighbors per vertex:
+   1. nb of nodes: 16
+   2. neighbors per node: 15.00 (240)
+   3. nb of reciprocal neighbors: 13.12
+   4. nb of neighbors that are also neighbor-of-neighbors: 14.31 (229)
+========= LEVEL 4 =======
+* stats on level 4, max 480 neighbors per vertex:
+   1. nb of nodes: 1
+   2. neighbors per node: 0.00 (0)
+   3. nb of reciprocal neighbors: 0.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 0.00 (0)
+METADATA VEC for number nodes per level
+	level 0: 999939 nodes
+	level 1: 24956 nodes
+	level 2: 623 nodes
+	level 3: 16 nodes
+	level 4: 1 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.509s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 0.012
+[ 44.705s ] Query results (vector ids, then distances):
+query 0 nn's (49): 43846 (49) 891316 (49) 759373 (49) 779677 (49) 648904 (49) 552577 (49) 613337 (49) 891176 (49) 893871 (49) 537612 (49) 
+     dis: 	336492.000 339986.000 341450.000 346450.000 350218.000 357125.000 357171.000 357245.000 359017.000 360112.000 
+query 1 nn's (49): 608523 (32) 848326 (32) 900943 (32) 900068 (32) 900621 (32) 222704 (32) 876597 (32) 963346 (32) 617059 (32) 817360 (32) 
+     dis: 	304542.000 307553.000 313119.000 319021.000 319962.000 325915.000 334659.000 336402.000 336878.000 339309.000 
+query 2 nn's (32): 549985 (43) 656559 (43) 946589 (43) 877716 (43) 165731 (43) 582047 (43) 814136 (43) 655814 (43) 239674 (43) 587120 (43) 
+     dis: 	333640.000 353666.000 363575.000 364304.000 364874.000 365305.000 372040.000 372211.000 373331.000 374138.000 
+query 3 nn's (32): 222704 (32) 900943 (32) 848326 (32) 617059 (32) 985584 (32) 900621 (32) 963346 (32) 221746 (32) 829034 (32) 758621 (32) 
+     dis: 	359707.000 362635.000 367287.000 370540.000 371630.000 372360.000 372640.000 374961.000 375668.000 377104.000 
+query 4 nn's (43): 877716 (43) 656559 (43) 592108 (43) 253694 (43) 549985 (43) 655814 (43) 666442 (43) 591007 (43) 934086 (43) 590696 (43) 
+     dis: 	331469.000 351385.000 353008.000 359334.000 360845.000 373174.000 373521.000 374145.000 374346.000 374470.000 
+[ 44.705s ] *** Query time: 0.520
+qps: 19242.901
+ *** acorn recall 
+efs:100
+acorn get 83027 postive res from 100000 results, recall@10:0.830
+recall dist(10% per bucket): 0.000 0.000 0.001 0.002 0.009 0.030 0.069 0.145 0.236 0.289 0.219 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[45.285s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 29697732
+ndis: 0
+nreorder: 0
+average distance computations per query: 2969.773
+[ 45.285s ] -----DONE-----

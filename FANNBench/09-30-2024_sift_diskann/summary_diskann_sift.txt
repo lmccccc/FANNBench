@@ -1,0 +1,40 @@
+Start time: 01:27
+Starting index build with R: 8  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 2 distinct label(s)
+Using only first 1000000 from file.. 
+Starting index build with 1000000 points... 
+0% of index build completed.20% of index build completed.10% of index build completed.40% of index build completed.50% of index build completed.30% of index build completed.70% of index build completed.60% of index build completed.80% of index build completed.90% of index build completed.Starting final cleanup..done. Link time: 9.78036s
+Index built with degree: max:8  avg:7.99664  min:4  count(deg<2):0
+Indexing time: 10.9795
+Not saving tags as they are not enabled.
+Time taken for save: 0.916304s.
+Reading (with alignment) bin file ../../dataset/sift/data_query.bin ...Metadata: #pts = 10000, #dims = 128, aligned_dim = 128... allocating aligned memory of 5120000 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: ../../dataset/sift/sel_1_2_random/sift_gt_10.bin, size: 400008, cache_size: 400008
+Reading truthset file ../../dataset/sift/sel_1_2_random/sift_gt_10.bin ...
+Metadata: #pts = 10000, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.0298731s
+From graph header, expected_file_size: 35986580, _max_observed_degree: 8, _start: 123742, file_frozen_pts: 0
+Loading vamana graph ../../dataset/sift/diskann_sel_1_2_random/index_diskann...done. Index has 1000000 nodes and 7996639 out-edges, _start is set to 123742
+Identified 2 distinct label(s)
+Num frozen points:0 _nd: 1000000 _start: 123742 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 1000000
+Index loaded
+Using 128 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 100   113568.83            434.73             1012.86        9998.45       49.92
+ 400    44432.94           1216.36             2763.98       40301.66       73.52
+Done searching. Now saving results 
+Writing bin: ../../dataset/sift/diskann_result/result_100_idx_uint32.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+Writing bin: ../../dataset/sift/diskann_result/result_100_dists_float.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+Writing bin: ../../dataset/sift/diskann_result/result_400_idx_uint32.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+Writing bin: ../../dataset/sift/diskann_result/result_400_dists_float.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
