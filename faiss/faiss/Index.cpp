@@ -13,10 +13,15 @@
 #include <faiss/impl/DistanceComputer.h>
 #include <faiss/impl/FaissAssert.h>
 #include <faiss/utils/distances.h>
+#include <omp.h>
 
 #include <cstring>
 
 namespace faiss {
+
+void faiss_omp_set_num_threads(int n){
+    omp_set_num_threads(n);
+}
 
 Index::~Index() = default;
 

@@ -140,9 +140,76 @@ void peak_memory_footprint()
   info.close();
 }
 
+void load_groundtruth(string file_name, int Nq, int K, unsigned* &data){//json file
+//   vector<vector<int>> gt;
+    data = new unsigned[Nq * K];
+    std::cout << "gt size: " << Nq * K << std::endl;
+    std::ifstream in(file_name);
+    if (!in.is_open()) {
+        std::cerr << "Error: failed to open file " << file_name << std::endl;
+        exit(-1);
+    }
+    unsigned temp;
+    char c;
+    in >> c;
+    assert(c == '[');
+    int i = 0;
+    vector<int> tmp_gt;
+    while (true) {
+        //get head of ifstream  
+        if(in.peek()==','){
+            in >> c;
+            continue;
+        }
+        in >> temp;
+        // tmp_gt.push_back(temp);
+        data[i] = temp;
+        i++;
+        if(i == Nq * K){
+            break;
+        }
+    }
+    in.close();
+    return;
+}
+
+void get_qrange(int N, string file_name, vector<vector<string>>& label){  //read json file, only one label supported
+  std::ifstream in(file_name);
+  if (!in.is_open()) {
+    std::cerr << "Error: failed to open file " << file_name << std::endl;
+    exit(-1);
+  }
+   //get line
+   
+  int temp;
+  char c;
+  int i = 0;
+  vector<string> _label;
+  while (true) {
+    //get head of ifstream  
+    if(in.peek()==','){
+        in >> c;
+        continue;
+    }
+    else{
+        in >> temp;
+        _label.push_back(std::to_string(temp));
+        label.push_back(_label);
+        _label.clear();
+        i++;
+        if(i == N){
+            break;
+        }
+    }
+  }
+  std::cout << "qrange size: " << label.size() << std::endl;
+
+  in.close();
+}
+
 int main(int argc, char **argv)
 {
-  if (argc != 7)
+  if (argc != 10)
   {
     std::cout << argv[0] << " graph_path attributetable_path data_path query_path query_att_path groundtruth_path"
               << std::endl;
@@ -152,6 +219,18 @@ int main(int argc, char **argv)
   unsigned seed = 161803398;
   srand(seed);
   //std::cerr << "Using Seed " << seed << std::endl;
+
+  std::cout << "graph file: " << argv[1] << std::endl;
+  std::cout << "attributetable file: " << argv[2] << std::endl;
+  std::cout << "data file: " << argv[3] << std::endl;
+  std::cout << "query file: " << argv[4] << std::endl;
+  std::cout << "query attr file: " << argv[5] << std::endl;
+  std::cout << "groundtruth file: " << argv[6] << std::endl;
+  std::cout << "K: " << argv[7] << std::endl;
+  std::cout << "weight search: " << argv[8] << std::endl;
+  std::cout << "L search: " << argv[9] << std::endl;
+
+  int K = atoi(argv[7]);
 
   char *data_path = argv[3];
   //std::cerr << "Data Path: " << data_path << std::endl;
@@ -165,6 +244,7 @@ int main(int argc, char **argv)
   float *query_load = nullptr;
   efanna2e::load_data(query_path, query_load, query_num, query_dim);
   query_load = efanna2e::data_align(query_load, query_num, query_dim);
+  std::cout << "query num: " << query_num << " query dim: " << query_dim << std::endl;
 
 
   char *groundtruth_file = argv[6];
@@ -172,9 +252,13 @@ int main(int argc, char **argv)
   unsigned *ground_load = nullptr;
   vector<vector<string>> attributes_query;
   unsigned ground_num, ground_dim;
+  ground_num = query_num;
+  ground_dim = K;
   unsigned attributes_query_num, attributes_query_dim;
-  load_result_data(groundtruth_file, ground_load, ground_num, ground_dim);
-  load_data_txt(attributes_query_file, attributes_query_num, attributes_query_dim, attributes_query);
+  // load_result_data(groundtruth_file, ground_load, ground_num, ground_dim);
+  load_groundtruth(groundtruth_file, ground_num, ground_dim, ground_load);
+  get_qrange(query_num, attributes_query_file, attributes_query);
+  // load_data_txt(attributes_query_file, attributes_query_num, attributes_query_dim, attributes_query);
   assert(dim == query_dim);
 
   efanna2e::IndexRandom init_index(dim, points_num);
@@ -183,14 +267,16 @@ int main(int argc, char **argv)
 
   char *DNG_path = argv[1];
   //std::cerr << "DNG Path: " << DNG_path << std::endl;
+
   index.Load(DNG_path);
   index.LoadAttributeTable(argv[2]);
   index.OptimizeGraph(data_load);
 
-  unsigned search_k = 10;
-  float weight_search = 140000;
+  unsigned search_k = K;
+  float weight_search = atof(argv[8]); // 140000
+  int L_search = atoi(argv[9]); // 100
   efanna2e::Parameters paras;
-  paras.Set<unsigned>("L_search", 100);
+  paras.Set<unsigned>("L_search", L_search);
   paras.Set<float>("weight_search", weight_search);
 
   std::vector<std::vector<unsigned>> res(query_num);
@@ -207,9 +293,11 @@ int main(int argc, char **argv)
   }
 
   auto s = std::chrono::high_resolution_clock::now();
+  int comps[query_num];
+  for (unsigned i = 0; i < query_num; i++) comps[i] = 0;
   for (unsigned i = 0; i < query_num; i++)
   {
-    index.SearchWithOptGraph(attributes_query[i], query_load + i * dim, search_k, paras, res[i].data());
+    index.SearchWithOptGraph(attributes_query[i], query_load + i * dim, search_k, paras, res[i].data(), &comps[i]);
   }
   auto e = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> diff = e - s;
@@ -230,8 +318,9 @@ int main(int argc, char **argv)
     }
   }
   int act = 0;
+  for (unsigned i = 0; i < query_num; i++) act += comps[i];
   float acc = 1 - (float)cnt / (ground_num * search_k);
-  std::cerr << "Search Time: " << diff.count() << " " << search_k << "NN accuracy: " << acc << " Distcount: " << act << std::endl;
+  std::cerr << "Search Time: " << diff.count() << " " << search_k << "NN accuracy: " << acc << " Distcount: " << act << " Avgdistcount: " << act * 1.0 / query_num << " qps: " << diff.count()/query_num << std::endl;
 
   peak_memory_footprint();
   return 0;

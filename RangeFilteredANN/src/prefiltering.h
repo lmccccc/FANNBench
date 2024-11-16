@@ -149,14 +149,14 @@ struct PrefilterIndex {
   }
 
   parlay::sequence<pid> query(Point q, std::pair<FilterType, FilterType> filter,
-                              QueryParams query_params) {
-    return query_knn(q, filter, query_params.k);
+                              QueryParams query_params, int* comp_cnt=nullptr) {
+    return query_knn(q, filter, query_params.k, comp_cnt);
   }
 
   /* processes a single query */
   parlay::sequence<pid> query_knn(Point q,
                                   std::pair<FilterType, FilterType> filter,
-                                  uint64_t knn = 10) {
+                                  uint64_t knn = 10, int* comp_cnt=nullptr) {
     size_t start;
 
     size_t l, r, mid;
@@ -192,6 +192,7 @@ struct PrefilterIndex {
     for (auto j = start; j < end; j++) {
       index_type index = filter_indices_sorted[j];
       Point p = (*points)[index];
+      if(comp_cnt) (*comp_cnt)++;
       float dist = q.distance(p);
       frontier.at(j - start) = {indices[index], dist};
     }

@@ -110,8 +110,8 @@ int main(int argc, char *argv[]) {
     int opt;
     {// parse arguments
 
-        if (argc != 15) {
-            fprintf(stderr, "Syntax: %s <number vecs> <gamma> <dataset> <M> <M_beta> <dataset file> <query>  <attr>  <qrange> <groundtruth> <k> <index file> <nthreads> <efs>\n", argv[0]);
+        if (argc != 16) {
+            fprintf(stderr, "Syntax: %s <number vecs> <gamma> <dataset> <M> <M_beta> <dataset file> <query>  <attr>  <qrange> <groundtruth> <k> <index file> <nthreads> <efs> <dim>\n", argv[0]);
             exit(1);
         }
 
@@ -149,6 +149,9 @@ int main(int argc, char *argv[]) {
         }
         std::cout << std::endl;
         gt_size = k;
+        
+        d = atoi(argv[15]);
+        std::cout << "dim: " << d << std::endl;
 
     }
     

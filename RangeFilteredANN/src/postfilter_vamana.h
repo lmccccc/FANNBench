@@ -46,6 +46,8 @@ struct PostfilterVamanaIndex {
                         BuildParams build_params)
       : points(std::move(points)), filter_values(filter_values),
         build_params(build_params) {
+    try{
+
 
     this->range = std::make_pair(
         *(std::min_element(filter_values.begin(), filter_values.end())),
@@ -56,28 +58,44 @@ struct PostfilterVamanaIndex {
         std::filesystem::exists(this->graph_filename(cache_path))) {
       // std::cout << "Loading graph from " << this->graph_filename(cache_path)
       //           << std::endl;
-
-      std::string filename = this->graph_filename(cache_path);
+      std::string filename;
+      try{
+      filename = this->graph_filename(cache_path);
       this->G = Graph<index_type>(filename.data());
+      }
+      
+      catch(std::bad_alloc){
+        std::cout << "catch bad alloc in loading graph: " << filename << std::endl;
+        exit(-2);
+      }
     } else {
       // std::cout << "Building graph" << std::endl;
       // this->start_point = indices[0];
+      try{
       knn_index<Point, PR, index_type> I(build_params);
       stats<index_type> BuildStats(this->points->size());
 
       // std::cout << "This filter has " << indices.size() << " points" <<
       // std::endl;
-
+      try{
       this->G = Graph<index_type>(build_params.R, this->points->size());
+      
       I.build_index(this->G, *(this->points), BuildStats);
-
+      }
+      catch(std::bad_alloc){
+        std::cout << "catch bad alloc in building index" << std::endl;
+        exit(-2);
+      }
+      }
+      catch(std::bad_alloc){
+        std::cout << "catch bad alloc in init" << std::endl;
+        exit(-2);
+      }
       if (cache_path != "") {
         this->save_graph(cache_path);
-        // std::cout << "Graph built, saved to " << graph_filename(cache_path)
-        //           << std::endl;
       }
     }
-
+    try{
     if constexpr (std::is_same<PR, PointRange<T, Point>>::value) {
       this->indices = parlay::tabulate(this->points->size(),
                                        [&](index_type i) { return i; });
@@ -86,6 +104,18 @@ struct PostfilterVamanaIndex {
         return this->points->subset[i];
       });
     }
+    }
+      catch(std::bad_alloc){
+        std::cout << "catch bad alloc in tabulate" << std::endl;
+        exit(-2);
+      }
+
+    }
+      catch(std::bad_alloc){
+        std::cout << "catch bad alloc in PostfilterVamanaIndex" << std::endl;
+        exit(-2);
+      }
+
   }
 
   PostfilterVamanaIndex(py::array_t<T> points,
@@ -133,7 +163,13 @@ struct PostfilterVamanaIndex {
 
   void save_graph(std::string filename_prefix) {
     std::string filename = this->graph_filename(filename_prefix);
-
+        // std::string tmp = "977.bin";
+        // find tmp in filename
+        // auto position = filename.find(tmp);
+        // if(position != std::string::npos)
+        //   std::cout << "Graph built, saved to " << filename
+        //             << std::endl;
+                    
     this->G.save(filename.data());
   }
 
@@ -219,6 +255,14 @@ struct PostfilterVamanaIndex {
         }
       }
     });
+
+    //dis_cacu_times is useless
+    int total_comp = 0;
+    for(int i = 0; i < num_queries; i++){
+      total_comp += comp_cnt_array[i];
+    }
+    std::cout << "total point comp " << total_comp << std::endl;
+    std::cout << "avg comp:" << (double) total_comp / num_queries << std::endl;
 
     return std::make_pair(ids, dists);
   }

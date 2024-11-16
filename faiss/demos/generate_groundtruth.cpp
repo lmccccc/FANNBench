@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
     int opt;
     {// parse arguments
         
-        if (argc != 8) {
+        if (argc != 9) {
             std::cout << "argc=" << argc << std::endl;
             fprintf(stderr, "Syntax: %s <number vecs> <dataset> <attr> <query> <queryrange> <output> <k>\n", argv[0]);
             exit(1);
@@ -124,6 +124,11 @@ int main(int argc, char *argv[]) {
         
         k = atoi(argv[7]);
         printf("topk: %d\n", k);
+        
+        d = atoi(argv[8]);
+        printf("dim: %d\n", d);
+
+
 
         std::cout << "start"<< std::endl;
     }

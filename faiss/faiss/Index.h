@@ -49,6 +49,8 @@
  */
 
 namespace faiss {
+        
+void faiss_omp_set_num_threads(int n);
 
 /// Forward declarations see impl/AuxIndexStructures.h, impl/IDSelector.h
 /// and impl/DistanceComputer.h

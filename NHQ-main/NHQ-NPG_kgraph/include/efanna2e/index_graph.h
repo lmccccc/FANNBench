@@ -28,11 +28,11 @@ namespace efanna2e
     void SearchWithOptGraph(std::vector<std::string> attributes,
                             const float *query, size_t K,
                             const Parameters &parameters,
-                            unsigned *indices);
+                            unsigned *indices, int* comps=nullptr);
     void SearchWithOptGraph(std::vector<char> attribute,
                             const float *query, size_t K,
                             const Parameters &parameters,
-                            unsigned *indices);
+                            unsigned *indices, int* comps=nullptr);
     size_t GetDistCount() { return dist_cout; }
 
     virtual void Build(size_t n, const float *data, const Parameters &parameters) override;

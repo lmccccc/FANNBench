@@ -137,6 +137,7 @@ private:
       : _sorted_index_to_original_point_id(decoding), _cutoff(cutoff),
         _filter_values(filter_values), _points(std::move(points)),
         _split_factor(split_factor), _shift_factor(shift_factor) {
+    std::cout << " building tree" << std::endl;
 
     if (split_factor <= 1) {
       throw std::runtime_error("split_factor must be greater than 1");
@@ -173,15 +174,23 @@ private:
       size_t num_buckets =
           ((n - bucket_size) + bucket_shift - 1) / bucket_shift + 1;
 
+          std::cout << "new num buckets " << num_buckets << std::endl;
       _spatial_indices.push_back(std::vector<SpatialIndexPtr>(num_buckets));
       parlay::parallel_for(0, num_buckets, [&](auto bucket_id) {
         size_t bucket_start = bucket_id * bucket_shift;
         size_t bucket_end = std::min(bucket_start + bucket_size, n);
+        try{
         _spatial_indices.back().at(bucket_id) =
             create_index(_filter_values, bucket_start, bucket_end,
                          _points.get(), build_params);
+        }
+        catch(std::bad_alloc){
+          std::cout << "catch bad alloc in createing index" << std::endl;
+          exit(-1);
+        }
       });
     }
+    std::cout << " tree construction suc" << ::std::endl;
   }
 
   bool check_empty(const FilterRange &range) {

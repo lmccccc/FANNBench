@@ -124,6 +124,7 @@ struct Graph{
     }
 
     Graph(char* gFile){
+            
         std::ifstream reader(gFile);
         assert(reader.is_open());
 
@@ -144,6 +145,7 @@ struct Graph{
         auto [offsets, total] = parlay::scan(degrees);
         offsets.push_back(total);
 
+        try{
         //write to graph object
         graph = parlay::sequence<indexType>(n*(maxDeg+1),0);
         //write 1000000 vertices at a time
@@ -154,7 +156,14 @@ struct Graph{
             size_t g_floor = index;
             size_t g_ceiling = g_floor + BLOCK_SIZE <= n ? g_floor + BLOCK_SIZE : n;
             size_t total_size_to_read = offsets[g_ceiling]-offsets[g_floor];
-            indexType* edges_start = new indexType[total_size_to_read];
+            indexType* edges_start;
+            try{
+            edges_start = new indexType[total_size_to_read];
+            }
+            catch (std::bad_alloc){
+                std::cout << "catch bad alloc in allocating edges start " << std::endl;
+                exit(-2);
+            }
             reader.read((char*)(edges_start), sizeof(indexType)*total_size_to_read);
             indexType* edges_end = edges_start + total_size_to_read;
             parlay::slice<indexType*, indexType*> edges = parlay::make_slice(edges_start, edges_end);
@@ -169,6 +178,11 @@ struct Graph{
             delete[] edges_start;
         }
         delete[] degrees_start;
+        }
+        catch (std::bad_alloc){
+            std::cout << "catch bad alloc in step 2: " << gFile << std::endl;
+            exit(-2);
+        }
     }
 
     void save(char* oFile) {

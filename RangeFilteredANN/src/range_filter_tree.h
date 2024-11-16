@@ -66,6 +66,10 @@ struct RangeFilterTreeIndex {
 
     std::cout << "using this batch search3 " << std::endl;
 
+    int comp_cnt_array[num_queries];
+    for (int i = 0; i < num_queries; i++) {
+      comp_cnt_array[i] = 0;
+    }
     size_t knn = query_params.k;
     py::array_t<unsigned int> ids({num_queries, knn});
     py::array_t<float> dists({num_queries, knn});
@@ -81,7 +85,7 @@ struct RangeFilterTreeIndex {
       } else if (query_method == "three_split") {
         results = three_split_search(q, filter, query_params);
       } else {
-        results = fenwick_tree_search(q, filter, query_params);
+        results = fenwick_tree_search(q, filter, query_params, &comp_cnt_array[i]);
       }
 
       for (auto j = 0; j < knn; j++) {
@@ -95,6 +99,15 @@ struct RangeFilterTreeIndex {
         }
       }
     });
+    
+    //dis_cacu_times is useless
+    int total_comp = 0;
+    for(int i = 0; i < num_queries; i++){
+      total_comp += comp_cnt_array[i];
+    }
+    std::cout << "total point comp " << total_comp << std::endl;
+    std::cout << "avg comp:" << (double) total_comp / num_queries << std::endl;
+
     return std::make_pair(ids, dists);
   }
 
@@ -299,7 +312,7 @@ private:
 
   parlay::sequence<pid> fenwick_tree_search(const Point &query,
                                             const FilterRange &range,
-                                            QueryParams query_params) {
+                                            QueryParams query_params, int* comp_cnt=nullptr) {
     if (check_empty(range)) {
       return parlay::sequence<pid>();
     }
@@ -380,7 +393,7 @@ private:
       }
       auto search_results = _spatial_indices.at(bucket_row_index)
                                 .at(bucket_index)
-                                ->query(query, range, query_params);
+                                ->query(query, range, query_params, comp_cnt);
       for (auto pid : search_results) {
         frontier.push_back(pid);
       }

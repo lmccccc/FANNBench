@@ -1216,12 +1216,11 @@ namespace efanna2e
   void IndexGraph::SearchWithOptGraph(std::vector<char> attribute,
                                       const float *query, size_t K,
                                       const Parameters &parameters,
-                                      unsigned *indices)
+                                      unsigned *indices, int* comps)
   {
     unsigned L = parameters.Get<unsigned>("L_search");
     float weight_search = parameters.Get<float>("weight_search");
     DistanceFastL2 *dist_fast = (DistanceFastL2 *)distance_;
-
     std::vector<Neighbor> retset(L + 1);
     std::vector<unsigned> init_ids(L);
     std::mt19937 rng(rand());
@@ -1251,6 +1250,7 @@ namespace efanna2e
       float norm_x = *x;
       x++;
       float dist = dist_fast->compare(x, query, norm_x, (unsigned)dimension_);
+      if( comps!= nullptr) (*comps)++;
 
       float cnt = 0;
       char *id_attribute = (char *)(opt_graph_ + node_size * id + data_len);
@@ -1302,6 +1302,7 @@ namespace efanna2e
           data++;
           float dist =
               dist_fast->compare(query, data, norm, (unsigned)dimension_);
+          if( comps!= nullptr) (*comps)++;
 
           float cnt = 0;
           char *id_attribute = (char *)(opt_graph_ + node_size * id + data_len);
@@ -1361,6 +1362,7 @@ namespace efanna2e
           data++;
           float dist =
               dist_fast->compare(query, data, norm, (unsigned)dimension_);
+          if( comps!= nullptr) (*comps)++;
 
           float cnt = 0;
           char *id_attribute = (char *)(opt_graph_ + node_size * id + data_len);
@@ -1399,7 +1401,7 @@ namespace efanna2e
   void IndexGraph::SearchWithOptGraph(std::vector<std::string> attributes,
                                       const float *query, size_t K,
                                       const Parameters &parameters,
-                                      unsigned *indices)
+                                      unsigned *indices, int* comps)
   {
     std::vector<char> attribute = Attribute2int(attributes);
     if (attribute.size() != attribute_number_)
@@ -1439,6 +1441,7 @@ namespace efanna2e
       float *x = (float *)(opt_graph_ + node_size * id);
       float norm_x = *x;
       x++;
+      if(comps != nullptr) (*comps)++;
       float dist = dist_fast->compare(x, query, norm_x, (unsigned)dimension_);
 
       float cnt = 0;
@@ -1489,6 +1492,7 @@ namespace efanna2e
           float *data = (float *)(opt_graph_ + node_size * id);
           float norm = *data;
           data++;
+          if(comps != nullptr) (*comps)++;
           float dist =
               dist_fast->compare(query, data, norm, (unsigned)dimension_);
 
@@ -1548,6 +1552,7 @@ namespace efanna2e
           float *data = (float *)(opt_graph_ + node_size * id);
           float norm = *data;
           data++;
+          if(comps != nullptr) (*comps)++;
           float dist =
               dist_fast->compare(query, data, norm, (unsigned)dimension_);
 

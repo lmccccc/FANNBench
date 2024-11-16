@@ -87,15 +87,67 @@ void load_data_txt(char *filename, unsigned &num, unsigned &dim, std::vector<std
   file.close();
 }
 
+void get_label(int N, string file_name, vector<vector<string>>& label){  //read json file, only one label supported
+  std::ifstream in(file_name);
+  if (!in.is_open()) {
+    std::cerr << "Error: failed to open file " << file_name << std::endl;
+    exit(-1);
+  }
+  int temp;
+  char c;
+  in >> c;
+  assert(c == '[');
+  int i = 0;
+  vector<string> _label;
+  while (true) {
+    //get head of ifstream  
+    if(in.peek()==','){
+        in >> c;
+        continue;
+    }
+    else{
+        in >> temp;
+        _label.push_back(std::to_string(temp));
+        label.push_back(_label);
+        _label.clear();
+        i++;
+        if(i == N){
+            break;
+        }
+    }
+  }
+  std::cout << "label size: " << label.size() << std::endl;
+
+  in.close();
+}
+
 int main(int argc, char **argv)
 {
-  if (argc != 14)
+  if (argc != 16)
   {
     std::cout << argv[0] << " data_file att_file save_graph save_attributetable K L iter S R Range PL B M"
               << std::endl;
     exit(-1);
   }
-  omp_set_num_threads(64);
+
+  std::cout << "data file: " << argv[1] << std::endl;
+  std::cout << "label file: " << argv[2] << std::endl;
+  std::cout << "save index model file: " << argv[3] << std::endl;
+  std::cout << "save index attr file: " << argv[4] << std::endl;
+  std::cout << "K: " << argv[5] << std::endl;
+  std::cout << "L: " << argv[6] << std::endl;
+  std::cout << "iter: " << argv[7] << std::endl;
+  std::cout << "S: " << argv[8] << std::endl;
+  std::cout << "R: " << argv[9] << std::endl;
+  std::cout << "Range: " << argv[10] << std::endl;
+  std::cout << "PL: " << argv[11] << std::endl;
+  std::cout << "B: " << argv[12] << std::endl;
+  std::cout << "M: " << argv[13] << std::endl;
+  std::cout << "data size: " << argv[14] << std::endl;
+  std::cout << "thread num: " << argv[15] << std::endl;
+
+  int thread_num = atoi(argv[15]);
+  omp_set_num_threads(thread_num);
 
   char *data_path = argv[1];
   float *data_load = NULL;
@@ -105,9 +157,15 @@ int main(int argc, char **argv)
 
   char *label_data_path = argv[2];
 
+  
+
+
+  int data_size = atoi(argv[14]);
+
   unsigned label_num, label_dim;
   std::vector<std::vector<string>> label_data;
-  load_data_txt(label_data_path, label_num, label_dim, label_data);
+  get_label(data_size, label_data_path, label_data);
+  // load_data_txt(label_data_path, label_num, label_dim, label_data);
 
   efanna2e::IndexRandom init_index(dim, points_num);
   efanna2e::IndexGraph index(dim, points_num, efanna2e::L2, (efanna2e::Index *)(&init_index));
@@ -115,6 +173,7 @@ int main(int argc, char **argv)
   {
     index.AddAllNodeAttributes(label_data[i]);
   }
+
   efanna2e::Parameters paras;
   paras.Set<unsigned>("K", atoi(argv[5]));
   paras.Set<unsigned>("L", atoi(argv[6]));

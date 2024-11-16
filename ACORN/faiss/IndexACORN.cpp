@@ -139,6 +139,7 @@ void acorn_add_vertices(
     }
 
     int max_level = acorn.prepare_level_tab(n, preset_levels);
+    std::cout << "max_level: " << max_level << std::endl;
 
     if (verbose) {
         printf("  max_level = %d\n", max_level);
@@ -191,6 +192,7 @@ void acorn_add_vertices(
             if (verbose) {
                 printf("Adding %d elements at level %d\n", i1 - i0, pt_level);
             }
+            std::cout << "Adding " << i1 - i0 << " elements at level " << pt_level << std::endl;
 
             // random permutation to get rid of dataset order bias
             for (int j = i0; j < i1; j++)
@@ -440,9 +442,10 @@ void IndexACORN::add(idx_t n, const float* x) {
             "Please use IndexACORNFlat (or variants) instead of IndexACORN directly");
     FAISS_THROW_IF_NOT(is_trained);
     int n0 = ntotal;
+    std::cout << "adding to storage" << std::endl;
     storage->add(n, x);
     ntotal = storage->ntotal;
-
+    std::cout << "storage added" << std::endl;
     acorn_add_vertices(*this, n0, n, x, verbose, acorn.levels.size() == ntotal);
 }
 

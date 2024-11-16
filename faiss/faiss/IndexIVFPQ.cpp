@@ -32,7 +32,7 @@
 #include <faiss/impl/IDSelector.h>
 
 #include <faiss/impl/ProductQuantizer.h>
-
+#include <omp.h>
 #include <faiss/impl/code_distance/code_distance.h>
 
 namespace faiss {

@@ -30,3 +30,15 @@ target_link_libraries(utils PRIVATE faiss)
 
 add_executable(generate_groundtruth EXCLUDE_FROM_ALL generate_groundtruth.cpp)
 target_link_libraries(generate_groundtruth PRIVATE faiss)
+
+add_executable(ivfpq_build EXCLUDE_FROM_ALL ivfpq_build.cpp)
+target_link_libraries(ivfpq_build PRIVATE faiss)
+
+add_executable(ivfpq_query EXCLUDE_FROM_ALL ivfpq_query.cpp)
+target_link_libraries(ivfpq_query PRIVATE faiss)
+
+add_executable(hnsw_build EXCLUDE_FROM_ALL hnsw_build.cpp)
+target_link_libraries(hnsw_build PRIVATE faiss)
+
+add_executable(hnsw_query EXCLUDE_FROM_ALL hnsw_query.cpp)
+target_link_libraries(hnsw_query PRIVATE faiss)
