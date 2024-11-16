@@ -471,11 +471,11 @@ def run_postfiltering_experiment(all_results, dataset_name, filter_width, alpha)
                 break
 
 
-def get_vamana_tree(data, filter_values, metric, alpha, split_factor):
+def get_vamana_tree(data, filter_values, metric, alpha, split_factor, index_prefix):
     vamana_tree_constructor = wp.vamana_range_filter_tree_constructor(metric, "float")
 
     vamana_tree_build_start = time.time()
-    build_params = wp.BuildParams(64, 500, alpha, f"index_cache/{dataset_name}/")
+    build_params = wp.BuildParams(64, 500, alpha, index_prefix) # f"index_cache/{dataset_name}/"
     vamana_tree = vamana_tree_constructor(
         data,
         filter_values,
@@ -495,8 +495,10 @@ def get_vamana_tree(data, filter_values, metric, alpha, split_factor):
     return vamana_tree, vamana_tree_build_time
 
 
+
 # Runs tree based methods if their booleans are true
-def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_factor):
+def run_tree_experiments(dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, TOP_K, index_prefix,
+        all_results, dataset_name, filter_width, alpha, split_factor):
     if not (
         run_vamana_tree
         or run_optimized_postfiltering
@@ -505,17 +507,18 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
     ):
         return
 
-    data, queries, filter_values, metric = initialize_dataset(dataset_name)
+    # data, queries, filter_values, metric = initialize_dataset(dataset_name)
+    data, queries, attr, qrange, gt, metric= load_data(dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, TOP_K)
 
     gc.disable()
     start_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-
-    vamana_tree, build_time = get_vamana_tree(data, filter_values, metric, alpha, split_factor)
+    attr_list = list(set(attr))
+    vamana_tree, build_time = get_vamana_tree(data, attr, metric, alpha, split_factor, index_prefix)
 
     memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss - start_memory
     gc.enable()
 
-    query_filter_ranges, query_gt = get_queries_and_gt(dataset_name, filter_width)
+    # query_filter_ranges, query_gt = get_queries_and_gt(dataset_name, filter_width)
 
     if run_vamana_tree:
         for beam_size in BEAM_SIZES:
@@ -523,24 +526,28 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
             query_params = wp.build_query_params(
                 k=TOP_K, beam_size=beam_size, verbose=VERBOSE
             )
+            start = time.time()
             vamana_tree_results = vamana_tree.batch_search(
                 queries,
-                query_filter_ranges,
+                qrange,
                 queries.shape[0],
                 "fenwick",
                 query_params,
             )
+            qtime = time.time() - start
             all_results.append(
                 (
                     filter_width,
                     f"vamana-tree_{alpha:.3f}_{split_factor}_{beam_size}",
-                    compute_recall(vamana_tree_results[0], query_gt, TOP_K),
+                    compute_recall(vamana_tree_results[0], gt, TOP_K),
                     time.time() - start,
                     build_time,
                     split_factor,
                     memory
                 )
             )
+            print("qps:", Nq/qtime)
+            print("method, recall, total time, build time, split factor, memory")
             print(all_results[-1])
 
     if run_optimized_postfiltering:
@@ -555,7 +562,7 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
                 start = time.time()
                 optimized_postfilter_results = vamana_tree.batch_search(
                     queries,
-                    query_filter_ranges,
+                    qrange,
                     queries.shape[0],
                     "optimized_postfilter",
                     query_params,
@@ -565,7 +572,7 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
                         filter_width,
                         f"optimized-postfiltering_{alpha:.3f}_{split_factor}_{beam_size}_{final_beam_multiply}",
                         compute_recall(
-                            optimized_postfilter_results[0], query_gt, TOP_K
+                            optimized_postfilter_results[0], gt, TOP_K
                         ),
                         time.time() - start,
                         build_time,
@@ -591,7 +598,7 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
                 start = time.time()
                 smart_combined_results = vamana_tree.batch_search(
                     queries,
-                    query_filter_ranges,
+                    qrange,
                     queries.shape[0],
                     "smart_combined",
                     query_params,
@@ -600,7 +607,7 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
                     (
                         filter_width,
                         f"smart-combined_{alpha:.3f}_{split_factor}_{beam_size}_{final_beam_multiply}",
-                        compute_recall(smart_combined_results[0], query_gt, TOP_K),
+                        compute_recall(smart_combined_results[0], gt, TOP_K),
                         time.time() - start,
                         build_time,
                         split_factor,
@@ -624,7 +631,7 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
                 )
                 three_split_tree_results = vamana_tree.batch_search(
                     queries,
-                    query_filter_ranges,
+                    qrange,
                     queries.shape[0],
                     "three_split",
                     query_params,
@@ -633,7 +640,7 @@ def run_tree_experiments(all_results, dataset_name, filter_width, alpha, split_f
                     (
                         filter_width,
                         f"three-split_{alpha:.3f}_{split_factor}_{beam_size}_{final_beam_multiply}",
-                        compute_recall(three_split_tree_results[0], query_gt, TOP_K),
+                        compute_recall(three_split_tree_results[0], gt, TOP_K),
                         time.time() - start,
                     )
                 )
@@ -649,7 +656,7 @@ def run_super_optimized_postfiltering_experiment(
     # data, queries, filter_values, metric = initialize_dataset(dataset_name)
     data, queries, attr, qrange, gt, metric= load_data(dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, TOP_K)
     attr_list = list(set(attr))
-
+    print("metric: ", metric)
     constructor = wp.super_optimized_postfilter_tree_constructor(metric, "float")
     build_start = time.time()
 
@@ -661,6 +668,14 @@ def run_super_optimized_postfiltering_experiment(
     )
     print("start building super optimized postfilter tree")
     t0 = time.time()
+    print("data size: ", data.shape)
+    # print("data[0]:", data[0], " data[1000000-1]:", data[1000000-1])
+    print("attr size: ", attr.shape)
+    # print("attr[0]:", attr[0], " attr[1000000-1]:", attr[1000000-1])
+    print("aplpa: ", alpha)
+    print("split factor: ", split_factor)
+    print("shift factor: ", shift_factor)
+    print("index_prefix: ", index_prefix)
     super_optimized_postfilter_tree = constructor(
         data,
         attr,
@@ -771,6 +786,7 @@ for dataset_name in DATASETS:                                                # e
             )
         for split_factor in VAMANA_TREE_SPLIT_FACTORS:
             run_tree_experiments(
+                dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, TOP_K, index_prefix, 
                 all_results,
                 dataset_name,
                 experiment_filter_width,

@@ -91,6 +91,7 @@ if __name__ == "__main__":
         schema = MilvusClient.create_schema(
             auto_id=False,
             enable_dynamic_field=True,
+            partition_key_field="label"      # default partition=64
         )
         schema.add_field(field_name="id", datatype=DataType.INT64, is_primary=True)
         schema.add_field(field_name="vector", datatype=DataType.FLOAT_VECTOR, dim=d)
@@ -104,9 +105,9 @@ if __name__ == "__main__":
 
         index_params.add_index(
             field_name="vector", 
-            index_type="IVF_FLAT",
+            index_type="HNSW",# IVF_FLAT IVF_PQ IVF_SQ8 HNSW SCANN
             metric_type="L2",
-            params={ "nlist": 128 }# see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
+            params={ "nlist": 128 } # see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
         )
 
         client.create_collection(collection_name=c_name, 

@@ -22,7 +22,7 @@ algo=iRangeGraph
 
 # run of sift1M test
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 mkdir ${irange_root}
 mkdir ${irange_index_root}

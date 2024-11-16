@@ -18,43 +18,39 @@ now=$(date +"%m-%d-%Y")
 
 source ./vars.sh
 source ./file_check.sh
-algo=ACORN
+algo=HNSW
 
 # run of sift1M test
 
 dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
-mkdir ${acorn_root}
-mkdir ${acorn_index_root}
+mkdir ${hnsw_root}
+mkdir ${hnsw_index_root}
 
 TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
 
-echo "acorn index file: ${acorn_index_file}"
+echo "hnsw index file: ${hnsw_index_file}"
 
-if [ -e $acorn_index_file ]; then
-    echo "acorn index file already exist"
+if [ -e $hnsw_index_file ]; then
+    echo "hnsw index file already exist"
 else
     echo  "construct index"
-    ../ACORN/build/demos/acorn_build $dataset \
+    ../faiss/build/demos/hnsw_build $dataset \
                                 $N \
-                                $gamma \
-                                $M \
-                                $M_beta \
                                 $K \
                                 $threads \
                                 $dataset_file \
                                 $dataset_attr_file \
-                                $acorn_index_file \
+                                $hnsw_index_file \
                                 $dim \
+                                $M \
+                                $ef_construction \
                                 &>> ${dir}/summary_${algo}_${dataset}.txt
 fi
 
 echo  "start query"
-../ACORN/build/demos/acorn_query $dataset \
+../faiss/build/demos/hnsw_query $dataset \
                                 $N \
-                                $gamma \
-                                $M \
-                                $M_beta \
                                 $K \
                                 $threads \
                                 $dataset_file \
@@ -62,7 +58,7 @@ echo  "start query"
                                 $dataset_attr_file \
                                 $query_range_file \
                                 $ground_truth_file \
-                                $acorn_index_file \
+                                $hnsw_index_file \
                                 $ef_search \
                                 $dim \
                                 &>> ${dir}/summary_${algo}_${dataset}.txt

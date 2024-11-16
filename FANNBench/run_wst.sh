@@ -6,14 +6,14 @@ source ./file_check.sh
 
 
 
-algo=RangeFilteredANN
+algo=WST-opt
 
 ##########################################
 # TESTING SIFT1M and PAPER
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 mkdir ${rfann_root}
 mkdir ${rfann_index_root}
@@ -49,5 +49,9 @@ python -u utils/RangeFilteredANN.py --dataset $dataset \
                                  --threads $threads \
                                  --beam_search_size $beamsize \
                                  --num_final_multiplies $final_beam_multiply \
+                                 --super_opt_postfiltering_split_factor $split_factor \
+                                 --super_opt_postfiltering_shift_factor $shift_factor \
                                  &>> ${dir}/summary_${algo}_${datset}.txt
 # $N $dataset_file $query_file $train_file $dataset_attr_file $query_range_file $ground_truth_file $M $K
+
+source ./run_txt2csv.sh

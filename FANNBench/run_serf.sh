@@ -18,7 +18,7 @@ now=$(date +"%m-%d-%Y")
 
 source ./vars.sh
 source ./file_check.sh
-algo=serf
+algo=SeRF
 
 # run of sift1M test
 
@@ -26,7 +26,7 @@ algo=serf
 #SeRF vars
 index_store_path=${algo}_${dataset}_index.bin
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 mkdir ${serf_root}
 mkdir ${serf_index_root}

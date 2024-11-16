@@ -6,7 +6,7 @@ source ./file_check.sh
 
 
 
-algo=rii
+algo=RII
 
 ##########################################
 # TESTING SIFT1M and PAPER
@@ -15,7 +15,7 @@ now=$(date +"%m-%d-%Y")
 
 
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 mkdir ${rii_root}
 mkdir ${rii_index_root}

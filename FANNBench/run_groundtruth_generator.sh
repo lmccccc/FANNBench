@@ -6,7 +6,7 @@ source ./vars.sh
 now=$(date +"%m-%d-%Y")
 algo=groundtruth
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 
 #check if succicient file exist

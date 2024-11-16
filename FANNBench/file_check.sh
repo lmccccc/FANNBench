@@ -23,3 +23,8 @@ fi
 if [ ! -f "$train_file" ]; then  
     echo "warning, $train_file does not exist. Make sure you don't need to use it before start."
 fi
+
+if [ ! -d "logs" ]; then  
+    mkdir logs
+fi
+

@@ -4,7 +4,7 @@ export debugSearchFlag=0
 source ./vars.sh
 source ./file_check.sh
 
-algo=diskann
+algo=DiskANN
 ##########################################
 # TESTING SIFT1M and PAPER
 ##########################################
@@ -70,7 +70,7 @@ else
     fi
 fi
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 mkdir ${diskann_root}
 mkdir ${diskann_index_root}
@@ -120,3 +120,5 @@ echo "result save path: $diskann_result_path"
                                            --result_path $diskann_result_path \
                                            -T $threads \
                                            &>> ${dir}/summary_${algo}_${dataset}.txt
+
+source ./run_txt2csv.sh

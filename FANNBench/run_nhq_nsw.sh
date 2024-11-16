@@ -4,14 +4,14 @@ export debugSearchFlag=0
 source ./vars.sh
 source ./file_check.sh
 
-algo=nhq
+algo=NHQ_nsw
 ##########################################
 # TESTING SIFT1M and PAPER
 ##########################################
 now=$(date +"%m-%d-%Y")
 
 
-dir=${now}_${dataset}_${algo}
+dir=logs/${now}_${dataset}_${algo}
 mkdir ${dir}
 mkdir ${nhq_root}
 mkdir ${nhq_index_root}
