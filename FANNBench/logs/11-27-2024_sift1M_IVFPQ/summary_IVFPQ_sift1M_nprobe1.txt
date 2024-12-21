@@ -1,0 +1,125 @@
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: sift1M
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+qrange file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+gt file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+index file: /mnt/data/mocheng/dataset/sift/ivfpq/index/index_ivfpq_sel_1_8_random_64
+nprobe: 1
+dim: 128
+loaded base attributes from:/mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+[ 0.075s ] Loaded metadata, 1000000 attr's found
+[ 0.075s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 0.078s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+[ 0.079s ] Loaded 10000 sift1M queries
+[ 0.086s ] Loaded ground truth, gt_size: 10
+[ 0.086s ] Index Params -- d: 128, N: 1000000
+terminate called after throwing an instance of 'faiss::FaissException'
+  what():  Error in faiss::FileIOReader::FileIOReader(const char*) at /home/mocheng/code/faiss/faiss/impl/io.cpp:67: Error: 'f' failed: could not open /mnt/data/mocheng/dataset/sift/ivfpq/index/index_ivfpq_sel_1_8_random_64 for reading: No such file or directory
+Command terminated by signal 6
+	Command being timed: "../faiss/build/demos/ivfpq_query sift1M 1000000 10 1 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json /mnt/data/mocheng/dataset/sift/ivfpq/index/index_ivfpq_sel_1_8_random_64 1 128"
+	User time (seconds): 0.07
+	System time (seconds): 0.01
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.09
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 21408
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3991
+	Voluntary context switches: 0
+	Involuntary context switches: 2
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 21:15
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: sift1M
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+qrange file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+gt file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+index file: /mnt/data/mocheng/dataset/sift/ivfpq/index/index_ivfpq_sel_1_8_random_64
+nprobe: 1
+dim: 128
+loaded base attributes from:/mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+[ 0.065s ] Loaded metadata, 1000000 attr's found
+[ 0.065s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 0.068s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+[ 0.069s ] Loaded 10000 sift1M queries
+[ 0.077s ] Loaded ground truth, gt_size: 10
+[ 0.077s ] Index Params -- d: 128, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 0.110s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.125
+[ 198.322s ] Query results (vector ids, then distances):
+query 0 nn's (2, 2): 87578 (2) 861173 (2) 619829 (2) 746238 (2) 68862 (2) 665821 (2) 554637 (2) 396902 (2) 586237 (2) 70816 (2) 
+     dis: 	57080.137 60266.906 64125.594 64180.164 64332.039 68550.070 69360.016 69396.438 69568.633 71332.828 
+query 1 nn's (7, 7): 481051 (7) 916065 (7) 266943 (7) 214905 (7) 377118 (7) 987696 (7) 929456 (7) 594433 (7) 424265 (7) 679280 (7) 
+     dis: 	44051.828 49492.461 50133.754 51643.969 53138.125 53274.270 54604.539 57064.426 57849.723 58198.375 
+query 2 nn's (1, 1): 256075 (1) 742474 (1) 804475 (1) 638095 (1) 449527 (1) 125431 (1) 633719 (1) 586915 (1) 332294 (1) 801592 (1) 
+     dis: 	34783.203 36655.371 39358.082 39846.461 39872.500 39924.219 40673.766 41806.496 41904.176 45866.551 
+query 3 nn's (0, 0): 886193 (0) 310401 (0) 959273 (0) 842034 (0) 10882 (0) 883489 (0) 191660 (0) 191115 (0) 190999 (0) 183026 (0) 
+     dis: 	29638.105 34086.172 35521.789 35621.770 35658.797 35693.430 36551.312 37020.031 37466.266 38010.242 
+query 4 nn's (7, 7): 106921 (7) 487771 (7) 416604 (7) 5897 (7) 71949 (7) 73589 (7) 130437 (7) 200227 (7) 3462 (7) 125019 (7) 
+     dis: 	45242.914 45335.410 49413.797 52909.938 54717.457 54717.457 58485.656 59448.719 61325.004 61425.531 
+[ 198.322s ] *** Query time: 59.844
+qps: 167.101
+ *** ivfpq recall 
+ivfpq get 15248 postive res from 100000 results, recall@10:0.152
+recall dist(10% per bucket): 0.279 0.307 0.197 0.112 0.060 0.028 0.012 0.004 0.001 0.000 0.000 
+finished ivfpq index examples
+[ 198.322s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query sift1M 1000000 10 1 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json /mnt/data/mocheng/dataset/sift/ivfpq/index/index_ivfpq_sel_1_8_random_64 1 128"
+	User time (seconds): 177.40
+	System time (seconds): 23.05
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:20.48
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 57741220
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 14433935
+	Voluntary context switches: 1
+	Involuntary context switches: 487
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

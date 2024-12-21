@@ -93,6 +93,13 @@ def read_attr(fname):
     assert(isinstance(data, list))
     return np.array(data, dtype="int64")
 
+def read_keywords(fname):
+    with open(fname, 'r') as file:
+        data = json.load(file)
+    assert(isinstance(data, list))
+    return data
+
+
 def read_file(file):
     if("ivecs" in file):
         data = ivecs_read(file)

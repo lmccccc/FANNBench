@@ -1,7 +1,7 @@
 export debugSearchFlag=0
 #! /bin/bash
 
-source ./vars.sh
+source ./vars.sh $1 $2 $3
 source ./file_check.sh
 
 algo=DiskANN
@@ -10,8 +10,23 @@ algo=DiskANN
 ##########################################
 now=$(date +"%m-%d-%Y")
 
+
+dir=logs/${now}_${dataset}_${algo}
+
+if [ ! -d "$dir" ]; then
+    mkdir ${dir}
+fi
+
+if [ ! -d "$diskann_index_label_root" ]; then
+    mkdir ${diskann_root}
+    mkdir ${diskann_index_root}
+    mkdir ${diskann_index_label_root}
+    mkdir ${diskann_result_root}
+fi
+
+
 if [ -e $dataset_bin_file ]; then
-    echo "datset bin already exist"
+    echo "dataset bin already exist"
 else
     echo "convert base vecs to bin"
     ./../DiskANN/build/apps/utils/fvecs_to_bin float $dataset_file $dataset_bin_file
@@ -32,10 +47,10 @@ else
 
     status=$?
     if [ $status -ne 0 ]; then
-        echo "Python script failed with exit status $status"
+        echo "Python script json2txt.py failed with exit status $status"
         exit $status
     else
-        echo "Python script ran successfully"
+        echo "Python script json2txt.py ran successfully"
     fi
 fi
 
@@ -47,10 +62,10 @@ else
 
     status=$?
     if [ $status -ne 0 ]; then
-        echo "Python script failed with exit status $status"
+        echo "Python script range2keyword.py failed with exit status $status"
         exit $status
     else
-        echo "Python script ran successfully"
+        echo "Python script range2keyword.py ran successfully"
     fi
 fi
 
@@ -70,55 +85,67 @@ else
     fi
 fi
 
-dir=logs/${now}_${dataset}_${algo}
-mkdir ${dir}
-mkdir ${diskann_root}
-mkdir ${diskann_index_root}
-mkdir ${diskann_index_label_root}
-mkdir ${diskann_result_root}
+
+
+log_file=${dir}/summary_${algo}_${dataset}_L${L}.txt
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
+
 # mkdir ${dir}
 
-TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
+# TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
 
-if [ -e $diskann_index_file ]; then
-    echo "index file already exist"
-else
-    echo  "construct index"
-    
-    echo "dataset file: $dataset_bin_file" 
-    echo "label file: $label_file"
-    ../DiskANN/build/apps/build_memory_index  --data_type float \
-                                              --dist_fn l2 \
-                                              --data_path $dataset_bin_file \
-                                              --index_path_prefix $diskann_index_file \
-                                              -R $M \
-                                              --alpha $alpha \
-                                              --label_file $label_file \
-                                              -T $threads \
-                                              &>> ${dir}/summary_${algo}_${dataset}.txt
-    if [ $? -ne 0 ]; then
-        echo "Index constructor failed to run."
-        exit 1  # Exit the script with a failure code
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    if [ -e $diskann_index_file ]; then
+        echo "index file already exist"
     else
-        echo "Index constructed."
+        echo  "construct index"
+        
+        echo "dataset file: $dataset_bin_file" 
+        echo "label file: $label_file"
+        /bin/time -v -p ../DiskANN/build/apps/build_memory_index  --data_type float \
+                                                --dist_fn l2 \
+                                                --data_path $dataset_bin_file \
+                                                --index_path_prefix $diskann_index_file \
+                                                -R $M \
+                                                --alpha $alpha \
+                                                --label_file $label_file \
+                                                -T $threads \
+                                                &>> $log_file
+        if [ $? -ne 0 ]; then
+            echo "Diskann constructor failed to run."
+            exit 1  # Exit the script with a failure code
+        else
+            echo "DIskann index constructed."
+        fi
     fi
 fi
-# --universal_label $universal_label \
-echo "index file: $diskann_index_file" 
-echo "query file: $query_bin_file"
-echo "ground truth file: $ground_truth_bin_file"
-echo "query label file: $keyword_query_range_file"
-echo "result save path: $diskann_result_path"
-../DiskANN/build/apps/search_memory_index  --data_type float \
-                                           --dist_fn l2 \
-                                           --index_path_prefix $diskann_index_file \
-                                           --query_file $query_bin_file \
-                                           --gt_file $ground_truth_bin_file \
-                                           --query_filters_file $keyword_query_range_file \
-                                           -K $K \
-                                           -L $L \
-                                           --result_path $diskann_result_path \
-                                           -T $threads \
-                                           &>> ${dir}/summary_${algo}_${dataset}.txt
+
+if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
+    # --universal_label $universal_label \
+    echo "index file: $diskann_index_file" 
+    echo "query file: $query_bin_file"
+    echo "ground truth file: $ground_truth_bin_file"
+    echo "query label file: $keyword_query_range_file"
+    echo "result save path: $diskann_result_path"
+    /bin/time -v -p ../DiskANN/build/apps/search_memory_index  --data_type float \
+                                            --dist_fn l2 \
+                                            --index_path_prefix $diskann_index_file \
+                                            --query_file $query_bin_file \
+                                            --gt_file $ground_truth_bin_file \
+                                            --query_filters_file $keyword_query_range_file \
+                                            -K $K \
+                                            -L $L \
+                                            --result_path $diskann_result_path \
+                                            -T $threads \
+                                            &>> $log_file
+    echo "../DiskANN/build/apps/search_memory_index  --data_type float  --dist_fn l2  --index_path_prefix $diskann_index_file  --query_file $query_bin_file  --gt_file $ground_truth_bin_file --query_filters_file $keyword_query_range_file -K $K -L $L --result_path $diskann_result_path -T $threads &>> $log_file"
+    status=$?
+    if [ $status -ne 0 ]; then
+        echo "diskann query failed with exit status $status"
+        exit $status
+    else
+        echo "diskann query ran successfully"
+    fi
+fi
 
 source ./run_txt2csv.sh

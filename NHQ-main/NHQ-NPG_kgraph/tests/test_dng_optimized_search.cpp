@@ -173,7 +173,7 @@ void load_groundtruth(string file_name, int Nq, int K, unsigned* &data){//json f
     return;
 }
 
-void get_qrange(int N, string file_name, vector<vector<string>>& label){  //read json file, only one label supported
+void get_qrange(int N, string file_name, vector<vector<string>>& label， int query_label_cnt){  //read json file, only one label supported
   std::ifstream in(file_name);
   if (!in.is_open()) {
     std::cerr << "Error: failed to open file " << file_name << std::endl;
@@ -194,11 +194,13 @@ void get_qrange(int N, string file_name, vector<vector<string>>& label){  //read
     else{
         in >> temp;
         _label.push_back(std::to_string(temp));
-        label.push_back(_label);
-        _label.clear();
-        i++;
-        if(i == N){
-            break;
+        if(_label.size() == query_label_cnt){
+            label.push_back(_label);
+            _label.clear();
+            i++;
+            if(i == N){
+                break;
+            }
         }
     }
   }
@@ -229,6 +231,7 @@ int main(int argc, char **argv)
   std::cout << "K: " << argv[7] << std::endl;
   std::cout << "weight search: " << argv[8] << std::endl;
   std::cout << "L search: " << argv[9] << std::endl;
+  std::cout << "Query label cnt: " << argv[10] << std::endl;
 
   int K = atoi(argv[7]);
 
@@ -255,9 +258,10 @@ int main(int argc, char **argv)
   ground_num = query_num;
   ground_dim = K;
   unsigned attributes_query_num, attributes_query_dim;
+  int qlabel_cnt = atoi(argv[10]);
   // load_result_data(groundtruth_file, ground_load, ground_num, ground_dim);
   load_groundtruth(groundtruth_file, ground_num, ground_dim, ground_load);
-  get_qrange(query_num, attributes_query_file, attributes_query);
+  get_qrange(query_num, attributes_query_file, attributes_query, qlabel_cnt);
   // load_data_txt(attributes_query_file, attributes_query_num, attributes_query_dim, attributes_query);
   assert(dim == query_dim);
 
@@ -320,7 +324,7 @@ int main(int argc, char **argv)
   int act = 0;
   for (unsigned i = 0; i < query_num; i++) act += comps[i];
   float acc = 1 - (float)cnt / (ground_num * search_k);
-  std::cerr << "Search Time: " << diff.count() << " " << search_k << "NN accuracy: " << acc << " Distcount: " << act << " Avgdistcount: " << act * 1.0 / query_num << " qps: " << diff.count()/query_num << std::endl;
+  std::cerr << "Search Time: " << diff.count() << " " << search_k << "NN accuracy: " << acc << " Distcount: " << act << " Avgdistcount: " << act * 1.0 / query_num << " qps: " << query_num * 1.0 / diff.count() << std::endl;
 
   peak_memory_footprint();
   return 0;

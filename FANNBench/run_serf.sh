@@ -16,7 +16,7 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh
+source ./vars.sh $1 $2 $3
 source ./file_check.sh
 algo=SeRF
 
@@ -27,11 +27,19 @@ algo=SeRF
 index_store_path=${algo}_${dataset}_index.bin
 
 dir=logs/${now}_${dataset}_${algo}
-mkdir ${dir}
-mkdir ${serf_root}
-mkdir ${serf_index_root}
 
-TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
+
+if [ ! -d "$dir" ]; then
+    mkdir ${dir}
+fi
+
+if [ ! -d "$serf_index_root" ]; then
+    mkdir ${serf_root}
+    mkdir ${serf_index_root}
+fi
+
+log_file=${dir}/summary_${algo}_${dataset}_efsearch${ef_search}.txt
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 # echo "method: $algo"
 # echo "dataset: $dataset"
@@ -49,7 +57,7 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${
 # echo "index_file: $serf_index_file"
 # echo "nthread: $threads"
 
-../SeRF/build/benchmark/deep_arbitrary -method $algo \
+/bin/time -v -p ../SeRF/build/benchmark/deep_arbitrary -method $algo \
                                        -dataset $dataset \
                                        -N $N \
                                        -dataset_path $dataset_file \
@@ -64,4 +72,13 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${
                                        -ef_search $ef_search \
                                        -index_file $serf_index_file \
                                        -nthreads $threads \
-                                       &>> ${dir}/summary_${algo}_${dataset}.txt
+                                       &>> $log_file
+
+if [ $? -ne 0 ]; then
+    echo "serf failed to run."
+    exit 1  # Exit the script with a failure code
+else
+    echo "serf succeed."
+fi
+
+source ./run_txt2csv.sh

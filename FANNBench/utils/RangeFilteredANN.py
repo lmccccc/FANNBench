@@ -174,7 +174,11 @@ parser.add_argument(
     type=str,
     help=f"index save direction",
 )
-
+parser.add_argument(
+    "--mode",
+    type=str,
+    help=f"index save direction",
+)
 args = parser.parse_args()
 
 num_threads = args.threads
@@ -293,7 +297,12 @@ if args.index_prefix is None:
 else:
     index_prefix = args.index_prefix
     print("index prefix: ", index_prefix)
-
+if args.mode is None:
+    print("default mode: all")
+    mode = "all"
+else:
+    mode = args.mode
+    print("mode: ", mode)
 VERBOSE = args.verbose
 
 
@@ -515,6 +524,10 @@ def run_tree_experiments(dataset_file, query_file, attr_file, qrange_file, gt_fi
     attr_list = list(set(attr))
     vamana_tree, build_time = get_vamana_tree(data, attr, metric, alpha, split_factor, index_prefix)
 
+    if(mode == "construction"):
+        print("construction done")
+        exit()
+        
     memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss - start_memory
     gc.enable()
 
@@ -676,6 +689,7 @@ def run_super_optimized_postfiltering_experiment(
     print("split factor: ", split_factor)
     print("shift factor: ", shift_factor)
     print("index_prefix: ", index_prefix)
+    print("mode:", mode)
     super_optimized_postfilter_tree = constructor(
         data,
         attr,
@@ -692,6 +706,10 @@ def run_super_optimized_postfiltering_experiment(
 
     build_time = time.time() - build_start
     print(f"Super optimized postfilter tree build time: {build_time:.3f}s", flush=True)
+
+    if(mode == "construction"):
+        print("construction done")
+        exit()
 
     # query_filter_ranges, query_gt = get_queries_and_gt(dataset_name, attr_list)
     print("beam sizes:", BEAM_SIZES)

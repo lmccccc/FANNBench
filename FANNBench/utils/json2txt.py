@@ -27,12 +27,12 @@ if __name__ == "__main__":
     with open(attr_file, 'r') as file:
         data = json.load(file)
     assert(isinstance(data, list))
-    data = np.array(data)
+    # data = np.array(data)
 
     #write
     with open(output_attr_new_file, mode='w', newline='') as file:
         writer = csv.writer(file)
         for item in data:
-            writer.writerow([item])
+            writer.writerow(item)
 
     print("succeed to transport ", attr_file, " into ", output_attr_new_file, " for DiskANN label file")

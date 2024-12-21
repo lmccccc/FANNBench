@@ -1,4 +1,4 @@
-export debugSearchFlag=0
+# export debugSearchFlag=0
 #! /bin/bash
 
 
@@ -16,68 +16,99 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh
+source ./vars.sh $1 $2 $3
 source ./file_check.sh
 algo=HNSW
 
 # run of sift1M test
 
 dir=logs/${now}_${dataset}_${algo}
-mkdir ${dir}
-mkdir ${hnsw_root}
-mkdir ${hnsw_index_root}
 
-TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
-
-echo "hnsw index file: ${hnsw_index_file}"
-
-if [ -e $hnsw_index_file ]; then
-    echo "hnsw index file already exist"
-else
-    echo  "construct index"
-    ../faiss/build/demos/hnsw_build $dataset \
-                                $N \
-                                $K \
-                                $threads \
-                                $dataset_file \
-                                $dataset_attr_file \
-                                $hnsw_index_file \
-                                $dim \
-                                $M \
-                                $ef_construction \
-                                &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ ! -d "$dir" ]; then
+    mkdir ${dir}
 fi
 
-echo  "start query"
-../faiss/build/demos/hnsw_query $dataset \
-                                $N \
-                                $K \
-                                $threads \
-                                $dataset_file \
-                                $query_file \
-                                $dataset_attr_file \
-                                $query_range_file \
-                                $ground_truth_file \
-                                $hnsw_index_file \
-                                $ef_search \
-                                $dim \
-                                &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ ! -d "$hnsw_index_root" ]; then
+    mkdir ${hnsw_root}
+    mkdir ${hnsw_index_root}
+fi
 
-# ../ACORN/build/demos/test_acorn $N \
-#                                 $gamma \
-#                                 $dataset \
-#                                 $M \
-#                                 $M_beta \
-#                                 $dataset_file \
-#                                 $query_file \
-#                                 $dataset_attr_file \
-#                                 $query_range_file \
-#                                 $ground_truth_file \
-#                                 $gt_topk \
-#                                 $acorn_result_root \
-#                                 &>> ${dir}/summary_${algo}_${dataset}.txt
+log_file=${dir}/summary_${algo}_${dataset}_efs${ef_search}.txt
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
+
+
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    echo "hnsw index file: ${hnsw_index_file}"
+    if [ -e $hnsw_index_file ]; then
+        echo "hnsw index file already exist"
+    else
+        echo  "construct index"
+        /bin/time -v -p ../faiss/build/demos/hnsw_build $dataset \
+                                    $N \
+                                    $K \
+                                    $threads \
+                                    $dataset_file \
+                                    $dataset_attr_file \
+                                    $hnsw_index_file \
+                                    $dim \
+                                    $M \
+                                    $ef_construction \
+                                    &>> $log_file
+        status=$?
+        if [ $status -ne 0 ]; then
+            echo "hnsw index failed with exit status $status"
+            exit $status
+        else
+            echo "hnsw index ran successfully"
+        fi
+    fi
+fi
+
+
+
+if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
+    if [ "$label_cnt" -gt 1 ]; then
+        echo  "start keyword query"
+        /bin/time -v -p ../faiss/build/demos/hnsw_query_keyword $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $hnsw_index_file \
+                                        $ef_search \
+                                        $dim \
+                                        &>> $log_file
+    else
+        echo  "start query"
+        /bin/time -v -p ../faiss/build/demos/hnsw_query $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $hnsw_index_file \
+                                        $ef_search \
+                                        $dim \
+                                        &>> $log_file
+    fi
+    status=$?
+    if [ $status -ne 0 ]; then
+        echo "hnsw query failed with exit status $status"
+        exit $status
+    else
+        echo "hnsw query ran successfully"
+    fi
+fi
 
      
+source ./run_txt2csv.sh
 
 
 

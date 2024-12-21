@@ -1,4 +1,4 @@
-export debugSearchFlag=0
+# export debugSearchFlag=0
 #! /bin/bash
 
 
@@ -16,19 +16,26 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh
+source ./vars.sh $1 $2 $3
 source ./file_check.sh
 algo=iRangeGraph
 
 # run of sift1M test
 
 dir=logs/${now}_${dataset}_${algo}
-mkdir ${dir}
-mkdir ${irange_root}
-mkdir ${irange_index_root}
-mkdir ${irange_result_root}
 
-TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ ! -d "$dir" ]; then
+    mkdir ${dir}
+fi
+
+if [ ! -d "$irange_result_root" ]; then
+    mkdir ${irange_root}
+    mkdir ${irange_index_root}
+    mkdir ${irange_result_root}
+fi
+
+log_file=${dir}/summary_${algo}_${dataset}_efs${ef_search}.txt
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 if [ -e $dataset_bin_file ]; then
     echo "dataset bin already exist"
@@ -61,30 +68,30 @@ else
     fi
 fi
 
-
-if [ -e $irange_index_file ]; then
-    echo "index exist"
-else
-    echo "construct index"
-    echo "N: $N"
-    echo "data_path: $dataset_bin_file"
-    echo "index_file: $irange_index_file"
-    echo "attr_file: $attr_bin_file"
-    echo "id2od_file: $irange_id2od_file"
-    echo "M: $M"
-    echo "ef_construction: $ef_construction"
-    echo "threads: $threads"
-    ./../iRangeGraph/build/tests/buildindex --N $N \
-                                            --data_path $dataset_bin_file \
-                                            --index_file $irange_index_file \
-                                            --attr_file $attr_bin_file \
-                                            --id2od_file $irange_id2od_file  \
-                                            --M $M \
-                                            --ef_construction $ef_construction \
-                                            --threads $threads \
-                                            &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    if [ -e $irange_index_file ]; then
+        echo "index exist"
+    else
+        echo "construct index"
+        echo "N: $N"
+        echo "data_path: $dataset_bin_file"
+        echo "index_file: $irange_index_file"
+        echo "attr_file: $attr_bin_file"
+        echo "id2od_file: $irange_id2od_file"
+        echo "M: $M"
+        echo "ef_construction: $ef_construction"
+        echo "threads: $threads"
+        /bin/time -v -p ./../iRangeGraph/build/tests/buildindex --N $N \
+                                                --data_path $dataset_bin_file \
+                                                --index_file $irange_index_file \
+                                                --attr_file $attr_bin_file \
+                                                --id2od_file $irange_id2od_file  \
+                                                --M $M \
+                                                --ef_construction $ef_construction \
+                                                --threads $threads \
+                                                &>> $log_file
+    fi
 fi
-
 
 if [ -e $qrange_bin_file ]; then
     echo "query range bin file already exist"
@@ -116,37 +123,43 @@ else
     fi
 fi
 
-#data_path, index_file, M, ef_construction, threads
-echo "dataset bin file: $dataset_bin_file"
-echo "query bin file: $query_bin_file"
-echo "attr bin file: $attr_bin_file"
-echo "qrange bin file: $qrange_bin_file"
-echo "ground truth bin file: $ground_truth_bin_file"
-echo "index file: $irange_index_file"
-echo "result file: $irange_result_file"
-echo "id2od file: $irange_id2od_file"
-echo "N: $N"
-echo "M: $M"
-echo "Nq: $query_size"
-echo "K: $K"
-../iRangeGraph/build/tests/search --data_path $dataset_bin_file\
-                                  --query_path $query_bin_file \
-                                  --attr_file $attr_bin_file \
-                                  --range_saveprefix $qrange_bin_file \
-                                  --groundtruth_saveprefix $ground_truth_bin_file \
-                                  --index_file $irange_index_file \
-                                  --result_saveprefix $irange_result_file \
-                                  --M $M \
-                                  --id2od_file $irange_id2od_file \
-                                  --N $N \
-                                  --Nq $query_size \
-                                  --K $K \
-                                  --ef_search $ef_search \
-                                  &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
+    #data_path, index_file, M, ef_construction, threads
+    echo "dataset bin file: $dataset_bin_file"
+    echo "query bin file: $query_bin_file"
+    echo "attr bin file: $attr_bin_file"
+    echo "qrange bin file: $qrange_bin_file"
+    echo "ground truth bin file: $ground_truth_bin_file"
+    echo "index file: $irange_index_file"
+    echo "result file: $irange_result_file"
+    echo "id2od file: $irange_id2od_file"
+    echo "N: $N"
+    echo "M: $M"
+    echo "Nq: $query_size"
+    echo "K: $K"
+    /bin/time -v -p ../iRangeGraph/build/tests/search --data_path $dataset_bin_file\
+                                    --query_path $query_bin_file \
+                                    --attr_file $attr_bin_file \
+                                    --range_saveprefix $qrange_bin_file \
+                                    --groundtruth_saveprefix $ground_truth_bin_file \
+                                    --index_file $irange_index_file \
+                                    --result_saveprefix $irange_result_file \
+                                    --M $M \
+                                    --id2od_file $irange_id2od_file \
+                                    --N $N \
+                                    --Nq $query_size \
+                                    --K $K \
+                                    --ef_search $ef_search \
+                                    &>> $log_file
+    status=$?
+    if [ $status -ne 0 ]; then
+        echo "irange failed with exit status $status"
+        exit $status
+    else
+        echo "irange quey ran successfully"
+    fi
+fi
 
-     
 
 
-
-
-
+source ./run_txt2csv.sh

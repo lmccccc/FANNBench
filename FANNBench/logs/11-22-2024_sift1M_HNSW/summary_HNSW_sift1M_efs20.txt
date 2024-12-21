@@ -1,0 +1,56 @@
+Start time: 22:45
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: sift1M
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+qrange file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+gt file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+index file: /mnt/data/mocheng/dataset/sift/hnsw/index/index_hnsw_sel_1_8_random_40_1000
+ef_search: 20
+dim: 128
+loaded base attributes from:/mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+[ 0.065s ] Loaded metadata, 1000000 attr's found
+[ 0.065s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 0.067s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+[ 0.069s ] Loaded 10000 sift1M queries
+[ 0.076s ] Loaded ground truth, gt_size: 10
+[ 0.076s ] Index Params -- d: 128, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 0.632s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.125
+[ 201.476s ] Query results (vector ids, then distances):
+query 0 nn's (2, 2): 908244 (2) 565419 (2) 619829 (2) 87578 (2) 957845 (2) 931855 (2) 792391 (2) 95545 (2) 565750 (2) 15977 (2) 
+     dis: 	73581.000 75634.000 79309.000 79874.000 81399.000 84617.000 85414.000 86101.000 86870.000 88206.000 
+query 1 nn's (7, 7): 586780 (7) 849742 (7) 980641 (7) 731804 (7) 987696 (7) 915764 (7) 826570 (7) 698237 (7) 749009 (7) 866291 (7) 
+     dis: 	58246.000 59323.000 60743.000 61798.000 62680.000 65354.000 67823.000 68408.000 68951.000 69303.000 
+query 2 nn's (1, 1): 861882 (1) 69035 (1) 778799 (1) 311367 (1) 869379 (1) 260648 (1) 762362 (1) 742474 (1) 70410 (1) 861555 (1) 
+     dis: 	35704.000 39400.000 39616.000 39874.000 41020.000 41196.000 42544.000 44028.000 44679.000 45134.000 
+query 3 nn's (0, 0): 191115 (0) 722075 (0) 190587 (0) 190999 (0) 190795 (0) 546487 (0) 191169 (0) 609251 (0) 102152 (0) 889094 (0) 
+     dis: 	34876.000 38524.000 40086.000 40186.000 40438.000 41273.000 42168.000 42882.000 43008.000 43715.000 
+query 4 nn's (7, 7): 416604 (7) 279082 (7) 59308 (7) 110691 (7) 278801 (7) 671857 (7) 170547 (7) 34537 (7) 432653 (7) 356787 (7) 
+     dis: 	55814.000 57527.000 60042.000 62166.000 62620.000 63428.000 65290.000 66606.000 68665.000 69333.000 
+[ 201.476s ] *** Query time: 61.568
+qps: 162.421
+ *** HNSW recall 
+HNSW get 74070 postive res from 100000 results, recall@10:0.741
+recall dist(10% per bucket): 0.000 0.000 0.005 0.013 0.036 0.081 0.141 0.205 0.227 0.193 0.096 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 10038018, average: 1003.802
+finished ivfpq index examples
+[ 201.476s ] -----DONE-----

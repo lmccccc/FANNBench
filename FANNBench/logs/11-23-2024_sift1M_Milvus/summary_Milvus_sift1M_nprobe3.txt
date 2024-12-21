@@ -1,0 +1,108 @@
+Start time: 01:16
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 3
+collection name: collection_sift1M_sel_1_8_random
+collection  collection_sift1M_sel_1_8_random  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 175, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 322, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 788, in search
+    request = Prepare.search_requests_with_expr(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/prepare.py", line 733, in search_requests_with_expr
+    plg_str = cls._prepare_placeholder_str(data)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/prepare.py", line 657, in _prepare_placeholder_str
+    pl = common_types.PlaceholderValue(tag="$0", type=pl_type, values=pl_values)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/prepare.py", line 655, in <genexpr>
+    pl_values = (blob.vector_float_to_bytes(entity) for entity in data)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/blob.py", line 8, in vector_float_to_bytes
+    return struct.pack(f"{len(v)}f", *v)
+KeyboardInterrupt
+Start time: 01:23
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 3
+collection name: collection_sift1M_sel_1_8_random
+collection  collection_sift1M_sel_1_8_random  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  30958  postive res from  100000  results, recall@ 10 : 0.30958
+recall dist(10\% per bucket):  [3.440e-02 1.312e-01 2.155e-01 2.416e-01 1.894e-01 1.098e-01 5.230e-02
+ 1.900e-02 5.900e-03 8.000e-04 1.000e-04]
+10000  queries cost: 59.7690315246582 , qps: 167.31072505122353
+Start time: 02:09
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 3
+collection name: collection_sift1M_sel_1_8_random
+collection  collection_sift1M_sel_1_8_random  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  35274  postive res from  100000  results, recall@ 10 : 0.35274
+recall dist(10\% per bucket):  [0.0284 0.1026 0.1879 0.2185 0.1866 0.1292 0.0744 0.0395 0.0202 0.0104
+ 0.0023]
+10000  queries cost: 105.22093462944031 , qps: 95.03812178838078
+Start time: 04:06
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 3
+collection name: collection_sift1M_sel_1_8_random
+collection  collection_sift1M_sel_1_8_random  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  36681  postive res from  100000  results, recall@ 10 : 0.36681
+recall dist(10\% per bucket):  [0.039  0.1217 0.1811 0.1982 0.1605 0.1177 0.0723 0.0386 0.0206 0.0127
+ 0.0376]
+10000  queries cost: 68.5892584323883 , qps: 145.7954237813706

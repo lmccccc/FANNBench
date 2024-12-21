@@ -16,68 +16,100 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh
+source ./vars.sh $1 $2 $3
 source ./file_check.sh
 algo=IVFPQ
 
 # run of sift1M test
 
 dir=logs/${now}_${dataset}_${algo}
-mkdir ${dir}
-mkdir ${ivfpq_root}
-mkdir ${ivfpq_index_root}
 
-TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_${algo}_${dataset}.txt
+log_file=${dir}/summary_${algo}_${dataset}_nprobe${nprobe}.txt
+
+if [ ! -d "$dir" ]; then
+    mkdir ${dir}
+fi
+
+if [ ! -d "$ivfpq_index_root" ]; then
+    mkdir ${ivfpq_root}
+    mkdir ${ivfpq_index_root}
+fi
+
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 echo "ivfpq index file: ${ivfpq_index_file}"
 
-if [ -e $ivfpq_index_file ]; then
-    echo "ivfpq index file already exist"
-else
-    echo  "construct index"
-    ../faiss/build/demos/ivfpq_build $dataset \
-                                $N \
-                                $K \
-                                $threads \
-                                $dataset_file \
-                                $dataset_attr_file \
-                                $ivfpq_index_file \
-                                $dim \
-                                $partition_size_M \
-                                $train_file \
-                                &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    if [ -e $ivfpq_index_file ]; then
+        echo "ivfpq index file already exist"
+    else
+        echo  "construct index"
+        /bin/time -v -p ../faiss/build/demos/ivfpq_build $dataset \
+                                    $N \
+                                    $K \
+                                    $threads \
+                                    $dataset_file \
+                                    $dataset_attr_file \
+                                    $ivfpq_index_file \
+                                    $dim \
+                                    $partition_size_M \
+                                    $train_file \
+                                    &>> $log_file
+
+        status=$?
+        if [ $status -ne 0 ]; then
+            echo "ivfpq index failed with exit status $status"
+            exit $status
+        else
+            echo "ivfpq index ran successfully"
+        fi
+    fi
 fi
 
-echo  "start query"
-../faiss/build/demos/ivfpq_query $dataset \
-                                $N \
-                                $K \
-                                $threads \
-                                $dataset_file \
-                                $query_file \
-                                $dataset_attr_file \
-                                $query_range_file \
-                                $ground_truth_file \
-                                $ivfpq_index_file \
-                                $nprobe \
-                                $dim \
-                                &>> ${dir}/summary_${algo}_${dataset}.txt
+if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
+    if [ "$label_cnt" -gt 1 ]; then
+        echo  "start keyword query"
+        /bin/time -v -p ../faiss/build/demos/ivfpq_query_keyword $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $ivfpq_index_file \
+                                        $nprobe \
+                                        $dim \
+                                        &>> $log_file
 
-# ../ACORN/build/demos/test_acorn $N \
-#                                 $gamma \
-#                                 $dataset \
-#                                 $M \
-#                                 $M_beta \
-#                                 $dataset_file \
-#                                 $query_file \
-#                                 $dataset_attr_file \
-#                                 $query_range_file \
-#                                 $ground_truth_file \
-#                                 $gt_topk \
-#                                 $acorn_result_root \
-#                                 &>> ${dir}/summary_${algo}_${dataset}.txt
+    else
+        echo  "start query"
+        /bin/time -v -p ../faiss/build/demos/ivfpq_query $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $ivfpq_index_file \
+                                        $nprobe \
+                                        $dim \
+                                        &>> $log_file
+    fi
 
-     
+    status=$?
+    if [ $status -ne 0 ]; then
+        echo "ivfpq query failed with exit status $status"
+        exit $status
+    else
+        echo "ivfpq quey ran successfully"
+    fi    
+fi
+
+source ./run_txt2csv.sh
 
 
 

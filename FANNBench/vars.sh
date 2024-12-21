@@ -1,20 +1,41 @@
 # vars.sh
 
+
+# label range   label_cnt   query_label_cnt   query_label
+# <500          1           1                 useless                    # For all methods, query random {1} label for each vector has {1} label too.
+# <500          >1          1                 0 ~ label_cnt-1            # For keyword query, query {query_label} for vectors which have at most {label_cnt} labels (vector label is in zipf distribution).
+# >0            1           >1                useless                    # For range query, query range [random, random+{query_label_cnt}], each vector has {1} label.
+# <500          >1          $label_cnt        useless                    # For nhq_kgraph and nhq_nsw, same dimension for label and query label
+
 # lable generation
- #keyword or range for query.
-label_method=keyword # don't change
-query_method=keyword # don't change
-distribution=random  # random, in_dist, out_dist
-label_range=8        # 2, 12, 128
-query_label_cnt=1    # 1
+distribution=in_dist  # random, in_dist, out_dist
+label_range=50000         # keyword query shall less than 500
 
-# sel_{query label cnt}_{total label cnt}_{generation method}
-label_attr=sel_${query_label_cnt}_${label_range}_${distribution} # to name different label files
-result_file=exp_results.csv
+# keyword or range for query. Only one of them can >1 at once
+label_cnt=1           # 1 or $label_range if $labelrange (keyword), not suitable for: 1.acorn,    2.irange,  3.vamanatree,  4.wst 5.nhq_nsw, 6.nhq_kgraph
+query_label_cnt=1000     # 1 or more         if >1 (range query for [x, x+query_label_cnt]), not suitable for: 1.diskann,  2.nhq_nsw, 3.nhq_kgraph
+query_label=1         # work only when label_cnt > 1
 
-# common vars
-K=10
-gt_topk=${K}
+
+
+# milvus, hnsw, ivfpq, rii are subset search, which means they are suitable for both range and keyword query
+# for batch query at different efs/nprobe/beamsize, see run_multi_query.sh
+
+# var list         construction                                                      search
+# acorn          M M_beta                                                          ef_search
+# diskann        M alpha                                                           L
+# hnsw           M ef_construction                                                 ef_search
+# irange         M ef_construction                                                 (M) ef_search
+# ivfpq          partition_size_M                                                  nprobe
+# milvus_ivfpq   partition_size_M                                                  nprobe
+# nhq_kgraph     kgraph_L iter S R RANGE(alias M) PL(alias ef_cons) B kgraph_M     weight_search L_search(alias ef_search)
+# nhq_nsw        M ef_construction                                                 ef_search
+# rii            partition_size_M
+# serf           serf_M ef_construction                                            ef_search
+# vamana_tree    split_factor                                                      beamsize
+# wst            split_factor shift_factor                                         beamsize final_beam_multiply
+
+# other vars are fixed inside the code
 
 # hnsw vars
 M=40 # normarlly 40
@@ -22,10 +43,7 @@ ef_construction=1000
 ef_search=400
 
 #serf vars
-serf_M=8 # stay fixed
-
-# threads
-threads=128
+serf_M=8 # fixed
 
 #acorn vars
 gamma=12
@@ -37,8 +55,8 @@ alpha=1.2 # fixed
 L=400 # "10 20 30 40 50 100" efsearch
 
 #rii an pq based
-partition_size_M=4
-nprobe=100
+partition_size_M=64
+nprobe=10
 
 #RangeFilteredANN, super opt postfiltering
 beamsize=40
@@ -58,6 +76,60 @@ kgraph_M=1    # <M> controls the edge selection of NHQ-NPG_kgraph.
 
 weight_search=140000
 L_search=${ef_search}
+
+# common vars
+# label_method=keyword # don't change
+# query_method=keyword # don't change
+K=10
+gt_topk=${K}
+
+# threads
+threads=128
+
+# Check if the user provided the required input
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <construction|query> option: multi_ vars"
+    exit 1
+fi
+
+# Get the input argument
+mode=$1
+multi=$2
+# Set thread number based on the mode
+if [ "$mode" == "construction" ]; then
+    threads=128
+elif [ "$mode" == "query" ]; then
+    threads=1
+    if [ "$multi" == "multi_hnsw" ]; then
+        multi=multi
+        ef_search=$3
+    elif [ "$multi" == "multi_diskann" ]; then
+        multi=multi
+        L=$3
+    elif [ "$multi" == "multi_ivfpq" ]; then
+        multi=multi
+        nprobe=$3
+    elif [ "$multi" == "multi_kgraph" ]; then
+        multi=multi
+        ef_search=$3
+        L_search=$3
+    elif [ "$multi" == "multi_vtree" ]; then
+        multi=multi
+        beamsize=$3
+    elif [ "$multi" == "multi_wst" ]; then
+        multi=multi
+        beamsize=$3
+        final_beam_multiply=$4
+    fi
+elif [ "$mode" == "all" ]; then
+    threads=128
+else
+    echo "Invalid mode. Please use 'construction' or 'query'."
+    exit 1
+fi
+
+label_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution} # to name different label files
+result_file=exp_results.csv
 
 # dataset vars
 
@@ -134,12 +206,22 @@ query_bin_file=${root}data_query.bin  # to be generated
 # python utils/generate_train.py ${dataset_file} ${train_file} ${train_size}
 
 
+
 # label file, the name of path is defined in label_attr
 label_path=${root}${label_attr}/
 dataset_attr_file=${label_path}attr_${label_attr}.json
 query_range_file=${label_path}qrange${label_attr}.json
 ground_truth_file=${label_path}sif_gt_${gt_topk}.json
 centroid_file=${label_path}centroid.npy
+
+# milvus_ivfpq collection name
+collection_name=collection_${dataset}_${label_attr}
+milvus_coll_path=/var/lib/milvus/etcd/data/${collection_name}/   # useless
+
+# milvus_hnsw collection name
+hnsw_collection_name=collection_hnsw_${dataset}_${label_attr}_efc${ef_construction}
+milvus_hnsw_coll_path=/var/lib/milvus/etcd/data/${hnsw_collection_name}/    # useless
+
 
 
 #acorn res path
@@ -219,3 +301,5 @@ nhqkg_root=${root}nhqkg/
 nhqkg_index_root=${nhqkg_root}index/
 nhqkg_index_model_file=${nhqkg_index_root}nhqkg_index_${label_attr}_L${kgraph_L}_iter${iter}S${S}_R${R}_RANGE${RANGE}_PL${PL}_B${B}_M${kgraph_M}
 nhqkg_index_attr_file=${nhqkg_index_root}nhqkg_attr_${label_attr}_L${kgraph_L}_iter${iter}S${S}_R${R}_RANGE${RANGE}_PL${PL}_B${B}_M${kgraph_M}
+
+

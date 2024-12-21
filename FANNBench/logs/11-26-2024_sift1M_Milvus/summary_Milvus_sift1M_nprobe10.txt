@@ -1,0 +1,2438 @@
+Start time: 18:19
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 3, in <module>
+    from pymilvus import DataType, MilvusClient, utility
+ModuleNotFoundError: No module named 'pymilvus'
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 construction 4 128"
+	User time (seconds): 0.01
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8192
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1142
+	Voluntary context switches: 1
+	Involuntary context switches: 1
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 18:20
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+start insertion
+insert batch: 0.0
+insert batch: 1.0
+insert batch: 2.0
+insert batch: 3.0
+insert batch: 4.0
+insert batch: 5.0
+insert batch: 6.0
+insert batch: 7.0
+insert batch: 8.0
+insert batch: 9.0
+insert suc, time cost: 27.89763307571411
+construction done
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 249, in <module>
+    status = utility.get_server_status()
+AttributeError: module 'pymilvus.orm.utility' has no attribute 'get_server_status'
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 construction 4 128"
+	User time (seconds): 49.90
+	System time (seconds): 12.69
+	Percent of CPU this job got: 64%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:36.79
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6232240
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6129514
+	Voluntary context switches: 14420
+	Involuntary context switches: 57479
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 21:10
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 143, in <module>
+    data = [
+  File "utils/pymilvus_ivfpq.py", line 144, in <listcomp>
+    {"id": i, "vector": dataset[i].tolist(), "label": attr[i]}
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 15.34
+	System time (seconds): 1.08
+	Percent of CPU this job got: 307%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.34
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2136864
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 554963
+	Voluntary context switches: 692
+	Involuntary context switches: 514
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 21:10
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists, then drop it
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+start insertion
+insert batch: 0.0
+insert batch: 1.0
+insert batch: 2.0
+insert batch: 3.0
+insert batch: 4.0
+insert batch: 5.0
+insert batch: 6.0
+insert batch: 7.0
+insert batch: 8.0
+insert batch: 9.0
+insert suc, time cost: 28.006564140319824
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.6
+temp recall dist(10\% per bucket):  [0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+temp recall: 0.9188118811881189
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00990099
+ 0.02970297 0.03960396 0.11881188 0.28712871 0.51485149]
+temp recall: 0.954228855721393
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00497512
+ 0.01492537 0.0199005  0.05970149 0.19402985 0.70646766]
+temp recall: 0.9654485049833887
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00332226
+ 0.00996678 0.01328904 0.04318937 0.1627907  0.76744186]
+temp recall: 0.9713216957605985
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00249377
+ 0.0074813  0.00997506 0.03491272 0.1446384  0.80049875]
+temp recall: 0.974251497005988
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00199601
+ 0.00598802 0.00998004 0.02994012 0.13373253 0.81836327]
+temp recall: 0.9773710482529118
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00166389
+ 0.00499168 0.00831947 0.0266223  0.11980033 0.83860233]
+temp recall: 0.9800285306704708
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00142653
+ 0.0042796  0.00713267 0.02282454 0.10841655 0.85592011]
+temp recall: 0.9813982521847691
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00124844
+ 0.00374532 0.0062422  0.02122347 0.10362047 0.8639201 ]
+temp recall: 0.9832408435072142
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00110988
+ 0.00332963 0.00554939 0.01886792 0.09433962 0.87680355]
+temp recall: 0.9843156843156843
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.000999
+ 0.002997   0.004995   0.01898102 0.08691309 0.88511489]
+temp recall: 0.9849227974568574
+temp recall dist(10\% per bucket):  [0.         0.         0.         0.         0.         0.00090827
+ 0.0027248  0.00454133 0.01907357 0.0835604  0.88919164]
+temp recall: 0.9856786011656953
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 8.32639467e-04 2.49791840e-03 4.16319734e-03
+ 1.74854288e-02 8.15986678e-02 8.93422148e-01]
+temp recall: 0.9855495772482705
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 7.68639508e-04 2.30591852e-03 4.61183705e-03
+ 1.76787087e-02 8.22444274e-02 8.92390469e-01]
+temp recall: 0.9856531049250535
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 7.13775874e-04 2.14132762e-03 4.28265525e-03
+ 1.85581727e-02 8.13704497e-02 8.92933619e-01]
+temp recall: 0.9861425716189207
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 6.66222518e-04 1.99866755e-03 3.99733511e-03
+ 1.73217855e-02 8.06129247e-02 8.95403065e-01]
+temp recall: 0.9860712054965647
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 6.24609619e-04 2.49843848e-03 3.74765771e-03
+ 1.74890693e-02 7.99500312e-02 8.95690194e-01]
+temp recall: 0.9860670194003527
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 5.87889477e-04 2.35155791e-03 4.11522634e-03
+ 1.76366843e-02 7.93650794e-02 8.95943563e-01]
+temp recall: 0.9861743475846751
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 5.55247085e-04 2.22098834e-03 4.44197668e-03
+ 1.77679067e-02 7.77345919e-02 8.97279289e-01]
+temp recall: 0.9859547606522883
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 5.26038927e-04 2.10415571e-03 4.73435034e-03
+ 1.73592846e-02 8.04839558e-02 8.94792215e-01]
+temp recall: 0.9863068465767116
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 4.99750125e-04 1.99900050e-03 4.49775112e-03
+ 1.64917541e-02 7.99600200e-02 8.96551724e-01]
+temp recall: 0.9864350309376487
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 4.75963827e-04 1.90385531e-03 4.28367444e-03
+ 1.66587339e-02 7.94859591e-02 8.97191813e-01]
+temp recall: 0.986278964107224
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 4.54338937e-04 1.81735575e-03 4.54338937e-03
+ 1.77192185e-02 7.86006361e-02 8.96865061e-01]
+temp recall: 0.9864406779661017
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 4.34593655e-04 1.73837462e-03 4.34593655e-03
+ 1.78183399e-02 7.77922642e-02 8.97870491e-01]
+temp recall: 0.9865889212827988
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 4.16493128e-04 1.66597251e-03 4.16493128e-03
+ 1.74927114e-02 7.78842149e-02 8.98375677e-01]
+temp recall: 0.9866453418632547
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.99840064e-04 1.59936026e-03 3.99840064e-03
+ 1.71931228e-02 7.87684926e-02 8.98040784e-01]
+temp recall: 0.9868896578239139
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.84467512e-04 1.53787005e-03 4.22914264e-03
+ 1.65321030e-02 7.72779700e-02 9.00038447e-01]
+temp recall: 0.9870788596815994
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.70233247e-04 1.48093299e-03 4.07256572e-03
+ 1.66604961e-02 7.58978156e-02 9.01517956e-01]
+temp recall: 0.9869689396644056
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.57015352e-04 1.78507676e-03 3.92716887e-03
+ 1.67797215e-02 7.60442699e-02 9.01106748e-01]
+temp recall: 0.9868665977249225
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.44708721e-04 2.06825233e-03 3.79179593e-03
+ 1.68907273e-02 7.61806274e-02 9.00723888e-01]
+temp recall: 0.9868710429856714
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.33222259e-04 1.99933356e-03 3.66544485e-03
+ 1.69943352e-02 7.66411196e-02 9.00366544e-01]
+temp recall: 0.9869396968719768
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.22476620e-04 1.93485972e-03 3.86971945e-03
+ 1.67687843e-02 7.61044824e-02 9.00999678e-01]
+temp recall: 0.9871290221805685
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.12402374e-04 1.87441425e-03 3.74882849e-03
+ 1.65573258e-02 7.52889722e-02 9.02218057e-01]
+temp recall: 0.9873977582550743
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 3.02938503e-04 1.81763102e-03 3.63526204e-03
+ 1.60557407e-02 7.42199334e-02 9.03968494e-01]
+temp recall: 0.9873566598059395
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.94031167e-04 1.76418700e-03 3.82240517e-03
+ 1.58776830e-02 7.46839165e-02 9.03557777e-01]
+temp recall: 0.9874321622393601
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.85632676e-04 1.71379606e-03 3.71322479e-03
+ 1.57097972e-02 7.48357612e-02 9.03741788e-01]
+temp recall: 0.9874757011941128
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.77700639e-04 1.66620383e-03 3.61010830e-03
+ 1.58289364e-02 7.47014718e-02 9.03915579e-01]
+temp recall: 0.9875439070521481
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.70197244e-04 1.62118346e-03 3.51256417e-03
+ 1.56714402e-02 7.48446366e-02 9.04079978e-01]
+temp recall: 0.9875822152065246
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.63088661e-04 1.57853197e-03 3.68324125e-03
+ 1.55222310e-02 7.44540910e-02 9.04498816e-01]
+temp recall: 0.9877467316072802
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.56344527e-04 1.53806716e-03 3.58882338e-03
+ 1.53806716e-02 7.35708793e-02 9.05665214e-01]
+temp recall: 0.9880279930017496
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.49937516e-04 1.49962509e-03 3.49912522e-03
+ 1.49962509e-02 7.19820045e-02 9.07773057e-01]
+temp recall: 0.9881492318946599
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.43842965e-04 1.46305779e-03 3.41380151e-03
+ 1.48744209e-02 7.14459888e-02 9.08558888e-01]
+temp recall: 0.9882170911687693
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.38038562e-04 1.42823137e-03 3.33253987e-03
+ 1.49964294e-02 7.09354915e-02 9.09069269e-01]
+temp recall: 0.9882817949314113
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.32504069e-04 1.39502441e-03 3.48756103e-03
+ 1.51127645e-02 6.97512206e-02 9.10020925e-01]
+temp recall: 0.9884117246080436
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.27221086e-04 1.36332652e-03 3.40831629e-03
+ 1.47693706e-02 6.95296524e-02 9.10702113e-01]
+temp recall: 0.9884692290602088
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.22172850e-04 1.33303710e-03 3.55476561e-03
+ 1.46634081e-02 6.88735836e-02 9.11353033e-01]
+temp recall: 0.9885894370788959
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.17344056e-04 1.30406433e-03 3.47750489e-03
+ 1.43447077e-02 6.86807216e-02 9.11975657e-01]
+temp recall: 0.9886194426717719
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.12720698e-04 1.48904488e-03 3.40353116e-03
+ 1.42522867e-02 6.80706233e-02 9.12571793e-01]
+temp recall: 0.988669027285982
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.08289940e-04 1.45802958e-03 3.33263903e-03
+ 1.41637159e-02 6.81108102e-02 9.12726515e-01]
+temp recall: 0.9887369924505203
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 2.04039992e-04 1.42827994e-03 3.46867986e-03
+ 1.40787594e-02 6.73331973e-02 9.13487043e-01]
+temp recall: 0.9888022395520896
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.99960008e-04 1.39972006e-03 3.39932014e-03
+ 1.39972006e-02 6.71865627e-02 9.13817237e-01]
+temp recall: 0.9888649284454029
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.96039992e-04 1.37227995e-03 3.33267987e-03
+ 1.39188394e-02 6.70456773e-02 9.14134483e-01]
+temp recall: 0.9889444337627379
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.92270717e-04 1.34589502e-03 3.26860219e-03
+ 1.40357624e-02 6.63333974e-02 9.14824072e-01]
+temp recall: 0.98907753254103
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.88643652e-04 1.32050556e-03 3.20694209e-03
+ 1.37709866e-02 6.58366346e-02 9.15676287e-01]
+temp recall: 0.9892242177374561
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.85150898e-04 1.29605629e-03 3.14756527e-03
+ 1.35160156e-02 6.51731161e-02 9.16682096e-01]
+temp recall: 0.9891837847664061
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.81785130e-04 1.27249591e-03 3.09034721e-03
+ 1.38156699e-02 6.52608617e-02 9.16378840e-01]
+temp recall: 0.989216211390823
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.78539547e-04 1.24977683e-03 3.03517229e-03
+ 1.35690055e-02 6.57025531e-02 9.16264953e-01]
+temp recall: 0.9892650412208385
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.75407823e-04 1.22785476e-03 2.98193299e-03
+ 1.35064024e-02 6.56025259e-02 9.16505876e-01]
+temp recall: 0.9893466643682124
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.72384072e-04 1.20668850e-03 2.93052922e-03
+ 1.34459576e-02 6.51611791e-02 9.17083262e-01]
+temp recall: 0.9893577359769531
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.69462803e-04 1.18623962e-03 2.88086765e-03
+ 1.33875614e-02 6.54126419e-02 9.16963227e-01]
+temp recall: 0.9894350941509749
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.66638894e-04 1.16647225e-03 2.83286119e-03
+ 1.33311115e-02 6.49891685e-02 9.17513748e-01]
+temp recall: 0.9893951811178495
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.63907556e-04 1.14735289e-03 2.95033601e-03
+ 1.31126045e-02 6.55630225e-02 9.17062777e-01]
+temp recall: 0.9892920496694082
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.61264312e-04 1.12885019e-03 3.06402193e-03
+ 1.33849379e-02 6.57958394e-02 9.16465086e-01]
+temp recall: 0.9894143786700523
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.58704967e-04 1.11093477e-03 3.01539438e-03
+ 1.31725123e-02 6.52277416e-02 9.17314712e-01]
+temp recall: 0.9895016403686924
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.56225590e-04 1.09357913e-03 2.96828621e-03
+ 1.31229495e-02 6.46773942e-02 9.17981565e-01]
+temp recall: 0.9895862175049992
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.53822489e-04 1.07675742e-03 2.92262729e-03
+ 1.30749116e-02 6.41439778e-02 9.18627903e-01]
+temp recall: 0.9896530828662324
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.51492198e-04 1.06044539e-03 2.87835176e-03
+ 1.30283290e-02 6.37782154e-02 9.19103166e-01]
+temp recall: 0.9896433368154007
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.49231458e-04 1.04462021e-03 2.83539770e-03
+ 1.31323683e-02 6.38710640e-02 9.18967318e-01]
+temp recall: 0.9896632848110571
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.47037200e-04 1.02926040e-03 2.79370681e-03
+ 1.32333480e-02 6.36671078e-02 9.19129540e-01]
+temp recall: 0.9896536733806695
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.44906535e-04 1.01434575e-03 2.75322417e-03
+ 1.36212143e-02 6.31792494e-02 9.19287060e-01]
+temp recall: 0.9896729038708756
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.42836738e-04 9.99857163e-04 2.71389801e-03
+ 1.35694901e-02 6.32766748e-02 9.19297243e-01]
+temp recall: 0.9896070975918885
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.40825236e-04 9.85776651e-04 2.81650472e-03
+ 1.38008731e-02 6.32305309e-02 9.19025489e-01]
+temp recall: 0.9896819886126926
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.38869601e-04 9.72087210e-04 2.77739203e-03
+ 1.36092209e-02 6.30467991e-02 9.19455631e-01]
+temp recall: 0.9897000410902617
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.36967539e-04 9.58772771e-04 2.73935077e-03
+ 1.35597863e-02 6.31420353e-02 9.19463087e-01]
+temp recall: 0.9896500472909067
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.35116876e-04 9.45818133e-04 2.83745440e-03
+ 1.37819214e-02 6.29644643e-02 9.19335225e-01]
+temp recall: 0.989708038928143
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.33315558e-04 9.33208905e-04 2.79962672e-03
+ 1.35981869e-02 6.29249433e-02 9.19610719e-01]
+temp recall: 0.9897776608341008
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.31561637e-04 9.20931456e-04 2.76279437e-03
+ 1.35508486e-02 6.24917774e-02 9.20142087e-01]
+temp recall: 0.9898844305934295
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.29853266e-04 9.08972861e-04 2.72691858e-03
+ 1.33748864e-02 6.19400078e-02 9.20919361e-01]
+temp recall: 0.9899628252788104
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.28188694e-04 8.97320856e-04 2.82015126e-03
+ 1.32034355e-02 6.12741956e-02 9.21676708e-01]
+temp recall: 0.990013922288318
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.26566257e-04 8.85963802e-04 2.78445766e-03
+ 1.30363245e-02 6.12580686e-02 9.21908619e-01]
+temp recall: 0.9900887389076366
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.24984377e-04 8.74890639e-04 2.74965629e-03
+ 1.28733908e-02 6.09923760e-02 9.22384702e-01]
+temp recall: 0.9901493642760153
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.23441550e-04 8.64090853e-04 2.71571411e-03
+ 1.27144797e-02 6.08566844e-02 9.22725589e-01]
+temp recall: 0.9902207047920986
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.21936349e-04 8.53554445e-04 2.68259968e-03
+ 1.26813803e-02 6.03584929e-02 9.23302036e-01]
+temp recall: 0.9902541862426214
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.20467414e-04 8.43271895e-04 2.65028310e-03
+ 1.27695458e-02 5.99927720e-02 9.23623660e-01]
+temp recall: 0.9902511605761218
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.19033448e-04 8.33234139e-04 2.61873586e-03
+ 1.26175455e-02 6.04689918e-02 9.23342459e-01]
+temp recall: 0.9903305493471356
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.17633220e-04 8.23432537e-04 2.58793083e-03
+ 1.24691213e-02 6.01105752e-02 9.23891307e-01]
+temp recall: 0.9903150796419021
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.16265551e-04 8.13858854e-04 2.55784211e-03
+ 1.26729450e-02 5.99930241e-02 9.23846064e-01]
+temp recall: 0.9903804160441328
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.14929318e-04 8.04505229e-04 2.52844501e-03
+ 1.25272957e-02 5.97632456e-02 9.24261579e-01]
+temp recall: 0.9904556300420406
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.13623452e-04 7.95364163e-04 2.49971594e-03
+ 1.23849563e-02 5.94250653e-02 9.24781275e-01]
+temp recall: 0.9904505111785192
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.12346927e-04 7.86428491e-04 2.58397933e-03
+ 1.22458151e-02 5.95438715e-02 9.24727559e-01]
+temp recall: 0.9904343961782024
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.11098767e-04 7.77691368e-04 2.55527164e-03
+ 1.24430619e-02 5.94378402e-02 9.24675036e-01]
+temp recall: 0.9904076475112625
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.09878035e-04 7.69146248e-04 2.63707285e-03
+ 1.23063400e-02 5.97736512e-02 9.24403912e-01]
+temp recall: 0.9904358221932399
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.08683839e-04 7.60786871e-04 2.60841213e-03
+ 1.22812738e-02 5.96674275e-02 9.24573416e-01]
+temp recall: 0.9904848940974089
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.07515321e-04 7.52607247e-04 2.58036770e-03
+ 1.21492313e-02 5.95634878e-02 9.24846791e-01]
+temp recall: 0.9904265503669822
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.06371663e-04 7.44601638e-04 2.65929156e-03
+ 1.21263695e-02 5.99936177e-02 9.24369748e-01]
+temp recall: 0.99045363645932
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.05252079e-04 7.36764551e-04 2.63130197e-03
+ 1.21039891e-02 5.98884328e-02 9.24534260e-01]
+temp recall: 0.990438495990001
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.04155817e-04 7.29090720e-04 2.70805124e-03
+ 1.20820748e-02 5.98895948e-02 9.24487033e-01]
+temp recall: 0.9905061333883105
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.03082156e-04 7.21575095e-04 2.68013607e-03
+ 1.20606123e-02 5.93753221e-02 9.25059272e-01]
+temp recall: 0.9905009692888481
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.02030405e-04 7.14212835e-04 2.65279053e-03
+ 1.20395878e-02 5.95857566e-02 9.24905622e-01]
+temp recall: 0.9905363094636905
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 1.00999899e-04 7.06999293e-04 2.62599737e-03
+ 1.19179881e-02 5.95899404e-02 9.25058075e-01]
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  99061  postive res from  100000  results, recall@ 10 : 0.99061
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.000e-04 7.000e-04
+ 2.600e-03 1.180e-02 5.920e-02 9.256e-01]
+10000  queries cost: 52.298126220703125 , qps: 191.21143954181144
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 50.14
+	System time (seconds): 13.21
+	Percent of CPU this job got: 63%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:39.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6231872
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6164170
+	Voluntary context switches: 14479
+	Involuntary context switches: 23751
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 21:12
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 72, in <module>
+    c_name = "milvus_" + dataset + "_collection_" + label_attr
+NameError: name 'label_attr' is not defined
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 7.78
+	System time (seconds): 0.10
+	Percent of CPU this job got: 1189%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 81920
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 18363
+	Voluntary context switches: 258
+	Involuntary context switches: 1069
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 21:13
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.2
+temp recall dist(10\% per bucket):  [0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+temp recall: 0.691089108910891
+temp recall dist(10\% per bucket):  [0.00990099 0.00990099 0.10891089 0.12871287 0.11881188 0.04950495
+ 0.02970297 0.         0.00990099 0.02970297 0.5049505 ]
+temp recall: 0.6960199004975124
+temp recall dist(10\% per bucket):  [0.00497512 0.039801   0.12935323 0.09452736 0.09452736 0.04477612
+ 0.0199005  0.         0.00497512 0.05472637 0.51243781]
+temp recall: 0.6564784053156146
+temp recall dist(10\% per bucket):  [0.01993355 0.06644518 0.11960133 0.10963455 0.09634551 0.04318937
+ 0.01328904 0.         0.00332226 0.05980066 0.46843854]
+temp recall: 0.6413965087281795
+temp recall dist(10\% per bucket):  [0.02244389 0.08229426 0.11720698 0.11221945 0.09975062 0.03740648
+ 0.01246883 0.         0.00498753 0.05236908 0.45885287]
+temp recall: 0.6347305389221557
+temp recall dist(10\% per bucket):  [0.0259481  0.08582834 0.11976048 0.11377246 0.09780439 0.03193613
+ 0.01197605 0.00399202 0.00399202 0.05189621 0.45309381]
+temp recall: 0.6339434276206323
+temp recall dist(10\% per bucket):  [0.02163062 0.09151414 0.12312812 0.11314476 0.09151414 0.03327787
+ 0.01497504 0.00332779 0.00665557 0.04492512 0.45590682]
+temp recall: 0.6300998573466476
+temp recall dist(10\% per bucket):  [0.01997147 0.08701854 0.12125535 0.11554922 0.09843081 0.03851641
+ 0.021398   0.00570613 0.00570613 0.03994294 0.44650499]
+temp recall: 0.6333333333333333
+temp recall dist(10\% per bucket):  [0.01747815 0.08614232 0.11610487 0.10986267 0.10486891 0.04244694
+ 0.02621723 0.00749064 0.00499376 0.03995006 0.44444444]
+temp recall: 0.6314095449500555
+temp recall dist(10\% per bucket):  [0.0199778  0.07991121 0.1154273  0.12208657 0.09655938 0.04661487
+ 0.02774695 0.00665927 0.00443951 0.03662597 0.44395117]
+temp recall: 0.6293706293706294
+temp recall dist(10\% per bucket):  [0.01798202 0.08091908 0.11588412 0.12787213 0.0969031  0.04595405
+ 0.02597403 0.00599401 0.004995   0.03296703 0.44455544]
+temp recall: 0.6287920072661217
+temp recall dist(10\% per bucket):  [0.0181653  0.0835604  0.11534968 0.12352407 0.09900091 0.04632153
+ 0.02633969 0.00544959 0.00454133 0.03451408 0.44323342]
+temp recall: 0.6279766860949209
+temp recall dist(10\% per bucket):  [0.01748543 0.07993339 0.12323064 0.12073272 0.09991674 0.04829309
+ 0.02414654 0.00499584 0.0041632  0.03413822 0.4429642 ]
+temp recall: 0.6232897770945427
+temp recall dist(10\% per bucket):  [0.01767871 0.08378171 0.1245196  0.11990776 0.10069178 0.04842429
+ 0.02459646 0.00461184 0.0038432  0.03458878 0.43735588]
+temp recall: 0.6236259814418272
+temp recall dist(10\% per bucket):  [0.01713062 0.08351178 0.12562455 0.11705924 0.1006424  0.05139186
+ 0.02498216 0.00499643 0.00356888 0.03354747 0.43754461]
+temp recall: 0.623784143904064
+temp recall dist(10\% per bucket):  [0.01732179 0.08194537 0.12458361 0.1152565  0.10326449 0.0532978
+ 0.0266489  0.00532978 0.00333111 0.0326449  0.43637575]
+temp recall: 0.6239850093691443
+temp recall dist(10\% per bucket):  [0.01873829 0.08119925 0.12179888 0.11617739 0.10243598 0.05559026
+ 0.0262336  0.00562149 0.00374766 0.0324797  0.43597751]
+temp recall: 0.6229276895943563
+temp recall dist(10\% per bucket):  [0.02116402 0.08112875 0.12110523 0.11816578 0.1005291  0.05349794
+ 0.02527925 0.00646678 0.00470312 0.03233392 0.4356261 ]
+temp recall: 0.6199333703498057
+temp recall dist(10\% per bucket):  [0.02332038 0.08328706 0.12215436 0.11993337 0.09716824 0.05163798
+ 0.02498612 0.00610772 0.00499722 0.03164908 0.43475847]
+temp recall: 0.6210941609679116
+temp recall dist(10\% per bucket):  [0.02261967 0.08521831 0.11993688 0.12098895 0.09468701 0.05260389
+ 0.02367175 0.00631247 0.00526039 0.03419253 0.43450815]
+temp recall: 0.6216391804097952
+temp recall dist(10\% per bucket):  [0.02248876 0.08395802 0.11844078 0.12043978 0.09395302 0.05747126
+ 0.02398801 0.00749625 0.0049975  0.03298351 0.43378311]
+temp recall: 0.6204664445502142
+temp recall dist(10\% per bucket):  [0.02141837 0.08472156 0.11899096 0.12375059 0.09328891 0.05616373
+ 0.02332223 0.00761542 0.00571157 0.03236554 0.43265112]
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 197, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 394, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 801, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 734, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 16.60
+	System time (seconds): 5.96
+	Percent of CPU this job got: 164%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.68
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 100208
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 29355
+	Voluntary context switches: 5470
+	Involuntary context switches: 549
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 21:15
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.2
+temp recall dist(10\% per bucket):  [0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+temp recall: 0.691089108910891
+temp recall dist(10\% per bucket):  [0.00990099 0.00990099 0.10891089 0.12871287 0.11881188 0.04950495
+ 0.02970297 0.         0.00990099 0.02970297 0.5049505 ]
+temp recall: 0.6960199004975124
+temp recall dist(10\% per bucket):  [0.00497512 0.039801   0.12935323 0.09452736 0.09452736 0.04477612
+ 0.0199005  0.         0.00497512 0.05472637 0.51243781]
+temp recall: 0.6564784053156146
+temp recall dist(10\% per bucket):  [0.01993355 0.06644518 0.11960133 0.10963455 0.09634551 0.04318937
+ 0.01328904 0.         0.00332226 0.05980066 0.46843854]
+temp recall: 0.6413965087281795
+temp recall dist(10\% per bucket):  [0.02244389 0.08229426 0.11720698 0.11221945 0.09975062 0.03740648
+ 0.01246883 0.         0.00498753 0.05236908 0.45885287]
+temp recall: 0.6347305389221557
+temp recall dist(10\% per bucket):  [0.0259481  0.08582834 0.11976048 0.11377246 0.09780439 0.03193613
+ 0.01197605 0.00399202 0.00399202 0.05189621 0.45309381]
+temp recall: 0.6339434276206323
+temp recall dist(10\% per bucket):  [0.02163062 0.09151414 0.12312812 0.11314476 0.09151414 0.03327787
+ 0.01497504 0.00332779 0.00665557 0.04492512 0.45590682]
+temp recall: 0.6300998573466476
+temp recall dist(10\% per bucket):  [0.01997147 0.08701854 0.12125535 0.11554922 0.09843081 0.03851641
+ 0.021398   0.00570613 0.00570613 0.03994294 0.44650499]
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 197, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 394, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 801, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 734, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 14.60
+	System time (seconds): 5.82
+	Percent of CPU this job got: 429%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 100688
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 28801
+	Voluntary context switches: 2396
+	Involuntary context switches: 468
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:39
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.04 0.1  0.2  0.25 0.21 0.13 0.07 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.08 0.2  0.4  0.5  0.42 0.26 0.14 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.12 0.3  0.6  0.75 0.63 0.39 0.21 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.16 0.4  0.8  1.   0.84 0.52 0.28 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.2  0.5  1.   1.25 1.05 0.65 0.35 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.24 0.6  1.2  1.5  1.26 0.78 0.42 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.28 0.7  1.4  1.75 1.47 0.91 0.49 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.32 0.8  1.6  2.   1.68 1.04 0.56 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.36 0.9  1.8  2.25 1.89 1.17 0.63 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.4 1.  2.  2.5 2.1 1.3 0.7 0.  0.  0.  0. ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.44 1.1  2.2  2.75 2.31 1.43 0.77 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.48 1.2  2.4  3.   2.52 1.56 0.84 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.52 1.3  2.6  3.25 2.73 1.69 0.91 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.56 1.4  2.8  3.5  2.94 1.82 0.98 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.6  1.5  3.   3.75 3.15 1.95 1.05 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.64 1.6  3.2  4.   3.36 2.08 1.12 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.68 1.7  3.4  4.25 3.57 2.21 1.19 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.72 1.8  3.6  4.5  3.78 2.34 1.26 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.76 1.9  3.8  4.75 3.99 2.47 1.33 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.8 2.  4.  5.  4.2 2.6 1.4 0.  0.  0.  0. ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.84 2.1  4.2  5.25 4.41 2.73 1.47 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.88 2.2  4.4  5.5  4.62 2.86 1.54 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.92 2.3  4.6  5.75 4.83 2.99 1.61 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [0.96 2.4  4.8  6.   5.04 3.12 1.68 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.   2.5  5.   6.25 5.25 3.25 1.75 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.04 2.6  5.2  6.5  5.46 3.38 1.82 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.08 2.7  5.4  6.75 5.67 3.51 1.89 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.12 2.8  5.6  7.   5.88 3.64 1.96 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.16 2.9  5.8  7.25 6.09 3.77 2.03 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.2 3.  6.  7.5 6.3 3.9 2.1 0.  0.  0.  0. ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.24 3.1  6.2  7.75 6.51 4.03 2.17 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.28 3.2  6.4  8.   6.72 4.16 2.24 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.32 3.3  6.6  8.25 6.93 4.29 2.31 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.36 3.4  6.8  8.5  7.14 4.42 2.38 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.4  3.5  7.   8.75 7.35 4.55 2.45 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.44 3.6  7.2  9.   7.56 4.68 2.52 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.48 3.7  7.4  9.25 7.77 4.81 2.59 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.52 3.8  7.6  9.5  7.98 4.94 2.66 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [1.56 3.9  7.8  9.75 8.19 5.07 2.73 0.   0.   0.   0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.6  4.   8.  10.   8.4  5.2  2.8  0.   0.   0.   0. ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.64  4.1   8.2  10.25  8.61  5.33  2.87  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.68  4.2   8.4  10.5   8.82  5.46  2.94  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.72  4.3   8.6  10.75  9.03  5.59  3.01  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.76  4.4   8.8  11.    9.24  5.72  3.08  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.8   4.5   9.   11.25  9.45  5.85  3.15  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.84  4.6   9.2  11.5   9.66  5.98  3.22  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.88  4.7   9.4  11.75  9.87  6.11  3.29  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.92  4.8   9.6  12.   10.08  6.24  3.36  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 1.96  4.9   9.8  12.25 10.29  6.37  3.43  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.   5.  10.  12.5 10.5  6.5  3.5  0.   0.   0.   0. ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.04  5.1  10.2  12.75 10.71  6.63  3.57  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.08  5.2  10.4  13.   10.92  6.76  3.64  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.12  5.3  10.6  13.25 11.13  6.89  3.71  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.16  5.4  10.8  13.5  11.34  7.02  3.78  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.2   5.5  11.   13.75 11.55  7.15  3.85  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.24  5.6  11.2  14.   11.76  7.28  3.92  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.28  5.7  11.4  14.25 11.97  7.41  3.99  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.32  5.8  11.6  14.5  12.18  7.54  4.06  0.    0.    0.    0.  ]
+temp recall: 0.316
+temp recall dist(10\% per bucket):  [ 2.36  5.9  11.8  14.75 12.39  7.67  4.13  0.    0.    0.    0.  ]
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 198, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 394, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 801, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 734, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 7.02
+	System time (seconds): 2.36
+	Percent of CPU this job got: 58%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:16.17
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 98096
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 28814
+	Voluntary context switches: 12969
+	Involuntary context switches: 798445
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:39
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists, then drop it
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+start insertion
+insert batch: 0.0
+insert batch: 1.0
+insert batch: 2.0
+insert batch: 3.0
+insert batch: 4.0
+insert batch: 5.0
+insert batch: 6.0
+insert batch: 7.0
+insert batch: 8.0
+insert batch: 9.0
+insert suc, time cost: 34.35721778869629
+construction done
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.01 0.   0.03 0.05 0.15 0.37 0.39]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.02 0.   0.06 0.1  0.3  0.74 0.78]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.03 0.   0.09 0.15 0.45 1.11 1.17]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.04 0.   0.12 0.2  0.6  1.48 1.56]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.05 0.   0.15 0.25 0.75 1.85 1.95]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.06 0.   0.18 0.3  0.9  2.22 2.34]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.07 0.   0.21 0.35 1.05 2.59 2.73]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.08 0.   0.24 0.4  1.2  2.96 3.12]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.09 0.   0.27 0.45 1.35 3.33 3.51]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.  0.  0.  0.  0.1 0.  0.3 0.5 1.5 3.7 3.9]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.11 0.   0.33 0.55 1.65 4.07 4.29]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.12 0.   0.36 0.6  1.8  4.44 4.68]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.13 0.   0.39 0.65 1.95 4.81 5.07]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.14 0.   0.42 0.7  2.1  5.18 5.46]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.15 0.   0.45 0.75 2.25 5.55 5.85]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.16 0.   0.48 0.8  2.4  5.92 6.24]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.17 0.   0.51 0.85 2.55 6.29 6.63]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.18 0.   0.54 0.9  2.7  6.66 7.02]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.19 0.   0.57 0.95 2.85 7.03 7.41]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.  0.  0.  0.  0.2 0.  0.6 1.  3.  7.4 7.8]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.21 0.   0.63 1.05 3.15 7.77 8.19]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.22 0.   0.66 1.1  3.3  8.14 8.58]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.23 0.   0.69 1.15 3.45 8.51 8.97]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.24 0.   0.72 1.2  3.6  8.88 9.36]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.25 0.   0.75 1.25 3.75 9.25 9.75]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.26  0.    0.78  1.3   3.9   9.62 10.14]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.27  0.    0.81  1.35  4.05  9.99 10.53]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.28  0.    0.84  1.4   4.2  10.36 10.92]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.29  0.    0.87  1.45  4.35 10.73 11.31]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.3  0.   0.9  1.5  4.5 11.1 11.7]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.31  0.    0.93  1.55  4.65 11.47 12.09]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.32  0.    0.96  1.6   4.8  11.84 12.48]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.33  0.    0.99  1.65  4.95 12.21 12.87]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.34  0.    1.02  1.7   5.1  12.58 13.26]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.35  0.    1.05  1.75  5.25 12.95 13.65]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.36  0.    1.08  1.8   5.4  13.32 14.04]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.37  0.    1.11  1.85  5.55 13.69 14.43]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.38  0.    1.14  1.9   5.7  14.06 14.82]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.39  0.    1.17  1.95  5.85 14.43 15.21]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.4  0.   1.2  2.   6.  14.8 15.6]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.41  0.    1.23  2.05  6.15 15.17 15.99]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.42  0.    1.26  2.1   6.3  15.54 16.38]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.43  0.    1.29  2.15  6.45 15.91 16.77]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.44  0.    1.32  2.2   6.6  16.28 17.16]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.45  0.    1.35  2.25  6.75 16.65 17.55]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.46  0.    1.38  2.3   6.9  17.02 17.94]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.47  0.    1.41  2.35  7.05 17.39 18.33]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.48  0.    1.44  2.4   7.2  17.76 18.72]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.49  0.    1.47  2.45  7.35 18.13 19.11]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.5  0.   1.5  2.5  7.5 18.5 19.5]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.51  0.    1.53  2.55  7.65 18.87 19.89]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.52  0.    1.56  2.6   7.8  19.24 20.28]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.53  0.    1.59  2.65  7.95 19.61 20.67]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.54  0.    1.62  2.7   8.1  19.98 21.06]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.55  0.    1.65  2.75  8.25 20.35 21.45]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.56  0.    1.68  2.8   8.4  20.72 21.84]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.57  0.    1.71  2.85  8.55 21.09 22.23]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.58  0.    1.74  2.9   8.7  21.46 22.62]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.59  0.    1.77  2.95  8.85 21.83 23.01]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.6  0.   1.8  3.   9.  22.2 23.4]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.61  0.    1.83  3.05  9.15 22.57 23.79]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.62  0.    1.86  3.1   9.3  22.94 24.18]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.63  0.    1.89  3.15  9.45 23.31 24.57]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.64  0.    1.92  3.2   9.6  23.68 24.96]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.65  0.    1.95  3.25  9.75 24.05 25.35]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.66  0.    1.98  3.3   9.9  24.42 25.74]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.67  0.    2.01  3.35 10.05 24.79 26.13]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.68  0.    2.04  3.4  10.2  25.16 26.52]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.69  0.    2.07  3.45 10.35 25.53 26.91]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.7  0.   2.1  3.5 10.5 25.9 27.3]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.71  0.    2.13  3.55 10.65 26.27 27.69]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.72  0.    2.16  3.6  10.8  26.64 28.08]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.73  0.    2.19  3.65 10.95 27.01 28.47]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.74  0.    2.22  3.7  11.1  27.38 28.86]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.75  0.    2.25  3.75 11.25 27.75 29.25]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.76  0.    2.28  3.8  11.4  28.12 29.64]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.77  0.    2.31  3.85 11.55 28.49 30.03]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.78  0.    2.34  3.9  11.7  28.86 30.42]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.79  0.    2.37  3.95 11.85 29.23 30.81]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.8  0.   2.4  4.  12.  29.6 31.2]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.81  0.    2.43  4.05 12.15 29.97 31.59]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.82  0.    2.46  4.1  12.3  30.34 31.98]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.83  0.    2.49  4.15 12.45 30.71 32.37]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.84  0.    2.52  4.2  12.6  31.08 32.76]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.85  0.    2.55  4.25 12.75 31.45 33.15]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.86  0.    2.58  4.3  12.9  31.82 33.54]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.87  0.    2.61  4.35 13.05 32.19 33.93]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.88  0.    2.64  4.4  13.2  32.56 34.32]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.89  0.    2.67  4.45 13.35 32.93 34.71]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.   0.   0.   0.   0.9  0.   2.7  4.5 13.5 33.3 35.1]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.91  0.    2.73  4.55 13.65 33.67 35.49]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.92  0.    2.76  4.6  13.8  34.04 35.88]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.93  0.    2.79  4.65 13.95 34.41 36.27]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.94  0.    2.82  4.7  14.1  34.78 36.66]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.95  0.    2.85  4.75 14.25 35.15 37.05]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.96  0.    2.88  4.8  14.4  35.52 37.44]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.97  0.    2.91  4.85 14.55 35.89 37.83]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.98  0.    2.94  4.9  14.7  36.26 38.22]
+temp recall: 0.9
+temp recall dist(10\% per bucket):  [ 0.    0.    0.    0.    0.99  0.    2.97  4.95 14.85 36.63 38.61]
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 198, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 394, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 801, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 734, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 construction 4 128"
+	User time (seconds): 44.72
+	System time (seconds): 10.46
+	Percent of CPU this job got: 49%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:52.33
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6230396
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 5516183
+	Voluntary context switches: 25067
+	Involuntary context switches: 1137086
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:41
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists, then drop it
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 135, in <module>
+    client.create_collection(collection_name=c_name, 
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 92, in create_collection
+    return self._create_collection_with_schema(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 703, in _create_collection_with_schema
+    self.create_index(collection_name, index_params, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 155, in create_index
+    self._create_index(collection_name, index_param, timeout=timeout, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 166, in _create_index
+    conn.create_index(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 990, in create_index
+    index_success, fail_reason = self.wait_for_creating_index(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 1119, in wait_for_creating_index
+    time.sleep(0.5)
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 construction 4 128"
+	User time (seconds): 4.78
+	System time (seconds): 0.38
+	Percent of CPU this job got: 379%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.36
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1087716
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 26175
+	Voluntary context switches: 548
+	Involuntary context switches: 1184
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:41
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists, then drop it
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 135, in <module>
+    client.create_collection(collection_name=c_name, 
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 92, in create_collection
+    return self._create_collection_with_schema(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 704, in _create_collection_with_schema
+    self.load_collection(collection_name, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 772, in load_collection
+    conn.load_collection(collection_name, timeout=timeout, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 1170, in load_collection
+    self.wait_for_loading_collection(collection_name, timeout, is_refresh=refresh)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 1195, in wait_for_loading_collection
+    time.sleep(Config.WaitTimeDurationWhenLoad)
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 construction 4 128"
+	User time (seconds): 4.46
+	System time (seconds): 0.38
+	Percent of CPU this job got: 237%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.04
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1087708
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 26215
+	Voluntary context switches: 563
+	Involuntary context switches: 1199
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:42
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists, then drop it
+get dataset size: 1000000  d: 128
+dim: 128
+_N: 1000000  N: 1000000
+partition M: 4
+nlist: 1000
+start insertion
+insert batch: 0.0
+insert batch: 1.0
+insert batch: 2.0
+insert batch: 3.0
+insert batch: 4.0
+insert batch: 5.0
+insert batch: 6.0
+insert batch: 7.0
+insert batch: 8.0
+insert batch: 9.0
+insert suc, time cost: 35.17601251602173
+construction done
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 construction 4 128"
+	User time (seconds): 42.08
+	System time (seconds): 6.92
+	Percent of CPU this job got: 88%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:55.27
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6231828
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4621786
+	Voluntary context switches: 2562
+	Involuntary context switches: 1390
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 64
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:43
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+temp recall: 0.995
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.03 0.96]
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  1000  postive res from  100000  results, recall@ 10 : 0.01
+recall dist(10\% per bucket):  [9.896e-01 3.000e-04 1.000e-04 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 0.000e+00 1.000e-04 3.000e-04 9.600e-03]
+10000  queries cost: 67.95185112953186 , qps: 147.16302549194282
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 8.78
+	System time (seconds): 3.14
+	Percent of CPU this job got: 17%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 101256
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 32226
+	Voluntary context switches: 22801
+	Involuntary context switches: 1172144
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 128
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:44
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+temp recall: 0.994
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.01 0.04 0.95]
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  999  postive res from  100000  results, recall@ 10 : 0.00999
+recall dist(10\% per bucket):  [9.896e-01 3.000e-04 1.000e-04 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 0.000e+00 1.000e-04 4.000e-04 9.500e-03]
+10000  queries cost: 63.06492018699646 , qps: 158.5667589897613
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 9.84
+	System time (seconds): 3.73
+	Percent of CPU this job got: 20%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 98212
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 31625
+	Voluntary context switches: 22459
+	Involuntary context switches: 690489
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 120
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:47
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+checkpoint  0 temp recall: 1.0
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.01]
+checkpoint  100 temp recall: 0.994059405940594
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 9.90099010e-05 3.96039604e-04 9.50495050e-03]
+checkpoint  200 temp recall: 0.9925373134328358
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 4.97512438e-05 6.46766169e-04 9.30348259e-03]
+checkpoint  300 temp recall: 0.9906976744186047
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 3.32225914e-05 8.63787375e-04 9.10299003e-03]
+checkpoint  400 temp recall: 0.9895261845386534
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 7.48129676e-05 8.97755611e-04 9.02743142e-03]
+checkpoint  500 temp recall: 0.9890219560878244
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.99600798e-05
+ 7.98403194e-05 8.78243513e-04 9.02195609e-03]
+checkpoint  600 temp recall: 0.9900166389351082
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.66389351e-05
+ 8.31946755e-05 7.82029950e-04 9.11813644e-03]
+checkpoint  700 temp recall: 0.9907275320970043
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.42653352e-05
+ 8.55920114e-05 7.13266762e-04 9.18687589e-03]
+checkpoint  800 temp recall: 0.9908863920099875
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.24843945e-05
+ 8.73907615e-05 6.99126092e-04 9.20099875e-03]
+checkpoint  900 temp recall: 0.9917869034406215
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.10987791e-05
+ 7.76914539e-05 6.32630411e-04 9.27857936e-03]
+checkpoint  1000 temp recall: 0.9921078921078921
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 9.99000999e-06
+ 7.99200799e-05 5.99400599e-04 9.31068931e-03]
+checkpoint  1100 temp recall: 0.9918256130790191
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 9.08265213e-06
+ 9.08265213e-05 6.08537693e-04 9.29155313e-03]
+checkpoint  1200 temp recall: 0.9918401332223148
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 8.32639467e-06
+ 8.32639467e-05 6.24479600e-04 9.28393006e-03]
+checkpoint  1300 temp recall: 0.9918524212144504
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 7.68639508e-06
+ 8.45503459e-05 6.22598002e-04 9.28516526e-03]
+checkpoint  1400 temp recall: 0.992005710206995
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 7.13775874e-06
+ 8.56531049e-05 6.06709493e-04 9.30049964e-03]
+checkpoint  1500 temp recall: 0.9923384410393071
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 6.66222518e-06
+ 7.99467022e-05 5.86275816e-04 9.32711526e-03]
+checkpoint  1600 temp recall: 0.9918800749531543
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 6.24609619e-06
+ 9.36914428e-05 6.05871330e-04 9.29419113e-03]
+checkpoint  1700 temp recall: 0.991358024691358
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.17577895e-05
+ 1.05820106e-04 6.17283951e-04 9.26513815e-03]
+checkpoint  1800 temp recall: 0.9910605219322599
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.11049417e-05
+ 1.16601888e-04 6.27429206e-04 9.24486396e-03]
+checkpoint  1900 temp recall: 0.9905312993161494
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.57811678e-05
+ 1.15728564e-04 6.68069437e-04 9.20042083e-03]
+checkpoint  2000 temp recall: 0.9905047476261869
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 4.99750125e-06 1.49925037e-05
+ 1.14942529e-04 6.54672664e-04 9.21039480e-03]
+checkpoint  2100 temp recall: 0.9904807234650167
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 4.75963827e-06 1.42789148e-05
+ 1.23750595e-04 6.42551166e-04 9.21465969e-03]
+checkpoint  2200 temp recall: 0.9902771467514766
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 4.54338937e-06 1.36301681e-05
+ 1.31758292e-04 6.49704680e-04 9.20036347e-03]
+checkpoint  2300 temp recall: 0.9900478053020426
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 4.34593655e-06 1.30378096e-05
+ 1.47761843e-04 6.43198609e-04 9.19165580e-03]
+checkpoint  2400 temp recall: 0.990045814244065
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 4.16493128e-06 1.24947938e-05
+ 1.45772595e-04 6.49729279e-04 9.18783840e-03]
+checkpoint  2500 temp recall: 0.9901639344262295
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.99840064e-06 1.19952019e-05
+ 1.39944022e-04 6.51739304e-04 9.19232307e-03]
+checkpoint  2600 temp recall: 0.9902345251826221
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.84467512e-06 1.53787005e-05
+ 1.34563629e-04 6.45905421e-04 9.20030757e-03]
+checkpoint  2700 temp recall: 0.9903369122547204
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.70233247e-06 1.48093299e-05
+ 1.33283969e-04 6.40503517e-04 9.20770085e-03]
+checkpoint  2800 temp recall: 0.9901820778293466
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.57015352e-06 1.42806141e-05
+ 1.35665834e-04 6.53338094e-04 9.19314531e-03]
+checkpoint  2900 temp recall: 0.9900723888314374
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.44708721e-06 1.37883488e-05
+ 1.41330576e-04 6.54946570e-04 9.18648742e-03]
+checkpoint  3000 temp recall: 0.9897700766411196
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.33222259e-06 1.66611130e-05
+ 1.49950017e-04 6.59780073e-04 9.17027657e-03]
+checkpoint  3100 temp recall: 0.9898097387939374
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.22476620e-06 1.61238310e-05
+ 1.48339245e-04 6.61077072e-04 9.17123509e-03]
+checkpoint  3200 temp recall: 0.9899718837863167
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.12402374e-06 1.56201187e-05
+ 1.46829116e-04 6.49796938e-04 9.18462980e-03]
+checkpoint  3300 temp recall: 0.9901242047864284
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 3.02938503e-06 1.51469252e-05
+ 1.42381097e-04 6.45259012e-04 9.19418358e-03]
+checkpoint  3400 temp recall: 0.9903263745957072
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.94031167e-06 1.47015584e-05
+ 1.38194649e-04 6.35107321e-04 9.20905616e-03]
+checkpoint  3500 temp recall: 0.9903456155384176
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.85632676e-06 1.42816338e-05
+ 1.34247358e-04 6.42673522e-04 9.20594116e-03]
+checkpoint  3600 temp recall: 0.9902804776450986
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.77700639e-06 1.38850319e-05
+ 1.38850319e-04 6.41488475e-04 9.20299917e-03]
+checkpoint  3700 temp recall: 0.9903269386652256
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.70197244e-06 1.35098622e-05
+ 1.35098622e-04 6.45771413e-04 9.20291813e-03]
+checkpoint  3800 temp recall: 0.990370955011839
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.63088661e-06 1.57853197e-05
+ 1.31544330e-04 6.41936333e-04 9.20810313e-03]
+checkpoint  3900 temp recall: 0.9904639835939503
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 2.56344527e-06 1.53806716e-05
+ 1.30735709e-04 6.35734427e-04 9.21558575e-03]
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 197, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 394, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 801, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 734, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 8.50
+	System time (seconds): 3.65
+	Percent of CPU this job got: 37%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:32.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 100700
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 27404
+	Voluntary context switches: 9452
+	Involuntary context switches: 609809
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 80
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:47
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json
+query range file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json
+K: 10
+nprobe: 10
+collection name: collection_sift1M_sel_1_8_random_nprobe10
+collection  collection_sift1M_sel_1_8_random_nprobe10  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+checkpoint  0 temp recall: 1.0
+temp recall dist(10\% per bucket):  [0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.01]
+checkpoint  100 temp recall: 0.994059405940594
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 9.90099010e-05 3.96039604e-04 9.50495050e-03]
+checkpoint  200 temp recall: 0.9925373134328358
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 4.97512438e-05 6.46766169e-04 9.30348259e-03]
+checkpoint  300 temp recall: 0.9906976744186047
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 3.32225914e-05 8.63787375e-04 9.10299003e-03]
+checkpoint  400 temp recall: 0.9895261845386534
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 7.48129676e-05 8.97755611e-04 9.02743142e-03]
+checkpoint  500 temp recall: 0.9890219560878244
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.99600798e-05
+ 7.98403194e-05 8.78243513e-04 9.02195609e-03]
+checkpoint  600 temp recall: 0.9900166389351082
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.66389351e-05
+ 8.31946755e-05 7.82029950e-04 9.11813644e-03]
+checkpoint  700 temp recall: 0.9907275320970043
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.42653352e-05
+ 8.55920114e-05 7.13266762e-04 9.18687589e-03]
+checkpoint  800 temp recall: 0.9908863920099875
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.24843945e-05
+ 8.73907615e-05 6.99126092e-04 9.20099875e-03]
+checkpoint  900 temp recall: 0.9917869034406215
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 1.10987791e-05
+ 7.76914539e-05 6.32630411e-04 9.27857936e-03]
+checkpoint  1000 temp recall: 0.9921078921078921
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 9.99000999e-06
+ 7.99200799e-05 5.99400599e-04 9.31068931e-03]
+checkpoint  1100 temp recall: 0.9918256130790191
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 9.08265213e-06
+ 9.08265213e-05 6.08537693e-04 9.29155313e-03]
+checkpoint  1200 temp recall: 0.9918401332223148
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 8.32639467e-06
+ 8.32639467e-05 6.24479600e-04 9.28393006e-03]
+checkpoint  1300 temp recall: 0.9918524212144504
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 7.68639508e-06
+ 8.45503459e-05 6.22598002e-04 9.28516526e-03]
+checkpoint  1400 temp recall: 0.992005710206995
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 7.13775874e-06
+ 8.56531049e-05 6.06709493e-04 9.30049964e-03]
+checkpoint  1500 temp recall: 0.9923384410393071
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 6.66222518e-06
+ 7.99467022e-05 5.86275816e-04 9.32711526e-03]
+checkpoint  1600 temp recall: 0.9918800749531543
+temp recall dist(10\% per bucket):  [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 6.24609619e-06
+ 9.36914428e-05 6.05871330e-04 9.29419113e-03]
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 197, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 394, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 801, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 734, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sel_1_8_random/attr_sel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/qrangesel_1_8_random.json /mnt/data/mocheng/dataset/sift/sel_1_8_random/sif_gt_10.json 10 10 collection_sift1M_sel_1_8_random_nprobe10 query 4 128"
+	User time (seconds): 8.31
+	System time (seconds): 4.08
+	Percent of CPU this job got: 94%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 101260
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 28476
+	Voluntary context switches: 4334
+	Involuntary context switches: 771877
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,23 @@
+Start time: 22:32
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/sift/data_query.bin ...Metadata: #pts = 10000, #dims = 128, aligned_dim = 128... allocating aligned memory of 5120000 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/sift/sel_1_8_random/sift_gt_10.bin, size: 400008, cache_size: 400008
+Reading truthset file /mnt/data/mocheng/dataset/sift/sel_1_8_random/sift_gt_10.bin ...
+Metadata: #pts = 10000, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.0790468s
+From graph header, expected_file_size: 163907356, _max_observed_degree: 40, _start: 123742, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/sift/diskann/index/index_diskann_sel_1_8_random_M40_efc1000/index_diskann...done. Index has 1000000 nodes and 39976833 out-edges, _start is set to 123742
+Identified 8 distinct label(s)
+Num frozen points:0 _nd: 1000000 _start: 123742 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 1000000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 300     1087.06           1118.35              919.84        5404.74       89.74
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/sift/diskann/result/result_sel_1_8_random_efs400_300_idx_uint32.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/sift/diskann/result/result_sel_1_8_random_efs400_300_dists_float.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.

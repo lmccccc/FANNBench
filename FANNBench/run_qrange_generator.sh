@@ -3,7 +3,7 @@ export debugSearchFlag=0
 
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh
+source ./vars.sh construction
 
 # now=$(date +"%m-%d-%Y")
 # dir=${now}_${dataset}
@@ -25,16 +25,6 @@ source ./vars.sh
 # output_dataset_attr_file="../../dataset/sift/sift_attr.json"
 # output_query_range_file="../../dataset/sift/sift_qrange.json"
 
-#acorn
-if [ "$query_method" = "keyword" ]; then
-    echo "for keyword"
-elif
-    [ "$query_method" = "range" ]; then
-    echo "for range"
-else
-    echo "method not support"
-    exit 1
-fi
 
 
 # TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_sift_n=${N}.txt
@@ -42,10 +32,11 @@ fi
 python utils/qrangeGenerator.py ${query_size} \
                                 ${query_file} \
                                 ${query_range_file} \
-                                ${query_method} \
+                                ${label_cnt} \
                                 ${label_range} \
                                 ${query_label_cnt} \
                                 ${distribution} \
+                                ${query_label} \
                                 ${centroid_file}
 
 

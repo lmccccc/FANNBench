@@ -118,15 +118,16 @@ int main(int argc, char *argv[]) {
 
     // load metadata(attr)
     n_centroids = gamma;
-    std::vector<int> metadata = load_json_to_vector<int>(attr_file);
-    // printf("loaded base attributes, size: %ld\n", metadata.size());
-    std::cout << "loaded base attributes, size:" << metadata.size() << std::endl;
-    // std::vector<int> metadata = load_ab(dataset, gamma, assignment_type, N);
+    std::vector<int> metadata;// = load_json_to_vector<int>(attr_file);
     metadata.resize(N);
-    assert(N == metadata.size());
+    // printf("loaded base attributes, size: %ld\n", metadata.size());
+    // std::cout << "loaded base attributes, size:" << metadata.size() << std::endl;
+    // std::vector<int> metadata = load_ab(dataset, gamma, assignment_type, N);
+    // metadata.resize(N);
+    // assert(N == metadata.size());
     // printf("[%.3f s] Loaded attributions, %ld found\n", 
     //     elapsed() - t0, metadata.size());
-    std::cout << "[ " << elapsed() - t0 << "s ] Loaded attributions, " << metadata.size() << " found" << std::endl;
+    // std::cout << "[ " << elapsed() - t0 << "s ] Loaded attributions, " << metadata.size() << " found" << std::endl;
 
    
 

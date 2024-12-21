@@ -6,7 +6,7 @@ import math
 import time
 import os
 import pickle
-from defination import check_dir, check_file, ivecs_read, fvecs_read, bvecs_read, read_attr, read_file
+from defination import check_dir, check_file, ivecs_read, fvecs_read, bvecs_read, read_attr, read_file, read_keywords
 
 if __name__ == "__main__":
     # ${dataset} 
@@ -17,9 +17,9 @@ if __name__ == "__main__":
     # ${output_dataset_attr_file} 
     # ${output_query_range_file} 
     # ${method}
-    if not len(sys.argv) == 11 :
+    if not len(sys.argv) == 13 :
         print("error wrong argument")
-        exit()
+        sys.exit(-1)
     else:
         N = int(sys.argv[1])
         print("N:", N)
@@ -57,6 +57,12 @@ if __name__ == "__main__":
         index_file = sys.argv[10]
         print("index file location:", index_file)
 
+        mode = sys.argv[11]
+        print("mode:", mode)
+
+        label_cnt = int(sys.argv[12])
+        print("label cnt:", label_cnt)
+
 
     # N, Nt, D = 10000, 1000, 128
     # X = np.random.random((N, D)).astype(np.float32)  # 10,000 128-dim vectors to be searched
@@ -76,7 +82,10 @@ if __name__ == "__main__":
     assert(_d == d)
     print("get train szie:", Nt)
 
-    attr = read_attr(dataset_attr_file)
+    if label_cnt == 1:
+        attr = read_attr(dataset_attr_file)
+    else:
+        attr = read_keywords(dataset_attr_file)
     _N = len(attr)
     print("_N:", _N, " N:", N)
     assert(_N == N)
@@ -94,7 +103,7 @@ if __name__ == "__main__":
     print("ngt=", Ngt, " nq=", Nq, " k=", K)
     assert(Ngt == Nq * K)
 
-    if os.path.isfile(index_file):
+    if os.path.isfile(index_file) and (not mode == "construction"):
         print("load index from ", index_file)
         with open (index_file, 'rb') as fp:
             e = pickle.load(fp)
@@ -115,16 +124,35 @@ if __name__ == "__main__":
         print("index save to ", index_file)
         with open(index_file, 'wb') as fp:
             pickle.dump(e, fp)
+        if mode == "construction":
+            print("construction done")
+            exit()
 
     # Search
+
+    if(label_cnt > 1):
+        print("keyword search")
+    else:
+        print("range search")
     t_total = 0
     ids = np.zeros(Nq * K, dtype='int')
     dists = np.zeros(Nq * K, dtype='float')
+    if label_cnt > 1:
+        keyword_global_subset = []
+        for ind in range(N):
+            for j in range(len(attr[ind])):
+                if attr[ind][j] == qrange[0]:
+                    keyword_global_subset.append(ind)
+                    break
+        keyword_global_subset = np.array(keyword_global_subset)
     for ind, q in enumerate(query):
-        condition = (attr>=qrange[ind*2]) & (attr<= qrange[ind*2+1])
-        subset = np.where(condition)[0]
+        if label_cnt > 1:
+            subset = keyword_global_subset
+        else:
+            condition = (attr>=qrange[ind*2]) & (attr<= qrange[ind*2+1])
+            subset = np.where(condition)[0]
         t0 = time.time()
-        _ids, _dists = e.query(q=q, topk=K, target_ids=subset)
+        _ids, _dists = e.query(q=q, topk=K, target_ids=subset, L=1000)
         t1 = time.time()
         t_total += t1 - t0
         dists[ind*K: ind*K + K] = _dists
@@ -151,3 +179,11 @@ if __name__ == "__main__":
     print("recall dist(10\% per bucket): ", hist)
     print("qps: ", Nq / t_total)
     # print(ids, dists)  # e.g., [7484 8173 1556] [15.06257439 15.38533878 16.16935158]
+
+
+    # for i in range(3):
+    #     print("---------------------")
+    #     print("example ", i)
+    #     print("ids:", ids[i*K: i*K + K])
+    #     print("attrs:", attr[ids[i*K]: ids[i*K + K]])
+    #     print("qrange:", qrange[i*2: i*2 + 2])

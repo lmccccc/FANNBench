@@ -9,7 +9,6 @@
 
 #include <faiss/IndexFlat.h>
 #include <faiss/IndexHNSW.h>
-#include <faiss/IndexACORN.h>
 #include <faiss/index_io.h>
 
 #include <sys/stat.h>

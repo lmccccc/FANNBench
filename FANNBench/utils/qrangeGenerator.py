@@ -4,78 +4,169 @@ import os
 from defination import *
 import sys
 import json
+import math
 
 
+'''
+attr_cnt > 1: keyword query(more than one attr for each vector)
+    random: unit distributionribution
+        query_attr_size = 1: generate one query attr defined by "query_attr", used for certain key query. suitable for diskann, etc.
+        query_attr_size = attr_cnt: generate multi attr for one query, size="query_attr_size", used for nhq.
+    in_dist/out_dist:
+        query_attr_size = 1: generate one query attr, based on the distance between query and centroid. used for diskann, etc.
+        query_attr_size = attr_cnt: generate multi attr for one query, based on the distance between query and centroid, size="query_attr_size", used for nhq.
 
-# input: database vector size, query size, attribution range(like [0,1)), query count(like {[0,0.2), [0.3, 0.5))})
-def genearte_qrange(method, query_size, attr_range, query_restriction_size, dist, centroid_file=None, query_file=None):
+attr_cnt = 1: range query
+    random: unit distributionribution, range=[random, random+query_attr_size-1].
+    in_dist/out_dist: generate one range query, range=[random-query_attr_size/2, random+query_attr_size/2], based on the distance between query and centroid.
+'''
+def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribution, query_attr, centroid_file=None, query_file=None):
     #generate attribution and query range
-    if(method == "float_range"):# float range
+    if(attr_cnt > 1):# keyword query. for each vector may have more than one attr. So query should be only one fixed attr
         #attr format: random integer from 0 to 300
-
-        #query range format: random range from 0 to 300
-        queryattr = np.random.uniform(low=0, high=attr_range, size=(query_size, 2 * query_restriction_size))
-        for i in range(query_size):
-            rand_size = random.randint(1, query_restriction_size)
-            queryattr[i][0 : rand_size * 2] = np.sort(queryattr[i][0 : rand_size * 2])
-            queryattr[i][rand_size*2 :] = -1
-
-
-    elif(method == "keyword"):# keyword
-        #key query format: random key from 0 to 30, no more than 5 keys
-        if dist == "random":
-            queryattr = np.random.randint(0, attr_range, (query_size, 2 * query_restriction_size), dtype='int32')
-            for i in range(query_size):
-                rand_size = random.randint(1, query_restriction_size)
-                queryattr[i][rand_size*2 :] = -1
-                # set odd queryattr to even
-                queryattr[i][1::2] = queryattr[i][::2]
-        elif dist == "in_dist":
-            check_file(centroid_file)
-            centroids = np.loadtxt(centroid_file)
-            query = fvecs_read(query_file)
-            qattr = np.zeros((query.shape[0]), dtype='int32')
-            for idx, _data in enumerate(query):
-                distance = np.linalg.norm(_data - centroids, axis=1)
-                min_index = np.where(distance == np.min(distance))[0]
-                qattr[idx] = min_index[0]
-            queryattr = np.zeros((query_size, 2 * query_restriction_size), dtype='int32')
-            for i in range(query_size):
-                queryattr[i][0 : 2] = qattr[i]
-                queryattr[i][2:] = qattr[i]
-        elif dist == "out_dist":
-            check_file(centroid_file)
-            centroids = np.loadtxt(centroid_file)
-            query = fvecs_read(query_file)
-            qattr = np.zeros((query.shape[0]), dtype='int32')
-            for idx, _data in enumerate(query):
-                distance = np.linalg.norm(_data - centroids, axis=1)
-                max_index = np.where(distance == np.max(distance))[0]
-                qattr[idx] = max_index[0]
-            queryattr = np.zeros((query_size, 2 * query_restriction_size), dtype='int32')
-            for i in range(query_size):
-                queryattr[i][0 : 2] = qattr[i]
-                queryattr[i][2:] = qattr[i]
-
+        if distribution == "random":
+            if query_attr_size == 1:
+                #query range format: random range from 0 to 300
+                queryattr = np.full((query_size, 2), query_attr)
+            elif query_attr_size == attr_cnt: # nhq
+                queryattr = np.random.randint(0, attr_range, (query_size, query_attr_size), dtype='int32')
+            else:
+                print("error, query_attr_size should be 1 or attr_cnt")
         else:
-            print("err no such dist")
-            exit()
+            check_file(centroid_file)
+            centroids = np.loadtxt(centroid_file)
+            query = fvecs_read(query_file)
+            qattr = np.zeros((query.shape[0]), dtype='int32')
+            elements = [i for i in range(attr_range)]
 
-    # int range, to match diskann that only one label supported, range is [a, a]
-    elif(method == "keyword_range"):
-        #key query format: random key from 0 to attr_range, no more than query_size keys
-        queryattr = np.random.randint(0, attr_range, (query_size, 2 * query_restriction_size), dtype='int32')
-        for i in range(query_size):
-            # rand_size = random.randint(1, query_restriction_size)
-            # queryattr[i][0 : rand_size * 2] = np.sort(queryattr[i][0 : rand_size * 2])
-            # queryattr[i][rand_size*2 :] = -1
+            if query_attr_size == 1:
 
-            queryattr[i][0 : 2] = np.sort(queryattr[i][0 : 2])
+
+                if distribution == "in_dist":
+                    for idx, _data in enumerate(query):
+                        distance = np.linalg.norm(_data - centroids, axis=1)
+                        dis_sum = np.sum(distance)
+                        probabilities = 1 - distance/dis_sum
+                        probabilities = probabilities
+                        selected_element = random.choices(elements, weights=probabilities, k=1)
+                        qattr[idx] = elements.index(selected_element[0])
+
+                elif distribution == "out_dist":
+                    for idx, _data in enumerate(query):
+                        distance = np.linalg.norm(_data - centroids, axis=1)
+                        dis_sum = np.sum(distance)
+                        probabilities = distance/dis_sum
+                        probabilities = probabilities
+                        selected_element = random.choices(elements, weights=probabilities, k=1)
+                        qattr[idx] = elements.index(selected_element[0])
+                
+                queryattr = np.zeros((query_size, 2), dtype='int32')
+                for i in range(query_size):
+                    queryattr[i][0 : 2] = qattr[i]
+                    queryattr[i][2:] = qattr[i]
+
+            elif query_attr_size == attr_cnt: # nhq
+                if distribution == "in_dist":
+                    for idx, _data in enumerate(query):
+                        distance = np.linalg.norm(_data - centroids, axis=1)
+                        dis_sum = np.sum(distance)
+                        probabilities = 1 - distance/dis_sum
+                        probabilities = probabilities
+                        selected_element = random.choices(elements, weights=probabilities, k=query_attr_size)
+                        qattr[idx] = elements.index(selected_element)
+
+                elif distribution == "out_dist":
+                    for idx, _data in enumerate(query):
+                        distance = np.linalg.norm(_data - centroids, axis=1)
+                        dis_sum = np.sum(distance)
+                        probabilities = distance/dis_sum
+                        probabilities = probabilities
+                        selected_element = random.choices(elements, weights=probabilities, k=query_attr_size)
+                        qattr[idx] = elements.index(selected_element)
+                
+                queryattr = qattr
+            else:
+                print("error, query_attr_size should be 1 or attr_cnt")
+
+
+
+    elif(attr_cnt == 1):# range query. For each vector with only one attr.
+        #key query format: random key from 0 to 30, no more than 5 keys
+        if distribution == "random":
+            queryattr = np.random.randint(0, attr_range-query_attr_size+1, (query_size, 2), dtype='int32') # [0, attr_range-query_attr_size+1)
+            queryattr[:][1::2] = queryattr[:][::2]+query_attr_size-1 # [x, x+query_attr_size]
+        else:
+            check_file(centroid_file)
+            centroids = np.loadtxt(centroid_file)
+            query = fvecs_read(query_file)
+            qattr = np.zeros((query.shape[0]), dtype='int32')
             
-            # set odd queryattr to even
-            # queryattr[i][1::2] = queryattr[i][::2]
+
+            centroid_size = min(128, attr_range)
+            segment_size = math.ceil(attr_range / centroid_size)
+            elements = [i for i in range(centroid_size)]
+            element_vals = [elements[i]*segment_size for i in range(centroid_size)]
+            if distribution == "in_dist":
+                for idx, _data in enumerate(query):
+                    distance = np.linalg.norm(_data - centroids, axis=1)
+                    dis_sum = np.sum(distance)
+                    probabilities = 1 - distance/dis_sum
+                    selected_element = random.choices(elements, weights=probabilities, k=1)[0]
+
+
+                    if attr_range <=128:
+                        qattr[idx] = selected_element
+                    else:
+                        # generate random int by normal distribution (selected_element[0], attr_range/centroid_size)
+                        mean = element_vals[selected_element] + segment_size // 2
+                        var = attr_range/centroid_size
+                        while True:
+                            qattr[idx] = int(np.random.normal(mean, var))
+                            if qattr[idx] >= 0 and qattr[idx] < attr_range:
+                                break
+
+                queryattr = np.zeros((query_size, 2), dtype='int32')
+                if(query_attr_size == 1):
+                    for i in range(query_size):
+                        queryattr[i][0 : 2] = qattr[i]
+                        queryattr[i][2:] = qattr[i]
+                else:
+                    half_range = query_attr_size // 2
+                    for i in range(query_size):
+                        queryattr[i][0] = qattr[i] - half_range
+                        if queryattr[i][0] < 0:
+                            queryattr[i][0] = 0
+                        queryattr[i][1] = qattr[i] + half_range
+                        if queryattr[i][1] >= attr_range:
+                            queryattr[i][1] = attr_range - 1
+
+            elif distribution == "out_dist":
+                for idx, _data in enumerate(query):
+                    distance = np.linalg.norm(_data - centroids, axis=1)
+
+                    dis_sum = np.sum(distance)
+                    probabilities = distance/dis_sum
+                    selected_element = random.choices(elements, weights=probabilities, k=1)
+                    qattr[idx] = elements.index(selected_element[0])
+
+                    # max_index = np.where(distance == np.max(distance))[0]
+                    # qattr[idx] = max_index[0]
+                queryattr = np.zeros((query_size, 2), dtype='int32')
+                for i in range(query_size):
+                    queryattr[i][0 : 2] = qattr[i]
+                    queryattr[i][2:] = qattr[i]
+
+            else:
+                print("err no such distribution")
+                exit()
+        
+
+        
+
+
+
     else:
-        print("err no such method")
+        print("err no support such attr_cnt:", attr_cnt)
         exit()
 
     return queryattr
@@ -150,33 +241,33 @@ if __name__ == "__main__":
         print("query range file:", output_query_range_file)
         check_dir(output_query_range_file)
 
-        method_str = sys.argv[4]
-        if(method_str.lower() == "range" or method_str.lower() == "keyword"):
-            print("query range generate method: ", method_str)
-        else:
-            print("can't support such method: ", method_str)
+        attr_cnt = int(sys.argv[4])
+        print("attr count: ", attr_cnt)
 
-        label_cnt = int(sys.argv[5])
-        print("label count: ", label_cnt)
+        attr_range = int(sys.argv[5])
+        print("attr count: ", attr_range)
 
-        qlabel_per_query = int(sys.argv[6])
-        print("label per query: ", qlabel_per_query)
+        query_attr_size = int(sys.argv[6])
+        print("query attr count: ", query_attr_size)
 
-        dist = sys.argv[7]
-        print("distribution: ", dist)
+        distribution = sys.argv[7]
+        print("distributionribution: ", distribution)
 
-        if dist == "in_dist" or dist == "out_dist":
-            centroid_file = sys.argv[8]
+        query_attr = int(sys.argv[8])
+        print("query attr: ", query_attr)
+
+        if distribution == "in_dist" or distribution == "out_dist":
+            centroid_file = sys.argv[9]
             print("centroid file:", centroid_file)
             # directionary check
             # attr_size, query_size = check_data_size(dataset_file, query_file, attr_size, query_size)
 
             #generate attributions
-            queryattr = genearte_qrange(method_str, query_size, label_cnt, qlabel_per_query, dist, centroid_file, query_file)
+            queryattr = genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribution, query_attr, centroid_file, query_file)
 
         else:
             #generate attributions
-            queryattr = genearte_qrange(method_str, query_size, label_cnt, qlabel_per_query, dist)
+            queryattr = genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribution, query_attr)
     #write attribution and query range to file
     # write_attr(output_dataset_attr_file, randattr)
     # write_query_range(output_query_range_file, queryattr)
@@ -186,3 +277,11 @@ if __name__ == "__main__":
     
     for i in range(5):
         print("query attr", i, " range=", queryattr[i])
+    
+    # plot query attr distribution
+    import matplotlib.pyplot as plt
+    plt.hist(queryattr.reshape(-1), bins=min(128, attr_range))
+    plt.show()
+
+
+    

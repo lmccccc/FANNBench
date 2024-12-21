@@ -87,39 +87,86 @@ void load_data_txt(char *filename, unsigned &num, unsigned &dim, std::vector<std
   file.close();
 }
 
-void get_label(int N, string file_name, vector<vector<string>>& label){  //read json file, only one label supported
-  std::ifstream in(file_name);
-  if (!in.is_open()) {
-    std::cerr << "Error: failed to open file " << file_name << std::endl;
-    exit(-1);
-  }
-  int temp;
-  char c;
-  in >> c;
-  assert(c == '[');
-  int i = 0;
-  vector<string> _label;
-  while (true) {
-    //get head of ifstream  
-    if(in.peek()==','){
-        in >> c;
-        continue;
+void get_label(int N, std::string file_name, std::vector<std::vector<string>>& label){  //read json file, only [1,\n2,\n3,\n...]
+    //   uint* label = new uint[N];
+    std::ifstream in(file_name);
+    if (!in.is_open()) {
+        std::cerr << "Error: failed to open file " << file_name << std::endl;
+        exit(-1);
     }
-    else{
-        in >> temp;
-        _label.push_back(std::to_string(temp));
-        label.push_back(_label);
-        _label.clear();
-        i++;
-        if(i == N){
-            break;
+    int depth = 0;
+    int temp;
+    int i = 0;
+    label.resize(N);
+    while(true){
+        char c;
+        in >> c;
+        if(c == '['){
+            depth++;
+            continue;
+        }
+        else if(c == ']'){
+            depth--;
+            if(depth == 1){
+                i++;
+                continue;
+            }
+            if(depth == 0){
+                break;
+            }
+        }
+        else if(depth == 2 && c >= '0' && c <= '9'){
+            in.seekg(-1, std::ios::cur);
+            in >> temp;
+            label[i].push_back(std::to_string(temp));
+        }
+        else{
+            continue;
         }
     }
-  }
-  std::cout << "label size: " << label.size() << std::endl;
-
-  in.close();
+    // std::cout << "label example: " << std::endl;
+    // for(int i = 0; i < 10; ++i){
+    //     for(int j = 0; j < label[i].size(); ++j){
+    //         std::cout << label[i][j] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
+    return;
 }
+
+// void get_label(int N, string file_name, vector<vector<string>>& label){  //read json file, only one label supported
+//   std::ifstream in(file_name);
+//   if (!in.is_open()) {
+//     std::cerr << "Error: failed to open file " << file_name << std::endl;
+//     exit(-1);
+//   }
+//   int temp;
+//   char c;
+//   in >> c;
+//   assert(c == '[');
+//   int i = 0;
+//   vector<string> _label;
+//   while (true) {
+//     //get head of ifstream  
+//     if(in.peek()==','){
+//         in >> c;
+//         continue;
+//     }
+//     else{
+//         in >> temp;
+//         _label.push_back(std::to_string(temp));
+//         label.push_back(_label);
+//         _label.clear();
+//         i++;
+//         if(i == N){
+//             break;
+//         }
+//     }
+//   }
+//   std::cout << "label size: " << label.size() << std::endl;
+
+//   in.close();
+// }
 
 int main(int argc, char **argv)
 {
