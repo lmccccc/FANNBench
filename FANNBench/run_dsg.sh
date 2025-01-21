@@ -61,7 +61,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
         echo "index file already exist at $dsg_index_file"
         exit 1
     else
-        echo  "construct index"
+        echo "construct index"
         echo "dataset: $dataset"
         echo "N: $N"
         echo "dataset_path: $dataset_file"
@@ -78,7 +78,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                                             -dataset_path $dataset_file \
                                                                             -index_path $dsg_index_file \
                                                                             -method "compact" \
-                                                                            -k $K \
+                                                                            -k $serf_M \
                                                                             -ef_max $ef_max \
                                                                             -ef_construction $ef_construction \
                                                                             -label_path $dataset_attr_file \
@@ -104,7 +104,7 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
                                                                         -index_path $dsg_index_file \
                                                                         -method "compact" \
                                                                         -index_path $dsg_index_file \
-                                                                        -k $K \
+                                                                        -k $serf_M \
                                                                         -ef_max $ef_max \
                                                                         -ef_construction $ef_construction \
                                                                         -nthreads $threads \
@@ -112,6 +112,7 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
                                                                         -qrange_path $query_range_file \
                                                                         -query_num $query_size \
                                                                         -label_path $dataset_attr_file \
+                                                                        -query_k $K \
                                                                         &>> $log_file
     status=$?
     if [ $status -ne 0 ]; then
