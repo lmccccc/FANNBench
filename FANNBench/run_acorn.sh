@@ -41,6 +41,7 @@ echo "acorn index file: ${acorn_index_file}"
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $acorn_index_file ]; then
         echo "acorn index file already exist"
+        exit 1
     else
         echo  "construct index"
         /bin/time -v -p ../ACORN/build/demos/acorn_build $dataset \
@@ -58,7 +59,6 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
         status=$?
         if [ $status -ne 0 ]; then
             echo "acorn index failed with exit status $status"
-            exit $status
         else
             echo "acorn index ran successfully"
         fi
@@ -115,5 +115,6 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
 fi
 
      
-
-source ./run_txt2csv.sh
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

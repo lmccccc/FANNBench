@@ -35,7 +35,6 @@ else
     status=$?
     if [ $status -ne 0 ]; then
         echo "Python script failed with exit status $status"
-        exit $status
     else
         echo "Python script ran successfully"
     fi
@@ -44,6 +43,7 @@ fi
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $nhq_index_model_file ]; then
         echo "index file already exist"
+        exit 1
     else
         echo  "construct index"
         
@@ -60,7 +60,6 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                 &>> $log_file
         if [ $? -ne 0 ]; then
             echo "nhq nsw constructor failed to run."
-            exit 1  # Exit the script with a failure code
         else
             echo "nhq nsw constructed."
         fi
@@ -92,4 +91,7 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
     fi
 fi
 
-source ./run_txt2csv.sh
+status=$?
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

@@ -2,7 +2,7 @@
 import sys
 from pymilvus import DataType, MilvusClient
 import sys
-from defination import check_dir, check_file, ivecs_read, fvecs_read, bvecs_read, read_attr, read_file
+from defination import check_dir, check_file, ivecs_read, fvecs_read, bvecs_read, read_attr, read_file, write_attr_json
 import numpy as np
 import math
 import time
@@ -163,7 +163,21 @@ if __name__ == "__main__":
             print("construction done")
             exit()
 
-
+    # labels = []
+    # bucket_size = 100000
+    # for i in range(0, N, bucket_size):
+    #     ids = [i for i in range(i, min(i + bucket_size, N))]
+    #     res = client.get(
+    #         collection_name=c_name,
+    #         ids=ids,
+    #         output_fields=["label"]
+    #     )
+    #     res = [x["label"] for x in res]
+    #     labels.extend(res)
+    # print("get label res size:", len(labels))
+    # write_attr_json(dataset_attr_file, labels)
+    # print("temp write label to ", dataset_attr_file)
+    # exit(-1)
 
     query = read_file(query_file)
     Nq, _d = query.shape

@@ -3,29 +3,17 @@ export debugSearchFlag=0
 
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh construction
+source ./vars.sh construction $1 $2
 
 # now=$(date +"%m-%d-%Y")
 # dir=${now}_${dataset}
 # mkdir ${dir}
 
-#sift1M
-# N=1000000         # 1M
-# query_size=10000           # 10k
-# dataset_file="../ACORN/Datasets/sift1M/sift_base.fvecs"
-# query_file="../ACORN/Datasets/sift1M/sift_query.fvecs"
-# output_dataset_attr_file="../ACORN/testing_data/sift_attr.ivecs"
-# output_query_range_file="../ACORN/testing_data/sift_qrange.ivecs"
 
-#sift1B
-# N=1000000000         # 1B
-# query_size=10000           # 10k
-# dataset_file="../../dataset/sift/bigann_base.bvecs"
-# query_file="../../dataset/sift/bigann_query.bvecs"
-# output_dataset_attr_file="../../dataset/sift/sift_attr.json"
-# output_query_range_file="../../dataset/sift/sift_qrange.json"
-
-
+if [ -d "$query_range_file" ]; then
+    exho Query range file ${query_range_file} already exist. 
+    exit 1
+fi
 
 # TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_sift_n=${N}.txt
 

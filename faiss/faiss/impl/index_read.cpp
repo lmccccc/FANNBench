@@ -27,6 +27,7 @@
 #include <faiss/IndexAdditiveQuantizerFastScan.h>
 #include <faiss/IndexFlat.h>
 #include <faiss/IndexHNSW.h>
+#include <faiss/IndexAIRSHIP.h>
 #include <faiss/IndexIVF.h>
 #include <faiss/IndexIVFAdditiveQuantizer.h>
 #include <faiss/IndexIVFAdditiveQuantizerFastScan.h>
@@ -374,6 +375,22 @@ static void read_HNSW(HNSW* hnsw, IOReader* f) {
     READ1(hnsw->efConstruction);
     READ1(hnsw->efSearch);
     READ1(hnsw->upper_beam);
+}
+
+static void read_AIRSHIP(AIRSHIP* airship, IOReader* f) {
+    READVECTOR(airship->assign_probas);
+    READVECTOR(airship->cum_nneighbor_per_level);
+    READVECTOR(airship->levels);
+    READVECTOR(airship->offsets);
+    READVECTOR(airship->neighbors);
+    READVECTOR(airship->sampled_entry_points);
+    READVECTOR(airship->attr);
+
+    READ1(airship->entry_point);
+    READ1(airship->max_level);
+    READ1(airship->efConstruction);
+    READ1(airship->efSearch);
+    READ1(airship->upper_beam);
 }
 
 static void read_NSG(NSG* nsg, IOReader* f) {
@@ -976,6 +993,14 @@ Index* read_index(IOReader* f, int io_flags) {
             dynamic_cast<IndexPQ*>(idxhnsw->storage)->pq.compute_sdc_table();
         }
         idx = idxhnsw;
+    } else if (
+            h == fourcc("IASf")) {
+        IndexAIRSHIP* idxairship = nullptr;
+        read_index_header(idxairship, f);
+        read_AIRSHIP(&idxairship->airship, f);
+        idxairship->storage = read_index(f, io_flags);
+        idxairship->own_fields = idxairship->storage != nullptr;
+        idx = idxairship;
     } else if (
             h == fourcc("INSf") || h == fourcc("INSp") || h == fourcc("INSs")) {
         IndexNSG* idxnsg;

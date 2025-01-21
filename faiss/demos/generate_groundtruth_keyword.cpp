@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
         
         if (argc != 9) {
             std::cout << "argc=" << argc << std::endl;
-            fprintf(stderr, "Syntax: %s <number vecs> <dataset> <attr> <query> <queryrange> <output> <k>\n", argv[0]);
+            fprintf(stderr, "Syntax: %s <number vecs> <dataset> <attr> <query> <queryrange> <output> <k> <d>\n", argv[0]);
             exit(1);
         }
 

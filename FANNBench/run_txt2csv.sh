@@ -97,4 +97,10 @@ python -u utils/extract_results.py $log_file \
                                    $milvus_coll_path \
                                    $algo \
                                    $result_file \
-                                   $mode
+                                   $mode \
+                                   $B_unify \
+                                   $AL \
+                                   $unify_index_file \
+                                   $Stitched_R \
+                                   $ef_max \
+                                   $dsg_index_file

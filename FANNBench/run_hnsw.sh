@@ -41,6 +41,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     echo "hnsw index file: ${hnsw_index_file}"
     if [ -e $hnsw_index_file ]; then
         echo "hnsw index file already exist"
+        exit 1
     else
         echo  "construct index"
         /bin/time -v -p ../faiss/build/demos/hnsw_build $dataset \
@@ -57,7 +58,6 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
         status=$?
         if [ $status -ne 0 ]; then
             echo "hnsw index failed with exit status $status"
-            exit $status
         else
             echo "hnsw index ran successfully"
         fi
@@ -101,14 +101,15 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
     status=$?
     if [ $status -ne 0 ]; then
         echo "hnsw query failed with exit status $status"
-        exit $status
     else
         echo "hnsw query ran successfully"
     fi
 fi
 
      
-source ./run_txt2csv.sh
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi
 
 
 

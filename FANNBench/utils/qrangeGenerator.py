@@ -23,10 +23,10 @@ attr_cnt = 1: range query
 def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribution, query_attr, centroid_file=None, query_file=None):
     #generate attribution and query range
     if(attr_cnt > 1):# keyword query. for each vector may have more than one attr. So query should be only one fixed attr
-        #attr format: random integer from 0 to 300
+        #attr format: random integer from 0 to attr_range
         if distribution == "random":
             if query_attr_size == 1:
-                #query range format: random range from 0 to 300
+                #query range format: random range from 0 to attr_range
                 queryattr = np.full((query_size, 2), query_attr)
             elif query_attr_size == attr_cnt: # nhq
                 queryattr = np.random.randint(0, attr_range, (query_size, query_attr_size), dtype='int32')
@@ -91,10 +91,10 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
 
 
     elif(attr_cnt == 1):# range query. For each vector with only one attr.
-        #key query format: random key from 0 to 30, no more than 5 keys
+        #key query format: random key from 0 to attr_range, no more than 5 keys
         if distribution == "random":
             queryattr = np.random.randint(0, attr_range-query_attr_size+1, (query_size, 2), dtype='int32') # [0, attr_range-query_attr_size+1)
-            queryattr[:][1::2] = queryattr[:][::2]+query_attr_size-1 # [x, x+query_attr_size]
+            queryattr[:, 1] = queryattr[:, 0]+query_attr_size-1 # [x, x+query_attr_size]
         else:
             check_file(centroid_file)
             centroids = np.loadtxt(centroid_file)

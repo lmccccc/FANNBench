@@ -56,8 +56,11 @@ echo "mode: $mode"
 
 if [ $? -ne 0 ]; then
     echo "rii failed to run."
-    exit 1  # Exit the script with a failure code
 else
     echo "rii succeed to run."
 fi
-source ./run_txt2csv.sh
+
+status=$?
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

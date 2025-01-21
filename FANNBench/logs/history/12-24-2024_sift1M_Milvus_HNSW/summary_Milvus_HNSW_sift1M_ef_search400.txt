@@ -1,0 +1,57 @@
+Start time: 06:59
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/attr_sel_1_2_random.json
+query range file: /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/qrangesel_1_1_2_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/sif_gt_sel_1_1_2_random_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 400
+distribution: sel_1_2_random
+collection name: collection_hnsw_sift1M_sel_1_2_random_efc1000
+mode: construction
+d: 128
+Failed to create new connection using: 225b8b674e17413da462392cd3c41cb7
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw.py", line 75, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 60, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 728, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 725, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 449, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 400, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 150, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/attr_sel_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/qrangesel_1_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/sif_gt_sel_1_1_2_random_10.json 10 40 1000 400 sel_1_2_random collection_hnsw_sift1M_sel_1_2_random_efc1000 construction 128"
+	User time (seconds): 13.11
+	System time (seconds): 0.12
+	Percent of CPU this job got: 127%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.41
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 83968
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 18431
+	Voluntary context switches: 1897
+	Involuntary context switches: 480
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

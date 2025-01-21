@@ -4,7 +4,7 @@ import os
 import pandas as pd
 import re
 # title = "Paper	Dataset	label method	Threads	dis method	Data size/Query size/dim	K	M(hnsw) R(diskann)		efc(hnsw) beamsize(rfann)	efs  L(diskann)	gamma(acorn) multiply(rfann)	Mbeta	alpha	nprobe	beamSize	final beam multiply	split factor	shift factor	final multiplies	partition size M	recall	QPS	selectivity	ConstructionTime	IndexSize	CompsPerQuery	File"
-title = "Paper Dataset dim N query_size label_cnt query_label distribution label_range query_label_cnt K Threads M serf_M nprobe ef_construction ef_search gamma M_beta alpha L  partition_size_M beamSize split_factor shift_factor final_beam_multiply kgraph_L iter S R B kgraph_M weight_search Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery File Memory query_label"
+title = "Paper Dataset dim N query_size label_cnt query_label distribution label_range query_label_cnt K Threads M serf_M nprobe ef_construction ef_search gamma M_beta alpha L partition_size_M beamSize split_factor shift_factor final_beam_multiply kgraph_L iter S R B kgraph_M weight_search Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery File Memory B_unify AL Stitched_R"
 title_list = title.split(' ')
 #algo_list = ["RangeFilteredANN"]
 
@@ -276,6 +276,33 @@ def get_info_from_serf(df, lines, mode):
         sys.exit(-1)
     return df
 
+def get_info_from_dsg(df, lines, mode):
+    #Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery
+    for line in lines:
+        if(mode == 'construction' and '# Build Index Time:' in line):
+            cons_time = float(line.split(':')[1].split('s')[0])
+            df.at[0, "ConstructionTime"] = cons_time
+        elif('All Recall:' in line):
+            # All Recall: 0.9997	 All QPS: 145.2873	 All Comps: 4758.0464	 All Hops: 403.8274
+            # split by :, \t and space
+            
+            info = line.split()
+            recall = float(info[2])
+            qps = float(info[5])
+            comps = float(info[8])
+            df.at[0, "Recall"] = recall
+            df.at[0, "QPS"] = qps
+            df.at[0, "CompsPerQuery"] = comps
+        elif "Maximum resident set size (kbytes)" in line:
+            mem = float(line.split(":")[1]) / 1024
+            df.at[0, "Memory"] = mem
+    
+    # assert if any of the value is empty
+    if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
+        print("error: some value is empty")
+        sys.exit(-1)
+    return df
+
 def get_info_from_milvus(df, lines, mode):
     #Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery
     for line in lines:
@@ -313,6 +340,32 @@ def get_info_from_irange(df, lines, mode):
             qps = float(info[5])
             recall = float(info[3])
             cmps = float(info[-1])
+            df.at[0, "QPS"] = qps
+            df.at[0, "Recall"] = recall
+            df.at[0, "CompsPerQuery"] = cmps
+        elif "Maximum resident set size (kbytes)" in line:
+            mem = float(line.split(":")[1]) / 1024
+            df.at[0, "Memory"] = mem
+    # assert if any of the value is empty
+    if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
+        print("error: some value is empty")
+        sys.exit(-1)
+    return df
+
+def get_info_from_unify(df, lines, mode):
+    #Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery
+    for idx, line in enumerate(lines):
+        if(mode == 'construction' and 'Index built' in line):
+            cons_time = float(line.split("duration:")[1].split(".")[0])
+            df.at[0, "ConstructionTime"] = cons_time
+        elif ('latency(ms)' in line):
+            line = lines[idx+1]
+            # ef:100, recall:0.99901, qps:3757.52, dco:1289, hop:102, cmp:1302
+            info = line.split()
+            # print("info:", info)
+            qps = float(info[6])
+            recall = float(info[3])
+            cmps = float(info[5])
             df.at[0, "QPS"] = qps
             df.at[0, "Recall"] = recall
             df.at[0, "CompsPerQuery"] = cmps
@@ -397,6 +450,12 @@ if __name__ == "__main__":
     algo = sys.argv[48]
     output_csv = sys.argv[49]
     mode = sys.argv[50]
+    B_unify = int(sys.argv[51])
+    AL = int(sys.argv[52])
+    unify_index_file = sys.argv[53]
+    Stitched_R = int(sys.argv[54])
+    ef_max = int(sys.argv[55])
+    dsg_index_file = sys.argv[56]
 
     df = pd.DataFrame(columns=title_list)
     # create a empty row
@@ -407,13 +466,15 @@ if __name__ == "__main__":
     df.at[0, "N"] = N
     df.at[0, "query_size"] = query_size
     df.at[0, "label_cnt"] = label_cnt
-    df.at[0, "query_label"] = query_label
     df.at[0, "distribution"] = distribution
     df.at[0, "label_range"] = label_range
     df.at[0, "query_label_cnt"] = query_label_cnt
     df.at[0, "K"] = K
     df.at[0, "Threads"] = threads
     df.at[0, "File"] = res_filename
+
+    if label_cnt > 1 and query_label_cnt == 1:
+        df.at[0, "query_label"] = query_label
 
     if(algo == 'ACORN'):
         df.at[0, "M"] = M
@@ -432,6 +493,12 @@ if __name__ == "__main__":
         df.at[0, "alpha"] = alpha
         df.at[0, "L"] = L
         df.at[0, "IndexSize"] = get_size(diskann_index_label_root)
+    elif(algo == 'DiskANN_Stitched'):
+        df.at[0, "M"] = M
+        df.at[0, "alpha"] = alpha
+        df.at[0, "L"] = L
+        df.at[0, "IndexSize"] = get_size(diskann_index_label_root)
+        df.at[0, "Stitched_R"] = Stitched_R
     elif(algo == 'SeRF'):
         df.at[0, "serf_M"] = serf_M
         df.at[0, "ef_construction"] = ef_construction
@@ -491,7 +558,20 @@ if __name__ == "__main__":
         df.at[0, "split_factor"] = split_factor
         df.at[0, "final_beam_multiply"] = final_beam_multiply
         df.at[0, "IndexSize"] = get_size(vtree_index_prefix)
+    elif(algo == 'UNIFY'):
+        df.at[0, "ef_construction"] = ef_construction
+        df.at[0, "ef_search"] = ef_search
+        df.at[0, "AL"] = AL
+        df.at[0, "M"] = M
+        df.at[0, "B_unify"] = B_unify
+        df.at[0, "IndexSize"] = get_size(unify_index_file)
+    elif(algo == 'DSG'):
+        df.at[0, "ef_max"] = ef_max
+        df.at[0, "ef_construction"] = ef_construction
+        df.at[0, "ef_search"] = ef_search
+        df.at[0, "IndexSize"] = get_size(dsg_index_file)
 
+        
     else:
         print("not support")
         exit()
@@ -542,6 +622,10 @@ if __name__ == "__main__":
             df = get_info_from_milvus(df, lines[start_list[-1]:], mode)
         elif(algo == 'iRangeGraph'):
             df = get_info_from_irange(df, lines[start_list[-1]:], mode)
+        elif(algo == 'UNIFY'):
+            df = get_info_from_unify(df, lines[start_list[-1]:], mode)
+        elif(algo == 'DSG'):
+            df = get_info_from_dsg(df, lines[start_list[-1]:], mode)
         else:
             print("error: algorithm not supported for dir:", res_filename)
             sys.exit(-1)

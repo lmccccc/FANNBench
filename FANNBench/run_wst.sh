@@ -19,6 +19,14 @@ if [ ! -d "$dir" ]; then
     mkdir ${dir}
 fi
 
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    if [ -e $rfann_index_prefix ]; then
+        echo "index file already exist"
+        exit 1
+    fi
+fi
+
+
 if [ ! -d "$rfann_index_prefix" ]; then
     mkdir ${rfann_root}
     mkdir ${rfann_index_root}
@@ -28,6 +36,7 @@ fi
 
 log_file=${dir}/summary_${algo}_${dataset}_beamsize${beamsize}_finalbeammul${final_beam_multiply}.txt
 TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
+
 
 echo "dataset: $dataset"
 echo "datasize: $N"
@@ -64,9 +73,11 @@ echo "threads: $threads"
 
 if [ $? -ne 0 ]; then
     echo "wst super opt post filtering failed to run."
-    exit 1  # Exit the script with a failure code
 else
     echo "wst super opt post filtering succeed."
 fi
 
-source ./run_txt2csv.sh
+status=$?
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

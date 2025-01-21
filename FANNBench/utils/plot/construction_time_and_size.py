@@ -18,6 +18,7 @@ memory_map = {}
 if __name__ == "__main__":
     file_path = sys.argv[1]
     dataset = sys.argv[2]
+    label_method = sys.argv[3]
 
     
     with open(file_path, 'r') as file:
@@ -57,7 +58,8 @@ if __name__ == "__main__":
     ax.set_yscale('log', base=10)
     plt.tight_layout()
     plt.show()
-    plt.savefig('plot/index_size_plot.png')  # Save the plot as an image file
+    size_file = "plot/index_size_plot_" + label_method + '_' + dataset + ".png"
+    plt.savefig(size_file)  # Save the plot as an image file
 
     # plot cons time
     algorithms = list(constime_res_map.keys())
@@ -71,7 +73,8 @@ if __name__ == "__main__":
     ax.set_yscale('log', base=10)
     plt.tight_layout()
     plt.show()
-    plt.savefig('plot/construction_time_plot.png')  # Save the plot as an image file
+    time_file = "plot/construction_time_plot_" + label_method + '_' + dataset + ".png"
+    plt.savefig(time_file)  # Save the plot as an image file
 
     
     # plot memory
@@ -86,6 +89,7 @@ if __name__ == "__main__":
     ax.set_yscale('log', base=10)
     plt.tight_layout()
     plt.show()
-    plt.savefig('plot/memory_plot.png')  # Save the plot as an image file
+    memory_file = "plot/memory_plot_" + label_method + '_' + dataset + ".png"
+    plt.savefig(memory_file)  # Save the plot as an image file
 
     

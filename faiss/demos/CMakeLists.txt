@@ -51,3 +51,12 @@ target_link_libraries(hnsw_query_keyword PRIVATE faiss)
 
 add_executable(generate_groundtruth_keyword EXCLUDE_FROM_ALL generate_groundtruth_keyword.cpp)
 target_link_libraries(generate_groundtruth_keyword PRIVATE faiss)
+
+add_executable(airship_build EXCLUDE_FROM_ALL airship_build.cpp)
+target_link_libraries(airship_build PRIVATE faiss)
+
+add_executable(airship_query EXCLUDE_FROM_ALL airship_query.cpp)
+target_link_libraries(airship_query PRIVATE faiss)
+
+add_executable(airship_query_keyword EXCLUDE_FROM_ALL airship_query_keyword.cpp)
+target_link_libraries(airship_query_keyword PRIVATE faiss)

@@ -97,6 +97,7 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $diskann_index_file ]; then
         echo "index file already exist"
+        exit 1
     else
         echo  "construct index"
         
@@ -113,7 +114,6 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                 &>> $log_file
         if [ $? -ne 0 ]; then
             echo "Diskann constructor failed to run."
-            exit 1  # Exit the script with a failure code
         else
             echo "DIskann index constructed."
         fi
@@ -142,10 +142,11 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
     status=$?
     if [ $status -ne 0 ]; then
         echo "diskann query failed with exit status $status"
-        exit $status
     else
         echo "diskann query ran successfully"
     fi
 fi
 
-source ./run_txt2csv.sh
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

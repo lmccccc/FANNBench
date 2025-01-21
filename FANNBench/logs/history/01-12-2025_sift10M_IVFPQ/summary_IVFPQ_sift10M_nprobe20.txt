@@ -1,0 +1,76 @@
+Start time: 04:39
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: sift10M
+N: 10000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/ivfpq/index/index_ivfpq_sel_1_100000_random_64
+nprobe: 20
+dim: 128
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 0.707s ] Loaded metadata, 10000000 attr's found
+[ 0.707s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 0.710s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+[ 0.712s ] Loaded 10000 sift10M queries
+[ 0.719s ] Loaded ground truth, gt_size: 10
+[ 0.719s ] Index Params -- d: 128, N: 10000000
+ load index size: 10000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 1.079s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 474.169s ] Query results (vector ids, then distances):
+query 0 nn's (66811, 67810): 2260181 (67765) 4539548 (67183) 9306062 (67438) 4929785 (67064) 1938934 (66865) 4982206 (67602) 8710437 (67666) 8491615 (67708) 9852432 (66979) 9099514 (66886) 
+     dis: 	71205.758 71600.766 76606.484 77312.430 78746.812 81928.805 83791.320 84024.242 84107.719 84147.219 
+query 1 nn's (80229, 81228): 7581274 (81100) 8549337 (81124) 5424055 (81172) 8180678 (81075) 6983565 (80270) 2509938 (80645) 6225217 (80943) 5838578 (80325) 2890061 (80643) 8160407 (80307) 
+     dis: 	49351.410 50873.723 56536.062 56588.238 58298.172 59184.250 60302.344 63167.129 63785.062 63819.582 
+query 2 nn's (89717, 90716): 4112561 (89860) 5567501 (90541) 2480763 (90160) 6943812 (90269) 7004103 (89868) 6150520 (90003) 5907913 (89721) 5043393 (90355) 7446969 (89822) 9580368 (90383) 
+     dis: 	40651.754 49099.414 52393.500 54760.258 56976.184 57497.070 57866.539 58807.203 58930.641 59542.855 
+query 3 nn's (6838, 7837): 840086 (7034) 9526471 (7592) 1180726 (6952) 493857 (7268) 3917528 (7833) 9231939 (6869) 5354276 (7506) 6281603 (7047) 6081816 (7748) 452242 (7405) 
+     dis: 	10662.359 11184.750 11556.975 12745.346 13251.489 14252.504 14559.984 14757.678 14766.584 15474.005 
+query 4 nn's (76228, 77227): 1271454 (76737) 9446960 (76895) 9156526 (77028) 3277048 (76297) 628361 (77033) 7931620 (77115) 1202792 (76609) 3297486 (77066) 8125986 (76649) 3044764 (76635) 
+     dis: 	75713.539 78808.484 80460.953 81670.258 82560.164 87242.836 87475.023 87478.797 89287.984 89505.859 
+[ 474.169s ] *** Query time: 65.671
+qps: 152.273
+ *** ivfpq recall 
+ivfpq get 29258 postive res from 100000 results, recall@10:0.293
+recall dist(10% per bucket): 0.051 0.149 0.227 0.230 0.170 0.107 0.048 0.015 0.003 0.000 0.000 
+finished ivfpq index examples
+[ 474.171s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query sift10M 10000000 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/ivfpq/index/index_ivfpq_sel_1_100000_random_64 20 128"
+	User time (seconds): 449.82
+	System time (seconds): 27.06
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:57.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 50070436
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 14925292
+	Voluntary context switches: 223
+	Involuntary context switches: 666
+	Swaps: 0
+	File system inputs: 43032
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

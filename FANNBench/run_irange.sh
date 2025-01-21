@@ -71,6 +71,7 @@ fi
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $irange_index_file ]; then
         echo "index exist"
+        exit 1
     else
         echo "construct index"
         echo "N: $N"
@@ -102,7 +103,6 @@ else
     status=$?
     if [ $status -ne 0 ]; then
         echo "Python script failed with exit status $status"
-        exit $status
     else
         echo "Python script ran successfully"
     fi
@@ -117,7 +117,6 @@ else
     status=$?
     if [ $status -ne 0 ]; then
         echo "Python script failed with exit status $status"
-        exit $status
     else
         echo "Python script ran successfully"
     fi
@@ -161,5 +160,6 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
 fi
 
 
-
-source ./run_txt2csv.sh
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

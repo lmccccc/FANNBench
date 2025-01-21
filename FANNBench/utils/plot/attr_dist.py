@@ -16,6 +16,7 @@ if __name__ == "__main__":
     query_range_file = sys.argv[8]
     dataset_size = int(sys.argv[9])
     query_size = int(sys.argv[10])
+    label_method = sys.argv[11]
 
     if label_cnt == 1:
         attr = read_attr(dataset_attr_file)
@@ -27,7 +28,18 @@ if __name__ == "__main__":
             plot_attr.extend(attr[i])
     
     print("plot query attr size:", len(plot_attr))
-    bucket_cnt = label_range // 10
+
+    attr_map = {}
+    for a in plot_attr:
+        if a in attr_map:
+            attr_map[a] += 1
+        else:
+            attr_map[a] = 1
+    print("attr_map size:", len(attr_map.keys()))
+    # if(label_range > 10000):
+    #     bucket_cnt = label_range // 10
+    # else:
+    bucket_cnt = label_range
     bucket_width = math.ceil(label_range / bucket_cnt)
     bins = np.arange(0, label_range, bucket_width)
 
@@ -37,11 +49,14 @@ if __name__ == "__main__":
     plt.ylabel('Count')
     plt.title('Attribute Distribution')
 
-    bin_edges = bins[:-1] + 0.5  # Calculate midpoints between bars
+    # bin_edges = bins[:-1] + 0.5  # Calculate midpoints between bars
     # Set x-ticks to every 5th bin midpoint
-    skip_xtick = bucket_cnt // 10
-    tick_positions = bin_edges[::skip_xtick]
-    plt.xticks(tick_positions, labels=[str(int(b)) for b in bins[:-1][::skip_xtick]], rotation=45)
+    if bucket_cnt > 1000:
+        skip_xtick = bucket_cnt // 10
+    else:
+        skip_xtick = 1
+    tick_positions = bins[::skip_xtick]
+    plt.xticks(tick_positions, labels=[str(int(b)) for b in bins[:][::skip_xtick]])
     plt.show()
     # save plotW
     plot_file = "plot/dist_" + dataset_attr_file.split('.')[0].split('/')[-1] + ".png"
@@ -55,10 +70,14 @@ if __name__ == "__main__":
     query = np.array(query)
     query_center = ((query[::2] + query[1::2]) / 2).tolist()
 
-    print("plot attr size:", len(query_center))
-    bucket_cnt = label_range // 100
+    # print("plot attr size:", len(query_center))
+    # if(label_range > 10000):
+    #     bucket_cnt = label_range // 100
+    # else:
+    bucket_cnt = label_range
     bucket_width = math.ceil(label_range / bucket_cnt)
     bins = np.arange(0, label_range, bucket_width)
+    # print("bins:", bins)
 
     plt.figure(figsize=(10, 6))
     plt.hist(query_center, bins=bins, alpha=0.7)
@@ -66,11 +85,14 @@ if __name__ == "__main__":
     plt.ylabel('Count')
     plt.title('Queyr Attribute Distribution')
 
-    bin_edges = bins[:-1] + 0.5  # Calculate midpoints between bars
+    # bin_edges = bins[:-1] + 0.5  # Calculate midpoints between bars
     # Set x-ticks to every 5th bin midpoint
-    skip_xtick = bucket_cnt // 10
-    tick_positions = bin_edges[::skip_xtick]
-    plt.xticks(tick_positions, labels=[str(int(b)) for b in bins[:-1][::skip_xtick]], rotation=45)
+    if bucket_cnt > 1000:
+        skip_xtick = bucket_cnt // 10
+    else:
+        skip_xtick = 1
+    tick_positions = bins[::skip_xtick]
+    plt.xticks(tick_positions, labels=[str(int(b)) for b in bins[:][::skip_xtick]])
     plt.show()
     # save plotW
     plot_file = "plot/dist_query_" + dataset_attr_file.split('.')[0].split('/')[-1] + ".png"

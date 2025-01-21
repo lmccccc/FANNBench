@@ -27,17 +27,27 @@ def read_fbin(filename, start_idx=0, chunk_size=None):
 
 
 if __name__ == "__main__":
-    if not len(sys.argv) == 4 :
-        print("error wrong argument size:", len(sys.argv))
-        sys.exit(-1)
-    else:
-        fbin_file = sys.argv[1]
-        check_file(fbin_file)
+    # if not len(sys.argv) == 4 :
+    #     print("error wrong argument size:", len(sys.argv))
+    #     sys.exit(-1)
+    # else:
+    #     fbin_file = sys.argv[1]
+    #     check_file(fbin_file)
 
-        fvecs_file = sys.argv[2]
+    #     fvecs_file = sys.argv[2]
 
-        datasize = int(sys.argv[3])
-        
+    #     datasize = int(sys.argv[3])
+    fbin_file = "/mnt/data/mocheng/dataset/deep/base.1B.fbin"
+    fbin_query_file = "/mnt/data/mocheng/dataset/deep/query.public.10K.fbin"
+
+    fvecs_file = "/mnt/data/mocheng/dataset/deep10m/base.10M.fvecs"
+    fvecs_train_file = "/mnt/data/mocheng/dataset/deep10m/deep_learn100K.fvecs"
+    fvecs_query_file = "/mnt/data/mocheng/dataset/deep10m/query.public.10K.fvecs"
+    
+    original_size = 1000000000
+    datasize = 10000000
+    train_size = 100000
+    querysize = 10000
 
     #json: [1,2,3]
     #txt:  1\n2\n3
@@ -52,10 +62,22 @@ if __name__ == "__main__":
     
     #read
     data = read_fbin(fbin_file)
-    assert(data.shape[0] == datasize)
+    print("load data shape: ", data.shape)
+    # assert(data.shape[0] == datasize)
 
-    #write
+    np.random.seed(0)
+    sampled_indices = np.random.choice(len(data), size=datasize, replace=False)
+
+    data = data[sampled_indices]
     fvecs_write(fvecs_file, data)
-    
+    print("data shape: ", data.shape)
 
-    print("succeed to transport ", fbin_file, " into ", fvecs_file)
+    train = data[:train_size]
+    print("train shape: ", train.shape)
+    fvecs_write(fvecs_train_file, train)
+
+    query_fvecs = read_fbin(fbin_query_file)
+    query_fvecs = query_fvecs[:querysize]
+    fvecs_write(fvecs_query_file, query_fvecs)
+    print("query shape: ", query_fvecs.shape)
+    print("Done!")

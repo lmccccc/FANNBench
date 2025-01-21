@@ -301,6 +301,9 @@ int main(int argc, char *argv[]) {
         std::cerr << "Failed to load index from file: " << index_file << std::endl;
         return 1;
     }
+    // int d2;
+    // float* data = fvecs_read(dataset_file, &d2, &N);
+    // index.add(N, data);
 
     index->nprobe = nprobe;
     size_t dataset_size = index->ntotal;

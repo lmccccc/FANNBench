@@ -42,6 +42,7 @@ echo "ivfpq index file: ${ivfpq_index_file}"
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $ivfpq_index_file ]; then
         echo "ivfpq index file already exist"
+        exit 1
     else
         echo  "construct index"
         /bin/time -v -p ../faiss/build/demos/ivfpq_build $dataset \
@@ -59,7 +60,6 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
         status=$?
         if [ $status -ne 0 ]; then
             echo "ivfpq index failed with exit status $status"
-            exit $status
         else
             echo "ivfpq index ran successfully"
         fi
@@ -103,13 +103,14 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
     status=$?
     if [ $status -ne 0 ]; then
         echo "ivfpq query failed with exit status $status"
-        exit $status
     else
         echo "ivfpq quey ran successfully"
     fi    
 fi
 
-source ./run_txt2csv.sh
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi
 
 
 

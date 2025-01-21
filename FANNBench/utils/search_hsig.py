@@ -10,7 +10,46 @@ import utils
 from alg_base import BaseANN
 from alg_hannlib import HannLib
 from alg_hnswlib import HnswLib
+from defination import read_attr, fvecs_read
+import sys
 
+
+def load_data(dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, k):# fvecs, fvecs, json, json, json
+    if(".fvecs" in dataset_file):
+        data = fvecs_read(dataset_file)
+        assert data.shape[0] == N
+    else:
+        print("error: dataset file format not supported")
+        sys.exit(-1)
+    if(".fvecs" in query_file):
+        queries = fvecs_read(query_file)
+        assert queries.shape[0] == Nq
+    else:
+        print("error: query file format not supported")
+        sys.exit(-1)
+    if(".json" in attr_file):
+        attr = read_attr(attr_file)
+        assert len(attr) == N
+    else:
+        print("error: attribution file format not supported")
+        sys.exit(-1)
+    if(".json" in qrange_file):
+        query_filter_ranges = read_attr(qrange_file)
+        #convert array into turple list
+        query_filter_ranges = [(query_filter_ranges[i], query_filter_ranges[i+1]) for i in range(0, len(query_filter_ranges), 2)]
+        assert len(query_filter_ranges) == Nq
+    else:    
+        print("error: query range file format not supported")
+        sys.exit(-1)
+    if(".json" in gt_file):
+        query_gt = read_attr(gt_file)
+        query_gt = query_gt.reshape(-1, k)
+        assert len(query_gt) == Nq
+    else:
+        print("error: groundtruth file format not supported")
+        sys.exit(-1)
+
+    return data, queries, attr, query_filter_ranges, query_gt
 
 class SearchStategy:
     HYBRID_FITERING = 0
@@ -43,6 +82,7 @@ def bench_hybrid_query(
     print("Searching index...")
     time_list = []
     recall_list = []
+    comps_list = []
 
     base_params = {
         "search_strategy": search_strategy,
@@ -60,6 +100,7 @@ def bench_hybrid_query(
         al_data = []
         for ef in ef_list:
             for al in al_list:
+                total_comps = 0
                 ef_data.append(ef)
                 al_data.append(al)
                 base_params["ef"] = ef
@@ -73,17 +114,20 @@ def bench_hybrid_query(
 
                 for q, r in zip(query_vectors, query_ranges):
                     if i % 100 == 0:
-                        print(f"Executiong query {i} under ef={ef}, al={al}...")
+                        print(f"Executing query {i} under ef={ef}, al={al}...")
                     start = time.time()
-                    I = index.hybrid_query(q, r, k)
+                    I, comps = index.hybrid_query(q, r, k)
                     end = time.time()
                     total_time += end - start
                     results[i, : len(I)] = I
+                    total_comps += comps
                     i += 1
                 recall = utils.compute_recall(results, gt, k, k)
                 avg_time = total_time / len(query_ranges) * 1000
+                avg_comps = total_comps / len(query_ranges)
                 time_list.append(avg_time)
                 recall_list.append(recall)
+                comps_list.append(avg_comps)
 
         df = pd.DataFrame(
             {
@@ -91,6 +135,7 @@ def bench_hybrid_query(
                 "al": al_data,
                 "recall": recall_list,
                 "latency(ms)": time_list,
+                "comps": comps_list,
             }
         )
         df["QPS"] = 1000 / df["latency(ms)"]
@@ -99,6 +144,7 @@ def bench_hybrid_query(
         al_data = []
         for ef in ef_list:
             for al in al_list:
+                total_comps = 0
                 ef_data.append(ef)
                 al_data.append(al)
                 base_params["ef"] = ef
@@ -118,28 +164,33 @@ def bench_hybrid_query(
                             f"Executiong query {i} under ef={ef}, al={al}..."
                         )
                     start = time.time()
-                    I = index.hybrid_query(q, r, k)
+                    I, comps = index.hybrid_query(q, r, k)
                     end = time.time()
                     total_time += end - start
+                    total_comps += comps
                     results[i, : len(I)] = I
                     i += 1
                 recall = utils.compute_recall(results, gt, k, k)
                 avg_time = total_time / len(query_ranges) * 1000
+                avg_comps = total_comps / len(query_ranges)
                 time_list.append(avg_time)
                 recall_list.append(recall)
+                comps_list.append(avg_comps)
+                print("ef: ", ef, "al: ", al, "recall: ", recall, "latency: ", avg_time, "comps: ", avg_comps, "QPS: ", 1000 / avg_time)
         df = pd.DataFrame(
             {
                 "ef": ef_data,
                 "al": al_data,
                 "recall": recall_list,
                 "latency(ms)": time_list,
+                "comps": comps_list,
             }
         )
         df["QPS"] = 1000 / df["latency(ms)"]
     return df
 
 
-def build_or_load_index(name: str, params, base, base_scalars, index_save_path):
+def build_or_load_index(name: str, params, base, base_scalars, index_save_path, threads):
     index = None
     if name == "HNSW":
         index = HnswLib(metric="euclidean", method_param=params)
@@ -154,7 +205,7 @@ def build_or_load_index(name: str, params, base, base_scalars, index_save_path):
     else:
         print(f"Building index: {index.name}...")
         start = time.time()
-        index.fit(base, base_scalars)
+        index.fit(base, base_scalars, threads)
         end = time.time()
         index.saveIndex(index_save_path)
 
@@ -171,8 +222,23 @@ if __name__ == "__main__":
     parser.add_argument(
         "--n_query_to_use", type=int, default=1000, help="Number of queries to use"
     )
+    # parser.add_argument(
+    #     "--data_path", type=str, required=True, help="Path to the hdf5 data file"
+    # )
     parser.add_argument(
-        "--data_path", type=str, required=True, help="Path to the hdf5 data file"
+        "--data_path", type=str, required=True, help="Path to the fvecs data file"
+    )
+    parser.add_argument(
+        "--query_path", type=str, required=True, help="Path to the fvecs query data file"
+    )
+    parser.add_argument(
+        "--attr_path", type=str, required=True, help="Path to the json data attribute file"
+    )
+    parser.add_argument(
+        "--qrange_path", type=str, required=True, help="Path to the json query attribute range file"
+    )
+    parser.add_argument(
+        "--gt_path", type=str, required=True, help="Path to the json ground truth file"
     )
     parser.add_argument(
         "--use_mbv_hnsw", type=bool, default=False, help="Whether to use MBV-HNSW index"
@@ -232,6 +298,25 @@ if __name__ == "__main__":
         required=True,
         help="File path to save the benchmark results",
     )
+    parser.add_argument(
+        "--N",
+        type=int,
+        default=0,
+        help="Data size",
+    )
+    parser.add_argument(
+        "--threads",
+        type=int,
+        default=1,
+        required=True,
+        help="Data size",
+    )
+    parser.add_argument(
+        "--mode",
+        type=str,
+        required=True,
+        help="Mode, construction, query or all",
+    )
 
     args = parser.parse_args()
 
@@ -250,21 +335,31 @@ if __name__ == "__main__":
         name = "HNSW"
         params = {"M": args.M, "efConstruction": args.efConstruction}
 
-    (
-        base,
-        base_scalars,
-        test,
-        test_ranges,
-        test_hybrid_knn,
-    ) = read_hdf5_dataset(
-        args.data_path,
-        ["base", "base_scalars", "test", "test_ranges", "test_hybrid_knn"],
-    )
-    index, _ = build_or_load_index(
-        name, params, base, base_scalars, args.index_cache_path
-    )
+    # (
+    #     base,
+    #     base_scalars,
+    #     test,
+    #     test_ranges,
+    #     test_hybrid_knn,
+    # ) = read_hdf5_dataset(
+    #     args.data_path,
+    #     ["base", "base_scalars", "test", "test_ranges", "test_hybrid_knn"],
+    # )
+    # index, _ = build_or_load_index(
+    #     name, params, base, base_scalars, args.index_cache_path
+    # )
 
+
+    # data_path query_path attr_path qrange_path gt_path N n_query_to_use k
     nq = args.n_query_to_use
+    data, queries, attr, query_filter_ranges, query_gt = load_data(args.data_path, args.query_path, args.attr_path, args.qrange_path, args.gt_path, args.N, nq, args.k)
+    index, _ = build_or_load_index(
+        name, params, data, attr, args.index_cache_path, args.threads
+    )
+    if args.mode == "construction":
+        print("Construction suc")
+        exit()
+
     results = bench_hybrid_query(
         index,
         args.plan,
@@ -274,9 +369,9 @@ if __name__ == "__main__":
         args.al_list,
         args.low_range,
         args.high_range,
-        test[:nq],
-        test_ranges[:nq],
-        test_hybrid_knn[:nq],
+        queries[:nq],
+        query_filter_ranges[:nq],
+        query_gt[:nq],
     )
     results.to_csv(args.result_save_path, index=False)
     print(results)

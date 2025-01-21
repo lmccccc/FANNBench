@@ -1,0 +1,377 @@
+Start time: 05:00
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+train file: /mnt/data/mocheng/dataset/sift/sift_learn.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/attr_sel_1_1_2_random.json
+query range file: /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/qrangesel_1_1_2_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/sif_gt_10.json
+partition size M: 4
+K: 10
+index file location: /mnt/data/mocheng/dataset/sift/rii/index/index_rii_4_sel_1_1_2_random
+mode: query
+label cnt: 1
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 4, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 4
+Training the subspace: 1 / 4
+Training the subspace: 2 / 4
+Training the subspace: 3 / 4
+SIMD support: avx512
+Encoding the subspace: 0 / 4
+Encoding the subspace: 1 / 4
+Encoding the subspace: 2 / 4
+Encoding the subspace: 3 / 4
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 37882
+find_nn_time,43
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,50
+Iteration start: 1 / 5
+find_nn finished. Error: 35371.7
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 2 / 5
+find_nn finished. Error: 35048.8
+find_nn_time,17
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,24
+Iteration start: 3 / 5
+find_nn finished. Error: 34954.5
+find_nn_time,18
+Caution. No codes are assigned to 565-th centers.
+Caution. No codes are assigned to 729-th centers.
+Caution. No codes are assigned to 794-th centers.
+Caution. No codes are assigned to 905-th centers.
+Caution. No codes are assigned to 981-th centers.
+find_nn+update_center_time,27
+Iteration start: 4 / 5
+find_nn finished. Error: 34924.2
+find_nn_time,17
+find_nn+update_center_time,17
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [128, 128, 128, 16384, 128]
+polyfit coeff: [1.96645161e-01 2.16000000e+03]
+resultant func:  
+0.1966 x + 2160
+train time:  9.558720827102661  add time:  11.192466974258423  construction time:  20.751187801361084
+index save to  /mnt/data/mocheng/dataset/sift/rii/index/index_rii_4_sel_1_1_2_random
+range search
+rii get  9999  postive res from  100000  results, recall@ 10 : 0.09999
+recall dist(10\% per bucket):  [4.020e-01 3.301e-01 1.734e-01 6.540e-02 2.100e-02 6.200e-03 1.600e-03
+ 2.000e-04 1.000e-04 0.000e+00 0.000e+00]
+qps:  270.5186940603341
+	Command being timed: "python -u utils/test_rii.py 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sift_learn.fvecs /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/attr_sel_1_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/qrangesel_1_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/sif_gt_10.json 4 10 /mnt/data/mocheng/dataset/sift/rii/index/index_rii_4_sel_1_1_2_random query 1"
+	User time (seconds): 772.66
+	System time (seconds): 592.39
+	Percent of CPU this job got: 1906%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:11.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1876864
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 138
+	Minor (reclaiming a frame) page faults: 5005536
+	Voluntary context switches: 7496
+	Involuntary context switches: 16726
+	Swaps: 0
+	File system inputs: 61768
+	File system outputs: 26072
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 05:03
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+train file: /mnt/data/mocheng/dataset/sift/sift_learn.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/attr_sel_1_1_2_random.json
+query range file: /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/qrangesel_1_1_2_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/sif_gt_10.json
+partition size M: 64
+K: 10
+index file location: /mnt/data/mocheng/dataset/sift/rii/index/index_rii_64_sel_1_1_2_random
+mode: query
+label cnt: 1
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+load index from  /mnt/data/mocheng/dataset/sift/rii/index/index_rii_64_sel_1_1_2_random
+range search
+rii get  44238  postive res from  100000  results, recall@ 10 : 0.44238
+recall dist(10\% per bucket):  [0.0322 0.0861 0.1244 0.1474 0.1453 0.133  0.1129 0.0916 0.0727 0.0437
+ 0.0107]
+qps:  235.98243823778972
+	Command being timed: "python -u utils/test_rii.py 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sift_learn.fvecs /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/attr_sel_1_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/qrangesel_1_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_1_2_random/sif_gt_10.json 64 10 /mnt/data/mocheng/dataset/sift/rii/index/index_rii_64_sel_1_1_2_random query 1"
+	User time (seconds): 72.18
+	System time (seconds): 6.39
+	Percent of CPU this job got: 132%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:59.28
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1226600
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 363728
+	Voluntary context switches: 245
+	Involuntary context switches: 443
+	Swaps: 0
+	File system inputs: 261024
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:01
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+train file: /mnt/data/mocheng/dataset/sift/sift_learn.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/attr_sel_1_2_random.json
+query range file: /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/qrangesel_1_1_2_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/sif_gt_sel_1_1_2_random_10.json
+partition size M: 64
+K: 10
+index file location: /mnt/data/mocheng/dataset/sift/rii/index/index_rii_64_sel_1_2_random
+mode: construction
+label cnt: 1
+get dataset size: 1000000  d: 128
+get query szie: 10000
+get train szie: 100000
+_N: 1000000  N: 1000000
+get range dim: 2.0
+groundtruth top K:  10.0
+ngt= 100000  nq= 10000  k= 10
+M: 64, Ks: 256, metric : <class 'numpy.uint8'>, code_dtype: l2
+iter: 20, seed: 123
+Training the subspace: 0 / 64
+/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/scipy/cluster/vq.py:602: UserWarning: One of the clusters is empty. Re-run kmeans with a different initialization.
+  warnings.warn("One of the clusters is empty. "
+Training the subspace: 1 / 64
+Training the subspace: 2 / 64
+Training the subspace: 3 / 64
+Training the subspace: 4 / 64
+Training the subspace: 5 / 64
+Training the subspace: 6 / 64
+Training the subspace: 7 / 64
+Training the subspace: 8 / 64
+Training the subspace: 9 / 64
+Training the subspace: 10 / 64
+Training the subspace: 11 / 64
+Training the subspace: 12 / 64
+Training the subspace: 13 / 64
+Training the subspace: 14 / 64
+Training the subspace: 15 / 64
+Training the subspace: 16 / 64
+Training the subspace: 17 / 64
+Training the subspace: 18 / 64
+Training the subspace: 19 / 64
+Training the subspace: 20 / 64
+Training the subspace: 21 / 64
+Training the subspace: 22 / 64
+Training the subspace: 23 / 64
+Training the subspace: 24 / 64
+Training the subspace: 25 / 64
+Training the subspace: 26 / 64
+Training the subspace: 27 / 64
+Training the subspace: 28 / 64
+Training the subspace: 29 / 64
+Training the subspace: 30 / 64
+Training the subspace: 31 / 64
+Training the subspace: 32 / 64
+Training the subspace: 33 / 64
+Training the subspace: 34 / 64
+Training the subspace: 35 / 64
+Training the subspace: 36 / 64
+Training the subspace: 37 / 64
+Training the subspace: 38 / 64
+Training the subspace: 39 / 64
+Training the subspace: 40 / 64
+Training the subspace: 41 / 64
+Training the subspace: 42 / 64
+Training the subspace: 43 / 64
+Training the subspace: 44 / 64
+Training the subspace: 45 / 64
+Training the subspace: 46 / 64
+Training the subspace: 47 / 64
+Training the subspace: 48 / 64
+Training the subspace: 49 / 64
+Training the subspace: 50 / 64
+Training the subspace: 51 / 64
+Training the subspace: 52 / 64
+Training the subspace: 53 / 64
+Training the subspace: 54 / 64
+Training the subspace: 55 / 64
+Training the subspace: 56 / 64
+Training the subspace: 57 / 64
+Training the subspace: 58 / 64
+Training the subspace: 59 / 64
+Training the subspace: 60 / 64
+Training the subspace: 61 / 64
+Training the subspace: 62 / 64
+Training the subspace: 63 / 64
+SIMD support: avx512
+Encoding the subspace: 0 / 64
+Encoding the subspace: 1 / 64
+Encoding the subspace: 2 / 64
+Encoding the subspace: 3 / 64
+Encoding the subspace: 4 / 64
+Encoding the subspace: 5 / 64
+Encoding the subspace: 6 / 64
+Encoding the subspace: 7 / 64
+Encoding the subspace: 8 / 64
+Encoding the subspace: 9 / 64
+Encoding the subspace: 10 / 64
+Encoding the subspace: 11 / 64
+Encoding the subspace: 12 / 64
+Encoding the subspace: 13 / 64
+Encoding the subspace: 14 / 64
+Encoding the subspace: 15 / 64
+Encoding the subspace: 16 / 64
+Encoding the subspace: 17 / 64
+Encoding the subspace: 18 / 64
+Encoding the subspace: 19 / 64
+Encoding the subspace: 20 / 64
+Encoding the subspace: 21 / 64
+Encoding the subspace: 22 / 64
+Encoding the subspace: 23 / 64
+Encoding the subspace: 24 / 64
+Encoding the subspace: 25 / 64
+Encoding the subspace: 26 / 64
+Encoding the subspace: 27 / 64
+Encoding the subspace: 28 / 64
+Encoding the subspace: 29 / 64
+Encoding the subspace: 30 / 64
+Encoding the subspace: 31 / 64
+Encoding the subspace: 32 / 64
+Encoding the subspace: 33 / 64
+Encoding the subspace: 34 / 64
+Encoding the subspace: 35 / 64
+Encoding the subspace: 36 / 64
+Encoding the subspace: 37 / 64
+Encoding the subspace: 38 / 64
+Encoding the subspace: 39 / 64
+Encoding the subspace: 40 / 64
+Encoding the subspace: 41 / 64
+Encoding the subspace: 42 / 64
+Encoding the subspace: 43 / 64
+Encoding the subspace: 44 / 64
+Encoding the subspace: 45 / 64
+Encoding the subspace: 46 / 64
+Encoding the subspace: 47 / 64
+Encoding the subspace: 48 / 64
+Encoding the subspace: 49 / 64
+Encoding the subspace: 50 / 64
+Encoding the subspace: 51 / 64
+Encoding the subspace: 52 / 64
+Encoding the subspace: 53 / 64
+Encoding the subspace: 54 / 64
+Encoding the subspace: 55 / 64
+Encoding the subspace: 56 / 64
+Encoding the subspace: 57 / 64
+Encoding the subspace: 58 / 64
+Encoding the subspace: 59 / 64
+Encoding the subspace: 60 / 64
+Encoding the subspace: 61 / 64
+Encoding the subspace: 62 / 64
+Encoding the subspace: 63 / 64
+1000000 new vectors are added.
+Total number of codes is 1000000
+The number of vectors used for training of coarse centers: 100000
+Start to run PQk-means
+Iteration start: 0 / 5
+find_nn finished. Error: 75027.1
+find_nn_time,190
+find_nn+update_center_time,443
+Iteration start: 1 / 5
+find_nn finished. Error: 53432.2
+find_nn_time,195
+find_nn+update_center_time,460
+Iteration start: 2 / 5
+find_nn finished. Error: 52012.8
+find_nn_time,230
+find_nn+update_center_time,496
+Iteration start: 3 / 5
+find_nn finished. Error: 51435.5
+find_nn_time,194
+find_nn+update_center_time,466
+Iteration start: 4 / 5
+find_nn finished. Error: 51126.6
+find_nn_time,196
+find_nn+update_center_time,196
+Start to update posting lists
+===== Threshold selection ====
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+ivf is faster than linear scan even if |S|<=128. This is a bit weird. Anyway let's set threshold as 128
+L: [1000, 2000, 4000, 8000, 16000]
+threshold: [1088, 128, 5760, 128, 41984]
+polyfit coeff: [ 2.63982796e+00 -6.54933333e+03]
+resultant func:  
+2.64 x - 6549
+train time:  56.17013907432556  add time:  57.72720146179199  construction time:  113.89734053611755
+index save to  /mnt/data/mocheng/dataset/sift/rii/index/index_rii_64_sel_1_2_random
+construction done
+	Command being timed: "python -u utils/test_rii.py 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/sift_learn.fvecs /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/attr_sel_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/qrangesel_1_1_2_random.json /mnt/data/mocheng/dataset/sift/label/sel_1_2_random/sif_gt_sel_1_1_2_random_10.json 64 10 /mnt/data/mocheng/dataset/sift/rii/index/index_rii_64_sel_1_2_random construction 1"
+	User time (seconds): 1937.93
+	System time (seconds): 7.28
+	Percent of CPU this job got: 1675%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:56.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1298752
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 376864
+	Voluntary context switches: 11164
+	Involuntary context switches: 36583
+	Swaps: 0
+	File system inputs: 64
+	File system outputs: 261200
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

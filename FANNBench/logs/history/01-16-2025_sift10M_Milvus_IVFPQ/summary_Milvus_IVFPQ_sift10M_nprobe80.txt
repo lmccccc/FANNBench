@@ -1,0 +1,111 @@
+Start time: 18:36
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 3, in <module>
+    from pymilvus import DataType, MilvusClient, utility
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/__init__.py", line 13, in <module>
+    from .client import __version__
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/__init__.py", line 6, in <module>
+    from pkg_resources import DistributionNotFound, get_distribution
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/__init__.py", line 86, in <module>
+    from pkg_resources.extern.platformdirs import user_cache_dir as _user_cache_dir
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 657, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 556, in module_from_spec
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/extern/__init__.py", line 52, in create_module
+    return self.load_module(spec.name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/extern/__init__.py", line 37, in load_module
+    __import__(extant)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/_vendor/platformdirs/__init__.py", line 44, in <module>
+    PlatformDirs = _set_platform_dir_class()  #: Currently active platform
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/_vendor/platformdirs/__init__.py", line 27, in _set_platform_dir_class
+    from .unix import Unix as Result
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/_vendor/platformdirs/unix.py", line 5, in <module>
+    from configparser import ConfigParser
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/configparser.py", line 560, in <module>
+    class RawConfigParser(MutableMapping):
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/configparser.py", line 594, in RawConfigParser
+    OPTCRE_NV = re.compile(_OPT_NV_TMPL.format(delim="=|:"), re.VERBOSE)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/re.py", line 252, in compile
+    return _compile(pattern, flags)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/re.py", line 304, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/sre_compile.py", line 764, in compile
+    p = sre_parse.parse(p, flags)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/sre_parse.py", line 948, in parse
+    p = _parse_sub(source, state, flags & SRE_FLAG_VERBOSE, 0)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/sre_parse.py", line 443, in _parse_sub
+    itemsappend(_parse(source, state, verbose, nested + 1,
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/sre_parse.py", line 515, in _parse
+    if this in WHITESPACE:
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json 10 80 collection_sift10M_sel_1_100000_random query 64 128"
+	User time (seconds): 0.09
+	System time (seconds): 0.01
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 22528
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3684
+	Voluntary context switches: 11
+	Involuntary context switches: 6
+	Swaps: 0
+	File system inputs: 336
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:52
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_random
+collection  collection_sift10M_sel_1_100000_random  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  88095  postive res from  100000  results, recall@ 10 : 0.88095
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 1.000e-04 1.000e-03 2.700e-03 1.480e-02
+ 6.270e-02 2.269e-01 4.692e-01 2.226e-01]
+10000  queries cost: 116.97447514533997 , qps: 85.4887357910781
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json 10 80 collection_sift10M_sel_1_100000_random query 64 128"
+	User time (seconds): 29.88
+	System time (seconds): 7.00
+	Percent of CPU this job got: 30%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:59.15
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 105212
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 53972
+	Voluntary context switches: 23707
+	Involuntary context switches: 352
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

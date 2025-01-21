@@ -136,10 +136,10 @@ int main(int argc, char *argv[]) {
 
     }
 
-    double bytes_per_vec = d * 1.0 / partition_size;
-    int bytes_per_vec_int = (int)bytes_per_vec;
-    assert(bytes_per_vec == bytes_per_vec_int);
-    std::cout << " bytes_per_vec: " << bytes_per_vec << std::endl;
+    // double bytes_per_vec = d * 1.0 / partition_size;
+    // int bytes_per_vec_int = (int)bytes_per_vec;
+    // assert(bytes_per_vec == bytes_per_vec_int);
+    // std::cout << " bytes_per_vec: " << bytes_per_vec << std::endl;
 
 
     faiss::faiss_omp_set_num_threads(nthreads);
@@ -174,11 +174,12 @@ int main(int argc, char *argv[]) {
 
     // a reasonable number of centroids to index nb vectors
     int ncentroids = int(4 * sqrt(N));
+    std::cout << "ncentroids: " << ncentroids << std::endl;
 
     // the coarse quantizer should not be dealloced before the index
     // 4 = nb of bytes per code (d must be a multiple of this)
     // 8 = nb of bits per sub-code (almost always 8)
-    faiss::IndexIVFPQ index(&coarse_quantizer, d, ncentroids, bytes_per_vec_int, 8);
+    faiss::IndexIVFPQ index(&coarse_quantizer, d, ncentroids, partition_size, 8);
 
 
     { // populating the database
@@ -210,7 +211,7 @@ int main(int argc, char *argv[]) {
 
         size_t dt, nt;
         double t0 = elapsed();
-        float* trainvecs = fvecs_read(dataset_file, &dt, &nt);
+        float* trainvecs = fvecs_read(train_file, &dt, &nt);
         assert(dt == d2);
         double t1 = elapsed();
         index.train(nt, trainvecs);

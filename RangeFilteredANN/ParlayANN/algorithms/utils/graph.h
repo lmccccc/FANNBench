@@ -128,6 +128,7 @@ struct Graph{
         std::ifstream reader(gFile);
         assert(reader.is_open());
 
+        // std::cout << "reading dataset ... " << std::endl;
         //read num points and max degree
         indexType num_points;
         indexType max_deg;
@@ -147,7 +148,16 @@ struct Graph{
 
         try{
         //write to graph object
+        try{
+        // std::cout << "graph init ... " << std::endl;
+        graph.clear();
         graph = parlay::sequence<indexType>(n*(maxDeg+1),0);
+        // std::cout << "graph init done " << std::endl;
+        }
+        catch (std::bad_alloc){
+            std::cout << "catch bad alloc in allocating graph size=" << n*(maxDeg+1) << std::endl;
+            exit(-1);
+        }
         //write 1000000 vertices at a time
         size_t BLOCK_SIZE=1000000;
         size_t index = 0;
@@ -155,6 +165,13 @@ struct Graph{
         while(index < n){
             size_t g_floor = index;
             size_t g_ceiling = g_floor + BLOCK_SIZE <= n ? g_floor + BLOCK_SIZE : n;
+            try{
+            size_t t = offsets[g_ceiling]-offsets[g_floor];
+            }
+            catch (std::bad_alloc){
+                std::cout << "catch bad alloc in step 1: " << gFile << std::endl;
+                exit(-2);
+            }
             size_t total_size_to_read = offsets[g_ceiling]-offsets[g_floor];
             indexType* edges_start;
             try{
@@ -164,15 +181,36 @@ struct Graph{
                 std::cout << "catch bad alloc in allocating edges start " << std::endl;
                 exit(-2);
             }
+            try{
             reader.read((char*)(edges_start), sizeof(indexType)*total_size_to_read);
+            }
+            catch (std::bad_alloc){
+                std::cout << "catch bad alloc in read " << std::endl;
+                exit(-2);
+            }
+
             indexType* edges_end = edges_start + total_size_to_read;
+            // try{
+            //     parlay::slice<indexType*, indexType*> tedges = parlay::make_slice(edges_start, edges_end);
+            // }
+            // catch (std::bad_alloc){
+            //     std::cout << "catch bad alloc in make slice " << std::endl;
+            //     exit(-2);
+            // }
             parlay::slice<indexType*, indexType*> edges = parlay::make_slice(edges_start, edges_end);
+            try{
+            // std::cout << "edge construting ... " << std::endl;
             parlay::parallel_for(g_floor, g_ceiling, [&] (size_t i){
                graph[i*(maxDeg+1)] = degrees[i]; 
                 for(size_t j=0; j<degrees[i]; j++){
                     graph[i*(maxDeg+1)+1+j] = edges[offsets[i] - total_size_read + j];
                 }
             });
+            }
+            catch (std::bad_alloc){
+                std::cout << "catch bad alloc in parlay " << std::endl;
+                exit(-2);
+            }
             total_size_read += total_size_to_read;
             index = g_ceiling; 
             delete[] edges_start;

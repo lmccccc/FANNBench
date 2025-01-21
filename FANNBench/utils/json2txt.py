@@ -30,9 +30,13 @@ if __name__ == "__main__":
     # data = np.array(data)
 
     #write
+    # print(data)
     with open(output_attr_new_file, mode='w', newline='') as file:
         writer = csv.writer(file)
         for item in data:
-            writer.writerow(item)
+            if isinstance(item, list):
+                writer.writerow(item)
+            else:
+                writer.writerow([item])
 
     print("succeed to transport ", attr_file, " into ", output_attr_new_file, " for DiskANN label file")

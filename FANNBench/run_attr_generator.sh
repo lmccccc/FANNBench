@@ -3,10 +3,16 @@ export debugSearchFlag=0
 
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh construction
+source ./vars.sh construction $1 $2
 
+if [ ! -d "$label_path" ]; then
+    mkdir ${label_path}
+fi
 
-mkdir ${label_path}
+if [ -d "$dataset_attr_file" ]; then
+    echo Attribute file ${dataset_attr_file} already exist. 
+    exit 1
+fi
 
 #acorn
 # if [ "$label_method" = "keyword" ]; then

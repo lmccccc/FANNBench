@@ -1,0 +1,117 @@
+# export debugSearchFlag=0
+#! /bin/bash
+
+
+
+# cmake -DFAISS_ENABLE_GPU=OFF -DFAISS_ENABLE_PYTHON=OFF -DBUILD_TESTING=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -B build
+
+# make -C build -j faiss
+# make -C build utils
+# make -C build test_acorn
+
+
+
+##########################################
+# TESTING SIFT1M and PAPER
+##########################################
+now=$(date +"%m-%d-%Y")
+
+source ./vars.sh $1 $2 $3
+source ./file_check.sh
+algo=AIRSHIP
+
+# run of sift1M test
+
+dir=logs/${now}_${dataset}_${algo}
+
+if [ ! -d "$dir" ]; then
+    mkdir ${dir}
+fi
+
+if [ ! -d "$airship_index_root" ]; then
+    mkdir ${airship_root}
+    mkdir ${airship_index_root}
+fi
+
+log_file=${dir}/summary_${algo}_${dataset}_efs${ef_search}_alt${alter_ratio}.txt
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
+
+
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    echo "airship index file: ${airship_index_file}"
+    if [ -e $airship_index_file ]; then
+        echo "airship index file already exist"
+        exit 1
+    else
+        echo  "construct index"
+        /bin/time -v -p ../faiss/build/demos/airship_build $dataset \
+                                    $N \
+                                    $K \
+                                    $threads \
+                                    $dataset_file \
+                                    $dataset_attr_file \
+                                    $airship_index_file \
+                                    $dim \
+                                    $M \
+                                    $ef_construction \
+                                    &>> $log_file
+        status=$?
+        if [ $status -ne 0 ]; then
+            echo "airship index failed with exit status $status"
+        else
+            echo "airship index ran successfully"
+        fi
+    fi
+fi
+
+
+
+if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
+    if [ "$label_cnt" -gt 1 ]; then
+        echo  "start keyword query"
+        /bin/time -v -p ../faiss/build/demos/airship_query_keyword $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $airship_index_file \
+                                        $ef_search \
+                                        $dim \
+                                        &>> $log_file
+    else
+        echo  "start query"
+        /bin/time -v -p ../faiss/build/demos/airship_query $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $airship_index_file \
+                                        $ef_search \
+                                        $dim \
+                                        &>> $log_file
+    fi
+    status=$?
+    if [ $status -ne 0 ]; then
+        echo "airship query failed with exit status $status"
+    else
+        echo "airship query ran successfully"
+    fi
+fi
+
+     
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi
+
+
+
+
+

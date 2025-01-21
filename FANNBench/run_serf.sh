@@ -56,6 +56,12 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 # echo "ef_search: $ef_search"
 # echo "index_file: $serf_index_file"
 # echo "nthread: $threads"
+if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
+    if [ -e $serf_index_file ]; then
+        echo "index file already exist"
+        exit 1
+    fi  
+fi
 
 /bin/time -v -p ../SeRF/build/benchmark/deep_arbitrary -method $algo \
                                        -dataset $dataset \
@@ -76,9 +82,11 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 if [ $? -ne 0 ]; then
     echo "serf failed to run."
-    exit 1  # Exit the script with a failure code
 else
     echo "serf succeed."
 fi
 
-source ./run_txt2csv.sh
+status=$?
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

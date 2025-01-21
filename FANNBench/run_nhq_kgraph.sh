@@ -45,6 +45,7 @@ fi
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $nhqkg_index_model_file ]; then
         echo "index file already exist"
+        exit 1
     else
         echo  "construct index"
         
@@ -98,7 +99,6 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
 
         if [ $? -ne 0 ]; then
             echo "nhq kagraph index constructor failed to run."
-            exit 1  # Exit the script with a failure code
         else
             echo "nhq kgraph index constructed."
         fi
@@ -130,7 +130,6 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
     status=$?
     if [ $status -ne 0 ]; then
         echo "nhq kgraph query failed with exit status $status"
-        exit $status
     else
         echo "nhq kgraph query ran successfully"
     fi
@@ -146,5 +145,7 @@ fi
 #   std::cout << "K: " << argv[7] << std::endl;
 #   std::cout << "weight search: " << argv[8] << std::endl;
 #   std::cout << "L search: " << argv[9] << std::endl;
-
-source ./run_txt2csv.sh
+status=$?
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi

@@ -28,6 +28,7 @@
 #include <faiss/IndexAdditiveQuantizerFastScan.h>
 #include <faiss/IndexFlat.h>
 #include <faiss/IndexHNSW.h>
+#include <faiss/IndexAIRSHIP.h>
 #include <faiss/IndexIVF.h>
 #include <faiss/IndexIVFAdditiveQuantizer.h>
 #include <faiss/IndexIVFAdditiveQuantizerFastScan.h>
@@ -313,6 +314,22 @@ static void write_HNSW(const HNSW* hnsw, IOWriter* f) {
     WRITE1(hnsw->efConstruction);
     WRITE1(hnsw->efSearch);
     WRITE1(hnsw->upper_beam);
+}
+
+static void write_AIRSHIP(const AIRSHIP* airship, IOWriter* f) {
+    WRITEVECTOR(airship->assign_probas);
+    WRITEVECTOR(airship->cum_nneighbor_per_level);
+    WRITEVECTOR(airship->levels);
+    WRITEVECTOR(airship->offsets);
+    WRITEVECTOR(airship->neighbors);
+    WRITEVECTOR(airship->sampled_entry_points);
+    WRITEVECTOR(airship->attr);
+
+    WRITE1(airship->entry_point);
+    WRITE1(airship->max_level);
+    WRITE1(airship->efConstruction);
+    WRITE1(airship->efSearch);
+    WRITE1(airship->upper_beam);
 }
 
 static void write_NSG(const NSG* nsg, IOWriter* f) {
@@ -779,6 +796,19 @@ void write_index(const Index* idx, IOWriter* f, int io_flags) {
             WRITE1(n4);
         } else {
             write_index(idxhnsw->storage, f);
+        }
+    } else if (const IndexAIRSHIP* idxairship = dynamic_cast<const IndexAIRSHIP*>(idx)) {
+        uint32_t h = dynamic_cast<const IndexAIRSHIPFlat*>(idx) ? fourcc("IASf")
+                                                             : 0;
+        FAISS_THROW_IF_NOT(h != 0);
+        WRITE1(h);
+        write_index_header(idxairship, f);
+        write_AIRSHIP(&idxairship->airship, f);
+        if (io_flags & IO_FLAG_SKIP_STORAGE) {
+            uint32_t n4 = fourcc("null");
+            WRITE1(n4);
+        } else {
+            write_index(idxairship->storage, f);
         }
     } else if (const IndexNSG* idxnsg = dynamic_cast<const IndexNSG*>(idx)) {
         uint32_t h = dynamic_cast<const IndexNSGFlat*>(idx) ? fourcc("INSf")

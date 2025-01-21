@@ -23,7 +23,7 @@ class HannLib(BaseANN):
         self.scalar_min = None
         self.scalar_max = None
 
-    def fit(self, X, scalars):
+    def fit(self, X, scalars, threads):
         # Only l2 is supported currently
         n_base, dim = X.shape
         num_slots = self.method_param["num_slots"]
@@ -44,6 +44,8 @@ class HannLib(BaseANN):
         )
         print(f"Adding {len(X)} vectors, {len(scalars)} scalars.")
         data_labels = np.arange(len(X))
+        self.p.set_num_threads(threads)
+        print("set threads in py: ", threads)
         self.p.add_items(np.asarray(X), scalars, data_labels)
         self.p.set_num_threads(1)
         print("add items done")
@@ -68,8 +70,8 @@ class HannLib(BaseANN):
         # return I
 
     def hybrid_query(self, q, interval, n):
-        I, D = self.p.hybrid_query(q, interval, n)
-        return I
+        I, D, comps = self.p.hybrid_query(q, interval, n)
+        return I, comps
 
     def freeIndex(self):
         del self.p

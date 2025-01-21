@@ -41,7 +41,7 @@ def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, d
         print("generating for dist:", distribution)
         if(attr_cnt == 1):
             #attr format: random integer from 0 to 
-            attr = np.random.randint(0, attr_range, db_size, dtype='int32').reshape(db_size, -1).tolist()
+            attr = np.random.randint(0, attr_range, db_size, dtype='int32').reshape(db_size).tolist()
 
         elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords
             attr = []

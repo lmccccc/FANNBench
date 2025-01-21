@@ -4,43 +4,6 @@ import sys
 import os
 import json
 
-# method_list = {
-#     0 : "random range",
-#     1 : "random keyword",
-#     2 : "random int range"
-# }
-
-
-###              varieties definiation         ###
-
-# attr_size  = 1000000         # 1M
-# query_size = 10000           # 10k
-# data_type  = "sift1M"
-
-# method      = None # "random range" or "random keyword" "random int range"
-# range_bound = None
-# range_size  = None
-
-# def set_range(method_id):
-#     method = method_id
-#     global range_bound
-#     global range_size
-#     if(method == method_list[0]):
-#         range_bound  = 1             # [0, 1)
-#         range_size   = 1             # range count
-
-#     elif(method == method_list[1]): # keyword
-#         range_bound    = 12          # range, integer from 1 to key_range
-#         range_size   = 1             # range count
-
-#     elif(method == method_list[2]): # range
-#         range_bound    = 12          # keyword, integer from 1 to key_range
-#         range_size   = 1             # range count
-#     else:
-#         print("error no such method")
-#         exit()
-#     return range_bound, range_size
-
 
 def ivecs_write(fname, m):
     n, d = m.shape
@@ -70,8 +33,10 @@ def fvecs_read(fname):
 
 def bvecs_read(fname):
     with open(fname, 'rb') as f:
-        d = np.frombuffer(f.read(4), dtype=np.int32)[0]
-        vectors = np.frombuffer(f.read(), dtype=np.uint8).reshape(-1, d + 4)
+        # d = np.frombuffer(f.read(4), dtype=np.int32)[0]
+        vectors = np.frombuffer(f.read(), dtype=np.uint8)
+        d = np.frombuffer(vectors[:4], dtype=np.int32)[0]
+        vectors = vectors.reshape(-1, d + 4)
         vectors = vectors[:, 4:]
     return vectors
 
@@ -111,3 +76,10 @@ def read_file(file):
         print ("cannot support such file type:", file)
         exit()
     return data
+
+
+def write_attr_json(filepath, attr):
+    if not ".json" in filepath:
+        print("error, json should be stored in .json file, not ", filepath)
+    with open(filepath, 'w') as file:
+        json.dump(attr, file, indent=4)

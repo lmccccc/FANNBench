@@ -293,6 +293,7 @@ struct Index {
     /** check that the two indexes are compatible (ie, they are
      * trained in the same way and have the same
      * parameters). Otherwise throw. */
+    
     virtual void check_compatible_for_merge(const Index& otherIndex) const;
 };
 

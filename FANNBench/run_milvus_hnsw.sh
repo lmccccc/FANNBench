@@ -62,9 +62,10 @@ fi
 status=$?
 if [ $status -ne 0 ]; then
     echo "milvus hnsw failed with exit status $status"
-    exit $status
 else
     echo "milvus hnsw ran successfully"
 fi
 
-source ./run_txt2csv.sh
+if [ $status -eq 0 ]; then
+    source ./run_txt2csv.sh
+fi
