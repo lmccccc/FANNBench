@@ -1,0 +1,62 @@
+set(CMAKE_CXX_STANDARD 17)
+
+# add_executable(generate_groundtruth generate_groundtruth.cc)
+# target_link_libraries(generate_groundtruth UTIL)
+# target_compile_options(generate_groundtruth PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(generate_groundtruth ${OpenMP_CXX_FLAGS})
+# target_link_libraries(generate_groundtruth OpenMP::OpenMP_CXX)
+
+
+# add_executable(deep_halfbound benchmark_deep_halfbounded.cc)
+# target_link_libraries(deep_halfbound UTIL)
+# target_compile_options(deep_halfbound PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(deep_halfbound ${OpenMP_CXX_FLAGS})
+# target_link_libraries(deep_halfbound OpenMP::OpenMP_CXX)
+
+# add_executable(deep_arbitrary benchmark_deep_arbitrary.cc)
+# target_link_libraries(deep_arbitrary UTIL)
+# target_compile_options(deep_arbitrary PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(deep_arbitrary ${OpenMP_CXX_FLAGS})
+# target_link_libraries(deep_arbitrary OpenMP::OpenMP_CXX)
+
+# add_executable(compact_arbitrary benchmark_compactg_arbitrary.cc)
+# target_link_libraries(compact_arbitrary UTIL)
+# target_compile_options(compact_arbitrary PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(compact_arbitrary ${OpenMP_CXX_FLAGS})
+# target_link_libraries(compact_arbitrary OpenMP::OpenMP_CXX)
+
+add_executable(build_index build_index.cc)
+target_link_libraries(build_index UTIL)
+target_compile_options(build_index PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+target_link_libraries(build_index ${OpenMP_CXX_FLAGS})
+target_link_libraries(build_index OpenMP::OpenMP_CXX)
+
+add_executable(query_index query_index.cc)
+target_link_libraries(query_index UTIL)
+target_compile_options(query_index PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+target_link_libraries(query_index ${OpenMP_CXX_FLAGS})
+target_link_libraries(query_index OpenMP::OpenMP_CXX)
+
+# add_executable(scalibility scalibility_exp.cc)
+# target_link_libraries(scalibility UTIL)
+# target_compile_options(scalibility PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(scalibility ${OpenMP_CXX_FLAGS})
+# target_link_libraries(scalibility OpenMP::OpenMP_CXX)
+
+# add_executable(streaming streaming_exp.cc)
+# target_link_libraries(streaming UTIL)
+# target_compile_options(streaming PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(streaming ${OpenMP_CXX_FLAGS})
+# target_link_libraries(streaming OpenMP::OpenMP_CXX)
+
+# add_executable(compact_stream compact_stream.cc)
+# target_link_libraries(compact_stream UTIL)
+# target_compile_options(compact_stream PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+# target_link_libraries(compact_stream ${OpenMP_CXX_FLAGS})
+# target_link_libraries(compact_stream OpenMP::OpenMP_CXX)
+
+add_executable(knn_first knnfirst.cc)
+target_link_libraries(knn_first UTIL)
+target_compile_options(knn_first PRIVATE -Wall ${OpenMP_CXX_FLAGS})
+target_link_libraries(knn_first ${OpenMP_CXX_FLAGS})
+target_link_libraries(knn_first OpenMP::OpenMP_CXX)
