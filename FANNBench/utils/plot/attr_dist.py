@@ -59,7 +59,7 @@ if __name__ == "__main__":
     plt.xticks(tick_positions, labels=[str(int(b)) for b in bins[:][::skip_xtick]])
     plt.show()
     # save plotW
-    plot_file = "plot/dist_" + dataset_attr_file.split('.')[0].split('/')[-1] + ".png"
+    plot_file = "plot/dist_" + dataset + '_' + dataset_attr_file.split('.')[0].split('/')[-1] + ".png"
     print("save plot to file:", plot_file)
     plt.savefig(plot_file)
 
@@ -95,6 +95,6 @@ if __name__ == "__main__":
     plt.xticks(tick_positions, labels=[str(int(b)) for b in bins[:][::skip_xtick]])
     plt.show()
     # save plotW
-    plot_file = "plot/dist_query_" + dataset_attr_file.split('.')[0].split('/')[-1] + ".png"
+    plot_file = "plot/dist_query_" + dataset + '_'+ dataset_attr_file.split('.')[0].split('/')[-1] + ".png"
     print("save plot to file:", plot_file)
     plt.savefig(plot_file)

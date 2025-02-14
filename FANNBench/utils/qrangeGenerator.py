@@ -29,7 +29,7 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
                 #query range format: random range from 0 to attr_range
                 queryattr = np.full((query_size, 2), query_attr)
             elif query_attr_size == attr_cnt: # nhq
-                queryattr = np.random.randint(0, attr_range, (query_size, query_attr_size), dtype='int32')
+                queryattr = np.full((query_size, query_attr_size), query_attr)
             else:
                 print("error, query_attr_size should be 1 or attr_cnt")
         else:
@@ -66,6 +66,7 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
                     queryattr[i][2:] = qattr[i]
 
             elif query_attr_size == attr_cnt: # nhq
+                print("qrange for nhq")
                 if distribution == "in_dist":
                     for idx, _data in enumerate(query):
                         distance = np.linalg.norm(_data - centroids, axis=1)
@@ -83,10 +84,13 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
                         probabilities = probabilities
                         selected_element = random.choices(elements, weights=probabilities, k=query_attr_size)
                         qattr[idx] = elements.index(selected_element)
+                else:
+                    queryattr = np.full((query_size, query_attr_size), query_attr)
                 
                 queryattr = qattr
             else:
                 print("error, query_attr_size should be 1 or attr_cnt")
+                exit(-1)
 
 
 
@@ -119,7 +123,7 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
                     else:
                         # generate random int by normal distribution (selected_element[0], attr_range/centroid_size)
                         mean = element_vals[selected_element] + segment_size // 2
-                        var = attr_range/centroid_size
+                        var = attr_range / centroid_size
                         while True:
                             qattr[idx] = int(np.random.normal(mean, var))
                             if qattr[idx] >= 0 and qattr[idx] < attr_range:
@@ -143,18 +147,48 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
             elif distribution == "out_dist":
                 for idx, _data in enumerate(query):
                     distance = np.linalg.norm(_data - centroids, axis=1)
-
                     dis_sum = np.sum(distance)
                     probabilities = distance/dis_sum
-                    selected_element = random.choices(elements, weights=probabilities, k=1)
-                    qattr[idx] = elements.index(selected_element[0])
+                    selected_element = random.choices(elements, weights=probabilities, k=1)[0]
+                    if attr_range <=128:
+                        qattr[idx] = selected_element
+                    else:
+                        # generate random int by normal distribution (selected_element[0], attr_range/centroid_size)
+                        mean = element_vals[selected_element] + segment_size // 2
+                        var = attr_range / centroid_size
+                        while True:
+                            qattr[idx] = int(np.random.normal(mean, var))
+                            if qattr[idx] >= 0 and qattr[idx] < attr_range:
+                                break
 
-                    # max_index = np.where(distance == np.max(distance))[0]
-                    # qattr[idx] = max_index[0]
                 queryattr = np.zeros((query_size, 2), dtype='int32')
-                for i in range(query_size):
-                    queryattr[i][0 : 2] = qattr[i]
-                    queryattr[i][2:] = qattr[i]
+                if(query_attr_size == 1):
+                    for i in range(query_size):
+                        queryattr[i][0 : 2] = qattr[i]
+                        queryattr[i][2:] = qattr[i]
+                else:
+                    half_range = query_attr_size // 2
+                    for i in range(query_size):
+                        queryattr[i][0] = qattr[i] - half_range
+                        if queryattr[i][0] < 0:
+                            queryattr[i][0] = 0
+                        queryattr[i][1] = qattr[i] + half_range
+                        if queryattr[i][1] >= attr_range:
+                            queryattr[i][1] = attr_range - 1
+                # for idx, _data in enumerate(query):
+                #     distance = np.linalg.norm(_data - centroids, axis=1)
+
+                #     dis_sum = np.sum(distance)
+                #     probabilities = distance/dis_sum
+                #     selected_element = random.choices(elements, weights=probabilities, k=1)
+                #     qattr[idx] = elements.index(selected_element[0])
+
+                #     # max_index = np.where(distance == np.max(distance))[0]
+                #     # qattr[idx] = max_index[0]
+                # queryattr = np.zeros((query_size, 2), dtype='int32')
+                # for i in range(query_size):
+                #     queryattr[i][0 : 2] = qattr[i]
+                #     queryattr[i][2:] = qattr[i]
 
             else:
                 print("err no such distribution")
@@ -221,7 +255,7 @@ if __name__ == "__main__":
     # ${output_dataset_attr_file} 
     # ${output_query_range_file} 
     # ${method}
-    if len(sys.argv) < 7 :
+    if len(sys.argv) < 8 :
         print("error wrong argument")
         exit()
     else:
@@ -245,7 +279,7 @@ if __name__ == "__main__":
         print("attr count: ", attr_cnt)
 
         attr_range = int(sys.argv[5])
-        print("attr count: ", attr_range)
+        print("attr range count: ", attr_range)
 
         query_attr_size = int(sys.argv[6])
         print("query attr count: ", query_attr_size)

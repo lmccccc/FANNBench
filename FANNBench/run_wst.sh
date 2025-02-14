@@ -1,7 +1,7 @@
 export debugSearchFlag=0
 #! /bin/bash
 
-source ./vars.sh $1 $2 $3 $4
+source ./vars.sh $1 $2 $3 $4 $5
 source ./file_check.sh
 
 
@@ -21,8 +21,8 @@ fi
 
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $rfann_index_prefix ]; then
-        echo "index file already exist"
-        exit 1
+        echo "index file already exist at $rfann_index_prefix"
+        exit 0
     fi
 fi
 

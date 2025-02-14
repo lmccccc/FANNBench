@@ -9,7 +9,7 @@ if [ ! -d "$label_path" ]; then
     mkdir ${label_path}
 fi
 
-if [ -d "$dataset_attr_file" ]; then
+if [ -f "$dataset_attr_file" ]; then
     echo Attribute file ${dataset_attr_file} already exist. 
     exit 1
 fi
@@ -39,6 +39,7 @@ python utils/attrGenerator.py ${N} \
                               ${train_file} \
                               ${train_size} \
                               ${centroid_file} \
+                              ${query_label}
 
 
 

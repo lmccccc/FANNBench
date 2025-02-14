@@ -174,6 +174,7 @@ class L2Space : public SpaceInterface<float> {
   L2Space(size_t dim) {
     fstdistfunc_ = L2Sqr;
 #if defined(USE_SSE) || defined(USE_AVX)
+    cout << "using simd" << endl;
     if (dim % 16 == 0)
       fstdistfunc_ = L2SqrSIMD16Ext;
     else if (dim % 4 == 0)
@@ -182,6 +183,8 @@ class L2Space : public SpaceInterface<float> {
       fstdistfunc_ = L2SqrSIMD16ExtResiduals;
     else if (dim > 4)
       fstdistfunc_ = L2SqrSIMD4ExtResiduals;
+#else
+    cout << "using standard" << endl;
 #endif
     dim_ = dim;
     data_size_ = dim * sizeof(float);

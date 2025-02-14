@@ -1,7 +1,7 @@
 export debugSearchFlag=0
 #! /bin/bash
 
-source ./vars.sh $1 $2 $3 $4
+source ./vars.sh $1 $2 $3 $4 $5
 source ./file_check.sh
 
 
@@ -50,7 +50,7 @@ echo "ef_search: $ef_search"
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $unify_index_file ]; then
         echo "index file already exist"
-        exit 1
+        exit 0
     fi
 fi
 
@@ -72,6 +72,7 @@ fi
                                                --gt_path $ground_truth_file \
                                                --n_query_to_use $query_size \
                                                --threads $threads \
+                                               --plan 3 \
                                                &>> $log_file
 
 if [ $? -ne 0 ]; then

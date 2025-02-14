@@ -16,7 +16,7 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 algo=DSG
 
@@ -39,7 +39,7 @@ if [ ! -d "$dsg_index_root" ]; then
 fi
 
 log_file=${dir}/summary_${algo}_${dataset}_efsearch${ef_search}.txt
-# TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
+TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 # echo "method: $algo"
 # echo "dataset: $dataset"
@@ -59,7 +59,7 @@ log_file=${dir}/summary_${algo}_${dataset}_efsearch${ef_search}.txt
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $dsg_index_file ]; then
         echo "index file already exist at $dsg_index_file"
-        exit 1
+        exit 0
     else
         echo "construct index"
         echo "dataset: $dataset"
@@ -103,7 +103,6 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
                                                                         -groundtruth_path $ground_truth_file \
                                                                         -index_path $dsg_index_file \
                                                                         -method "compact" \
-                                                                        -index_path $dsg_index_file \
                                                                         -k $serf_M \
                                                                         -ef_max $ef_max \
                                                                         -ef_construction $ef_construction \
@@ -116,9 +115,9 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
                                                                         &>> $log_file
     status=$?
     if [ $status -ne 0 ]; then
-        echo "diskann query failed with exit status $status"
+        echo "dsg query failed with exit status $status"
     else
-        echo "diskann query ran successfully"
+        echo "dsg query ran successfully"
     fi
 fi
 

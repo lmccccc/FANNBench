@@ -1,0 +1,325 @@
+Start time: 22:32
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 3, in <module>
+    from pymilvus import DataType, MilvusClient, utility
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/__init__.py", line 14, in <module>
+    from .client.abstract import AnnSearchRequest, Hit, Hits, RRFRanker, SearchResult, WeightedRanker
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/abstract.py", line 8, in <module>
+    from pymilvus.settings import Config
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/settings.py", line 4, in <module>
+    import environs
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/environs/__init__.py", line 16, in <module>
+    import marshmallow as ma
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/marshmallow/__init__.py", line 6, in <module>
+    from packaging.version import Version
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/packaging/version.py", line 16, in <module>
+    from ._structures import Infinity, InfinityType, NegativeInfinity, NegativeInfinityType
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/packaging/_structures.py", line 6, in <module>
+    class InfinityType:
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_3000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_3000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 0.13
+	System time (seconds): 0.01
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.15
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 36864
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 5605
+	Voluntary context switches: 6
+	Involuntary context switches: 4
+	Swaps: 0
+	File system inputs: 112
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 22:51
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_3000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_3000_1_100000_in_dist_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_dist
+collection  collection_sift10M_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  88133  postive res from  100000  results, recall@ 10 : 0.88133
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 3.000e-04 2.000e-03 1.110e-02
+ 5.740e-02 2.375e-01 4.833e-01 2.084e-01]
+10000  queries cost: 152.71154761314392 , qps: 65.48293273362975
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_3000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_3000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 17.92
+	System time (seconds): 4.38
+	Percent of CPU this job got: 14%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:34.52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 94932
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 51037
+	Voluntary context switches: 24116
+	Involuntary context switches: 870081
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 23:33
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_4000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_4000_1_100000_in_dist_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_dist
+collection  collection_sift10M_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  88097  postive res from  100000  results, recall@ 10 : 0.88097
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 1.000e-04 4.000e-04 1.100e-03 9.300e-03
+ 5.570e-02 2.467e-01 4.840e-01 2.027e-01]
+10000  queries cost: 295.8819143772125 , qps: 33.797266794925655
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_4000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_4000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 19.19
+	System time (seconds): 4.73
+	Percent of CPU this job got: 8%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:57.87
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 95880
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 56796
+	Voluntary context switches: 26908
+	Involuntary context switches: 403248
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 00:31
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_5000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_5000_1_100000_in_dist_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_dist
+Failed to create new connection using: 80e43603bbdf4ab595bd477ab7e6784c
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 67, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 60, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 728, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 725, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 449, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 400, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 150, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_5000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_5000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 11.94
+	System time (seconds): 0.19
+	Percent of CPU this job got: 114%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 83968
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 18379
+	Voluntary context switches: 1916
+	Involuntary context switches: 1082
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 00:33
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_6000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_6000_1_100000_in_dist_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_dist
+collection  collection_sift10M_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  87893  postive res from  100000  results, recall@ 10 : 0.87893
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.000e-04 1.400e-03 8.400e-03
+ 6.150e-02 2.506e-01 4.838e-01 1.942e-01]
+10000  queries cost: 120.88684344291687 , qps: 82.72198789541585
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_6000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_6000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 24.19
+	System time (seconds): 4.81
+	Percent of CPU this job got: 7%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:22.68
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 99124
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 12
+	Minor (reclaiming a frame) page faults: 56423
+	Voluntary context switches: 46948
+	Involuntary context switches: 726789
+	Swaps: 0
+	File system inputs: 14344
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 01:13
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_7000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_7000_1_100000_in_dist_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_dist
+collection  collection_sift10M_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  87744  postive res from  100000  results, recall@ 10 : 0.87744
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 1.000e-04 2.000e-04 1.400e-03 9.300e-03
+ 6.330e-02 2.470e-01 4.956e-01 1.831e-01]
+10000  queries cost: 286.8307204246521 , qps: 34.86376907325348
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_7000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_7000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 18.84
+	System time (seconds): 3.45
+	Percent of CPU this job got: 7%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:49.10
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 94852
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 58218
+	Voluntary context switches: 26596
+	Involuntary context switches: 779859
+	Swaps: 0
+	File system inputs: 560
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 02:26
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_8000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_8000_1_100000_in_dist_10.json
+K: 10
+nprobe: 80
+collection name: collection_sift10M_sel_1_100000_dist
+collection  collection_sift10M_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  87836  postive res from  100000  results, recall@ 10 : 0.87836
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.000e-04 1.100e-03 8.800e-03
+ 6.340e-02 2.494e-01 4.861e-01 1.911e-01]
+10000  queries cost: 474.9674074649811 , qps: 21.05407622256121
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_8000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_8000_1_100000_in_dist_10.json 10 80 collection_sift10M_sel_1_100000_dist query 64 128"
+	User time (seconds): 18.50
+	System time (seconds): 5.12
+	Percent of CPU this job got: 4%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:57.46
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 94848
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 57483
+	Voluntary context switches: 29828
+	Involuntary context switches: 480547
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

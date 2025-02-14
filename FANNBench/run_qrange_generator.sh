@@ -10,8 +10,8 @@ source ./vars.sh construction $1 $2
 # mkdir ${dir}
 
 
-if [ -d "$query_range_file" ]; then
-    exho Query range file ${query_range_file} already exist. 
+if [ -f "$query_range_file" ]; then
+    echo Query range file ${query_range_file} already exist. 
     exit 1
 fi
 
@@ -25,7 +25,8 @@ python utils/qrangeGenerator.py ${query_size} \
                                 ${query_label_cnt} \
                                 ${distribution} \
                                 ${query_label} \
-                                ${centroid_file}
+                                ${centroid_file} \
+                                ${query_label_sel}
 
 
 

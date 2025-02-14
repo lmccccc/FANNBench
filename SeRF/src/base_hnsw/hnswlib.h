@@ -1,14 +1,16 @@
 #pragma once
 #ifndef NO_MANUAL_VECTORIZATION
+
 #ifdef __SSE__
-// #define USE_SSE
+#define USE_SSE
 #ifdef __AVX__
-// #define USE_AVX
+#define USE_AVX
 #endif
 #endif
 #endif
 
 #if defined(USE_AVX) || defined(USE_SSE)
+
 #ifdef _MSC_VER
 #include <intrin.h>
 

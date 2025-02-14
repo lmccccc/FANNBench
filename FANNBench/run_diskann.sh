@@ -1,7 +1,7 @@
 export debugSearchFlag=0
 #! /bin/bash
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 
 algo=DiskANN
@@ -97,7 +97,7 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $diskann_index_file ]; then
         echo "index file already exist"
-        exit 1
+        exit 0
     else
         echo  "construct index"
         

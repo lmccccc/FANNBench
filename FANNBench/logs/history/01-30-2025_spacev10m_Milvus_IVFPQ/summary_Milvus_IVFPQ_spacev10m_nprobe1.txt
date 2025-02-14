@@ -1,0 +1,46 @@
+Start time: 08:48
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_2000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_2000_1_100000_random_10.json
+K: 10
+nprobe: 1
+collection name: collection_spacev10m_sel_1_100000_random
+collection  collection_spacev10m_sel_1_100000_random  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  31858  postive res from  100000  results, recall@ 10 : 0.31858
+recall dist(10\% per bucket):  [0.1259 0.1768 0.1642 0.1449 0.1175 0.0855 0.0661 0.045  0.039  0.0262
+ 0.0089]
+10000  queries cost: 605.0862655639648 , qps: 16.526569134203694
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_2000_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_2000_1_100000_random_10.json 10 1 collection_spacev10m_sel_1_100000_random query 50 100"
+	User time (seconds): 31.88
+	System time (seconds): 7.14
+	Percent of CPU this job got: 6%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 10:07.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 99228
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 52751
+	Voluntary context switches: 32469
+	Involuntary context switches: 573
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

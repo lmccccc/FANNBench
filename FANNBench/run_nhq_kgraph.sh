@@ -1,6 +1,6 @@
 export debugSearchFlag=0
 #! /bin/bash
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 
 algo=NHQ_kgraph
@@ -45,7 +45,7 @@ fi
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $nhqkg_index_model_file ]; then
         echo "index file already exist"
-        exit 1
+        exit 0
     else
         echo  "construct index"
         

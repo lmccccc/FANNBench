@@ -162,26 +162,26 @@ vector<vector<int>> load_groundtruth(string file_name, int Nq, int K){//json fil
 }
 
 //convert label range to id range, only support ordered integer label range from 0 to N-1
-void label_range_2_id_range(vector<pair<int, int>> &qrange, vector<int> &sorted_label){
-  vector<int> label_start, label_end;
-  for (size_t i = 0; i < sorted_label.size(); i++)
-  {
-    if(label_start.size() == 0) label_start.push_back(i);
-    else if(sorted_label[i] != sorted_label[i-1]){
-      label_end.push_back(i-1);
-      label_start.push_back(i);
-    }
-    if(i == sorted_label.size() - 1){
-      label_end.push_back(i);
-    }
-  }
-  assert(label_start.size() == label_end.size());
-  for (size_t i = 0; i < qrange.size(); i++)
-  {
-    qrange[i].first = label_start[qrange[i].first];
-    qrange[i].second = label_end[qrange[i].second];
-  }
-}
+// void label_range_2_id_range(vector<pair<int, int>> &qrange, vector<int> &sorted_label){
+//   vector<int> label_start, label_end;
+//   for (size_t i = 0; i < sorted_label.size(); i++)
+//   {
+//     if(label_start.size() == 0) label_start.push_back(i);
+//     else if(sorted_label[i] != sorted_label[i-1]){
+//       label_end.push_back(i-1);
+//       label_start.push_back(i);
+//     }
+//     if(i == sorted_label.size() - 1){
+//       label_end.push_back(i);
+//     }
+//   }
+//   assert(label_start.size() == label_end.size());
+//   for (size_t i = 0; i < qrange.size(); i++)
+//   {
+//     qrange[i].first = label_start[qrange[i].first];
+//     qrange[i].second = label_end[qrange[i].second];
+//   }
+// }
 
 int main(int argc, char **argv) {
 #ifdef USE_SSE

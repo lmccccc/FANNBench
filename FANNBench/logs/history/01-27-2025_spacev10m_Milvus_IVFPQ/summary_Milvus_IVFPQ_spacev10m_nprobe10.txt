@@ -1,0 +1,230 @@
+Start time: 19:19
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_dist
+get dataset size: 10000000  d: 192
+dim: 192
+_N: 10000000  N: 10000000
+partition M: 64
+nlist: 3162
+start insertion
+grpc RpcError: [insert_rows], <_InactiveRpcError: StatusCode.RESOURCE_EXHAUSTED, grpc: received message larger than max (77367242 vs. 67108864)>, <Time:{'RPC start': '2025-01-27 11:22:32.915740', 'gRPC error': '2025-01-27 11:22:35.426487'}>
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 153, in <module>
+    client.insert(collection_name=c_name, data=data[i:i+batch_size])
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 225, in insert
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 221, in insert
+    res = conn.insert_rows(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 162, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 91, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 495, in insert_rows
+    resp = self._stub.Insert(request=request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 332, in _with_call
+    return call.result(), call
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 440, in result
+    raise self
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 332, in _with_call
+    return call.result(), call
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 440, in result
+    raise self
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1198, in with_call
+    return _end_unary_response_blocking(state, call, True, None)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.RESOURCE_EXHAUSTED
+	details = "grpc: received message larger than max (77367242 vs. 67108864)"
+	debug_error_string = "UNKNOWN:Error received from peer ipv6:%5B::1%5D:19530 {grpc_message:"grpc: received message larger than max (77367242 vs. 67108864)", grpc_status:8, created_time:"2025-01-27T11:22:35.420867059+08:00"}"
+>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json 10 10 collection_spacev10m_sel_1_100000_dist construction 64 192"
+	User time (seconds): 226.65
+	System time (seconds): 77.71
+	Percent of CPU this job got: 103%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:52.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 87771704
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 76616770
+	Voluntary context switches: 4608
+	Involuntary context switches: 4023
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 01:27
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_dist
+collection  collection_spacev10m_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 0}"] 
+query d: 192
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+error, get  0  results, expect  10
+res: data: ['[]'] 
+exp: 51111 <= label <= 52111
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 216, in <module>
+    if(ids[i][top] == gt[i][gtind]):
+IndexError: list index out of range
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json 10 10 collection_spacev10m_sel_1_100000_dist query 64 192"
+	User time (seconds): 14.15
+	System time (seconds): 5.60
+	Percent of CPU this job got: 3560%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.55
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 103284
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22708
+	Voluntary context switches: 478
+	Involuntary context switches: 360
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 03:24
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_random
+collection  collection_spacev10m_sel_1_100000_random  exists
+collection size: data: ["{'count(*)': 0}"] 
+query d: 192
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+error, get  0  results, expect  10
+res: data: ['[]'] 
+exp: 60460 <= label <= 61459
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 216, in <module>
+    if(ids[i][top] == gt[i][gtind]):
+IndexError: list index out of range
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json 10 10 collection_spacev10m_sel_1_100000_random query 64 192"
+	User time (seconds): 14.10
+	System time (seconds): 5.63
+	Percent of CPU this job got: 3810%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 103860
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22746
+	Voluntary context switches: 453
+	Involuntary context switches: 315
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 05:15
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_out_dist.json
+ground truth file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_out_dist_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_dist
+collection  collection_spacev10m_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 0}"] 
+query d: 192
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+error, get  0  results, expect  10
+res: data: ['[]'] 
+exp: 100 <= label <= 100
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 216, in <module>
+    if(ids[i][top] == gt[i][gtind]):
+IndexError: list index out of range
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_out_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_out_dist_10.json 10 10 collection_spacev10m_sel_1_100000_dist query 64 192"
+	User time (seconds): 14.12
+	System time (seconds): 5.60
+	Percent of CPU this job got: 3794%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 103692
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22787
+	Voluntary context switches: 466
+	Involuntary context switches: 369
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

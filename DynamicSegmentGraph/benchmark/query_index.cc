@@ -191,26 +191,53 @@ vector<vector<int>> load_groundtruth(string file_name, int Nq, int K){//json fil
   return gt;
 }
 
+int binary_search(vector<int> &sorted_label, int target){
+  int left = 0, right = sorted_label.size() - 1;
+  while(left <= right){
+    int mid = left + (right - left) / 2;
+    if(sorted_label[mid] == target){
+      return mid;
+    }
+    else if(sorted_label[mid] < target){
+      left = mid + 1;
+    }
+    else{
+      right = mid - 1;
+    }
+  }
+  return left;
+}
+
 //convert label range to id range, only support ordered integer label range from 0 to N-1
 void label_range_2_id_range(vector<pair<int, int>> &qrange, vector<int> &sorted_label){
-  vector<int> label_start, label_end;
-  for (size_t i = 0; i < sorted_label.size(); i++)
-  {
-    if(label_start.size() == 0) label_start.push_back(i);
-    else if(sorted_label[i] != sorted_label[i-1]){
-      label_end.push_back(i-1);
-      label_start.push_back(i);
-    }
-    if(i == sorted_label.size() - 1){
-      label_end.push_back(i);
-    }
-  }
-  assert(label_start.size() == label_end.size());
   for (size_t i = 0; i < qrange.size(); i++)
   {
-    qrange[i].first = label_start[qrange[i].first];
-    qrange[i].second = label_end[qrange[i].second];
+    qrange[i].first = binary_search(sorted_label, qrange[i].first);
+    qrange[i].second = binary_search(sorted_label, qrange[i].second);
   }
+  
+  // vector<int> label_start, label_end;
+  // int previous_label = -1;
+  // for (size_t i = 0; i < sorted_label.size(); i++)
+  // {
+  //   if(label_start.size() == 0) {
+  //     label_start.push_back(i);
+  //   }
+  //   else if(sorted_label[i] != sorted_label[i-1]){
+  //     label_end.push_back(i-1);
+  //     label_start.push_back(i);
+  //   }
+  //   if(i == sorted_label.size() - 1){
+  //     label_end.push_back(i);
+  //   }
+  // }
+  // cout << "label range size:" << label_start.size() << endl;
+  // assert(label_start.size() == label_end.size());
+  // for (size_t i = 0; i < qrange.size(); i++)
+  // {
+  //   qrange[i].first = label_start[qrange[i].first];
+  //   qrange[i].second = label_end[qrange[i].second];
+  // }
 }
 
 int main(int argc, char **argv) {
@@ -346,12 +373,12 @@ int main(int argc, char **argv) {
     }
     BaseIndex::SearchInfo search_info(&data_wrapper, &i_params, "SeRF_2D",
                                       "benchmark");
-
-    gettimeofday(&t1, NULL);
+    timeval t3, t4;
+    gettimeofday(&t3, NULL);
     index->load(index_path);
-    gettimeofday(&t2, NULL);
-    logTime(t1, t2, "Load Index Time");
-
+    gettimeofday(&t4, NULL);
+    logTime(t3, t4, "Load Index Time");
+    cout << "load index done" << endl;
     {
         timeval tt3, tt4;
         BaseIndex::SearchParams s_params;

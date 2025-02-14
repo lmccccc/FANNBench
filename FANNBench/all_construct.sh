@@ -17,7 +17,7 @@ run_func(){
 
 
 
-# echo "Construction mode, remove all index files"
+echo "Construction mode"
 # rm ${acorn_index_file}
 # rm -rf ${diskann_index_label_root}
 # rm ${hnsw_index_file}

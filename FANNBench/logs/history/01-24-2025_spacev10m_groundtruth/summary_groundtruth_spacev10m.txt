@@ -1,0 +1,130 @@
+
+
+===============================================================================================================
+START: generating groundtruth
+
+N: 10000000
+dataset: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+attr: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query: /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs
+qrange: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json
+output: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json
+topk: 10
+dim: 192
+start
+[5.103 s] Loaded dataset, size=10000000, dim=192
+[5.797 s] Loaded attr, size=0
+[5.797 s] Loading query vectors and attributes
+query vecs data loaded, with dim: 192, size=10000
+[5.802 s] Loaded query vectors
+[5.803 s] Loaded 10000 queries
+====================Vectors====================
+
+[5.803 s] Loading database
+data loaded, with dim: 192, nb=10000000
+[5.803 s] Indexing database, size 10000000*192 from max 10000000
+[9.476 s] Adding the vectors to the index
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+====================INDEX====================
+[9.953 s] Searching the 10 nearest neighbors of 10000 vectors in the index
+here1
+nn and dis size: 100000 100000
+[24.118 s] Query results (vector ids, then distances):
+query 0, qrange [51111, 52111]
+      nns 0 id:1869719 attr:52026 dis:36254
+      nns 1 id:3024722 attr:51347 dis:42477
+      nns 2 id:5058564 attr:51538 dis:43346
+      nns 3 id:9455840 attr:51437 dis:46965
+      nns 4 id:9257461 attr:51737 dis:47471
+      nns 5 id:1757057 attr:51599 dis:47983
+      nns 6 id:4855128 attr:51760 dis:48227
+      nns 7 id:6404346 attr:51682 dis:48903
+      nns 8 id:1377296 attr:51656 dis:49087
+      nns 9 id:5163864 attr:51691 dis:49663
+
+query 1, qrange [24588, 25588]
+      nns 0 id:4713106 attr:24871 dis:48023
+      nns 1 id:1006583 attr:25451 dis:50582
+      nns 2 id:8773273 attr:25557 dis:52507
+      nns 3 id:6398086 attr:24828 dis:54696
+      nns 4 id:1039160 attr:25073 dis:54821
+      nns 5 id:5885031 attr:25232 dis:55898
+      nns 6 id:1656151 attr:25293 dis:56319
+      nns 7 id:9215259 attr:25187 dis:56430
+      nns 8 id:8474604 attr:25161 dis:56865
+      nns 9 id:848080 attr:24666 dis:57923
+
+query 2, qrange [62344, 63344]
+      nns 0 id:4921588 attr:63182 dis:44078
+      nns 1 id:100810 attr:62552 dis:45712
+      nns 2 id:6442455 attr:63105 dis:45731
+      nns 3 id:5014319 attr:62904 dis:49615
+      nns 4 id:1246165 attr:62638 dis:50233
+      nns 5 id:2908509 attr:62837 dis:51018
+      nns 6 id:4921009 attr:62425 dis:51595
+      nns 7 id:1864920 attr:62636 dis:52321
+      nns 8 id:5377021 attr:62754 dis:52446
+      nns 9 id:6452061 attr:62651 dis:53320
+
+query 3, qrange [29217, 30217]
+      nns 0 id:2588575 attr:29665 dis:57443
+      nns 1 id:2563880 attr:29702 dis:58217
+      nns 2 id:1200573 attr:29256 dis:58621
+      nns 3 id:5888415 attr:29979 dis:60319
+      nns 4 id:6958649 attr:30115 dis:60774
+      nns 5 id:2916144 attr:29522 dis:60778
+      nns 6 id:1374731 attr:30158 dis:61068
+      nns 7 id:8473652 attr:29275 dis:62194
+      nns 8 id:1324862 attr:30149 dis:63226
+      nns 9 id:6984222 attr:30071 dis:64069
+
+query 4, qrange [11691, 12691]
+      nns 0 id:5951421 attr:12403 dis:35235
+      nns 1 id:3422179 attr:12198 dis:37549
+      nns 2 id:7513940 attr:11877 dis:37913
+      nns 3 id:5182703 attr:12366 dis:37938
+      nns 4 id:5094710 attr:11953 dis:38228
+      nns 5 id:5293249 attr:12554 dis:38566
+      nns 6 id:9735317 attr:11781 dis:38769
+      nns 7 id:7137622 attr:12041 dis:38925
+      nns 8 id:4716755 attr:11882 dis:39643
+      nns 9 id:5950321 attr:12358 dis:40327
+
+[24.118 s] *** Query time: 14.164692
+qps:705.981
+cmp per query:10000000
+recall: 1 of course
+sel distribution: 1 0 0 0 0 0 0 0 0 0 0 
+selectivity: 0.0100005
+finished base index examples
+====================WRITING====================
+==================WRITING DONE=================
+[306.995 s] -----DONE-----
+	Command being timed: "../faiss/build/demos/generate_groundtruth 10000000 /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json 10 192"
+	User time (seconds): 1750.39
+	System time (seconds): 15.39
+	Percent of CPU this job got: 574%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:07.52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15135744
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4955133
+	Voluntary context switches: 1965
+	Involuntary context switches: 32191
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1808
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

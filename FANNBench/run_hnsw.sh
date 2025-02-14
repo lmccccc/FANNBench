@@ -16,7 +16,7 @@
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 algo=HNSW
 
@@ -41,7 +41,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     echo "hnsw index file: ${hnsw_index_file}"
     if [ -e $hnsw_index_file ]; then
         echo "hnsw index file already exist"
-        exit 1
+        exit 0
     else
         echo  "construct index"
         /bin/time -v -p ../faiss/build/demos/hnsw_build $dataset \

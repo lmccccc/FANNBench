@@ -1,0 +1,150 @@
+Start time: 08:21
+====================
+START: running ACORN_INDEX_CONSTRUCTION for hnsw, sift data --
+
+dataset: deep10m
+N: 10000000
+gamma: 12
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/deep10m/base.10M.fvecs
+attr file: /mnt/data/mocheng/dataset/deep10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+index file: /mnt/data/mocheng/dataset/deep10m/acorn/index/index_acorn_sel_1_100000_dist_M40_ga12_Mb64
+dim: 96
+[ 0.030s ] Index Params -- d: 96, M: 40, N: 10000000, gamma: 12
+--ACORN index created
+====================Vectors====================
+
+[ 0.030s ] Loading database
+[ 4.388s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/deep10m/base.10M.fvecs
+data loaded, with dim: 96, nb=10000000
+[ 4.388s ] Indexing database, size 10000000*96 from max 10000000
+[ 4.388s ] Adding the vectors to the index
+adding to storage
+storage added
+Start time: 03:39
+====================
+START: running ACORN_INDEX_CONSTRUCTION for hnsw, sift data --
+
+dataset: deep10m
+N: 10000000
+gamma: 12
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/deep10m/base.10M.fvecs
+attr file: /mnt/data/mocheng/dataset/deep10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+index file: /mnt/data/mocheng/dataset/deep10m/acorn/index/index_acorn_sel_1_100000_dist_M40_ga12_Mb64
+dim: 96
+[ 0.032s ] Index Params -- d: 96, M: 40, N: 10000000, gamma: 12
+--ACORN index created
+====================Vectors====================
+
+[ 0.033s ] Loading database
+[ 4.615s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/deep10m/base.10M.fvecs
+data loaded, with dim: 96, nb=10000000
+[ 4.615s ] Indexing database, size 10000000*96 from max 10000000
+[ 4.615s ] Adding the vectors to the index
+adding to storage
+storage added
+max_level: 4
+Adding 3 elements at level 4
+Adding 137 elements at level 3
+Adding 6072 elements at level 2
+Adding 243748 elements at level 1
+Adding 9750040 elements at level 0
+[ 2360.182s ] Vectors added to hybrid index10000000
+Hybrid index vectors added:10000000
+====================Write Index================
+
+[ 2366.126s ] Wrote hybrid index to file: /mnt/data/mocheng/dataset/deep10m/acorn/index/index_acorn_sel_1_100000_dist_M40_ga12_Mb64
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 604
+		indx 3: 1084
+		indx 4: 1564
+		indx 5: 2044
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 480
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 1940918
+	* gamma: 12
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 10000000
+   2. neighbors per node: 85.27 (852698029)
+   3. nb of reciprocal neighbors: 56.16
+   4. nb of neighbors that are also neighbor-of-neighbors: 79.47 (794671825)
+========= LEVEL 1 =======
+* stats on level 1, max 480 neighbors per vertex:
+   1. nb of nodes: 249960
+   2. neighbors per node: 480.00 (119980523)
+   3. nb of reciprocal neighbors: 146.17
+   4. nb of neighbors that are also neighbor-of-neighbors: 409.81 (102435996)
+========= LEVEL 2 =======
+* stats on level 2, max 480 neighbors per vertex:
+   1. nb of nodes: 6212
+   2. neighbors per node: 463.53 (2879423)
+   3. nb of reciprocal neighbors: 290.37
+   4. nb of neighbors that are also neighbor-of-neighbors: 462.97 (2875954)
+========= LEVEL 3 =======
+* stats on level 3, max 480 neighbors per vertex:
+   1. nb of nodes: 140
+   2. neighbors per node: 133.03 (18624)
+   3. nb of reciprocal neighbors: 131.13
+   4. nb of neighbors that are also neighbor-of-neighbors: 132.57 (18560)
+========= LEVEL 4 =======
+* stats on level 4, max 480 neighbors per vertex:
+   1. nb of nodes: 3
+   2. neighbors per node: 2.00 (6)
+   3. nb of reciprocal neighbors: 2.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 2.00 (6)
+METADATA VEC for number nodes per level
+	level 0: 9999213 nodes
+	level 1: 249957 nodes
+	level 2: 6211 nodes
+	level 3: 140 nodes
+	level 4: 3 nodes
+	level 5: 0 nodes
+acorn size: 5452124800, memory: 8976.102MB
+[2403.440 s] -----DONE-----
+[ 2403.440s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_build deep10m 10000000 12 40 64 10 128 /mnt/data/mocheng/dataset/deep10m/base.10M.fvecs /mnt/data/mocheng/dataset/deep10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/deep10m/acorn/index/index_acorn_sel_1_100000_dist_M40_ga12_Mb64 96"
+	User time (seconds): 173078.70
+	System time (seconds): 309.01
+	Percent of CPU this job got: 7210%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 40:04.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15748280
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 84516098
+	Voluntary context switches: 59841
+	Involuntary context switches: 25430888
+	Swaps: 0
+	File system inputs: 704
+	File system outputs: 18383136
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

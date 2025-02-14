@@ -16,7 +16,7 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 algo=ACORN
 
@@ -41,7 +41,7 @@ echo "acorn index file: ${acorn_index_file}"
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $acorn_index_file ]; then
         echo "acorn index file already exist"
-        exit 1
+        exit 0
     else
         echo  "construct index"
         /bin/time -v -p ../ACORN/build/demos/acorn_build $dataset \

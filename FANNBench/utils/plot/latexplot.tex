@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{pgffor}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\makeatletter
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={X Axis},
+        ylabel={Y Axis},
+        xmin=0.1, xmax=1,
+        ymin=0, ymax=15, % Adjust based on your data range
+        legend pos=north west,
+    ]
+    
+    \pgfplotstableread{plot/cpq_0.9recall_100000label_random_sift10M.txt}\mydata % Read the data file
+    
+    \def\xvals{0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1}
+    \def\xaxis{1,2,3,4,5,6,7,8,9,10}
+    
+    % Loop through each row (data series)
+    \foreach \i in {1,2,3,4,5} {
+        % \addplot coordinates {
+        %     % Combine the x-values and the y-values from the \i-th line
+            \foreach \j in \xaxis {
+                (\xvals[\j], \pgfplotstablegetelem{\i}{\j-1}\of\mydata) % Get the y-value from the table
+            }
+        % };
+        % \addlegendentry{Line \i} % Add legend for each line
+    }
+    \end{axis}
+\end{tikzpicture}
+\makeatother
+\end{document}

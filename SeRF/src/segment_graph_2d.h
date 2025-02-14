@@ -625,12 +625,13 @@ class IndexSegmentGraph2D : public BaseIndex {
       //   cout << "Building Index: " << i << endl;
       // }
     }
-    gettimeofday(&tt2, NULL);
-    index_info->index_time = CountTime(tt1, tt2);
 
     // cout << "Indexing time: " << index_info->index_time << " seconds" << endl;
     // processing reverse neighbors
     processReverseNeighbors(hnsw);
+    
+    gettimeofday(&tt2, NULL);
+    index_info->index_time = CountTime(tt1, tt2);
     // cout << "reverse nbr suc" << endl;
     // count neighbors number
     countNeighbrs();

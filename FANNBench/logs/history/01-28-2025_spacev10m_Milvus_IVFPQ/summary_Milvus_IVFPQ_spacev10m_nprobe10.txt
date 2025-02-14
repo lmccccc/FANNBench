@@ -1,0 +1,403 @@
+Start time: 19:37
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_random
+collection  collection_spacev10m_sel_1_100000_random  exists, then drop it
+get dataset size: 10000000  d: 100
+dim: 100
+_N: 10000000  N: 10000000
+partition M: 64
+nlist: 3162
+RPC error: [create_index], <MilvusException: (code=1100, message=dimension must be able to be divided by `m`, dimension: 100, m: 64: invalid parameter[expected=valid index params][actual=invalid index params])>, <Time:{'RPC start': '2025-01-28 11:37:29.482078', 'RPC error': '2025-01-28 11:37:29.523363'}>
+Failed to create an index on collection: collection_spacev10m_sel_1_100000_random
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 135, in <module>
+    client.create_collection(collection_name=c_name, 
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 92, in create_collection
+    return self._create_collection_with_schema(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 703, in _create_collection_with_schema
+    self.create_index(collection_name, index_params, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 155, in create_index
+    self._create_index(collection_name, index_param, timeout=timeout, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 177, in _create_index
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 166, in _create_index
+    conn.create_index(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 148, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 144, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 183, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 123, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 87, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 987, in create_index
+    check_status(status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 63, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=dimension must be able to be divided by `m`, dimension: 100, m: 64: invalid parameter[expected=valid index params][actual=invalid index params])>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json 10 10 collection_spacev10m_sel_1_100000_random construction 64 100"
+	User time (seconds): 15.19
+	System time (seconds): 2.53
+	Percent of CPU this job got: 317%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7933704
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 246601
+	Voluntary context switches: 727
+	Involuntary context switches: 336
+	Swaps: 0
+	File system inputs: 272
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 21:47
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_random
+collection  collection_spacev10m_sel_1_100000_random  exists, then drop it
+get dataset size: 10000000  d: 100
+dim: 100
+_N: 10000000  N: 10000000
+partition M: 50
+nlist: 3162
+start insertion
+insert batch: 0.0
+insert batch: 1.0
+insert batch: 2.0
+insert batch: 3.0
+insert batch: 4.0
+insert batch: 5.0
+insert batch: 6.0
+insert batch: 7.0
+insert batch: 8.0
+insert batch: 9.0
+insert batch: 10.0
+insert batch: 11.0
+insert batch: 12.0
+insert batch: 13.0
+insert batch: 14.0
+insert batch: 15.0
+insert batch: 16.0
+insert batch: 17.0
+insert batch: 18.0
+insert batch: 19.0
+insert batch: 20.0
+insert batch: 21.0
+insert batch: 22.0
+insert batch: 23.0
+insert batch: 24.0
+insert batch: 25.0
+insert batch: 26.0
+insert batch: 27.0
+insert batch: 28.0
+insert batch: 29.0
+insert batch: 30.0
+insert batch: 31.0
+insert batch: 32.0
+insert batch: 33.0
+insert batch: 34.0
+insert batch: 35.0
+insert batch: 36.0
+insert batch: 37.0
+insert batch: 38.0
+insert batch: 39.0
+insert batch: 40.0
+insert batch: 41.0
+insert batch: 42.0
+insert batch: 43.0
+insert batch: 44.0
+insert batch: 45.0
+insert batch: 46.0
+insert batch: 47.0
+insert batch: 48.0
+insert batch: 49.0
+insert batch: 50.0
+insert batch: 51.0
+insert batch: 52.0
+insert batch: 53.0
+insert batch: 54.0
+insert batch: 55.0
+insert batch: 56.0
+insert batch: 57.0
+insert batch: 58.0
+insert batch: 59.0
+insert batch: 60.0
+insert batch: 61.0
+insert batch: 62.0
+insert batch: 63.0
+insert batch: 64.0
+insert batch: 65.0
+insert batch: 66.0
+insert batch: 67.0
+insert batch: 68.0
+insert batch: 69.0
+insert batch: 70.0
+insert batch: 71.0
+insert batch: 72.0
+insert batch: 73.0
+insert batch: 74.0
+insert batch: 75.0
+insert batch: 76.0
+insert batch: 77.0
+insert batch: 78.0
+insert batch: 79.0
+insert batch: 80.0
+insert batch: 81.0
+insert batch: 82.0
+insert batch: 83.0
+insert batch: 84.0
+insert batch: 85.0
+insert batch: 86.0
+insert batch: 87.0
+insert batch: 88.0
+insert batch: 89.0
+insert batch: 90.0
+insert batch: 91.0
+insert batch: 92.0
+insert batch: 93.0
+insert batch: 94.0
+insert batch: 95.0
+insert batch: 96.0
+insert batch: 97.0
+insert batch: 98.0
+insert batch: 99.0
+insert suc, time cost: 261.9982349872589
+construction done
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json 10 10 collection_spacev10m_sel_1_100000_random construction 50 100"
+	User time (seconds): 305.46
+	System time (seconds): 59.71
+	Percent of CPU this job got: 89%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:46.34
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 47679684
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 46657744
+	Voluntary context switches: 30312
+	Involuntary context switches: 3502
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 392
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 01:17
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_random
+collection  collection_spacev10m_sel_1_100000_random  exists
+collection size: data: ["{'count(*)': 10000000}"] 
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  71679  postive res from  100000  results, recall@ 10 : 0.71679
+recall dist(10\% per bucket):  [0.0007 0.0042 0.0124 0.0318 0.0596 0.0981 0.1292 0.1654 0.1953 0.2138
+ 0.0895]
+10000  queries cost: 315.92038130760193 , qps: 31.653544980573155
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json 10 10 collection_spacev10m_sel_1_100000_random query 50 100"
+	User time (seconds): 19.09
+	System time (seconds): 5.63
+	Percent of CPU this job got: 7%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:17.85
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 100388
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 49406
+	Voluntary context switches: 27121
+	Involuntary context switches: 174559
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 05:25
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json
+K: 10
+nprobe: 10
+collection name: collection_spacev10m_sel_1_100000_dist
+collection  collection_spacev10m_sel_1_100000_dist  exists, then drop it
+get dataset size: 10000000  d: 100
+dim: 100
+_N: 10000000  N: 10000000
+partition M: 50
+nlist: 3162
+start insertion
+insert batch: 0.0
+insert batch: 1.0
+insert batch: 2.0
+insert batch: 3.0
+insert batch: 4.0
+insert batch: 5.0
+insert batch: 6.0
+insert batch: 7.0
+insert batch: 8.0
+insert batch: 9.0
+insert batch: 10.0
+insert batch: 11.0
+insert batch: 12.0
+insert batch: 13.0
+insert batch: 14.0
+insert batch: 15.0
+insert batch: 16.0
+insert batch: 17.0
+insert batch: 18.0
+insert batch: 19.0
+insert batch: 20.0
+insert batch: 21.0
+insert batch: 22.0
+insert batch: 23.0
+insert batch: 24.0
+insert batch: 25.0
+insert batch: 26.0
+insert batch: 27.0
+insert batch: 28.0
+insert batch: 29.0
+insert batch: 30.0
+insert batch: 31.0
+insert batch: 32.0
+insert batch: 33.0
+insert batch: 34.0
+insert batch: 35.0
+insert batch: 36.0
+insert batch: 37.0
+insert batch: 38.0
+insert batch: 39.0
+insert batch: 40.0
+insert batch: 41.0
+insert batch: 42.0
+insert batch: 43.0
+insert batch: 44.0
+insert batch: 45.0
+insert batch: 46.0
+insert batch: 47.0
+insert batch: 48.0
+insert batch: 49.0
+insert batch: 50.0
+insert batch: 51.0
+insert batch: 52.0
+insert batch: 53.0
+insert batch: 54.0
+insert batch: 55.0
+insert batch: 56.0
+insert batch: 57.0
+insert batch: 58.0
+insert batch: 59.0
+insert batch: 60.0
+insert batch: 61.0
+insert batch: 62.0
+insert batch: 63.0
+insert batch: 64.0
+insert batch: 65.0
+insert batch: 66.0
+insert batch: 67.0
+insert batch: 68.0
+insert batch: 69.0
+insert batch: 70.0
+insert batch: 71.0
+insert batch: 72.0
+insert batch: 73.0
+insert batch: 74.0
+insert batch: 75.0
+insert batch: 76.0
+insert batch: 77.0
+insert batch: 78.0
+insert batch: 79.0
+insert batch: 80.0
+insert batch: 81.0
+insert batch: 82.0
+insert batch: 83.0
+insert batch: 84.0
+insert batch: 85.0
+insert batch: 86.0
+insert batch: 87.0
+insert batch: 88.0
+insert batch: 89.0
+insert batch: 90.0
+insert batch: 91.0
+insert batch: 92.0
+insert batch: 93.0
+insert batch: 94.0
+insert batch: 95.0
+insert batch: 96.0
+insert batch: 97.0
+insert batch: 98.0
+insert batch: 99.0
+insert suc, time cost: 267.9291801452637
+construction done
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json 10 10 collection_spacev10m_sel_1_100000_dist construction 50 100"
+	User time (seconds): 311.24
+	System time (seconds): 67.25
+	Percent of CPU this job got: 89%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:02.41
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 47678992
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 48188922
+	Voluntary context switches: 20686
+	Involuntary context switches: 3621
+	Swaps: 0
+	File system inputs: 16
+	File system outputs: 408
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -27,8 +27,8 @@ if [ ! -f "$query_range_file" ]; then
     exit 1
 fi
 
-if [ -d "$ground_truth_file" ]; then
-    exho Ground truth file ${ground_truth_file} already exist. 
+if [ -f "$ground_truth_file" ]; then
+    echo Ground truth file ${ground_truth_file} already exist. 
     exit 1
 fi
 

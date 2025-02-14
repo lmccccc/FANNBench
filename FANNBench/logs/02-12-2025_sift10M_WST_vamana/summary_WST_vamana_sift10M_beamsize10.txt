@@ -1,0 +1,136 @@
+Start time: 22:33
+usage: RangeFilteredANN.py [-h] [--threads THREADS] [--postfiltering]
+                           [--optimized_postfiltering] [--vamana_tree]
+                           [--prefiltering] [--smart_combined] [--three_split]
+                           [--super_opt_postfiltering] [--all_methods]
+                           [--results_file_prefix RESULTS_FILE_PREFIX]
+                           [--beam_search_size BEAM_SEARCH_SIZE]
+                           [--experiment_filter_width EXPERIMENT_FILTER_WIDTH]
+                           [--num_final_multiplies NUM_FINAL_MULTIPLIES]
+                           [--dataset DATASET] [--verbose]
+                           [--dont_write_to_results_file]
+                           [--vamana_tree_split_factor VAMANA_TREE_SPLIT_FACTOR]
+                           [--alpha ALPHA]
+                           [--super_opt_postfiltering_split_factor SUPER_OPT_POSTFILTERING_SPLIT_FACTOR]
+                           [--super_opt_postfiltering_shift_factor SUPER_OPT_POSTFILTERING_SHIFT_FACTOR]
+                           [--dataset_file DATASET_FILE]
+                           [--query_file QUERY_FILE] [--attr_file ATTR_FILE]
+                           [--qrange_file QRANGE_FILE] [--gt_file GT_FILE]
+                           [--output_file OUTPUT_FILE] [--top_k TOP_K]
+                           [--data_size DATA_SIZE] [--query_size QUERY_SIZE]
+                           [--index_prefix INDEX_PREFIX] [--mode MODE]
+RangeFilteredANN.py: error: unrecognized arguments: --WST_vamana
+Command exited with non-zero status 2
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_20000_1_100000_random.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_20000_1_100000_random_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_random.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_random/ --top_k 10 --WST_vamana --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 1.69
+	System time (seconds): 0.02
+	Percent of CPU this job got: 714%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.24
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 34816
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 5462
+	Voluntary context switches: 211
+	Involuntary context switches: 579
+	Swaps: 0
+	File system inputs: 32
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 2
+Start time: 00:47
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_30000_1_100000_random.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_30000_1_100000_random_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_random.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_random/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+Vamana tree build time: 474.417s
+using this batch search3 
+total point comp 52129566
+avg comp:5212.96
+qps: 878.3953546012884
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_10', 0.8629799999999727, 11.429617643356323, 474.4167981147766, 2, 51897092)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_30000_1_100000_random.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_30000_1_100000_random_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_random.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_random/ --top_k 10 --vamana_tree --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 53.35
+	System time (seconds): 72.22
+	Percent of CPU this job got: 24%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:30.62
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 61970716
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1614
+	Minor (reclaiming a frame) page faults: 21190378
+	Voluntary context switches: 110756
+	Involuntary context switches: 1167
+	Swaps: 0
+	File system inputs: 3663840
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 05:20
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_40000_1_100000_random.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_40000_1_100000_random_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_random.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_random/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+Vamana tree build time: 471.471s
+using this batch search3 
+total point comp 55260681
+avg comp:5526.07
+qps: 1016.7318565787673
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_10', 0.8531199999999725, 9.882813215255737, 471.4707145690918, 2, 51919668)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_40000_1_100000_random.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_40000_1_100000_random_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_random.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_random/ --top_k 10 --vamana_tree --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 53.60
+	System time (seconds): 72.99
+	Percent of CPU this job got: 24%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:27.85
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 61990132
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1288
+	Minor (reclaiming a frame) page faults: 20022085
+	Voluntary context switches: 107779
+	Involuntary context switches: 1208
+	Swaps: 0
+	File system inputs: 4349216
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

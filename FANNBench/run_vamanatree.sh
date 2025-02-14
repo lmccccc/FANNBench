@@ -1,12 +1,12 @@
 export debugSearchFlag=0
 #! /bin/bash
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 
 
 
-algo=Vamana_tree
+algo=WST_vamana
 
 ##########################################
 # TESTING SIFT1M and PAPER
@@ -22,7 +22,7 @@ fi
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $vtree_index_prefix ]; then
         echo "index file already exist"
-        exit 1
+        exit 0
     fi
 fi
 

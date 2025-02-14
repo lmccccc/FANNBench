@@ -17,13 +17,14 @@ def generate_zipf_attrs(num_attrs, zipf_exponent=1.2):
     :return: List of generated attrs.
     """
     # Generate ranks (1, 2, ..., num_attrs)
-    ranks = np.arange(1, num_attrs + 1)
+    # ranks = np.arange(1, num_attrs + 1)
 
     # Calculate probabilities using Zipf's law: p(k) ∝ 1 / k^s
-    probabilities = 1 / (ranks ** zipf_exponent)
+    # probabilities = 1 / (ranks ** zipf_exponent)
+    probabilities = np.array([1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01])
 
     # Normalize the probabilities to sum to 1
-    probabilities /= probabilities.sum()
+    # probabilities /= probabilities.sum()
     generated_attrs = []
     while(len(generated_attrs) == 0):
         for i in range(num_attrs):
@@ -33,7 +34,7 @@ def generate_zipf_attrs(num_attrs, zipf_exponent=1.2):
     return generated_attrs
 
 # input: database vector size, query size, attribution range(like [0,1)), query count(like {[0,0.2), [0.3, 0.5))})
-def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, data=None, train=None, centroid_file=None):
+def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, query_label=None, data=None, train=None, centroid_file=None):
     if(attr_range == -1):
         attr_range = 2**31 - 1
     #generate attribution and query range
@@ -46,11 +47,30 @@ def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, d
         elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords
             attr = []
             zipf_exponent = 1.2
+            print("generating zipf attrs")
             for data_ind in range(db_size):
                 attrs = generate_zipf_attrs(attr_cnt, zipf_exponent)
                 attr.append(attrs)
-        elif(attr_cnt > 1 and query_attr_cnt > 1):# multi-attr
-            attr = np.random.randint(0, attr_range, (db_size, attr_cnt), dtype='int32').tolist()
+        elif(attr_cnt > 1 and query_attr_cnt > 1):# multi-attr nhq
+            assert(attr_cnt == query_attr_cnt)
+            prob_map = {0:1, 1:0.9, 2:0.8, 3:0.7, 4:0.6, 5:0.5, 6:0.4, 7:0.3, 8:0.2, 9:0.1, 10:0.09, 11:0.08, 12:0.07, 13:0.06, 14:0.05, 15:0.04, 16:0.03, 17:0.02, 18:0.01}
+            prob = prob_map[query_label]
+            attr = np.zeros((db_size, attr_cnt), dtype='int32')
+            # print("size:", db_size, attr_cnt)
+            print(attr.shape)
+            for i in range(db_size):
+                val = random.random()
+                if val <= prob:
+                    attr[i, 0] = query_label
+                else:
+                    attr[i, 0] = random.randint(0, attr_range)
+                    if attr[i, 0] == query_label:
+                        attr[i, 0] = (query_label + 1) % attr_range
+            for j in range(1, attr_cnt):
+                print("j:", j)
+                attr[:, j] = attr[:, 0]
+            attr = attr.tolist()
+            print("attr shape:", len(attr), len(attr[0]))
 
             
         # int range, to match diskann that only one attr supported, range is [a, a]
@@ -101,8 +121,8 @@ def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, d
                     attr[idx] = selected_element
                 else:
                     # generate random int by normal distribution (selected_element[0], attr_range/centroid_size)
-                    mean = segment_size * selected_element + round(segment_size / 2)
-                    var = math.sqrt(attr_range/centroid_size)
+                    mean = centroid_vals[selected_element]
+                    var = attr_range/centroid_size
                     while True:
                         attr[idx] = int(np.random.normal(mean, var))
                         if attr[idx] >= 0 and attr[idx] < attr_range:
@@ -210,7 +230,7 @@ if __name__ == "__main__":
     # ${output_dataset_attr_file} 
     # ${output_query_range_file} 
     # ${method}
-    if len(sys.argv) < 8 :
+    if len(sys.argv) < 9 :
         print("error wrong argument")
         exit()
     else:
@@ -262,6 +282,10 @@ if __name__ == "__main__":
 
             centroid_file = sys.argv[10]
             print("centroid file:", centroid_file)
+        
+        if query_attr_cnt == attr_cnt: # nhq
+            query_label = int(sys.argv[11]) # not only for query label but for selectivity
+            # 0: 1, 1: 0.9, 2: 0.8 ....., 10: 0.1, 11: 0.09, ..., 19: 0.01
 
     # directionary check
     # db_size, query_size = check_data_size(dataset_file, query_file, db_size, query_size)
@@ -274,9 +298,9 @@ if __name__ == "__main__":
             data = np.random.choice(data, train_size, replace=False)
         print("train shape:", train.shape)
         #generate attributions
-        attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, data, train, centroid_file)
+        attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, data=data, train=train, centroid_file=centroid_file)
     else:
-        attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt)
+        attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, query_label=query_label)
 
     #write attribution and query range to file
     # write_attr(output_dataset_attr_file, attr)

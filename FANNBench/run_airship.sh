@@ -16,7 +16,7 @@
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 algo=AIRSHIP
 

@@ -8,10 +8,10 @@
 #ifndef NO_MANUAL_VECTORIZATION
 #ifdef __SSE__
 // 定义使用SSE指令集
-// #define USE_SSE
+#define USE_SSE
 #ifdef __AVX__
 // 定义使用AVX指令集
-// #define USE_AVX
+#define USE_AVX
 #endif
 #endif
 #endif

@@ -174,27 +174,58 @@ vector<vector<int>> load_groundtruth(string file_name, int Nq, int K){//json fil
   return gt;
 }
 
+// binary search in sorted label
+// if suc return index, else return internal position
+int binary_search(vector<int> &sorted_label, int target){
+  int left = 0, right = sorted_label.size() - 1;
+  while(left <= right){
+    int mid = left + (right - left) / 2;
+    if(sorted_label[mid] == target){
+      return mid;
+    }
+    else if(sorted_label[mid] < target){
+      left = mid + 1;
+    }
+    else{
+      right = mid - 1;
+    }
+  }
+  return left;
+}
+
 //convert label range to id range, only support ordered integer label range from 0 to N-1
 void label_range_2_id_range(vector<pair<int, int>> &qrange, vector<int> &sorted_label){
-  vector<int> label_start, label_end;
-  for (size_t i = 0; i < sorted_label.size(); i++)
-  {
-    if(label_start.size() == 0) label_start.push_back(i);
-    else if(sorted_label[i] != sorted_label[i-1]){
-      label_end.push_back(i-1);
-      label_start.push_back(i);
-    }
-    if(i == sorted_label.size() - 1){
-      label_end.push_back(i);
-    }
-  }
-  assert(label_start.size() == label_end.size());
   for (size_t i = 0; i < qrange.size(); i++)
   {
-    qrange[i].first = label_start[qrange[i].first];
-    qrange[i].second = label_end[qrange[i].second];
+    qrange[i].first = binary_search(sorted_label, qrange[i].first);
+    qrange[i].second = binary_search(sorted_label, qrange[i].second);
   }
+  
+  // vector<int> label_start, label_end;
+  // int previous_label = -1;
+  // for (size_t i = 0; i < sorted_label.size(); i++)
+  // {
+  //   if(label_start.size() == 0) {
+  //     label_start.push_back(i);
+  //   }
+  //   else if(sorted_label[i] != sorted_label[i-1]){
+  //     label_end.push_back(i-1);
+  //     label_start.push_back(i);
+  //   }
+  //   if(i == sorted_label.size() - 1){
+  //     label_end.push_back(i);
+  //   }
+  // }
+  // cout << "label range size:" << label_start.size() << endl;
+  // assert(label_start.size() == label_end.size());
+  // for (size_t i = 0; i < qrange.size(); i++)
+  // {
+  //   qrange[i].first = label_start[qrange[i].first];
+  //   qrange[i].second = label_end[qrange[i].second];
+  // }
 }
+
+
 
 
 int main(int argc, char **argv) {
@@ -219,6 +250,7 @@ int main(int argc, char **argv) {
   int query_num = 1000;
   int query_k = 10;
   int ef_construction = -1;
+  int _ef_max = -1;
   int M = -1;
   vector<int> ef_max_list = {500};
 
@@ -229,7 +261,7 @@ int main(int argc, char **argv) {
 
   //extra info for data label query and sort
   vector<int> od2id;//store original id for recall computation
-  if (argc != 31){
+  if (argc != 33){
     cout << "Usage: " << argv[0] << " -N data_size -dataset_path dataset_path -query_path query_path -label_path label_path -qrange_path qrange_path -groundtruth_path groundtruth_path -method method -dataset dataset -query_num query_num -K query_k -ef_construction ef_construction -index_file index_file" << endl;
     cout << "error argc: " << argc << endl;
     exit(-1);
@@ -249,6 +281,7 @@ int main(int argc, char **argv) {
     else if (arg == "-query_num") query_num = atoi(argv[i + 1]);
     else if (arg == "-K") query_k = atoi(argv[i + 1]);
     else if  (arg == "-ef_construction") ef_construction = atoi(argv[i + 1]);
+    else if  (arg == "-ef_max") _ef_max = atoi(argv[i + 1]);
     else if  (arg == "-ef_search") ef_search_str = string(argv[i+1]);
     else if  (arg == "-index_file") index_file = string(argv[i+1]);
     else if (arg == "-M") M = atoi(argv[i + 1]);
@@ -304,6 +337,7 @@ int main(int argc, char **argv) {
 
   gettimeofday(&t1, NULL);
   od2id = sort_data_by_label(data_wrapper.nodes, data_wrapper.groundtruth, data_wrapper.nodes_keys, data_size, query_k);
+  cout << "get od2id size:" << od2id.size() << endl;
   label_range_2_id_range(data_wrapper.query_ranges, data_wrapper.nodes_keys);
   gettimeofday(&t2, NULL);
   logTime(t1, t2, "Sort Dataset Time");
@@ -318,6 +352,10 @@ int main(int argc, char **argv) {
   cout << "ef search:" << endl;
   print_set(ef_search_list);
   cout << "thread num:" << thread << endl;
+
+  ef_max_list[0] = _ef_max;
+  cout << "ef max:" << ef_max_list[0] << endl;
+
   SeRF::serf_omp_set_num_threads(thread);
 
   data_wrapper.version = version;

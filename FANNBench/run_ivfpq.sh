@@ -16,7 +16,7 @@ export debugSearchFlag=0
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 algo=IVFPQ
 
@@ -42,7 +42,7 @@ echo "ivfpq index file: ${ivfpq_index_file}"
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $ivfpq_index_file ]; then
         echo "ivfpq index file already exist"
-        exit 1
+        exit 0
     else
         echo  "construct index"
         /bin/time -v -p ../faiss/build/demos/ivfpq_build $dataset \

@@ -282,7 +282,7 @@ def get_info_from_dsg(df, lines, mode):
         if(mode == 'construction' and '# Build Index Time:' in line):
             cons_time = float(line.split(':')[1].split('s')[0])
             df.at[0, "ConstructionTime"] = cons_time
-        elif('All Recall:' in line):
+        elif('Total Recall:' in line):
             # All Recall: 0.9997	 All QPS: 145.2873	 All Comps: 4758.0464	 All Hops: 403.8274
             # split by :, \t and space
             
@@ -553,7 +553,7 @@ if __name__ == "__main__":
         idx_size1 = get_size(nhqkg_index_model_file)
         idx_size2 = get_size(nhqkg_index_attr_file)
         df.at[0, "IndexSize"] = idx_size1 + idx_size2
-    elif(algo == 'Vamana_tree'):
+    elif(algo == 'WST_vamana'):
         df.at[0, "beamSize"] = beamsize
         df.at[0, "split_factor"] = split_factor
         df.at[0, "final_beam_multiply"] = final_beam_multiply

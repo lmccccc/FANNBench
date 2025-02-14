@@ -1,0 +1,58 @@
+Start time: 08:40
+====================
+START: running IVFPQ_INDEX_CONSTRUCTION, sift data --
+
+dataset: spacev10m
+N: 10000000
+topk: 10
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+attr file: /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+index file: /mnt/data/mocheng/dataset/yfcc10m/ivfpq/index/index_ivfpq_sel_1_100000_random_64
+dim: 192
+partition_size: 64
+train file: /mnt/data/mocheng/dataset/yfcc10m/train.fvecs
+loaded base attributes, size:10000000
+[ 0.711s ] Loaded attributions, 10000000 found
+[ 0.711s ] Index Params -- d: 192, N: 10000000
+ncentroids: 12649
+====================Vectors====================
+
+[ 0.711s ] Loading database
+[ 5.651s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs
+data loaded, with dim: 192, N=10000000
+[ 5.651s ] Indexing database, size 10000000*192 from max 10000000
+[ 5.651s ] Adding the vectors to the index
+WARNING clustering 100000 points to 12649 centroids: please provide at least 493311 training points
+train cost:0.051
+index construction total cost:922.341
+[ 922.341s ] Vectors added to  index
+Index vectors added:10000000
+====================Write Index================
+
+[ 928.763s ] Wrote ivbfpq index to file: /mnt/data/mocheng/dataset/yfcc10m/ivfpq/index/index_ivfpq_sel_1_100000_random_64
+[928.763 s] -----DONE-----
+[ 928.763s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_build spacev10m 10000000 10 128 /mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs /mnt/data/mocheng/dataset/yfcc10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/yfcc10m/ivfpq/index/index_ivfpq_sel_1_100000_random_64 192 64 /mnt/data/mocheng/dataset/yfcc10m/train.fvecs"
+	User time (seconds): 83268.50
+	System time (seconds): 44.86
+	Percent of CPU this job got: 8968%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:28.92
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 9422800
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 7696985
+	Voluntary context switches: 4762370
+	Involuntary context switches: 1456655
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1425824
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

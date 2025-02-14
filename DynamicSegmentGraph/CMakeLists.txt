@@ -46,12 +46,13 @@ endif()
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-option(NOSIMD "build hnsw on SIMD" ON)
 
-if(NOSIMD)
-    add_definitions(-DNO_MANUAL_VECTORIZATION)
-    add_definitions(-DKGRAPH_NO_VECTORIZE)
-endif()
+# option(NOSIMD "build hnsw on SIMD" ON)
+
+# if(NOSIMD)
+#     add_definitions(-DNO_MANUAL_VECTORIZATION)
+#     add_definitions(-DKGRAPH_NO_VECTORIZE)
+# endif()
 
 add_subdirectory(src/common)
 add_subdirectory(benchmark)

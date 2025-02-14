@@ -409,12 +409,13 @@ void search_neighbors_to_add(
  **************************************************************/
 
 /// greedily update a nearest vector at a given level
-void greedy_update_nearest(
+int greedy_update_nearest(
         const HNSW& hnsw,
         DistanceComputer& qdis,
         int level,
         storage_idx_t& nearest,
         float& d_nearest) {
+    int ndis = 0;
     for (;;) {
         storage_idx_t prev_nearest = nearest;
 
@@ -424,6 +425,7 @@ void greedy_update_nearest(
             storage_idx_t v = hnsw.neighbors[i];
             if (v < 0)
                 break;
+            ndis += 1;
             float dis = qdis(v);
             if (dis < d_nearest) {
                 nearest = v;
@@ -431,9 +433,10 @@ void greedy_update_nearest(
             }
         }
         if (nearest == prev_nearest) {
-            return;
+            return ndis;
         }
     }
+    return ndis;
 }
 
 } // namespace
@@ -852,9 +855,11 @@ HNSWStats HNSW::search(
         storage_idx_t nearest = entry_point;
         float d_nearest = qdis(nearest);
 
+        int ndis_upper = 0;
         for (int level = max_level; level >= 1; level--) {
-            greedy_update_nearest(*this, qdis, level, nearest, d_nearest);
+            ndis_upper += greedy_update_nearest(*this, qdis, level, nearest, d_nearest);
         }
+        stats.ndis += ndis_upper;
 
         int ef = std::max(params ? params->efSearch : efSearch, k);
         if (search_bounded_queue) { // this is the most common branch

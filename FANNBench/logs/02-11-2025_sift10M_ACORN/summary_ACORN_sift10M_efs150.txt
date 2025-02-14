@@ -1,0 +1,770 @@
+Start time: 10:01
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift10M
+N: 10000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_200_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_200_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64
+ef_search: 150 
+dim: 128
+metadata or vector loaded from json, size: 10000000
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 1.240s ] Loaded metadata, 10000000 attr's found
+[ 1.240s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.243s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_200_1_100000_random.json
+[ 1.245s ] Loaded 10000 sift10M queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_200_1_100000_random_10.json
+[ 1.256s ] Loaded ground truth, gt_size: 10
+[ 1.256s ] Index Params -- d: 128, M: 40, N: 10000000, gamma: 25
+--ACORN index created
+acorn size: 5985260000, memory: 10705.242MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 1124
+		indx 3: 2124
+		indx 4: 3124
+		indx 5: 4124
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 1000
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 1940918
+	* gamma: 25
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 10000000
+   2. neighbors per node: 86.74 (867443801)
+   3. nb of reciprocal neighbors: 61.08
+   4. nb of neighbors that are also neighbor-of-neighbors: 82.45 (824510956)
+========= LEVEL 1 =======
+* stats on level 1, max 1000 neighbors per vertex:
+   1. nb of nodes: 249960
+   2. neighbors per node: 1000.00 (249959832)
+   3. nb of reciprocal neighbors: 101.32
+   4. nb of neighbors that are also neighbor-of-neighbors: 967.27 (241779756)
+========= LEVEL 2 =======
+* stats on level 2, max 1000 neighbors per vertex:
+   1. nb of nodes: 6212
+   2. neighbors per node: 937.33 (5822688)
+   3. nb of reciprocal neighbors: 670.04
+   4. nb of neighbors that are also neighbor-of-neighbors: 936.86 (5819766)
+========= LEVEL 3 =======
+* stats on level 3, max 1000 neighbors per vertex:
+   1. nb of nodes: 140
+   2. neighbors per node: 131.58 (18421)
+   3. nb of reciprocal neighbors: 129.71
+   4. nb of neighbors that are also neighbor-of-neighbors: 131.07 (18350)
+========= LEVEL 4 =======
+* stats on level 4, max 1000 neighbors per vertex:
+   1. nb of nodes: 3
+   2. neighbors per node: 2.00 (6)
+   3. nb of reciprocal neighbors: 2.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 2.00 (6)
+METADATA VEC for number nodes per level
+	level 0: 9999555 nodes
+	level 1: 249955 nodes
+	level 2: 6212 nodes
+	level 3: 140 nodes
+	level 4: 3 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2754.915s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.002
+[ 3193.243s ] Query results (vector ids, then distances):
+query 0 nn's (73960): 1623122 (74029) 7784976 (74150) 4881180 (74088) 1957179 (74157) 1741348 (74043) 6017101 (74015) 5907174 (73981) 4190650 (73972) 9532438 (74096) 7480712 (74116) 
+     dis: 	94590.000 103721.000 107461.000 107626.000 107834.000 107872.000 108896.000 109850.000 110253.000 111680.000 
+query 1 nn's (74159): 2405583 (45770) 7421974 (45803) 1918457 (45769) 8464812 (45885) 8267508 (45932) 9769447 (45883) 7367195 (45852) 5858138 (45733) 4196900 (45894) 2117666 (45818) 
+     dis: 	93519.000 94765.000 98180.000 101174.000 107256.000 110976.000 111092.000 111312.000 111852.000 112181.000 
+query 2 nn's (45733): 3841753 (46235) 451060 (46258) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	177991.000 182681.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (45932): 692217 (22063) 7582882 (22036) 4571800 (22027) 2363372 (22144) 9296031 (22123) 2766287 (22065) 9166072 (22002) 4735943 (22056) 7174282 (21989) 7244 (22160) 
+     dis: 	7226.000 13990.000 21808.000 21929.000 26763.000 26919.000 27214.000 27287.000 28313.000 28841.000 
+query 4 nn's (46226): 2430179 (89254) 5631902 (89204) 7080136 (89321) 9438561 (89290) 4771921 (89341) 6670051 (89335) 7005664 (89231) 3105515 (89202) 8620903 (89355) 313955 (89311) 
+     dis: 	97998.000 103589.000 112189.000 115159.000 116722.000 117920.000 125203.000 125724.000 125999.000 126107.000 
+[ 3193.243s ] *** Query time: 49.777
+qps: 200.894
+ *** acorn recall 
+efs:150
+acorn get 45656 postive res from 100000 results, recall@10:0.457
+recall dist(10% per bucket): 0.207 0.024 0.047 0.068 0.096 0.116 0.124 0.127 0.100 0.067 0.025 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[3198.429s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 3015596
+ndis: 0
+nreorder: 0
+average distance computations per query: 301.560
+[ 3198.429s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query sift10M 10000000 25 40 64 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_200_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_200_1_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 150 128"
+	User time (seconds): 3076.52
+	System time (seconds): 112.08
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 53:20.54
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 114634352
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 27
+	Minor (reclaiming a frame) page faults: 52377287
+	Voluntary context switches: 47003
+	Involuntary context switches: 5686
+	Swaps: 0
+	File system inputs: 1924960
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 12:03
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift10M
+N: 10000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_300_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_300_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64
+ef_search: 150 
+dim: 128
+metadata or vector loaded from json, size: 10000000
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 1.202s ] Loaded metadata, 10000000 attr's found
+[ 1.202s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.205s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_300_1_100000_random.json
+[ 1.207s ] Loaded 10000 sift10M queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_300_1_100000_random_10.json
+[ 1.218s ] Loaded ground truth, gt_size: 10
+[ 1.218s ] Index Params -- d: 128, M: 40, N: 10000000, gamma: 25
+--ACORN index created
+acorn size: 5985260000, memory: 10705.242MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 1124
+		indx 3: 2124
+		indx 4: 3124
+		indx 5: 4124
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 1000
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 1940918
+	* gamma: 25
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 10000000
+   2. neighbors per node: 86.74 (867443801)
+   3. nb of reciprocal neighbors: 61.08
+   4. nb of neighbors that are also neighbor-of-neighbors: 82.45 (824510956)
+========= LEVEL 1 =======
+* stats on level 1, max 1000 neighbors per vertex:
+   1. nb of nodes: 249960
+   2. neighbors per node: 1000.00 (249959832)
+   3. nb of reciprocal neighbors: 101.32
+   4. nb of neighbors that are also neighbor-of-neighbors: 967.27 (241779756)
+========= LEVEL 2 =======
+* stats on level 2, max 1000 neighbors per vertex:
+   1. nb of nodes: 6212
+   2. neighbors per node: 937.33 (5822688)
+   3. nb of reciprocal neighbors: 670.04
+   4. nb of neighbors that are also neighbor-of-neighbors: 936.86 (5819766)
+========= LEVEL 3 =======
+* stats on level 3, max 1000 neighbors per vertex:
+   1. nb of nodes: 140
+   2. neighbors per node: 131.58 (18421)
+   3. nb of reciprocal neighbors: 129.71
+   4. nb of neighbors that are also neighbor-of-neighbors: 131.07 (18350)
+========= LEVEL 4 =======
+* stats on level 4, max 1000 neighbors per vertex:
+   1. nb of nodes: 3
+   2. neighbors per node: 2.00 (6)
+   3. nb of reciprocal neighbors: 2.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 2.00 (6)
+METADATA VEC for number nodes per level
+	level 0: 9999555 nodes
+	level 1: 249955 nodes
+	level 2: 6212 nodes
+	level 3: 140 nodes
+	level 4: 3 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2683.298s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.003
+[ 3077.866s ] Query results (vector ids, then distances):
+query 0 nn's (64204): 5343331 (64452) 7081355 (64427) 2279313 (64469) 4731099 (64368) 2587829 (64258) 6124488 (64233) 6678280 (64349) 8652290 (64376) 4820946 (64409) 1303968 (64266) 
+     dis: 	81853.000 95028.000 98553.000 98772.000 98789.000 99965.000 106234.000 106457.000 108131.000 109288.000 
+query 1 nn's (64503): 3716291 (7710) 3996839 (7694) 7577481 (7676) 8499244 (7681) 3909984 (7619) 2740853 (7832) 8935792 (7869) 2780695 (7631) 5907695 (7756) 9025729 (7883) 
+     dis: 	74379.000 75371.000 82264.000 85032.000 85324.000 87916.000 91869.000 91976.000 94195.000 94645.000 
+query 2 nn's (7601): 8635193 (4483) 909313 (4462) 9830393 (4584) 8509795 (4438) 33367 (4653) 7912354 (4692) 2077 (4463) 330498 (4711) 4770809 (4663) 9174606 (4542) 
+     dis: 	57831.000 62187.000 63969.000 66459.000 68007.000 69132.000 69350.000 69940.000 71143.000 76816.000 
+query 3 nn's (7900): 7749958 (3697) 5078017 (3684) 5185015 (3869) 3313486 (3800) 8273818 (3640) 2114046 (3654) 9198105 (3818) 536836 (3856) 2936066 (3791) 7095953 (3643) 
+     dis: 	8122.000 17256.000 18363.000 19021.000 20384.000 21815.000 22036.000 25581.000 26110.000 26682.000 
+query 4 nn's (4420): 4991226 (72588) 7828698 (72674) 4601993 (72771) 5078192 (72841) 9460939 (72852) 9372651 (72830) 6691644 (72777) 5596028 (72610) 5779345 (72733) 8278850 (72598) 
+     dis: 	116056.000 116275.000 117163.000 118051.000 118333.000 119972.000 120773.000 120825.000 121438.000 123681.000 
+[ 3077.866s ] *** Query time: 41.271
+qps: 242.300
+ *** acorn recall 
+efs:150
+acorn get 67859 postive res from 100000 results, recall@10:0.679
+recall dist(10% per bucket): 0.097 0.003 0.009 0.018 0.036 0.070 0.104 0.158 0.188 0.186 0.131 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[3081.393s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 4649472
+ndis: 0
+nreorder: 0
+average distance computations per query: 464.947
+[ 3081.393s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query sift10M 10000000 25 40 64 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_300_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_300_1_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 150 128"
+	User time (seconds): 2983.88
+	System time (seconds): 88.28
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 51:22.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 114640392
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 7
+	Minor (reclaiming a frame) page faults: 28803252
+	Voluntary context switches: 46335
+	Involuntary context switches: 1229
+	Swaps: 0
+	File system inputs: 3209864
+	File system outputs: 56
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 14:05
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift10M
+N: 10000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_400_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_400_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64
+ef_search: 150 
+dim: 128
+metadata or vector loaded from json, size: 10000000
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 1.240s ] Loaded metadata, 10000000 attr's found
+[ 1.240s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.244s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_400_1_100000_random.json
+[ 1.246s ] Loaded 10000 sift10M queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_400_1_100000_random_10.json
+[ 1.258s ] Loaded ground truth, gt_size: 10
+[ 1.258s ] Index Params -- d: 128, M: 40, N: 10000000, gamma: 25
+--ACORN index created
+acorn size: 5985260000, memory: 10705.242MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 1124
+		indx 3: 2124
+		indx 4: 3124
+		indx 5: 4124
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 1000
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 1940918
+	* gamma: 25
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 10000000
+   2. neighbors per node: 86.74 (867443801)
+   3. nb of reciprocal neighbors: 61.08
+   4. nb of neighbors that are also neighbor-of-neighbors: 82.45 (824510956)
+========= LEVEL 1 =======
+* stats on level 1, max 1000 neighbors per vertex:
+   1. nb of nodes: 249960
+   2. neighbors per node: 1000.00 (249959832)
+   3. nb of reciprocal neighbors: 101.32
+   4. nb of neighbors that are also neighbor-of-neighbors: 967.27 (241779756)
+========= LEVEL 2 =======
+* stats on level 2, max 1000 neighbors per vertex:
+   1. nb of nodes: 6212
+   2. neighbors per node: 937.33 (5822688)
+   3. nb of reciprocal neighbors: 670.04
+   4. nb of neighbors that are also neighbor-of-neighbors: 936.86 (5819766)
+========= LEVEL 3 =======
+* stats on level 3, max 1000 neighbors per vertex:
+   1. nb of nodes: 140
+   2. neighbors per node: 131.58 (18421)
+   3. nb of reciprocal neighbors: 129.71
+   4. nb of neighbors that are also neighbor-of-neighbors: 131.07 (18350)
+========= LEVEL 4 =======
+* stats on level 4, max 1000 neighbors per vertex:
+   1. nb of nodes: 3
+   2. neighbors per node: 2.00 (6)
+   3. nb of reciprocal neighbors: 2.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 2.00 (6)
+METADATA VEC for number nodes per level
+	level 0: 9999555 nodes
+	level 1: 249955 nodes
+	level 2: 6212 nodes
+	level 3: 140 nodes
+	level 4: 3 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2645.598s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.004
+[ 3062.079s ] Query results (vector ids, then distances):
+query 0 nn's (2310): 578867 (2476) 9823129 (2499) 1604819 (2475) 5826792 (2456) 1813619 (2534) 3920237 (2407) 3190547 (2522) 844119 (2420) 6804369 (2396) 2348721 (2623) 
+     dis: 	80841.000 90832.000 101413.000 102086.000 102284.000 102318.000 104257.000 104500.000 106102.000 106870.000 
+query 1 nn's (2709): 5254261 (23886) 7856921 (23715) 4135481 (23704) 6140132 (23883) 2249685 (23891) 8199976 (23719) 6469885 (23686) 5046775 (23698) 5778646 (23931) 3846925 (23986) 
+     dis: 	63867.000 80459.000 81010.000 83248.000 84606.000 86753.000 88557.000 88931.000 89394.000 89885.000 
+query 2 nn's (23653): 3923235 (64295) 5546020 (64134) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	177517.000 179379.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (24052): 7119531 (90378) 936598 (90457) 3670440 (90255) 1423490 (90542) 2618692 (90370) 8237128 (90475) 7380858 (90455) 2127060 (90509) 6876513 (90555) 3169709 (90261) 
+     dis: 	8362.000 8643.000 13076.000 14419.000 15009.000 18045.000 18638.000 20301.000 21355.000 21941.000 
+query 4 nn's (64025): 9353798 (42619) 1417456 (42485) 1072642 (42580) 340641 (42390) 3309263 (42323) 57612 (42612) 7569563 (42644) 1135787 (42543) 5698837 (42593) 4378743 (42543) 
+     dis: 	100266.000 104284.000 115560.000 116214.000 116344.000 116698.000 117749.000 121751.000 122574.000 122687.000 
+[ 3062.079s ] *** Query time: 60.194
+qps: 166.130
+ *** acorn recall 
+efs:150
+acorn get 78544 postive res from 100000 results, recall@10:0.785
+recall dist(10% per bucket): 0.060 0.001 0.003 0.005 0.016 0.033 0.057 0.116 0.188 0.260 0.261 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[3068.680s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 6142464
+ndis: 0
+nreorder: 0
+average distance computations per query: 614.246
+[ 3068.680s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query sift10M 10000000 25 40 64 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_400_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_400_1_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 150 128"
+	User time (seconds): 2979.62
+	System time (seconds): 80.56
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 51:10.87
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 114639548
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 33657795
+	Voluntary context switches: 47822
+	Involuntary context switches: 2104
+	Swaps: 0
+	File system inputs: 2002728
+	File system outputs: 56
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 16:04
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift10M
+N: 10000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_500_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_500_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64
+ef_search: 150 
+dim: 128
+metadata or vector loaded from json, size: 10000000
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 1.240s ] Loaded metadata, 10000000 attr's found
+[ 1.240s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.244s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_500_1_100000_random.json
+[ 1.246s ] Loaded 10000 sift10M queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_500_1_100000_random_10.json
+[ 1.257s ] Loaded ground truth, gt_size: 10
+[ 1.257s ] Index Params -- d: 128, M: 40, N: 10000000, gamma: 25
+--ACORN index created
+acorn size: 5985260000, memory: 10705.242MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 1124
+		indx 3: 2124
+		indx 4: 3124
+		indx 5: 4124
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 1000
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 1940918
+	* gamma: 25
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 10000000
+   2. neighbors per node: 86.74 (867443801)
+   3. nb of reciprocal neighbors: 61.08
+   4. nb of neighbors that are also neighbor-of-neighbors: 82.45 (824510956)
+========= LEVEL 1 =======
+* stats on level 1, max 1000 neighbors per vertex:
+   1. nb of nodes: 249960
+   2. neighbors per node: 1000.00 (249959832)
+   3. nb of reciprocal neighbors: 101.32
+   4. nb of neighbors that are also neighbor-of-neighbors: 967.27 (241779756)
+========= LEVEL 2 =======
+* stats on level 2, max 1000 neighbors per vertex:
+   1. nb of nodes: 6212
+   2. neighbors per node: 937.33 (5822688)
+   3. nb of reciprocal neighbors: 670.04
+   4. nb of neighbors that are also neighbor-of-neighbors: 936.86 (5819766)
+========= LEVEL 3 =======
+* stats on level 3, max 1000 neighbors per vertex:
+   1. nb of nodes: 140
+   2. neighbors per node: 131.58 (18421)
+   3. nb of reciprocal neighbors: 129.71
+   4. nb of neighbors that are also neighbor-of-neighbors: 131.07 (18350)
+========= LEVEL 4 =======
+* stats on level 4, max 1000 neighbors per vertex:
+   1. nb of nodes: 3
+   2. neighbors per node: 2.00 (6)
+   3. nb of reciprocal neighbors: 2.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 2.00 (6)
+METADATA VEC for number nodes per level
+	level 0: 9999555 nodes
+	level 1: 249955 nodes
+	level 2: 6212 nodes
+	level 3: 140 nodes
+	level 4: 3 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2724.221s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.005
+[ 3173.453s ] Query results (vector ids, then distances):
+query 0 nn's (23240): 7011791 (23273) 8031075 (23431) 2564348 (23602) 7525953 (23404) 7159863 (23367) 323154 (23341) 6025385 (23339) 5628617 (23560) 5931273 (23547) 2190798 (23313) 
+     dis: 	85235.000 91152.000 94395.000 100905.000 101944.000 102679.000 103394.000 105705.000 106088.000 106496.000 
+query 1 nn's (23739): 8857836 (86643) 2077396 (86724) 7523342 (87042) 6363708 (86935) 4321977 (86855) 5847833 (86661) 1116609 (86888) 9131855 (87082) 5234937 (86897) 1448692 (87058) 
+     dis: 	65552.000 65598.000 69035.000 70710.000 74235.000 75091.000 75355.000 77123.000 81577.000 84199.000 
+query 2 nn's (86638): 8068558 (3605) 2800256 (3943) 1482128 (3797) 1213154 (3674) 4378993 (3989) 1458512 (4014) 2526681 (3938) 3873191 (3795) 4192813 (3845) 122085 (3670) 
+     dis: 	53350.000 59276.000 64294.000 68386.000 69422.000 69585.000 70683.000 71230.000 71786.000 72781.000 
+query 3 nn's (87137): 7301436 (87758) 4673685 (87740) 8081932 (87465) 4104595 (87586) 5255438 (87585) 1952217 (87397) 771303 (87436) 9803556 (87542) 3872385 (87718) 7070340 (87603) 
+     dis: 	7394.000 10176.000 14399.000 14412.000 16388.000 16501.000 17494.000 18060.000 18686.000 18857.000 
+query 4 nn's (3598): 2288117 (77366) 487654 (77574) 7458244 (77602) 7574413 (77381) 6292460 (77207) 4746607 (77596) 8562010 (77147) 754867 (77139) 5045349 (77581) 4876196 (77337) 
+     dis: 	96597.000 98333.000 109633.000 112362.000 112364.000 113709.000 115798.000 116225.000 116241.000 118288.000 
+[ 3173.453s ] *** Query time: 64.616
+qps: 154.760
+ *** acorn recall 
+efs:150
+acorn get 84397 postive res from 100000 results, recall@10:0.844
+recall dist(10% per bucket): 0.040 0.001 0.001 0.002 0.006 0.018 0.039 0.084 0.163 0.270 0.377 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[3178.854s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 7580471
+ndis: 0
+nreorder: 0
+average distance computations per query: 758.047
+[ 3178.854s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query sift10M 10000000 25 40 64 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_500_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_500_1_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 150 128"
+	User time (seconds): 3055.27
+	System time (seconds): 115.46
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 53:01.17
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 114640568
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 7
+	Minor (reclaiming a frame) page faults: 63675514
+	Voluntary context switches: 48663
+	Involuntary context switches: 4365
+	Swaps: 0
+	File system inputs: 761824
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:01
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: sift10M
+N: 10000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_600_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_600_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64
+ef_search: 150 
+dim: 128
+metadata or vector loaded from json, size: 10000000
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 1.230s ] Loaded metadata, 10000000 attr's found
+[ 1.230s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.232s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_600_1_100000_random.json
+[ 1.234s ] Loaded 10000 sift10M queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_600_1_100000_random_10.json
+[ 1.246s ] Loaded ground truth, gt_size: 10
+[ 1.246s ] Index Params -- d: 128, M: 40, N: 10000000, gamma: 25
+--ACORN index created
+acorn size: 5985260000, memory: 10705.242MB
+====================================
+============ ACORN INDEX =============
+====================================
+========= METADATA =======
+	* cumulative max num neighbors per level
+		indx 0: 0
+		indx 1: 124
+		indx 2: 1124
+		indx 3: 2124
+		indx 4: 3124
+		indx 5: 4124
+	* level probabilities
+		level 0: 0.975000
+		level 1: 0.024375
+		level 2: 0.000609
+		level 3: 0.000015
+		level 4: 0.000000
+		level 5: 0.000000
+	* efConstruction: 1000
+	* efSearch: 16
+	* max_level: 4
+	* entry_point: 1940918
+	* gamma: 25
+========= LEVEL STATS OF ACORN =======
+========= LEVEL 0 =======
+* stats on level 0, max 124 neighbors per vertex:
+   1. nb of nodes: 10000000
+   2. neighbors per node: 86.74 (867443801)
+   3. nb of reciprocal neighbors: 61.08
+   4. nb of neighbors that are also neighbor-of-neighbors: 82.45 (824510956)
+========= LEVEL 1 =======
+* stats on level 1, max 1000 neighbors per vertex:
+   1. nb of nodes: 249960
+   2. neighbors per node: 1000.00 (249959832)
+   3. nb of reciprocal neighbors: 101.32
+   4. nb of neighbors that are also neighbor-of-neighbors: 967.27 (241779756)
+========= LEVEL 2 =======
+* stats on level 2, max 1000 neighbors per vertex:
+   1. nb of nodes: 6212
+   2. neighbors per node: 937.33 (5822688)
+   3. nb of reciprocal neighbors: 670.04
+   4. nb of neighbors that are also neighbor-of-neighbors: 936.86 (5819766)
+========= LEVEL 3 =======
+* stats on level 3, max 1000 neighbors per vertex:
+   1. nb of nodes: 140
+   2. neighbors per node: 131.58 (18421)
+   3. nb of reciprocal neighbors: 129.71
+   4. nb of neighbors that are also neighbor-of-neighbors: 131.07 (18350)
+========= LEVEL 4 =======
+* stats on level 4, max 1000 neighbors per vertex:
+   1. nb of nodes: 3
+   2. neighbors per node: 2.00 (6)
+   3. nb of reciprocal neighbors: 2.00
+   4. nb of neighbors that are also neighbor-of-neighbors: 2.00 (6)
+METADATA VEC for number nodes per level
+	level 0: 9999555 nodes
+	level 1: 249955 nodes
+	level 2: 6212 nodes
+	level 3: 140 nodes
+	level 4: 3 nodes
+	level 5: 0 nodes
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2672.559s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.006
+[ 3081.561s ] Query results (vector ids, then distances):
+query 0 nn's (53561): 9409479 (53603) 8771139 (53982) 3366295 (53986) 4056305 (53810) 7835503 (53994) 9934561 (53675) 5014849 (54135) 2828720 (53831) 1973354 (53983) 8997084 (53636) 
+     dis: 	82688.000 85066.000 88619.000 93108.000 95210.000 99218.000 99975.000 101279.000 102342.000 102557.000 
+query 1 nn's (54160): 1346170 (8078) 9643506 (8041) 7572692 (7996) 4646465 (8091) 3716291 (7710) 3996839 (7694) 8500402 (7579) 3423010 (7592) 7577481 (7676) 8499244 (7681) 
+     dis: 	56324.000 61991.000 74068.000 74141.000 74379.000 75371.000 78635.000 79844.000 82264.000 85032.000 
+query 2 nn's (7537): 6757010 (32419) 6304098 (32083) 1883447 (32456) 6005722 (32578) 8415105 (32282) 2414928 (32539) 4278769 (32271) 2284580 (32263) 3173474 (32228) 3423038 (32405) 
+     dis: 	61808.000 63354.000 63881.000 63923.000 67665.000 67775.000 68330.000 72005.000 73293.000 73349.000 
+query 3 nn's (8136): 3278687 (20238) 9166 (20530) 1391991 (20268) 5109723 (20631) 8386530 (20268) 430134 (20429) 2515467 (20181) 6365231 (20234) 8513887 (20167) 7943427 (20144) 
+     dis: 	7183.000 8830.000 9540.000 11444.000 11509.000 12043.000 12594.000 13919.000 14041.000 16358.000 
+query 4 nn's (31990): 3629848 (25458) 139002 (25306) 2240403 (25557) 7453672 (25661) 4913897 (25124) 2675739 (25411) 2325088 (25145) 2289309 (25219) 9751956 (25634) 9804695 (25343) 
+     dis: 	98130.000 106444.000 108081.000 109977.000 112554.000 113280.000 113909.000 113992.000 114945.000 115235.000 
+[ 3081.561s ] *** Query time: 50.181
+qps: 199.277
+ *** acorn recall 
+efs:150
+acorn get 87818 postive res from 100000 results, recall@10:0.878
+recall dist(10% per bucket): 0.031 0.000 0.001 0.001 0.004 0.011 0.026 0.062 0.131 0.268 0.466 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[3085.177s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 8921811
+ndis: 0
+nreorder: 0
+average distance computations per query: 892.181
+[ 3085.177s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query sift10M 10000000 25 40 64 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_600_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_600_1_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 150 128"
+	User time (seconds): 2981.78
+	System time (seconds): 94.17
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 51:26.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 114638516
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 30376868
+	Voluntary context switches: 44396
+	Involuntary context switches: 1351
+	Swaps: 0
+	File system inputs: 2777968
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

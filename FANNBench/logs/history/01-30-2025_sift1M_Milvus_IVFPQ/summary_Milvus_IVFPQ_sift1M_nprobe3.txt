@@ -1,0 +1,48 @@
+Start time: 06:28
+dataset: sift1M
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/sift/sift_base.fvecs
+query file: /mnt/data/mocheng/dataset/sift/sift_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+query range file: /mnt/data/mocheng/dataset/sift/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json
+ground truth file: /mnt/data/mocheng/dataset/sift/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json
+K: 10
+nprobe: 3
+collection name: collection_sift1M_sel_1_100000_dist
+collection  collection_sift1M_sel_1_100000_dist  exists
+collection size: data: ["{'count(*)': 1000000}"] 
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+error, get  9  results, expect  10
+res: data: ["[{'id': 230198, 'distance': 52312.18359375, 'entity': {}}, {'id': 493901, 'distance': 53889.609375, 'entity': {}}, {'id': 337272, 'distance': 55950.40625, 'entity': {}}, {'id': 988036, 'distance': 65183.765625, 'entity': {}}, {'id': 356841, 'distance': 84710.140625, 'entity': {}}, {'id': 5776, 'distance': 87201.3125, 'entity': {}}, {'id': 924721, 'distance': 94556.9765625, 'entity': {}}, {'id': 903125, 'distance': 111268.90625, 'entity': {}}, {'id': 607525, 'distance': 119988.078125, 'entity': {}}]"] 
+exp: 0 <= label <= 559
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 216, in <module>
+    if(ids[i][top] == gt[i][gtind]):
+IndexError: list index out of range
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift1M 1000000 /mnt/data/mocheng/dataset/sift/sift_base.fvecs /mnt/data/mocheng/dataset/sift/sift_query.fvecs /mnt/data/mocheng/dataset/sift/label/sel_1_100000_dist/attr_sel_1_100000_dist.json /mnt/data/mocheng/dataset/sift/label/sel_1_100000_dist/qrangesel_1000_1_100000_in_dist.json /mnt/data/mocheng/dataset/sift/label/sel_1_100000_dist/sif_gt_sel_1000_1_100000_in_dist_10.json 10 3 collection_sift1M_sel_1_100000_dist query 64 128"
+	User time (seconds): 15.97
+	System time (seconds): 5.70
+	Percent of CPU this job got: 33%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:05.18
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 101184
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 29451
+	Voluntary context switches: 4081
+	Involuntary context switches: 345
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

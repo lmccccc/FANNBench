@@ -1,0 +1,156 @@
+Start time: 05:27
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_2000_1_100000_random.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_2000_1_100000_random_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/rfann/result/result_sel_1_100000_random.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/rfann/index/index_sel_1_100000_random/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+split factor list: [2.0]
+shift factor list: [0.5]
+split factor:  2.0
+shift factor:  0.5
+metric:  Euclidian
+start building super optimized postfilter tree
+data size:  (10000000, 128)
+attr size:  (10000000,)
+aplpa:  1
+split factor:  2.0
+shift factor:  0.5
+index_prefix:  /mnt/data/mocheng/dataset/sift10m/rfann/index/index_sel_1_100000_random/
+mode: query
+ building tree
+new num buckets 3
+new num buckets 7
+new num buckets 15
+new num buckets 31
+new num buckets 63
+new num buckets 127
+new num buckets 255
+new num buckets 511
+new num buckets 1023
+new num buckets 2047
+new num buckets 4095
+new num buckets 8190
+new num buckets 16366
+new num buckets 32679
+ tree construction suc
+Super optimized postfilter tree build time: 2048.024s
+Super optimized postfilter tree build time: 2048.025s
+beam sizes: [40]
+final multiplies: [2]
+using this batch search4 
+total point comp 41591668
+avg comp:4159.17
+beam size: 40 , final_beam_multiply: 2
+qps: 1487.0223450925916
+method, recall, total time, build time, split factor, memory
+('super-postfiltering_2.0_0.5_1_40_2', 0.9920199999999891, 6.724848508834839, 2048.02463555336, 2.0, 88.02048110961914)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_2000_1_100000_random.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_2000_1_100000_random_10.json --output_file /mnt/data/mocheng/dataset/sift10m/rfann/result/result_sel_1_100000_random.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/rfann/index/index_sel_1_100000_random/ --top_k 10 --super_opt_postfiltering --threads 1 --beam_search_size 40 --num_final_multiplies 2 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 91.50
+	System time (seconds): 139.52
+	Percent of CPU this job got: 11%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 34:57.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 102368672
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 7198
+	Minor (reclaiming a frame) page faults: 33830513
+	Voluntary context switches: 202295
+	Involuntary context switches: 5633
+	Swaps: 0
+	File system inputs: 8815224
+	File system outputs: 1496
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:41
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_2000_1_100000_in_dist.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_2000_1_100000_in_dist_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/rfann/result/result_sel_1_100000_dist.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/rfann/index/index_sel_1_100000_dist/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+split factor list: [2.0]
+shift factor list: [0.5]
+split factor:  2.0
+shift factor:  0.5
+metric:  Euclidian
+start building super optimized postfilter tree
+data size:  (10000000, 128)
+attr size:  (10000000,)
+aplpa:  1
+split factor:  2.0
+shift factor:  0.5
+index_prefix:  /mnt/data/mocheng/dataset/sift10m/rfann/index/index_sel_1_100000_dist/
+mode: query
+ building tree
+new num buckets 3
+new num buckets 7
+new num buckets 15
+new num buckets 31
+new num buckets 63
+new num buckets 127
+new num buckets 255
+new num buckets 511
+new num buckets 1023
+new num buckets 2047
+new num buckets 4095
+new num buckets 8190
+new num buckets 16366
+new num buckets 32679
+ tree construction suc
+Super optimized postfilter tree build time: 571.447s
+Super optimized postfilter tree build time: 571.447s
+beam sizes: [40]
+final multiplies: [2]
+using this batch search4 
+total point comp 40891887
+avg comp:4089.19
+beam size: 40 , final_beam_multiply: 2
+qps: 1560.3400863310724
+method, recall, total time, build time, split factor, memory
+('super-postfiltering_2.0_0.5_1_40_2', 0.9919999999999892, 6.4088592529296875, 571.4473633766174, 2.0, 88.114990234375)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_2000_1_100000_in_dist.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_2000_1_100000_in_dist_10.json --output_file /mnt/data/mocheng/dataset/sift10m/rfann/result/result_sel_1_100000_dist.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/rfann/index/index_sel_1_100000_dist/ --top_k 10 --super_opt_postfiltering --threads 1 --beam_search_size 40 --num_final_multiplies 2 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 77.73
+	System time (seconds): 106.18
+	Percent of CPU this job got: 30%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 10:05.33
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 102468560
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 34149338
+	Voluntary context switches: 144398
+	Involuntary context switches: 1150
+	Swaps: 0
+	File system inputs: 8089584
+	File system outputs: 536
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -42,30 +42,42 @@ metadata_filename = "/mnt/data/mocheng/dataset/yfcc100M/base.metadata.10M.spmat"
 query_filename = "/mnt/data/mocheng/dataset/yfcc100M/query.public.100K.u8bin"
 query_metaedata_filename = "/mnt/data/mocheng/dataset/yfcc100M/query.metadata.public.100K.spmat"
 dim = 192
+
+size = 10000000
+trainsize = 100000
+querysize = 10000
+
 data = read_u8bin(filename, dim)
+print("data shape:", data.shape)
+np.random.seed(0)
+sampled_indices = np.random.choice(len(data), size=size, replace=False)
+data = data[sampled_indices]
+train_data = data[:trainsize]
+
 query_data = read_u8bin(query_filename, dim)
+query_data = query_data[:querysize]
+
 metadata = read_sparse_matrix(metadata_filename)
 query_metadata = read_sparse_matrix(query_metaedata_filename)
+query_metadata = query_metadata[:querysize]
 
 print("data shape:", data.shape)
 print("query data shape:", query_data.shape)
 
 
-output_file = "/mnt/data/mocheng/dataset/yfcc/base10M.fvecs"
-output_query_file = "/mnt/data/mocheng/dataset/yfcc/query100k.fvecs"
-output_query_file2 = "/mnt/data/mocheng/dataset/yfcc/query10k.fvecs"
-output_attr_file = "/mnt/data/mocheng/dataset/yfcc/attr10M.json"
-output_query_attr_file = "/mnt/data/mocheng/dataset/yfcc/query_attr100k.json"
-output_query_attr_file2 = "/mnt/data/mocheng/dataset/yfcc/query_attr10k.json"
+output_file = "/mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs"
+output_train_file = "/mnt/data/mocheng/dataset/yfcc10m/train.fvecs"
+output_query_file = "/mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs"
+output_attr_file = "/mnt/data/mocheng/dataset/yfcc10m/attr10M.json"
+output_query_attr_file = "/mnt/data/mocheng/dataset/yfcc10m/query_attr10k.json"
 fvecs_write(output_file, data)
+fvecs_write(output_train_file, train_data)
 fvecs_write(output_query_file, query_data)
-fvecs_write(output_query_file2, query_data[:10000])
 
 list_metadata = csr_matrix_to_list(metadata)
 list_query_metadata = csr_matrix_to_list(query_metadata)
 print("list_metadata shape:", len(list_metadata))
 write_attr_json(output_attr_file, list_metadata)
 write_attr_json(output_query_attr_file, list_query_metadata)
-write_attr_json(output_query_attr_file2, list_query_metadata[:10000])
 
 print("done")

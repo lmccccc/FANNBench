@@ -32,13 +32,13 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}  -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}  -O3 -march=native -ftree-vectorize -ftree-vectorizer-verbose=0")
 
-option(NOSIMD "build hnsw on SIMD" ON)
-IF(NOSIMD)
-    add_definitions(-DNO_MANUAL_VECTORIZATION)
-    add_definitions(-DKGRAPH_NO_VECTORIZE)
-ENDIF(NOSIMD)
+# option(NOSIMD "build hnsw on SIMD" OFF)
+# IF(NOSIMD)
+#     add_definitions(-DNO_MANUAL_VECTORIZATION)
+#     add_definitions(-DKGRAPH_NO_VECTORIZE)
+# ENDIF(NOSIMD)
 
 
 add_subdirectory(src/common)

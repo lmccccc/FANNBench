@@ -16,7 +16,7 @@
 ##########################################
 now=$(date +"%m-%d-%Y")
 
-source ./vars.sh $1 $2 $3
+source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
 algo=iRangeGraph
 
@@ -71,7 +71,7 @@ fi
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $irange_index_file ]; then
         echo "index exist"
-        exit 1
+        exit 0
     else
         echo "construct index"
         echo "N: $N"
