@@ -26,21 +26,21 @@ fi
 
 
 if [ -e $dataset_bin_file ]; then
-    echo "dataset bin already exist"
+    echo "dataset bin already exist at $dataset_bin_file"
 else
     echo "convert base vecs to bin"
     ./../DiskANN/build/apps/utils/fvecs_to_bin float $dataset_file $dataset_bin_file
 fi
 
 if [ -e $query_bin_file ]; then
-    echo "query bin already exist"
+    echo "query bin already exist at $query_bin_file"
 else
     echo "convert query vecs to bin"
     ./../DiskANN/build/apps/utils/fvecs_to_bin float $query_file $query_bin_file
 fi
 
 if [ -e $label_file ]; then
-    echo "label file already exist"
+    echo "label file already exist at $label_file"
 else
     echo "convert json label to txt"
     python utils/json2txt.py $dataset_attr_file $label_file
@@ -55,7 +55,7 @@ else
 fi
 
 if [ -e $keyword_query_range_file ]; then
-    echo "query keyword file already exist"
+    echo "query keyword file already exist at $keyword_query_range_file"
 else
     echo "convert json range query label to keyword txt"
     python utils/range2keyword.py $query_range_file $keyword_query_range_file
@@ -71,7 +71,7 @@ fi
 
 
 if [ -e $ground_truth_bin_file ]; then
-    echo "groundtruth bin file already exist"
+    echo "groundtruth bin file already exist at $ground_truth_bin_file"
 else
     echo "convert json range query label to keyword txt"
     python utils/gt_json2bin.py $ground_truth_file $ground_truth_bin_file $gt_topk
@@ -96,7 +96,7 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $diskann_index_file ]; then
-        echo "index file already exist"
+        echo "index file already exist at $diskann_index_file"
         exit 0
     else
         echo  "construct index"
@@ -112,6 +112,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                 --label_file $label_file \
                                                 -T $threads \
                                                 &>> $log_file
+        status=$?
         if [ $? -ne 0 ]; then
             echo "Diskann constructor failed to run."
         else

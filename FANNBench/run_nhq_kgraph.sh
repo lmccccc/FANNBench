@@ -27,7 +27,7 @@ log_file=${dir}/summary_${algo}_${dataset}_efsearch${ef_search}.txt
 TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 if [ -e $keyword_query_range_file ]; then
-    echo "query keyword file already exist"
+    echo "query keyword txt file already exist at $keyword_query_range_file"
 else
     echo "convert json range query label to keyword txt"
     python utils/range2keyword.py $query_range_file $keyword_query_range_file
@@ -44,7 +44,7 @@ fi
 
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $nhqkg_index_model_file ]; then
-        echo "index file already exist"
+        echo "index file already exist at $nhqkg_index_model_file"
         exit 0
     else
         echo  "construct index"

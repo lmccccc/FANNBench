@@ -223,6 +223,48 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
        bool nmslib = false, size_t max_elements = 0)
   {
     LoadIndex(location, s, max_elements);
+
+
+    // all layers
+    // std::cout << "ele cnt:" <<cur_element_count_ <<std::endl;
+    // std::cout << "max level:" << maxlevel << std::endl;
+    // for (int i = 0; i < cur_element_count_; ++i){
+    //   for (int level = 0; level < element_levels_[i]; level++){
+    //     const Bitmap &bitmap = *global_link_bitmaps_[i][level];
+    //     for (unsigned j = 0; j < bitmap.size(); j++)
+    //     {
+    //       if (!bitmap[j])
+    //       {
+    //         continue;
+    //       }
+    //       nbr_cnt++;
+    //     }
+    //   }
+    // }
+
+    // std::cout << "Total edge:" << nbr_cnt << std::endl;
+    
+    // double avg_deg = (double)nbr_cnt / cur_element_count_;
+    // std::cout << "Average degree:" << avg_deg << std::endl;
+
+    int nbr_cnt = 0;
+    int slot_num = slot_ranges_.size();
+    
+    for (int slot_i = 0; slot_i < slot_num; ++slot_i){
+      for (int i = 0; i < cur_element_count_; ++i){
+        for (int level = 0; level < element_levels_[i]; level++){
+          const tableint *links = GetLinks(i, level, slot_i);
+          nbr_cnt += GetLinkCount(links);
+        }
+      }
+    }
+
+    std::cout << "Total edge:" << nbr_cnt << std::endl;
+    
+    double avg_deg = (double)nbr_cnt / cur_element_count_;
+    std::cout << "Average degree:" << avg_deg << std::endl;
+    
+
   }
 
   HSIG(SpaceInterface<dist_t> *s, SlotRanges slot_ranges, size_t max_elements,
@@ -1136,6 +1178,7 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
   void LoadIndex(const std::string &location, SpaceInterface<dist_t> *s,
                  size_t max_elements_i = 0)
   {
+    int nbr_size = 0;
     std::ifstream input(location, std::ios::binary);
     if (!input.is_open()) throw std::runtime_error("Cannot open file");
     input.seekg(0, input.end);
@@ -1212,6 +1255,7 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
       throw std::runtime_error(
           "Not enough memory: LoadIndex failed to allocate level0");
     input.read(data_level0_memory_, cur_element_count_ * size_fat_node_level0_);
+    nbr_size += cur_element_count_ * size_fat_node_level0_;
 
     size_per_slot_ =
         sizeof(tableint) +
@@ -1251,6 +1295,7 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
           throw std::runtime_error(
               "Not enough memory: LoadIndex failed to allocate linklist");
         input.read(link_lists_[i], linkListSize);
+        nbr_size += linkListSize;
       }
     }
     slot_enterpoint_nodes_ =
@@ -1299,6 +1344,9 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
 
     al_        = max_links_per_slot_;
     al_level0_ = max_links_per_slot_level0_;
+
+
+
     return;
   }
 

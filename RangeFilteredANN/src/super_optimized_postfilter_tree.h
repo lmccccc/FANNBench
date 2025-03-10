@@ -46,7 +46,6 @@ struct SuperOptimizedPostfilterTree {
                                py::array_t<FilterType> filter_values,
                                int32_t cutoff, float split_factor,
                                float shift_factor, BuildParams build_params) {
-
     auto [sorted_point_range, sorted_filter_values, decoding] =
         sort_python_and_convert<FilterType, T, Point>(points, filter_values);
 
@@ -190,6 +189,15 @@ private:
         }
       });
     }
+    int num_edges = 0;
+    for(int i = 0; i < _spatial_indices.size(); i++){
+      for(int j = 0; j < _spatial_indices[i].size(); j++){
+        num_edges += _spatial_indices.at(i).at(j)->G.max_degree() * _spatial_indices.at(i).at(j)->G.size();
+      }
+    }
+    std::cout << "Total edge:" << num_edges << std::endl;
+    std::cout << "Average degree:" << (double)num_edges/n << std::endl;
+
     std::cout << " tree construction suc" << ::std::endl;
   }
 

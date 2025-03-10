@@ -149,7 +149,7 @@ int main(int argc, char *argv[]) {
     // assert(attrn == datan);
     attr = get_label(datan, attr_file);
     printf("[%.3f s] Loaded attr, size=%ld\n", 
-        elapsed() - t0, attrn);
+        elapsed() - t0, datan);
 
 
     size_t nq;
@@ -175,6 +175,34 @@ int main(int argc, char *argv[]) {
         printf("[%.3f s] Loaded %ld queries\n", elapsed() - t0, nq);
 
     }
+
+
+    // calculate selectivity
+    int sel = 0;
+    double hist[11];
+    double selectivity;
+    double total_selectivity = 0;
+    for (int i = 0; i < 11; i++) hist[i] = 0;
+
+    // for (int i = 900000; i < 900005; ++i){
+    //     std::cout << "attr[" << i << "]=" << attr[i] << std::endl;
+    // }
+
+    for (int i = 0; i < nq; i++) {
+        sel = 0;
+        for (int j = 0; j < N; j++) {
+            if (attr[j] >= qrange[i*2] && attr[j] <= qrange[i*2+1]) {
+                sel++;
+            }
+        }
+        selectivity = (double) sel / N;
+        int bucket = selectivity * 10;
+        total_selectivity += selectivity;
+        hist[bucket]++;
+    }
+    for (int i = 0; i < 11; i++) hist[i] /= nq;
+    total_selectivity /= nq;
+    
 
     // create normal (base) and hybrid index
     // base flat index
@@ -254,24 +282,6 @@ int main(int argc, char *argv[]) {
         printf("[%.3f s] *** Query time: %f\n",
                elapsed() - t0, t2 - t1);
 
-        // calculate selectivity
-        int sel = 0;
-        double hist[11];
-        double selectivity;
-        double total_selectivity = 0;
-        for (int i = 0; i < 11; i++) hist[i] = 0;
-        for (int i = 0; i < nq; i++) {
-            sel = 0;
-            for (int j = 0; j < N; j++) {
-                if (attr[j] >= qrange[i*2] && attr[j] <= qrange[i*2+1]) sel++;
-            }
-            selectivity = (double) sel / N;
-            int bucket = selectivity * 10;
-            total_selectivity += selectivity;
-            hist[bucket]++;
-        }
-        for (int i = 0; i < 11; i++) hist[i] /= nq;
-        total_selectivity /= nq;
 
         std::cout << "qps:" << nq / (t2 - t1) << std::endl;
         std::cout << "cmp per query:" << N << std::endl;

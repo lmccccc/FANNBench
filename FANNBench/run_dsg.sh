@@ -95,7 +95,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
 fi
 
 if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
-
+    echo "index_path: $dsg_index_file"
     /bin/time -v -p ../DynamicSegmentGraph/build/benchmark/query_index -dataset $dataset \
                                                                         -N $N \
                                                                         -dataset_path $dataset_file \

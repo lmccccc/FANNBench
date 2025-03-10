@@ -13,13 +13,13 @@ import csv
 # title_list = title.split(' ')
 
 algorithms = ["ACORN", "DiskANN", "HNSW", "IVFPQ", "NHQ_kgraph", "NHQ_nsw", "Milvus_IVFPQ", "Milvus_HNSW", "WST_opt", "WST_vamana", 
-              "RII", "SeRF", "iRangeGraph", "UNIFY", "DSG"]
+              "RII", "SeRF", "iRangeGraph", "UNIFY", "UNIFY_hybrid", "DSG"]
 range_query_algo = ["ACORN", "HNSW", "IVFPQ", "Milvus_IVFPQ", "Milvus_HNSW", "WST_opt", "WST_vamana", 
-              "SeRF", "iRangeGraph", "UNIFY", "DSG"]
+              "SeRF", "iRangeGraph", "UNIFY", "UNIFY_hybrid", "DSG"]
 cpq_range_query_algo = ["ACORN", "HNSW", "WST_opt", "WST_vamana", 
-              "SeRF", "iRangeGraph", "UNIFY", "DSG"]
+              "SeRF", "iRangeGraph", "UNIFY", "UNIFY_hybrid", "DSG"]
 comps_algo = ["ACORN", "DiskANN", "HNSW", "NHQ_kgraph", "NHQ_nsw", "WST_opt", "WST_vamana", 
-              "SeRF", "iRangeGraph","UNIFY", "DSG"]
+              "SeRF", "iRangeGraph","UNIFY", "UNIFY_hybrid", "DSG"]
 line_styles = ['-', '--', '-.', ':']
 markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', '*', 'h', '|', '+', 'x', 'X', 'H', '_']
 query_map = {}
@@ -28,13 +28,13 @@ query_map = {}
 def get_qps_by_recall(algo, query_label_list, target_recall):
     qps_values = []
     if algo not in query_map.keys():
-        qps_values.extend([0] * len(query_label_list))
+        qps_values.extend([1] * len(query_label_list))
         return qps_values
     for query_label_cnt in query_label_list:
         if query_label_cnt not in query_map[algo].keys():
-            qps_values.append(0)
+            qps_values.append(1)
             continue
-        max_qps = -1
+        max_qps = 1
         for entry in query_map[algo][query_label_cnt]:
             if entry["Recall"] >= target_recall-0.005 and entry["QPS"] > max_qps:
                 max_qps = entry["QPS"]
@@ -44,18 +44,19 @@ def get_qps_by_recall(algo, query_label_list, target_recall):
 def get_comps_by_recall(algo, query_label_list, target_recall):
     comp_values = []
     if algo not in query_map.keys():
-        comp_values.extend([0] * len(query_label_list))
+        comp_values.extend([1] * len(query_label_list))
         return comp_values
     for query_label_cnt in query_label_list:
         if query_label_cnt not in query_map[algo].keys():
-            comp_values.append(0)
+            comp_values.append(1)
             continue
         min_comps = int(1e9)
         for entry in query_map[algo][query_label_cnt]:
             if entry["Recall"] >= target_recall-0.005 and entry["CompsPerQuery"] < min_comps:
                 min_comps = entry["CompsPerQuery"]
         if min_comps == int(1e9):
-            min_comps = 0
+            min_comps = 1
+        assert(min_comps > 0)
         comp_values.append(min_comps)
     return comp_values
 
@@ -121,7 +122,6 @@ if __name__ == "__main__":
             distribution != row["distribution"] or \
             label_range != row["label_range"] or \
             label_cnt != row["label_cnt"] or \
-            distribution != row["distribution"] or\
             row["Threads"] != 1:
             continue
         if query_label_cnt == 1 and label_cnt > 1 and row["query_label"] != query_label:

@@ -618,12 +618,10 @@ class IndexSegmentGraph2D : public BaseIndex {
 
     // multi-thread also work, but not guaranteed as the paper
     // may has minor recall decrement
+    // cout << "data size:" << data_wrapper->data_size << endl;
     #pragma omp parallel for schedule(monotonic : dynamic)
     for (size_t i = 0; i < data_wrapper->data_size; ++i) {
       hnsw.addPoint(data_wrapper->nodes.at(i).data(), i);
-      // if(i %100 == 0){
-      //   cout << "Building Index: " << i << endl;
-      // }
     }
 
     // cout << "Indexing time: " << index_info->index_time << " seconds" << endl;
@@ -1053,6 +1051,7 @@ class IndexSegmentGraph2D : public BaseIndex {
     in.read(reinterpret_cast<char*>(&data_size), sizeof(size_t));
     assert(data_size == data_wrapper->data_size);
     directed_indexed_arr.resize(data_size);
+    int num_edges = 0;
     for (size_t i = 0; i < data_size; i++) {
       in.read(reinterpret_cast<char*>(&fwd_size), sizeof(size_t));
       directed_indexed_arr[i].forward_nns.resize(fwd_size);
@@ -1070,7 +1069,11 @@ class IndexSegmentGraph2D : public BaseIndex {
       directed_indexed_arr[i].reverse_nns.resize(bwd_size);
       in.read(reinterpret_cast<char*>(directed_indexed_arr[i].reverse_nns.data()),
               directed_indexed_arr[i].reverse_nns.size() * sizeof(int));
+      num_edges += bwd_size + fwd_size;
     }
+    
+    std::cout << "Total edge:" << num_edges << std::endl;
+    std::cout << "Average degree:" << (double)num_edges/data_size << std::endl;
     in.close();
 
   }

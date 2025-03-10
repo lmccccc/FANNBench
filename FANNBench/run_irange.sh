@@ -70,7 +70,7 @@ fi
 
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $irange_index_file ]; then
-        echo "index exist"
+        echo "irange index already exist"
         exit 0
     else
         echo "construct index"
@@ -91,6 +91,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                 --ef_construction $ef_construction \
                                                 --threads $threads \
                                                 &>> $log_file
+        status=$?
     fi
 fi
 

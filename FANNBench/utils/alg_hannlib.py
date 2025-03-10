@@ -81,6 +81,7 @@ class HannLib(BaseANN):
 
     def loadIndex(self, X, location):
         # self.freeIndex()
+        print("hannlib load hybrid index")
         n_base, dim = X.shape
         self.p = hannlib.HybridIndex(space=self.metric, dim=dim)
         self.p.load_index(location, n_base)

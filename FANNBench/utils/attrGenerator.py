@@ -34,43 +34,74 @@ def generate_zipf_attrs(num_attrs, zipf_exponent=1.2):
     return generated_attrs
 
 # input: database vector size, query size, attribution range(like [0,1)), query count(like {[0,0.2), [0.3, 0.5))})
-def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, query_label=None, data=None, train=None, centroid_file=None):
+def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, query_label, data=None, train=None, centroid_file=None):
     if(attr_range == -1):
         attr_range = 2**31 - 1
-    #generate attribution and query range
+    
     if(distribution == "random"):
         print("generating for dist:", distribution)
-        if(attr_cnt == 1):
-            #attr format: random integer from 0 to 
+        if(attr_cnt == 1 and query_label == 0):
+            # numberical
             attr = np.random.randint(0, attr_range, db_size, dtype='int32').reshape(db_size).tolist()
-
-        elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords
-            attr = []
-            zipf_exponent = 1.2
-            print("generating zipf attrs")
-            for data_ind in range(db_size):
-                attrs = generate_zipf_attrs(attr_cnt, zipf_exponent)
-                attr.append(attrs)
-        elif(attr_cnt > 1 and query_attr_cnt > 1):# multi-attr nhq
-            assert(attr_cnt == query_attr_cnt)
-            prob_map = {0:1, 1:0.9, 2:0.8, 3:0.7, 4:0.6, 5:0.5, 6:0.4, 7:0.3, 8:0.2, 9:0.1, 10:0.09, 11:0.08, 12:0.07, 13:0.06, 14:0.05, 15:0.04, 16:0.03, 17:0.02, 18:0.01}
+        elif (attr_cnt == 1 and query_label > 0):
+            print("generate single label for label filtering methods")
+            # categorical nhq and filtered diskann
+            prob_map = {1:1, 2:0.9, 3:0.8, 4:0.7, 5:0.6, 6:0.5, 7:0.4, 8:0.3, 9:0.2, 10:0.1, 11:0.09, 12:0.08, 13:0.07, 14:0.06, 15:0.05, 16:0.04, 17:0.03, 18:0.02, 19:0.01, 20:0.001}
             prob = prob_map[query_label]
-            attr = np.zeros((db_size, attr_cnt), dtype='int32')
-            # print("size:", db_size, attr_cnt)
-            print(attr.shape)
+            # print("label:", query_label, " prob:", prob)
+            # assign 6, 10, 19, 20
+            support_query_label = [6, 10, 19, 20]
+            prob_list = np.array([prob_map[val] for val in support_query_label])
+            prob_sum = [np.sum(prob_list[:i]) for i in range(1, prob_list.shape[0]+1)]
+            print("support query label:", support_query_label)
+            print("corresponding selectivity:", prob_list)
+            print("prob_sum:", prob_sum)
+            attr = np.zeros(db_size, dtype='int32').reshape(db_size)
+            if query_label not in support_query_label:
+                print("error only support query label:", support_query_label)
+                sys.exit(-1)
+            if prob_sum[-1] > 1:
+                print("error too much labels to assign")
+                sys.exit(-1)
+
+            stat = np.zeros(len(support_query_label), dtype='int32')
             for i in range(db_size):
                 val = random.random()
-                if val <= prob:
-                    attr[i, 0] = query_label
-                else:
-                    attr[i, 0] = random.randint(0, attr_range)
-                    if attr[i, 0] == query_label:
-                        attr[i, 0] = (query_label + 1) % attr_range
-            for j in range(1, attr_cnt):
-                print("j:", j)
-                attr[:, j] = attr[:, 0]
+                for idx, prob in enumerate(prob_sum):
+                    if val < prob_sum[idx]:
+                        attr[i] = support_query_label[idx]
+                        stat[idx] += 1
+                        break
+                    attr[i] = np.random.randint(low=0, high=attr_range)
+                    while attr[i] in support_query_label:
+                        attr[i] = np.random.randint(low=0, high=attr_range)
+            print("selectivity:", stat/db_size)
             attr = attr.tolist()
-            print("attr shape:", len(attr), len(attr[0]))
+            return attr
+
+
+        # elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords
+        #     attr = []
+        #     zipf_exponent = 1.2
+        #     print("generating zipf attrs")
+        #     for data_ind in range(db_size):
+        #         attrs = generate_zipf_attrs(attr_cnt, zipf_exponent)
+        #         attr.append(attrs)
+        # elif(attr_cnt > 1 and query_attr_cnt > 1):# multi-attr nhq
+        #     assert(attr_cnt == query_attr_cnt)
+        #     prob_map = {1:1, 2:0.9, 3:0.8, 4:0.7, 5:0.6, 6:0.5, 7:0.4, 8:0.3, 9:0.2, 10:0.1, 11:0.09, 12:0.08, 13:0.07, 14:0.06, 15:0.05, 16:0.04, 17:0.03, 18:0.02, 19:0.01}
+        #     prob = prob_map[query_label]
+        #     attr = np.zeros((db_size, attr_cnt), dtype='int32')
+        #     # print("size:", db_size, attr_cnt)
+        #     print(attr.shape)
+        #     for i in range(db_size):
+        #         val = random.random()
+        #         if val <= prob:
+        #             attr[i, :] = query_label
+        #         else:
+        #             attr[i, :] = np.random.randint(low=0, high=attr_range, size=(1, attr_cnt))
+        #     attr = attr.tolist()
+        #     print("attr shape:", len(attr), len(attr[0]))
 
             
         # int range, to match diskann that only one attr supported, range is [a, a]
@@ -104,64 +135,105 @@ def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, q
         print("data shape:", data.shape)
         print("centroids shape:", centroids.shape)
 
-        if(attr_cnt == 1): # range query attrs
+        labels = np.random.randint(low=0, high=attr_range, size=(db_size), dtype='int32')
+        label_ordered_idx = np.argsort(labels)
+        labels = labels[label_ordered_idx]
+        attr = np.zeros((db_size), dtype='int32')
+
+        if(attr_cnt == 1 and query_label == 0): # range query attrs
+
             elements = [i for i in range(centroid_size)]
-            attr = np.zeros((data.shape[0]), dtype='int32').tolist()
             segment_size = math.ceil(attr_range / centroid_size)
             centroid_vals = [segment_size * i + round(segment_size / 2) for i in range(centroid_size)]
             print("centroid_vals:", centroid_vals)
             print("centroid_size:", len(centroid_vals))
+            
+            clusters = [[] for i in range(centroid_size)]
             for idx, _data in enumerate(data):
                 distance = np.linalg.norm(_data - centroids, axis=1)
                 dis_sum = np.sum(distance)
                 probabilities = 1 - distance/dis_sum
                 selected_element = random.choices(elements, weights=probabilities, k=1)[0]
-                
-                if attr_range <=128:
-                    attr[idx] = selected_element
-                else:
-                    # generate random int by normal distribution (selected_element[0], attr_range/centroid_size)
-                    mean = centroid_vals[selected_element]
-                    var = attr_range/centroid_size
+                clusters[selected_element].append(idx)
+                # if attr_range <=128:
+                #     attr[idx] = selected_element
+                # else:
+                #     # generate random int by normal distribution (selected_element[0], attr_range/centroid_size)
+                #     mean = centroid_vals[selected_element]
+                #     var = attr_range/centroid_size
+                #     while True:
+                #         attr[idx] = int(np.random.normal(mean, var))
+                #         if attr[idx] >= 0 and attr[idx] < attr_range:
+                            # break
+            # split data
+            offset = [0]
+            for i in range(centroid_size):
+                offset.append(offset[i] + len(clusters[i]))
+            for i in range(centroid_size):
+                start = offset[i]
+                end = offset[i+1]
+                attr[np.array(clusters[i])] = labels[start:end]
+            attr = attr.tolist()
+            return attr
+
+        
+        elif (attr_cnt == 1 and query_label > 0):
+            print("generate single label for label filtering methods")
+            # nhq and filtered diskann
+            prob_map = {1:1, 2:0.9, 3:0.8, 4:0.7, 5:0.6, 6:0.5, 7:0.4, 8:0.3, 9:0.2, 10:0.1, 11:0.09, 12:0.08, 13:0.07, 14:0.06, 15:0.05, 16:0.04, 17:0.03, 18:0.02, 19:0.01, 20:0.001}
+            prob = prob_map[query_label]
+            print("label:", query_label, " prob:", prob)
+            if query_label == 1:
+                attr = np.full((db_size), query_label, dtype='int32').tolist()
+            else:
+                attr = np.zeros((db_size), dtype='int32')
+                target_centroid = centroids[query_label]
+                distance = np.linalg.norm(data - target_centroid, axis=1)
+                top_dis_idx = np.argsort(distance)
+
+                attr[top_dis_idx[: int(db_size*prob)]] = query_label
+                rest_idx = top_dis_idx[int(db_size*prob) :]
+                for idx in rest_idx:
                     while True:
-                        attr[idx] = int(np.random.normal(mean, var))
-                        if attr[idx] >= 0 and attr[idx] < attr_range:
+                        attr[idx] = np.random.randint(low=0, high=attr_range)
+                        if attr[idx] != query_label:
                             break
-                 
+            attr = attr.tolist()
+            return attr
         
 
-        elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords
-            attr = []
-            zipf_exponent = 1.2
-            # cluster centroids for each attr, the closer to the centroid, the higher probability to be selected
-            # based on the probability, we extrally follows the zipf distribution. for example: '0' with about 0.8, '8' with about 0.001(not accurate because probability depends on distance)
-            # distribution algorithm: distance_prob * zipf_prob
-            ranks = np.arange(1, attr_cnt + 1)
-            zipf_probabilities = 1 / (ranks ** zipf_exponent)
-            zipf_probabilities /= zipf_probabilities.sum()
-            for idx, _data in enumerate(data):
-                # for each v
-                # print("idx:", idx)
-                distance = np.linalg.norm(_data - centroids, axis=1)
-                probabilities = 1 - distance/np.sum(distance)
-                probabilities = probabilities * zipf_probabilities # dot product
-                generated_attrs = []
-                while(True):
-                    for i in range(attr_cnt):
-                        val = random.random()
-                        if val <= probabilities[i]:
-                            generated_attrs.append(i)
-                    if len(generated_attrs) == 0:
-                        probabilities = np.sqrt(probabilities)
-                    else:
-                        break
-                attr.append(generated_attrs)
+        # elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords
+        #     attr = []
+        #     zipf_exponent = 1.2
+        #     # cluster centroids for each attr, the closer to the centroid, the higher probability to be selected
+        #     # based on the probability, we extrally follows the zipf distribution. for example: '0' with about 0.8, '8' with about 0.001(not accurate because probability depends on distance)
+        #     # distribution algorithm: distance_prob * zipf_prob
+        #     ranks = np.arange(1, attr_cnt + 1)
+        #     zipf_probabilities = 1 / (ranks ** zipf_exponent)
+        #     zipf_probabilities /= zipf_probabilities.sum()
+        #     for idx, _data in enumerate(data):
+        #         # for each v
+        #         # print("idx:", idx)
+        #         distance = np.linalg.norm(_data - centroids, axis=1)
+        #         probabilities = 1 - distance/np.sum(distance)
+        #         probabilities = probabilities * zipf_probabilities # dot product
+        #         generated_attrs = []
+        #         while(True):
+        #             for i in range(attr_cnt):
+        #                 val = random.random()
+        #                 if val <= probabilities[i]:
+        #                     generated_attrs.append(i)
+        #             if len(generated_attrs) == 0:
+        #                 probabilities = np.sqrt(probabilities)
+        #             else:
+        #                 break
+        #         attr.append(generated_attrs)
                 
-        elif(attr_cnt > 1 and query_attr_cnt > 1):# multi-attr
-            dis_sum = np.sum(distance)
-            probabilities = 1 - distance/dis_sum
-            selected_element = random.choices(elements, weights=probabilities, k=attr_cnt)
-            attr[idx] = selected_element
+        # elif(attr_cnt > 1 and query_attr_cnt > 1):# multi-attr
+        #     dis_sum = np.sum(distance)
+        #     probabilities = 1 - distance/dis_sum
+        #     selected_element = random.choices(elements, weights=probabilities, k=attr_cnt)
+        #     attr[idx] = selected_element
 
             
 
@@ -283,9 +355,18 @@ if __name__ == "__main__":
             centroid_file = sys.argv[10]
             print("centroid file:", centroid_file)
         
-        if query_attr_cnt == attr_cnt: # nhq
-            query_label = int(sys.argv[11]) # not only for query label but for selectivity
-            # 0: 1, 1: 0.9, 2: 0.8 ....., 10: 0.1, 11: 0.09, ..., 19: 0.01
+        query_label = int(sys.argv[11]) # not only for query label but for selectivity
+        # 1: 0.01, 2: 0.02, 3: 0.03 ....., 10: 0.1, 11: 0.2, ..., 19: 1
+        
+        if distribution == "real":
+            real_label = True
+            real_label_file = sys.argv[13]
+            print("real label file:", real_label_file)
+
+            # copy label file to output_dataset_attr_file
+            os.system("cp " + real_label_file + " " + output_dataset_attr_file)
+            print("copy {} to {}".format(real_label_file, output_dataset_attr_file))
+            exit(0)
 
     # directionary check
     # db_size, query_size = check_data_size(dataset_file, query_file, db_size, query_size)
@@ -295,10 +376,11 @@ if __name__ == "__main__":
         train = load_data(train_file)
         if not train.shape[0] == train_size:
             print("file data size:", train.shape[0], " not match input size:", train_size)
-            data = np.random.choice(data, train_size, replace=False)
+            train_idx = np.random.choice(data.shape[0], train_size, replace=False)
+            train = data[train_idx]
         print("train shape:", train.shape)
         #generate attributions
-        attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, data=data, train=train, centroid_file=centroid_file)
+        attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, query_label=query_label, data=data, train=train, centroid_file=centroid_file)
     else:
         attr = genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, query_label=query_label)
 

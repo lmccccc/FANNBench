@@ -12,7 +12,8 @@ train_size = 100000
 query_size = 10000
 
 root = "/mnt/data/mocheng/dataset/youtube/"
-output_root = "/mnt/data/mocheng/dataset/youtube_rgb1m/"
+output_audio_root = "/mnt/data/mocheng/dataset/youtube_audio1m/"
+output_root = "/mnt/data/mocheng/dataset/youtube1m/"
 
 
 
@@ -28,9 +29,9 @@ output_rgb = output_root + "rgb.fvecs"
 output_rgb_train = output_root + "rgb_train.fvecs"
 output_rgb_query = output_root + "rgb_query.fvecs"
 
-output_audio = output_root + "audio.fvecs"
-output_audio_train = output_root + "audio_train.fvecs"
-output_audio_query = output_root + "audio_query.fvecs"
+output_audio = output_audio_root + "audio.fvecs"
+output_audio_train = output_audio_root + "audio_train.fvecs"
+output_audio_query = output_audio_root + "audio_query.fvecs"
 
 output_likes = output_root + "likes.json"
 output_likes_query = output_root + "likes_query.json"
@@ -62,7 +63,8 @@ like_counts = []
 publish_dates = []
 loaded_infos = [] # cannot match all attr because of my wrong code, now fixed
 
-
+max_int = (1 << 31) - 1
+total_remove = 0
 for i in range(1, index):
     rgb_file = input_rgb_file + '.' + str(i)
     audio_file = input_audio_file + '.' + str(i)
@@ -93,12 +95,31 @@ for i in range(1, index):
 
     print("load data from progress file, size=", len(t_mean_rgb))
     
-    mean_rgb += t_mean_rgb
-    mean_audio += t_mean_audio
-    comment_counts += t_comment_counts
-    view_counts += t_view_counts
-    like_counts += t_like_counts
-    publish_dates += t_publish_dates
+    cur_remove = 0
+    for i in range(len(t_mean_rgb)):
+        if t_view_counts[i] == 0:
+            cur_remove += 1
+            continue
+        mean_rgb.append(t_mean_rgb[i])
+        mean_audio.append(t_mean_audio[i])
+        if t_comment_counts[i] > max_int:
+            t_comment_counts[i] = max_int
+        if t_view_counts[i] > max_int:
+            t_view_counts[i] = max_int
+        if t_like_counts[i] > max_int:
+            t_like_counts[i] = max_int
+        comment_counts.append(t_comment_counts[i])
+        view_counts.append(t_view_counts[i])
+        like_counts.append(t_like_counts[i])
+        publish_dates.append(t_publish_dates[i])
+    total_remove += cur_remove
+    print("remove ", cur_remove, " data, total remove ", total_remove)
+    # mean_rgb += t_mean_rgb
+    # mean_audio += t_mean_audio
+    # comment_counts += t_comment_counts
+    # view_counts += t_view_counts
+    # like_counts += t_like_counts
+    # publish_dates += t_publish_dates
 
 print("total size=", len(mean_rgb))
 indices = list(range(len(mean_rgb)))
@@ -126,32 +147,47 @@ for date in publish_dates:
 # save data
 index = [0, data_size, data_size+query_size, data_size+train_size+query_size]
 fvecs_write(output_rgb, np.array(mean_rgb[index[0]: index[1]]))
+print("save rgb to ", output_rgb)
 fvecs_write(output_rgb_query, np.array(mean_rgb[index[1]: index[2]]))
+print("save rgb query to ", output_rgb_query)
 fvecs_write(output_rgb_train, np.array(mean_rgb[index[2]: index[3]]))
+print("save rgb train to ", output_rgb_train)
 
 fvecs_write(output_audio, np.array(mean_audio[index[0]: index[1]]))
+print("save audio to ", output_audio)
 fvecs_write(output_audio_query, np.array(mean_audio[index[1]: index[2]]))
+print("save audio query to ", output_audio_query)
 fvecs_write(output_audio_train, np.array(mean_audio[index[2]: index[3]]))
+print("save audio train to ", output_audio_train)
 
 with open(output_comments, 'w') as f:
     json.dump(comment_counts[index[0]: index[1]], f, indent=1)
+print("save comments to ", output_comments)
 with open(output_comments_query, 'w') as f:
     json.dump(comment_counts[index[1]: index[2]], f, indent=1)
+print("save comments query to ", output_comments_query)
 
 with open(output_views, 'w') as f:
     json.dump(view_counts[index[0]: index[1]], f, indent=1)
+print("save views to ", output_views)
 with open(output_views_query, 'w') as f:
     json.dump(view_counts[index[1]: index[2]], f, indent=1)
+print("save views query to ", output_views_query)
     
 with open(output_likes, 'w') as f:
     json.dump(like_counts[index[0]: index[1]], f, indent=1)
+print("save likes to ", output_likes)
 with open(output_likes_query, 'w') as f:
     json.dump(like_counts[index[1]: index[2]], f, indent=1)
+print("save likes query to ", output_likes_query)
 
 with open(output_dates, 'w') as f:
     json.dump(publish_dates_encoded[index[0]: index[1]], f, indent=1)
+print("save dates to ", output_dates)
+
 with open(output_dates_query, 'w') as f:
     json.dump(publish_dates_encoded[index[1]: index[2]], f, indent=1)
+print("save dates query to ", output_dates_query)
 
 # with open(input_comments_file, 'w') as f:
 #     json.dump(comment_counts, f, indent=1)

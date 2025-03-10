@@ -1,0 +1,535 @@
+Start time: 23:01
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: YT-RGB1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/views.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_6_random.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_6_random_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64
+ef_search: 150 
+dim: 1024
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/views.json
+[ 0.113s ] Loaded metadata, 1000000 attr's found
+[ 0.113s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.134s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_6_random.json
+[ 0.137s ] Loaded 10000 YT-RGB1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_6_random_10.json
+[ 0.148s ] Loaded ground truth, gt_size: 10
+[ 0.148s ] Index Params -- d: 1024, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 4488.358MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999934 nodes
+level 1 : 24950 nodes
+level 2 : 621 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025522
+Average degree per layer:170920.333
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.788s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.513
+[ 126.020s ] Query results (vector ids, then distances):
+query 0 nn's (0): 236476 (3501) 227704 (4545) 75421 (3935) 304526 (3825) 125013 (5033) 214017 (1191) 8737 (2990) 56754 (4735) 834854 (1867) 40662 (4941) 
+     dis: 	76.862 77.122 78.236 78.571 79.530 80.063 81.557 82.048 82.592 83.096 
+query 1 nn's (5170): 360703 (5053) 321278 (4257) 481041 (7335) 290336 (66091) 522432 (12584) 170227 (12976) 683853 (4189) 924368 (4879) 689802 (6430) 762136 (5160) 
+     dis: 	45.119 53.854 59.661 59.878 60.591 60.806 62.789 63.039 63.312 64.790 
+query 2 nn's (3955): 682617 (7003) 626583 (4934) 336366 (9044) 647753 (15198) 576123 (5406) 890562 (10145) 56481 (11892) 759128 (7691) 263388 (8301) 843914 (8301) 
+     dis: 	215.359 218.929 219.530 219.714 221.325 221.896 222.045 222.818 223.172 223.172 
+query 3 nn's (174514): 185281 (4160) 384733 (8955) 103960 (7477) 940614 (14308) 75711 (5288) 765350 (18474) 220055 (20063) 424640 (2893) 661897 (2893) 544574 (19703) 
+     dis: 	97.383 102.635 102.986 103.085 104.787 104.818 104.955 105.049 105.049 107.015 
+query 4 nn's (1944): 445310 (9446) 745108 (6777) 881441 (4571) 109083 (5861) 333400 (3860) 256550 (7570) 451250 (5902) 360458 (7566) 349321 (3706) 588545 (2939) 
+     dis: 	173.632 175.984 177.150 177.932 178.153 178.270 178.539 178.643 180.107 180.179 
+[ 126.020s ] *** Query time: 61.955
+qps: 161.407
+ *** acorn recall 
+efs:150
+acorn get 14058 postive res from 100000 results, recall@10:0.141
+recall dist(10% per bucket): 0.433 0.287 0.100 0.041 0.034 0.035 0.031 0.023 0.013 0.004 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[126.607s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 33401771
+ndis: 0
+nreorder: 0
+average distance computations per query: 3340.177
+[ 126.607s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query YT-RGB1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/views.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_6_random.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_6_random_10.json /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64 150 1024"
+	User time (seconds): 106.63
+	System time (seconds): 20.49
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:07.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15011048
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 9309565
+	Voluntary context switches: 1
+	Involuntary context switches: 383
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:19
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: YT-RGB1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/views.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_6_random.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_6_random_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64
+ef_search: 150 
+dim: 1024
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/views.json
+[ 0.117s ] Loaded metadata, 1000000 attr's found
+[ 0.117s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.138s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_6_random.json
+[ 0.140s ] Loaded 10000 YT-RGB1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_6_random_10.json
+[ 0.151s ] Loaded ground truth, gt_size: 10
+[ 0.151s ] Index Params -- d: 1024, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 4488.358MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999934 nodes
+level 1 : 24950 nodes
+level 2 : 621 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025522
+Average degree per layer:170920.333
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.708s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.513
+[ 111.071s ] Query results (vector ids, then distances):
+query 0 nn's (0): 236476 (3501) 227704 (4545) 75421 (3935) 304526 (3825) 125013 (5033) 214017 (1191) 8737 (2990) 56754 (4735) 834854 (1867) 40662 (4941) 
+     dis: 	76.862 77.122 78.236 78.571 79.530 80.063 81.557 82.048 82.592 83.096 
+query 1 nn's (5170): 360703 (5053) 321278 (4257) 481041 (7335) 290336 (66091) 522432 (12584) 170227 (12976) 683853 (4189) 924368 (4879) 689802 (6430) 762136 (5160) 
+     dis: 	45.119 53.854 59.661 59.878 60.591 60.806 62.789 63.039 63.312 64.790 
+query 2 nn's (3955): 682617 (7003) 626583 (4934) 336366 (9044) 647753 (15198) 576123 (5406) 890562 (10145) 56481 (11892) 759128 (7691) 263388 (8301) 843914 (8301) 
+     dis: 	215.359 218.929 219.530 219.714 221.325 221.896 222.045 222.818 223.172 223.172 
+query 3 nn's (174514): 185281 (4160) 384733 (8955) 103960 (7477) 940614 (14308) 75711 (5288) 765350 (18474) 220055 (20063) 424640 (2893) 661897 (2893) 544574 (19703) 
+     dis: 	97.383 102.635 102.986 103.085 104.787 104.818 104.955 105.049 105.049 107.015 
+query 4 nn's (1944): 445310 (9446) 745108 (6777) 881441 (4571) 109083 (5861) 333400 (3860) 256550 (7570) 451250 (5902) 360458 (7566) 349321 (3706) 588545 (2939) 
+     dis: 	173.632 175.984 177.150 177.932 178.153 178.270 178.539 178.643 180.107 180.179 
+[ 111.071s ] *** Query time: 55.051
+qps: 181.651
+ *** acorn recall 
+efs:150
+acorn get 14058 postive res from 100000 results, recall@10:0.141
+recall dist(10% per bucket): 0.433 0.287 0.100 0.041 0.034 0.035 0.031 0.023 0.013 0.004 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[111.462s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 33401771
+ndis: 0
+nreorder: 0
+average distance computations per query: 3340.177
+[ 111.462s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query YT-RGB1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/views.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_6_random.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_6_random_10.json /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64 150 1024"
+	User time (seconds): 102.87
+	System time (seconds): 8.84
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:51.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15012072
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3763366
+	Voluntary context switches: 1
+	Involuntary context switches: 258
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:49
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: YT-RGB1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/views.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_10_random.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_10_random_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64
+ef_search: 150 
+dim: 1024
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/views.json
+[ 0.118s ] Loaded metadata, 1000000 attr's found
+[ 0.118s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.142s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_10_random.json
+[ 0.144s ] Loaded 10000 YT-RGB1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_10_random_10.json
+[ 0.155s ] Loaded ground truth, gt_size: 10
+[ 0.155s ] Index Params -- d: 1024, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 4488.358MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999934 nodes
+level 1 : 24950 nodes
+level 2 : 621 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025522
+Average degree per layer:170920.333
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.601s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.107
+[ 98.889s ] Query results (vector ids, then distances):
+query 0 nn's (2495): 236476 (3501) 8737 (2990) 191702 (2702) 398156 (3272) 397176 (3150) 399788 (3224) 58247 (2970) 477964 (2957) 375961 (3216) 852023 (2646) 
+     dis: 	76.862 81.557 83.808 85.337 87.119 87.461 87.685 87.739 88.396 89.030 
+query 1 nn's (3574): 999687 (3617) 424988 (3422) 861662 (3082) 704539 (3386) 169630 (3609) 664905 (3853) 113748 (3119) 121287 (2900) 668297 (2841) 421119 (3666) 
+     dis: 	58.924 65.141 68.417 71.427 71.701 73.711 74.169 74.524 76.255 78.340 
+query 2 nn's (2727): 155370 (1338) 8128 (1598) 739328 (1665) 99127 (1495) 44348 (1569) 489506 (1131) 641115 (1639) 613645 (1238) 905902 (1525) 492422 (1529) 
+     dis: 	226.007 230.520 233.392 236.270 238.862 239.782 240.187 241.271 241.725 242.355 
+query 3 nn's (3930): 185281 (4160) 75711 (5288) 83139 (4845) 317621 (3777) 990110 (4577) 646203 (4682) 768145 (3787) 974483 (4836) 49998 (4199) 876109 (4222) 
+     dis: 	97.383 104.787 109.880 110.628 112.031 115.792 117.969 118.406 118.446 119.023 
+query 4 nn's (1051): 881441 (4571) 333400 (3860) 349321 (3706) 262442 (3893) 386543 (3356) 765653 (4320) 117203 (3337) 245325 (4169) 71260 (4175) 290507 (3482) 
+     dis: 	177.150 178.153 180.107 181.322 182.131 182.657 182.743 183.006 183.889 184.225 
+[ 98.889s ] *** Query time: 52.147
+qps: 191.767
+ *** acorn recall 
+efs:150
+acorn get 6171 postive res from 100000 results, recall@10:0.062
+recall dist(10% per bucket): 0.529 0.348 0.102 0.017 0.003 0.000 0.000 0.000 0.000 0.000 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[99.292s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 26683214
+ndis: 0
+nreorder: 0
+average distance computations per query: 2668.321
+[ 99.292s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query YT-RGB1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/views.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_10_random.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_10_random_10.json /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64 150 1024"
+	User time (seconds): 90.77
+	System time (seconds): 8.80
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:39.58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15013092
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3763365
+	Voluntary context switches: 1
+	Involuntary context switches: 77
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 05:03
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: YT-RGB1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/views.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_19_random.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_19_random_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64
+ef_search: 150 
+dim: 1024
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/views.json
+[ 0.110s ] Loaded metadata, 1000000 attr's found
+[ 0.110s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.131s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_19_random.json
+[ 0.133s ] Loaded 10000 YT-RGB1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_19_random_10.json
+[ 0.144s ] Loaded ground truth, gt_size: 10
+[ 0.144s ] Index Params -- d: 1024, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 4488.358MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999934 nodes
+level 1 : 24950 nodes
+level 2 : 621 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025522
+Average degree per layer:170920.333
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.600s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.022
+[ 71.877s ] Query results (vector ids, then distances):
+query 0 nn's (8115): 156405 (8208) 410436 (8117) 472842 (8238) 243452 (8326) 999992 (8286) 970398 (8197) 974979 (8407) 287464 (8458) 247718 (8277) 736572 (8272) 
+     dis: 	95.169 96.304 97.342 97.461 98.580 99.526 99.801 101.129 101.208 101.329 
+query 1 nn's (8518): 295820 (2130) 230998 (2141) 244127 (2104) 66399 (2156) 733721 (2165) 271986 (2109) 441942 (2142) 688879 (2152) 395871 (2102) 373948 (2155) 
+     dis: 	33.629 72.172 90.646 94.693 99.988 102.851 103.305 107.216 110.133 110.907 
+query 2 nn's (2096): 626583 (4934) 941329 (4816) 303216 (4837) 803232 (4810) 677448 (4937) 862163 (4867) 262263 (4907) 945553 (4774) 533245 (4781) 13649 (4753) 
+     dis: 	218.929 251.928 252.201 257.276 257.611 259.512 263.775 264.116 264.766 265.889 
+query 3 nn's (2169): 218484 (508092) 195107 (337060) 745733 (494208) 57334 (381530) 821005 (527588) 362219 (368533) 419195 (460674) 492325 (434371) 399823 (464097) 182612 (417970) 
+     dis: 	99.928 102.569 103.156 107.543 109.834 115.548 117.296 119.973 119.981 120.229 
+query 4 nn's (4750): 719728 (6553) 301645 (6577) 109227 (6424) 624832 (6641) 729638 (6641) 380850 (6402) 99866 (6406) 619839 (6375) 597011 (6473) 537805 (6614) 
+     dis: 	181.210 182.758 184.480 186.865 186.865 186.873 187.403 187.951 188.098 188.291 
+[ 71.877s ] *** Query time: 32.339
+qps: 309.227
+ *** acorn recall 
+efs:150
+acorn get 5875 postive res from 100000 results, recall@10:0.059
+recall dist(10% per bucket): 0.560 0.316 0.104 0.018 0.002 0.000 0.000 0.000 0.000 0.000 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[72.299s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 7350367
+ndis: 0
+nreorder: 0
+average distance computations per query: 735.037
+[ 72.299s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query YT-RGB1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/views.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_19_random.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_19_random_10.json /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64 150 1024"
+	User time (seconds): 64.21
+	System time (seconds): 8.36
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:12.58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15013092
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3763364
+	Voluntary context switches: 1
+	Involuntary context switches: 68
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 05:13
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: YT-RGB1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/views.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_20_random.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_20_random_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64
+ef_search: 150 
+dim: 1024
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/views.json
+[ 0.107s ] Loaded metadata, 1000000 attr's found
+[ 0.108s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.132s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_20_random.json
+[ 0.135s ] Loaded 10000 YT-RGB1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_20_random_10.json
+[ 0.145s ] Loaded ground truth, gt_size: 10
+[ 0.145s ] Index Params -- d: 1024, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 4488.358MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999934 nodes
+level 1 : 24950 nodes
+level 2 : 621 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025522
+Average degree per layer:170920.333
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 3.762s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 150
+selectivity: 0.013
+[ 41.161s ] Query results (vector ids, then distances):
+query 0 nn's (0): 22350 (0) 182176 (0) 360803 (0) 626862 (0) 636308 (0) 652683 (0) 770601 (0) 834628 (0) 851117 (0) 995600 (0) 
+     dis: 	103.618 103.618 103.618 103.618 103.618 103.618 103.618 103.618 103.618 103.618 
+query 1 nn's (0): 288734 (5840) 156361 (5817) 603100 (5825) 968024 (5826) 931290 (5818) 342166 (5829) 143793 (5839) 817045 (5839) 33020 (5832) 147617 (5825) 
+     dis: 	124.599 128.898 129.489 134.416 137.204 140.326 140.755 142.794 146.922 151.641 
+query 2 nn's (5817): 718701 (238932) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	770.328 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (5841): 389740 (44706) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	714.624 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 4 nn's (235239): 753799 (1400) 333489 (1396) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	205.748 835.963 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+[ 41.161s ] *** Query time: 2.464
+qps: 4059.138
+ *** acorn recall 
+efs:150
+acorn get 980 postive res from 100000 results, recall@10:0.010
+recall dist(10% per bucket): 0.917 0.069 0.013 0.001 0.000 0.000 0.000 0.000 0.000 0.000 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[41.656s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 430378
+ndis: 0
+nreorder: 0
+average distance computations per query: 43.038
+[ 41.656s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query YT-RGB1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/views.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/qrangereal_label_20_random.json /mnt/data/mocheng/dataset/youtube1m/label/real_label/sif_gt_real_label_20_random_10.json /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_real_label_M40_ga25_Mb64 150 1024"
+	User time (seconds): 33.73
+	System time (seconds): 8.17
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.93
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15012068
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3763367
+	Voluntary context switches: 1
+	Involuntary context switches: 47
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

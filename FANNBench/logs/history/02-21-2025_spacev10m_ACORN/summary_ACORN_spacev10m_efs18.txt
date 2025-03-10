@@ -1,0 +1,58 @@
+Start time: 05:51
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: spacev10m
+N: 10000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/spacev10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64
+ef_search: 18 
+dim: 100
+metadata or vector loaded from json, size: 10000000
+loaded base attributes from:/mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 1.244s ] Loaded metadata, 10000000 attr's found
+[ 1.244s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 100, nb=10000
+[ 1.247s ] Loaded query vectors from /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json
+[ 1.249s ] Loaded 10000 spacev10m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json
+[ 1.261s ] Loaded ground truth, gt_size: 10
+[ 1.261s ] Index Params -- d: 100, M: 40, N: 10000000, gamma: 25
+terminate called after throwing an instance of 'faiss::FaissException'
+  what():  Error in faiss::FileIOReader::FileIOReader(const char*) at /home/mocheng/code/ACORN/faiss/impl/io.cpp:67: Error: 'f' failed: could not open /mnt/data/mocheng/dataset/spacev10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 for reading: No such file or directory
+Command terminated by signal 6
+	Command being timed: "../ACORN/build/demos/acorn_query spacev10m 10000000 25 40 64 10 1 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json /mnt/data/mocheng/dataset/spacev10m/acorn/index/index_acorn_sel_1_100000_random_M40_ga25_Mb64 18 100"
+	User time (seconds): 0.97
+	System time (seconds): 0.29
+	Percent of CPU this job got: 19%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.46
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 358952
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 155796
+	Voluntary context switches: 3
+	Involuntary context switches: 3
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

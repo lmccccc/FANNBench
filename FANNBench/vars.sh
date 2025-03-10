@@ -6,116 +6,136 @@
 # --------------------------------- attribute var part  -------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
+# label_range: the range of label, normally 100000 for range query, 500 for keyword query
+# label_cnt: label cardinality, normally 1 for any query
+# query_label_cnt: query range, normally label_range*selectivity for range query, 1 for keyword query
+# query_label: query label, 0 for range query means inactivate, 1~19 for keyword query, means different selectivity's label
 
-# label range   label_cnt   query_label_cnt   query_label
-# <500          1           1                 useless                    # For all methods, query random {1} label for each vector has {1} label too.
-# <500          >1          1                 0 ~ label_cnt-1            # For keyword query, query {query_label} for vectors which have at most {label_cnt} labels (vector label is in zipf distribution).
-# >0            1           >1                useless                    # For range query, query range [random, random+{query_label_cnt}], each vector has {1} label.
-# <500          >1          $label_cnt        useless                    # For nhq_kgraph and nhq_nsw, same dimension for label and query label
-
+# label range   label_cnt     query_label_cnt   query_label
+# 100000        1             1~20              0(inactivate)              # For range query, query range [random, random+{query_label_cnt}], each vector has {1} label.
+# 500           1             1                 1~20                       # for label query for both diskann and nhq_nsw.(range filtering can do it too. But not necessary to compare)
 # lable generation
-distribution=random     # random, in_dist, out_dist
-label_range=19       # 19 for diskann. the possiable lable selected from [0, label_range). keyword query shall less than 500
+distribution=random     # random, in_dist, out_dist, raeal
+label_range=500
 
 # keyword or range for query. Only one of them can >1 at once
-label_cnt=2           # Label Cardinality. Maximal label size for each vector.  1 or $label_range if $labelrange (keyword), not suitable for: 1.acorn,    2.irange,  3.vamanatree,  4.wst 5.nhq_nsw, 6.nhq_kgraph 7.serf 8.unify
-query_label_cnt=2     # Query Range.  if >1 (range query for [x, x+query_label_cnt]), not suitable for: 1.diskann,  2.nhq_nsw, 3.nhq_kgraph
-query_label=1         # Queried label, work only for keyword query(label_cnt > 1)
+label_cnt=1
+# qrange
+query_label_cnt=1
+query_label=20
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------- dataset var part  ---------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-## siftsmall（10k）
+# ---begin dataset---
+# siftsmall（10k）
+# dataset=siftsmall
+# dim=128
 # N=10000
 # query_size=100
-# dataset=siftsmall
-
+# train_size=10000
 # root="/mnt/data/mocheng/dataset/siftsmall/" 
 # dataset_file=${root}siftsmall_base.fvecs
 # query_file=${root}siftsmall_query.fvecs
-# dataset_attr_file=${root}siftsmall_attr.json
-# query_range_file=${root}siftsmall_qrange.json
-# ground_truth_file=${root}siftsmall_gt_${gt_topk}.json
 # train_file=${root}siftsmall_learn.fvecs
 
 ## sift1m
+# dataset=sift1M
 # dim=128
 # N=1000000
 # query_size=10000
 # train_size=100000
-# dataset=sift1M
 # root="/mnt/data/mocheng/dataset/sift/" 
-
 # dataset_file=${root}sift_base.fvecs
 # query_file=${root}sift_query.fvecs
 # train_file=${root}sift_learn.fvecs
 
-# dataset_bin_file=${root}data_base.bin # to be generated
-# query_bin_file=${root}data_query.bin  # to be generated
-
-# sift10m
+## sift10m
+dataset=sift10M
 dim=128
 N=10000000
 query_size=10000
 train_size=1000000
-dataset=sift10M
 root="/mnt/data/mocheng/dataset/sift10m/" 
-
 dataset_file=${root}sift10m.fvecs
 query_file=${root}sift10m_query.fvecs
 train_file=${root}sift10m_train.fvecs
 
-dataset_bin_file=${root}data_base.bin # to be generated
-query_bin_file=${root}data_query.bin  # to be generated
 
-
-# deep10m
+## deep10m
+# dataset=deep10m
 # dim=96
 # N=10000000
 # query_size=10000
 # train_size=10000
-# dataset=deep10m
-
 # root="/mnt/data/mocheng/dataset/deep10m/"
-
 # dataset_file=${root}base.10M.fvecs      
 # query_file=${root}query.public.10K.fvecs
 # train_file=${root}deep_learn100K.fvecs  
-# dataset_bin_file=${root}base.10M.bin
-# query_bin_file=${root}query.public.10K.bin
 
-# spacev10m
+## spacev10m
+# dataset=spacev10m
 # dim=100
 # N=10000000
 # query_size=10000
 # train_size=1000000
-# dataset=spacev10m
 # root="/mnt/data/mocheng/dataset/spacev10m/"
 # dataset_file=${root}base10M.fvecs
 # query_file=${root}query10k.fvecs
 # train_file=${root}train.fvecs
 
-# dataset_bin_file=${root}data_base.bin # to be generated
-# query_bin_file=${root}data_query.bin  # to be generated
+## redcaps1m
+# dataset=redcaps1m
+# dim=512
+# N=1000000
+# query_size=10000
+# train_size=100000
+# root="/mnt/data/mocheng/dataset/redcaps1m/"
+# dataset_file=${root}image_embeddings.fvecs
+# query_file=${root}query.fvecs
+# train_file=${root}train.fvecs
+# real_attr_file=${root}timestamp.json
 
-# yfcc10m
+## redcaps4m
+# dataset=redcaps4m
+# dim=512
+# N=4000000
+# query_size=10000
+# train_size=100000
+# root="/mnt/data/mocheng/dataset/redcaps4m/"
+# dataset_file=${root}image_embeddings.fvecs
+# query_file=${root}query.fvecs
+# train_file=${root}train.fvecs
+
+## yfcc10m
+# dataset=yfcc10m
 # dim=192
 # N=10000000
 # query_size=10000
 # train_size=100000
-# dataset=spacev10m
 # root="/mnt/data/mocheng/dataset/yfcc10m/"
 # dataset_file=${root}base10M.fvecs
 # query_file=${root}query10k.fvecs
 # train_file=${root}train.fvecs
 
-# dataset_bin_file=${root}data_base.bin # to be generated
-# query_bin_file=${root}data_query.bin  # to be generated
+## YT-RGB1m
+# dataset=YTRGB1m
+# dim=1024
+# N=1000000
+# query_size=10000
+# train_size=1000000
+# root="/mnt/data/mocheng/dataset/youtube1m/" 
+# dataset_file=${root}rgb.fvecs
+# query_file=${root}rgb_query.fvecs
+# train_file=${root}rgb_train.fvecs
+# real_attr_file=${root}views.json
 
-
+# ---end dataset---
+# # for all dataset
+dataset_bin_file=${root}data_base.bin # to be generated
+query_bin_file=${root}data_query.bin  # to be generated
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,13 +169,13 @@ query_bin_file=${root}data_query.bin  # to be generated
 # hnsw vars
 M=40 # normarlly 40
 ef_construction=1000
-ef_search=100
+ef_search=1000
 
 #serf vars
 serf_M=8 # fixed
 
 #dsg vars
-ef_max=1000
+ef_max=500
 
 #acorn vars
 gamma=25
@@ -164,13 +184,13 @@ M_beta=64
 # DiskAnn typical                                                                                                     
 # FilteredLbuild=12
 alpha=1.2 # fixed
-L=400 # "10 20 30 40 50 100" efsearch
+L=1000 # "10 20 30 40 50 100" efsearch
 
 # DiskANN Stitched
-Stitched_R=60 
+Stitched_R=80 
 
 #rii an pq based
-partition_size_M=64
+partition_size_M=$(($dim/2))
 nprobe=10
 
 #RangeFilteredANN, super opt postfiltering
@@ -194,7 +214,7 @@ L_search=${ef_search}
 
 #UNIFY vars
 B_unify=8
-AL=8 # "[8, 16, 32]"
+AL=16 # "[8, 16, 32]"
 
 alter_ratio=0.5
 
@@ -207,8 +227,7 @@ gt_topk=${K}
 # threads
 threads=128
 
-
-
+# all modify ends here, don't change the following code
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -218,7 +237,7 @@ threads=128
 
 # Check if the user provided the required input
 if [ $# -lt 1 ]; then
-    echo "Usage: $0 <construction|query> option: multi_ vars"
+    echo "Usage: $0 <construction|query|drop> option: multi_ vars"
     exit 1
 fi
 
@@ -230,6 +249,8 @@ if [ "$mode" == "construction" ]; then
     if [ "$multi" == "multi_cons" ]; then
         distribution=$3
     fi
+elif [ "$mode" == "drop" ]; then
+    echo "drop only for miluvs, others use rm directly"
 elif [ "$mode" == "query" ]; then
     threads=1
 
@@ -311,14 +332,21 @@ label_attr=sel_${label_cnt}_${label_range}_${index_dist} # to name different lab
 query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution} # nothing with query
 result_file=exp_results.csv
 
-if [ $label_cnt > 1 ]; then
-    query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution}_${query_label} # diskann
+# if [ $label_cnt -gt 1 ]; then
+#     query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution}_${query_label} # diskann
 
-    if [ $label_cnt == $query_label_cnt ]; then # nhq
-        label_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${index_dist}_${query_label} # to name different label files
-        query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution}
-    fi
+#     if [ $label_cnt == $query_label_cnt ]; then # nhq
+#         label_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${index_dist}_${query_label} # to name different label files
+#         query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution}
+#     fi
+# fi
+if [ $query_label -gt 0 ]; then
+    echo "categorical index"
+    # label_attr=sel_${label_cnt}_${label_range}_${distribution}_${query_label} # to name different label files
+    query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution}_${query_label}
 fi
+
+
 
 
 
@@ -344,6 +372,20 @@ centroid_file=${label_path}centroid.npy
 qrange_bin_file=${label_path}data_qrange${query_attr}.bin #format: left, rithgt, left, right...
 attr_bin_file=${label_path}data_attr.bin
 ground_truth_bin_file=${label_path}sift_gt_${gt_topk}_${query_attr}.bin
+
+if [ $query_label -gt 0 ]; then
+    if [ "$distribution" == "in_dist" ] || [ "$distribution" == "out_dist" ] ; then
+        dist_query_file=${label_path}query_${query_attr}.fvecs
+        dist_query_size=$(expr $query_size / 2)
+        ori_query_file=$query_file
+        query_file=$dist_query_file
+        query_bin_file=${label_path}query_${query_attr}.bin
+
+        ori_query_size=$query_size
+        query_size=$dist_query_size
+    fi
+fi
+
 
 # milvus_ivfpq collection name
 collection_name=collection_${dataset}_${label_attr}
@@ -396,8 +438,8 @@ diskann_stit_index_root=${diskann_stit_root}index/
 diskann_stit_index_label_root=${diskann_stit_index_root}index_diskann_${label_attr}_M${M}_efc${ef_construction}_stR${Stitched_R}/
 diskann_stit_index_file=${diskann_stit_index_label_root}index_diskann
 
-diskann_result_root=${diskann_root}result/
-diskann_result_path=${diskann_result_root}result_${label_attr}_efs${ef_search}
+diskann_stit_result_root=${diskann_root}result/
+diskann_stit_result_path=${diskann_stit_result_root}result_${label_attr}_efs${ef_search}
 
 #RangeFilteredANN(WST super optimized postfiltering) file path
 rfann_root=${root}rfann/

@@ -8,6 +8,7 @@
 #include "algorithms/utils/point_range.h"
 
 #include <algorithm>
+#include <chrono>
 #include <cstdint>
 #include <limits>
 #include <memory>
@@ -156,7 +157,7 @@ private:
     _spatial_indices.at(0).at(0) = create_index(
         _filter_values, 0, _filter_values.size(), _points.get(), build_params);
     _bucket_offsets.push_back({0, _filter_values.size()});
-
+    std::cout << "building tree" << std::endl;
     // TODO: Parallelize the outer loop?
 
     while (_bucket_offsets.back().at(1) > cutoff) {
@@ -202,6 +203,18 @@ private:
         });
       });
     }
+
+    // for vamana tree graph static. 
+    // we disable py::class_<RangeFilterTreeIndex<T, Point>> in python_bindings.cpp to ensure this work.
+    int num_edges = 0;
+    for(int i = 0; i < _spatial_indices.size(); i++){
+      for(int j = 0; j < _spatial_indices[i].size(); j++){
+        num_edges += _spatial_indices.at(i).at(j)->G.max_degree() * _spatial_indices.at(i).at(j)->G.size();
+      }
+    }
+    std::cout << "Total edge:" << num_edges << std::endl;
+    std::cout << "Average degree:" << (double)num_edges/n << std::endl;
+    std::cout << " tree construction suc" << ::std::endl;
   }
 
   bool check_empty(const FilterRange &range) {

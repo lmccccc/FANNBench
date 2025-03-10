@@ -1,10 +1,10 @@
 echo "batch construct"
 
-source ./vars.sh construction $2 $3
+source ./vars.sh construction
 
 
 run_func(){
-    echo "Run $1"
+    echo "Constructing index for $1"
     ./$1 $2
     status=$?
     if [ $status -ne 0 ]; then
@@ -72,29 +72,40 @@ echo "Construction mode"
 # ./run_groundtruth_generator.sh
 
 # echo "Run all benchmarks"
-
-## range query
-run_func run_acorn.sh construction $2 $3          # Acorn
-run_func run_serf.sh construction $2 $3           # SeRF
-run_func run_unify.sh construction $2 $3          # UNIFY
-run_func run_milvus_ivfpq.sh construction $2 $3   # Milvus IVFPQ
-run_func run_milvus_hnsw.sh construction $2 $3    # Milvus HNSW
-run_func run_hnsw.sh construction $2 $3           # Faiss HNSW
-run_func run_ivfpq.sh construction $2 $3          # Faiss IVFPQ
-run_func run_irange.sh construction $2 $3         # iRangeGraph
-run_func run_vamanatree.sh construction $2 $3     # WST vamana tree
-run_func run_wst.sh construction $2 $3            # WST super optimized post filtering
-run_func run_dsg.sh construction $2 $3            # DSG
-
-## keyword query
-# run_func run_nhq_kgraph.sh construction $2 $3     # NHQ-NPG KGraph
-# run_func run_nhq_nsw.sh construction $2 $3        # NHQ-NPG NSW
-# run_func run_diskann.sh construction $2 $3        # DiskANN
-# run_func run_diskann_stitched.sh construction $2 $3        # DiskANN_stitched
+if [ $1 == "range" ]; then
+    echo "Range construction"
+    # range 
+    run_func run_acorn.sh construction          # Acorn
+    run_func run_serf.sh construction           # SeRF
+    run_func run_unify.sh construction          # UNIFY
+    run_func run_milvus_ivfpq.sh construction   # Milvus IVFPQ
+    run_func run_milvus_hnsw.sh construction    # Milvus HNSW
+    run_func run_hnsw.sh construction           # Faiss HNSW
+    run_func run_ivfpq.sh construction          # Faiss IVFPQ
+    run_func run_irange.sh construction         # iRangeGraph
+    run_func run_vamanatree.sh construction     # WST vamana tree
+    run_func run_wst.sh construction            # WST super optimized post filtering
+    run_func run_dsg.sh construction            # DSG
+elif [ $1 == "keyword" ]; then
+    echo "Keyword construction"
+    ## keyword 
+    run_func run_acorn.sh construction          # Acorn
+    run_func run_hnsw.sh construction           # Faiss HNSW
+    run_func run_ivfpq.sh construction          # Faiss IVFPQ
+    run_func run_nhq_kgraph.sh construction     # NHQ-NPG KGraph
+    run_func run_nhq_nsw.sh construction        # NHQ-NPG NSW
+    run_func run_diskann.sh construction        # DiskANN
+    run_func run_diskann_stitched.sh construction        # DiskANN_stitched
+    run_func run_milvus_hnsw.sh construction           # Faiss HNSW
+    run_func run_milvus_ivfpq.sh construction          # Faiss IVFPQ
+else
+    echo "Invalid construction mode(range or keyword)"
+    exit 1
+fi
 
 
 # never used
-# run_func run_rii.sh construction $2 $3            # RII
+# run_func run_rii.sh construction            # RII
 
 
 

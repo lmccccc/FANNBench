@@ -122,4 +122,15 @@ bool IDSelectorBitmap::is_member(idx_t ii) const {
     return (bitmap[i >> 3] >> (i & 7)) & 1;
 }
 
+IDSelectorBytemap::IDSelectorBytemap(size_t n, const uint8_t* bytemap)
+        : n(n), bytemap(bytemap) {}
+
+bool IDSelectorBytemap::is_member(idx_t i) const {
+    if (i >= n) {
+        return false;
+    }
+    return bytemap[i];
+}
+
+
 } // namespace faiss

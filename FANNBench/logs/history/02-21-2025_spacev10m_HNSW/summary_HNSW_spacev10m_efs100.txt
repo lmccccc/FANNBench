@@ -1,0 +1,55 @@
+Start time: 06:54
+====================
+START: running HNSW_INDEX_CONSTRUCTION, sift data --
+
+dataset: spacev10m
+N: 10000000
+topk: 10
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random_6/attr_sel_1_500_random_6.json
+index file: /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_500_random_6_40_1000
+dim: 100
+M: 40
+ef_construction: 1000
+[ 0.000s ] Index Params -- d: 100, M: 40, N: 10000000
+====================Vectors====================
+
+[ 0.000s ] Loading database
+[ 2.661s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+data loaded, with dim: 100, N=10000000
+[ 2.661s ] Indexing database, size 10000000*100 from max 10000000
+[ 2.661s ] Adding the vectors to the index
+index construction cost:1855.815
+[ 1855.815s ] Vectors added to  index
+Index vectors added:10000000
+====================Write Index================
+
+Total edge:200
+Average degree:0.000
+[ 1859.971s ] Wrote hnsw index to file: /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_500_random_6_40_1000
+[1859.971 s] -----DONE-----
+[ 1859.971s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_build spacev10m 10000000 10 128 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random_6/attr_sel_1_500_random_6.json /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_500_random_6_40_1000 100 40 1000"
+	User time (seconds): 204813.13
+	System time (seconds): 233.32
+	Percent of CPU this job got: 11019%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 31:00.79
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 12412492
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 21702382
+	Voluntary context switches: 18052
+	Involuntary context switches: 11512512
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 14376992
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -12,6 +12,7 @@ def get_info_from_acorn(df, lines, mode):
     #Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery
     for line in lines:
         start_cons = 0
+        # std::cout << "Average degree:" << (double)num_edges/n << std::endl;
         if(mode == 'construction' and 'Vectors added to hybrid' in line):
             # ('super-postfiltering_2_0.5_1_10_16', 0.6053700000000002, 0.11043572425842285, 380.4889991283417, 2, 7.257514953613281)
             # remove (), split by ','
@@ -30,6 +31,10 @@ def get_info_from_acorn(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        
+        if "Average degree:" in line:
+            avg_deg = float(line.split(":")[1])
+            df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -50,13 +55,19 @@ def get_info_from_diskann(df, lines, mode):
             nn_line = lines[idx+2]
             info = nn_line.split()
             print("info:", info)
-            recall = float(info[5])
+            if info[5] == "for":
+                continue
+            recall = float(info[5])/100
             df.at[0, "Recall"] = recall
             df.at[0, "QPS"] = float(info[1])
             df.at[0, "CompsPerQuery"] = float(info[2])
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Index built with degree:" in line:
+        #     tmp = line.split()[2]
+        #     avg_deg = float(tmp.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -64,6 +75,35 @@ def get_info_from_diskann(df, lines, mode):
         sys.exit(-1)
     return df
 
+def get_info_from_diskann_stitched(df, lines, mode):
+    #Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery
+    for idx, line in enumerate(lines):
+        if(mode == 'construction' and 'Done. Generated per-label indices in' in line):
+            # ('super-postfiltering_2_0.5_1_10_16', 0.6053700000000002, 0.11043572425842285, 380.4889991283417, 2, 7.257514953613281)
+            # remove (), split by ','
+            cons_time = line.split()[5]
+            df.at[0, "ConstructionTime"] = float(cons_time)
+        elif('Recall@' in line):
+            # get next line
+            nn_line = lines[idx+2]
+            info = nn_line.split()
+            print("info:", info)
+            recall = float(info[5])/100
+            df.at[0, "Recall"] = recall
+            df.at[0, "QPS"] = float(info[1])
+            df.at[0, "CompsPerQuery"] = float(info[2])
+        elif "Maximum resident set size (kbytes)" in line:
+            mem = float(line.split(":")[1]) / 1024
+            df.at[0, "Memory"] = mem
+        # if "Stitched graph average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
+    
+    # assert if any of the value is empty
+    if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
+        print("error: some value is empty")
+        sys.exit(-1)
+    return df
 
 
 def get_info_from_wst(df, lines, mode):
@@ -88,6 +128,9 @@ def get_info_from_wst(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -121,6 +164,9 @@ def get_info_from_vtree(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -168,6 +214,9 @@ def get_info_from_hnsw(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -193,6 +242,9 @@ def get_info_from_nhqkg(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1)):
@@ -218,6 +270,9 @@ def get_info_from_nhqnsw(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1)):
@@ -269,6 +324,9 @@ def get_info_from_serf(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -296,6 +354,9 @@ def get_info_from_dsg(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
@@ -346,6 +407,9 @@ def get_info_from_irange(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
         print("error: some value is empty")
@@ -372,6 +436,9 @@ def get_info_from_unify(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        # if "Average degree:" in line:
+        #     avg_deg = float(line.split(":")[1])
+        #     df.at[0, "avg_deg"] = avg_deg
     # assert if any of the value is empty
     if(mode != 'construction' and (df.at[0, "Recall"] == -1 or df.at[0, "QPS"] == -1 or df.at[0, "CompsPerQuery"] == -1)):
         print("error: some value is empty")
@@ -473,8 +540,8 @@ if __name__ == "__main__":
     df.at[0, "Threads"] = threads
     df.at[0, "File"] = res_filename
 
-    if label_cnt > 1 and query_label_cnt == 1:
-        df.at[0, "query_label"] = query_label
+    # if label_cnt > 1 and query_label_cnt == 1:
+    df.at[0, "query_label"] = query_label
 
     if(algo == 'ACORN'):
         df.at[0, "M"] = M
@@ -565,6 +632,13 @@ if __name__ == "__main__":
         df.at[0, "M"] = M
         df.at[0, "B_unify"] = B_unify
         df.at[0, "IndexSize"] = get_size(unify_index_file)
+    elif(algo == 'UNIFY_hybrid'):
+        df.at[0, "ef_construction"] = ef_construction
+        df.at[0, "ef_search"] = ef_search
+        df.at[0, "AL"] = AL
+        df.at[0, "M"] = M
+        df.at[0, "B_unify"] = B_unify
+        df.at[0, "IndexSize"] = get_size(unify_index_file)
     elif(algo == 'DSG'):
         df.at[0, "ef_max"] = ef_max
         df.at[0, "ef_construction"] = ef_construction
@@ -602,11 +676,13 @@ if __name__ == "__main__":
             df = get_info_from_acorn(df, lines[start_list[-1]:], mode)
         elif(algo == 'DiskANN'):
             df = get_info_from_diskann(df, lines[start_list[-1]:], mode)
+        elif(algo == 'DiskANN_Stitched'):
+            df = get_info_from_diskann_stitched(df, lines[start_list[-1]:], mode)
         elif(algo == "IVFPQ"):
             df = get_info_from_ivfpq(df, lines[start_list[-1]:], mode)
         elif(algo == "HNSW"):
             df = get_info_from_hnsw(df, lines[start_list[-1]:], mode)
-        elif(algo == "Vamana_tree"):
+        elif(algo == "WST_vamana"):
             df = get_info_from_vtree(df, lines[start_list[-1]:], mode)
         elif(algo == "NHQ_kgraph"):
             df = get_info_from_nhqkg(df, lines[start_list[-1]:], mode)
@@ -623,6 +699,8 @@ if __name__ == "__main__":
         elif(algo == 'iRangeGraph'):
             df = get_info_from_irange(df, lines[start_list[-1]:], mode)
         elif(algo == 'UNIFY'):
+            df = get_info_from_unify(df, lines[start_list[-1]:], mode)
+        elif(algo == 'UNIFY_hybrid'):
             df = get_info_from_unify(df, lines[start_list[-1]:], mode)
         elif(algo == 'DSG'):
             df = get_info_from_dsg(df, lines[start_list[-1]:], mode)

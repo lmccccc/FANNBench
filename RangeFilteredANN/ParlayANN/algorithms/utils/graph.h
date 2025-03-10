@@ -124,7 +124,6 @@ struct Graph{
     }
 
     Graph(char* gFile){
-            
         std::ifstream reader(gFile);
         assert(reader.is_open());
 

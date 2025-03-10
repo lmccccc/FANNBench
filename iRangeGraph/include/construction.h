@@ -299,13 +299,14 @@ namespace iRangeGraph
             double construction_time = GetTime(t1, t2);
 
             std::cout << "construction time:" << construction_time << "s" << std::endl;
-
+            int nbs = 0;
             for (int pid = 0; pid < storage->data_nb; pid++)
             {
                 for (int layer = 0; layer <= tree->max_depth; layer++)
                 {
                     int size = edges[pid][layer].size();
                     indexfile.write((char *)&size, sizeof(int));
+                    nbs += size;
                     for (int i = 0; i < size; i++)
                     {
                         int neighborId = edges[pid][layer][i].second;
@@ -314,7 +315,10 @@ namespace iRangeGraph
                 }
             }
 
+
             std::cout << "save index done" << std::endl;
+            std::cout << "Total edge:" << nbs << std::endl;
+            std::cout << "Average degree:" << (double) nbs/storage->data_nb << std::endl;
             indexfile.close();
         }
     };

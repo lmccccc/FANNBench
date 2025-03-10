@@ -9,8 +9,8 @@ import sys
 # title = "Paper Dataset dim N query_size label_method query_method distribution label_range query_label_cnt K Threads M serf_M nprobe ef_construction ef_search gamma M_beta alpha L  partition_size_M beamSize split_factor shift_factor final_beam_multiply kgraph_L iter S R B kgraph_M weight_search Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery File Memory"
 # title_list = title.split(' ')
 
-algorithms = ['Acorn', 'DiskANN', 'HNSW', "IVFPQ", "Milvus_IVFPQ", "Milvus_HNSW", "NHQ_kgraph", "NHQ_nsw", 
-              "RII", "SeRF", "VamanaTree", "iRangeGraph", "WST_opt"]
+algorithms = ["ACORN", "DiskANN", "HNSW", "IVFPQ", "NHQ_kgraph", "NHQ_nsw", "Milvus_IVFPQ", "Milvus_HNSW", "WST_opt", "WST_vamana", 
+              "RII", "SeRF", "iRangeGraph", "UNIFY", "DSG"]
 indexsize_res_map = {}
 constime_res_map = {}
 memory_map = {}

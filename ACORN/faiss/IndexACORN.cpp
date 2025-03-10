@@ -465,11 +465,32 @@ void IndexACORN::reconstruct(idx_t key, float* recons) const {
 
 // added for debugging TODO
 void IndexACORN::printStats(bool print_edge_list, bool print_filtered_edge_lists, int filter,  Operation op) {
-    acorn.print_neighbor_stats(print_edge_list, print_filtered_edge_lists, filter, op);
-    printf("METADATA VEC for number nodes per level\n");
+    // acorn.print_neighbor_stats(print_edge_list, print_filtered_edge_lists, filter, op);
+    // printf("METADATA VEC for number nodes per level\n");
+    std::cout << "METADATA VEC for number nodes per level\n";
+    int nbs = 0;
+    int edges = 0;
     for (int i = 0; i < acorn.nb_per_level.size(); i++) {
-        printf("\tlevel %d: %d nodes\n", i, acorn.nb_per_level[i]);
+        // printf("\tlevel %d: %d nodes\n", i, acorn.nb_per_level[i]);
+        nbs += acorn.nb_per_level[i];
+        std::cout << "level " << i << " : " << acorn.nb_per_level[i] << " nodes\n";
+        
     }
+    double avg_nb = (double) nbs / acorn.nb_per_level.size();
+    
+    for (int i = 0; i < acorn.levels.size(); i++){
+        
+        for (int level = 0; level < acorn.levels[i]; level++) {
+            size_t begin, end;
+            acorn.neighbor_range(i, level, &begin, &end);
+            edges += end-begin;
+        }
+    }
+
+    std::cout << "Total edge:" << nbs << std::endl;
+    std::cout << "Average degree per layer:" << avg_nb << std::endl;
+    std::cout << "node size:" <<acorn.levels.size() <<std::endl;
+    std::cout << "Average degree:" << (double) edges/acorn.levels.size() << std::endl;
 }
 
 

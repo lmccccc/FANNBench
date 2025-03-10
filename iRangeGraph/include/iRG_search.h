@@ -92,6 +92,7 @@ namespace iRangeGraph
             if (data_memory_ == nullptr)
                 throw std::runtime_error("Not enough memory");
 
+            int deg = 0;
             for (int pid = 0; pid < max_elements_; pid++)
             {
                 for (int layer = 0; layer <= tree->max_depth; layer++)
@@ -99,6 +100,7 @@ namespace iRangeGraph
                     linklistsizeint *data = get_linklist(pid, layer);
                     edgefile.read((char *)data, sizeof(tableint));
                     int size = getListCount(data);
+                    deg += size;
                     if (size > M_out)
                         throw Exception("real linklist size is bigger than defined M_out");
                     for (int i = 0; i < size; i++)
@@ -112,6 +114,9 @@ namespace iRangeGraph
                 // vectorfile.read(data, data_size_);
                 vectorfile.read(data, dim_ * sizeof(float));
             }
+            double avg_deg = (double)deg / max_elements_;
+            std::cout << "Total edge:" << deg << std::endl;
+            std::cout << "Average degree:" << avg_deg << std::endl;
 
             edgefile.close();
             vectorfile.close();

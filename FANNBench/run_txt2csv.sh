@@ -47,6 +47,14 @@
 # echo "milvus_coll_path: $milvus_coll_path"
 # echo "algo: $algo"
 # echo "result_file: $result_file"
+# echo "mode: $mode"
+# echo "B_unify: $B_unify"
+# echo "AL: $AL"
+# echo "unify_index_file: $unify_index_file"
+# echo "Stitched_R: $Stitched_R"
+# echo "ef_max: $ef_max"
+# echo "dsg_index_file: $dsg_index_file"
+
 
 python -u utils/extract_results.py $log_file \
                                    $dataset \

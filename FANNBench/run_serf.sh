@@ -81,13 +81,10 @@ fi
                                        -nthreads $threads \
                                        &>> $log_file
 
-if [ $? -ne 0 ]; then
+status=$?
+if [ $status -ne 0 ]; then
     echo "serf failed to run."
 else
     echo "serf succeed."
-fi
-
-status=$?
-if [ $status -eq 0 ]; then
     source ./run_txt2csv.sh
 fi

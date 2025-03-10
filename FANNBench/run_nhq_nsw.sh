@@ -42,7 +42,7 @@ fi
 
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $nhq_index_model_file ]; then
-        echo "index file already exist"
+        echo "index file already exist at $nhq_index_model_file"
         exit 0
     else
         echo  "construct index"

@@ -113,6 +113,21 @@ struct IDSelectorBitmap : IDSelector {
     ~IDSelectorBitmap() override {}
 };
 
+struct IDSelectorBytemap : IDSelector {
+    size_t n;
+    const uint8_t* bytemap;
+
+    /** Construct with a binary mask
+     *
+     * @param n size of the bitmap array
+     * @param bytemap id will be selected iff id / 8 < n and bit number
+     *               (i%8) of bitmap[floor(i / 8)] is 1.
+     */
+    IDSelectorBytemap(size_t n, const uint8_t* bytemap);
+    bool is_member(idx_t id) const final;
+    ~IDSelectorBytemap() override {}
+};
+
 /** reverts the membership test of another selector */
 struct IDSelectorNot : IDSelector {
     const IDSelector* sel;

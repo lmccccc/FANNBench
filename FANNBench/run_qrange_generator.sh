@@ -9,12 +9,16 @@ source ./vars.sh construction $1 $2
 # dir=${now}_${dataset}
 # mkdir ${dir}
 
+if [ $query_label -gt 0 ]; then
+    if [ "$distribution" == "in_dist" ] || [ "$distribution" == "out_dist" ] ; then
+        ./run_biased_label_query_generator.sh
+    fi
+fi
 
 if [ -f "$query_range_file" ]; then
     echo Query range file ${query_range_file} already exist. 
     exit 1
 fi
-
 # TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> ${dir}/summary_sift_n=${N}.txt
 
 python utils/qrangeGenerator.py ${query_size} \
@@ -26,7 +30,12 @@ python utils/qrangeGenerator.py ${query_size} \
                                 ${distribution} \
                                 ${query_label} \
                                 ${centroid_file} \
-                                ${query_label_sel}
+                                ${query_label_sel} \
+                                ${N} \
+                                ${dataset_attr_file} \
+                                ${real_label}
+
+
 
 
 

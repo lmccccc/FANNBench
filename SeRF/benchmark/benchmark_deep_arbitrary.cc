@@ -174,55 +174,32 @@ vector<vector<int>> load_groundtruth(string file_name, int Nq, int K){//json fil
   return gt;
 }
 
-// binary search in sorted label
-// if suc return index, else return internal position
-int binary_search(vector<int> &sorted_label, int target){
-  int left = 0, right = sorted_label.size() - 1;
-  while(left <= right){
-    int mid = left + (right - left) / 2;
-    if(sorted_label[mid] == target){
-      return mid;
-    }
-    else if(sorted_label[mid] < target){
-      left = mid + 1;
-    }
-    else{
-      right = mid - 1;
-    }
+// 找到 vector 中大于等于 val 的第一个元素的位置
+int findFirstGreaterOrEqualPos(const std::vector<int>& vec, int val) {
+  auto it = std::lower_bound(vec.begin(), vec.end(), val);
+  if (it == vec.end()) {
+      return -1; // 表示未找到
   }
-  return left;
+  return std::distance(vec.begin(), it);
+}
+
+// 找到 vector 中小于等于 val 的最后一个元素的位置
+int findLastLessOrEqualPos(const std::vector<int>& vec, int val) {
+  auto it = std::upper_bound(vec.begin(), vec.end(), val);
+  if (it == vec.begin()) {
+      return -1; // 表示未找到
+  }
+  --it;
+  return std::distance(vec.begin(), it);
 }
 
 //convert label range to id range, only support ordered integer label range from 0 to N-1
 void label_range_2_id_range(vector<pair<int, int>> &qrange, vector<int> &sorted_label){
   for (size_t i = 0; i < qrange.size(); i++)
   {
-    qrange[i].first = binary_search(sorted_label, qrange[i].first);
-    qrange[i].second = binary_search(sorted_label, qrange[i].second);
+    qrange[i].first = findFirstGreaterOrEqualPos(sorted_label, qrange[i].first);
+    qrange[i].second = findLastLessOrEqualPos(sorted_label, qrange[i].second);
   }
-  
-  // vector<int> label_start, label_end;
-  // int previous_label = -1;
-  // for (size_t i = 0; i < sorted_label.size(); i++)
-  // {
-  //   if(label_start.size() == 0) {
-  //     label_start.push_back(i);
-  //   }
-  //   else if(sorted_label[i] != sorted_label[i-1]){
-  //     label_end.push_back(i-1);
-  //     label_start.push_back(i);
-  //   }
-  //   if(i == sorted_label.size() - 1){
-  //     label_end.push_back(i);
-  //   }
-  // }
-  // cout << "label range size:" << label_start.size() << endl;
-  // assert(label_start.size() == label_end.size());
-  // for (size_t i = 0; i < qrange.size(); i++)
-  // {
-  //   qrange[i].first = label_start[qrange[i].first];
-  //   qrange[i].second = label_end[qrange[i].second];
-  // }
 }
 
 

@@ -116,15 +116,15 @@ inline void add_variant(py::module_ &m, const Variant &variant) {
       .def("batch_search", &PrefilterIndex<T, Point>::batch_search, "queries"_a,
            "filters"_a, "num_queries"_a, "query_params"_a);
 
-  py::class_<RangeFilterTreeIndex<T, Point>>(
-      m, ("RangeFilterTreeIndex" + variant.agnostic_name).c_str())
-      .def(py::init<py::array_t<T>, py::array_t<float_t>, int32_t, size_t,
-                    BuildParams>(),
-           "points"_a, "filter_values"_a, "cutoff"_a = 1000,
-           "split_factor"_a = 2, "build_params"_a = DEFAULT_BUILD_PARAMS)
-      .def("batch_search", &RangeFilterTreeIndex<T, Point>::batch_search,
-           "queries"_a, "filters"_a, "num_queries"_a, "query_method"_a,
-           "query_params"_a);
+//   py::class_<RangeFilterTreeIndex<T, Point>>(
+//       m, ("RangeFilterTreeIndex" + variant.agnostic_name).c_str())
+//       .def(py::init<py::array_t<T>, py::array_t<float_t>, int32_t, size_t,
+//                     BuildParams>(),
+//            "points"_a, "filter_values"_a, "cutoff"_a = 1000,
+//            "split_factor"_a = 2, "build_params"_a = DEFAULT_BUILD_PARAMS)
+//       .def("batch_search", &RangeFilterTreeIndex<T, Point>::batch_search,
+//            "queries"_a, "filters"_a, "num_queries"_a, "query_method"_a,
+//            "query_params"_a);
 
   py::class_<PostfilterVamanaIndex<T, Point>>(
       m, ("PostfilterVamanaIndex" + variant.agnostic_name).c_str())

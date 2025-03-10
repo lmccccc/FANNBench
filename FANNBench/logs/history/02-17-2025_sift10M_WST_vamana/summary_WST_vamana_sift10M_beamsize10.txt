@@ -1,0 +1,180 @@
+Start time: 09:30
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_20000_1_100000_in_dist.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_20000_1_100000_in_dist_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+Vamana tree build time: 215.905s
+using this batch search3 
+total point comp 43796448
+avg comp:4379.64
+qps: 1184.6943276602715
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_10', 0.8610799999999724, 8.48756217956543, 215.90526032447815, 2, 51915804)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_20000_1_100000_in_dist.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_20000_1_100000_in_dist_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/ --top_k 10 --vamana_tree --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 48.68
+	System time (seconds): 56.88
+	Percent of CPU this job got: 43%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:01.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 61988016
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 20971472
+	Voluntary context switches: 78307
+	Involuntary context switches: 942
+	Swaps: 0
+	File system inputs: 4469808
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 19:19
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_20000_1_100000_out_dist.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_20000_1_100000_out_dist_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+Vamana tree build time: 191.458s
+using this batch search3 
+total point comp 43587237
+avg comp:4358.72
+qps: 1330.5614571897502
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_10', 0.859119999999971, 7.561513185501099, 191.45842862129211, 2, 51919924)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_20000_1_100000_out_dist.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_20000_1_100000_out_dist_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/ --top_k 10 --vamana_tree --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 47.39
+	System time (seconds): 58.70
+	Percent of CPU this job got: 49%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:34.94
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 61993544
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 19951263
+	Voluntary context switches: 55870
+	Involuntary context switches: 725
+	Swaps: 0
+	File system inputs: 648616
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:35
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_20000_1_100000_in_dist.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_20000_1_100000_in_dist_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+Vamana tree build time: 206.020s
+using this batch search3 
+total point comp 43796448
+avg comp:4379.64
+qps: 1031.6451809047119
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_10', 0.8610799999999724, 9.740436553955078, 206.01996755599976, 2, 51917240)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_20000_1_100000_in_dist.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_20000_1_100000_in_dist_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/ --top_k 10 --vamana_tree --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 50.13
+	System time (seconds): 59.93
+	Percent of CPU this job got: 47%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:51.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 61990808
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 21695648
+	Voluntary context switches: 49420
+	Involuntary context switches: 816
+	Swaps: 0
+	File system inputs: 2574088
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:30
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file:  /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+qrange file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_30000_1_100000_in_dist.json
+gt file:  /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_30000_1_100000_in_dist_10.json
+top k:  10
+data size:  10000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv
+index prefix:  /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/
+mode:  query
+DATASETS:  ['sift10M']
+using alpha:  1
+Vamana tree build time: 199.159s
+using this batch search3 
+total point comp 44753361
+avg comp:4475.34
+qps: 951.0106522024969
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_10', 0.8492299999999703, 10.562985181808472, 199.15946745872498, 2, 51894540)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset sift10M --data_size 10000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs --query_file /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs --attr_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json --qrange_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/qrangesel_30000_1_100000_in_dist.json --gt_file /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/sif_gt_sel_30000_1_100000_in_dist_10.json --output_file /mnt/data/mocheng/dataset/sift10m/vtree/result/result_sel_1_100000_dist.csv --index_prefix /mnt/data/mocheng/dataset/sift10m/vtree/index/index_sel_1_100000_dist/ --top_k 10 --vamana_tree --threads 1 --beam_search_size 10 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 50.68
+	System time (seconds): 59.40
+	Percent of CPU this job got: 48%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:48.03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 61968128
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 20602275
+	Voluntary context switches: 59704
+	Involuntary context switches: 824
+	Swaps: 0
+	File system inputs: 4082400
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

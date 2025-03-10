@@ -12,40 +12,52 @@ from alg_hannlib import HannLib
 from alg_hnswlib import HnswLib
 from defination import read_attr, fvecs_read
 import sys
+import bisect
 
 
 def sort_id_by_attr(attr):
     # stable sort
     od2id = [i for i in range(len(attr))]
     od2id.sort(key=lambda x: attr[x])
+    new_attr = [attr[i] for i in od2id]
     id2od = [0] * len(attr)
     for i in range(len(od2id)):
         id2od[od2id[i]] = i
-    return od2id, id2od
+    return od2id, id2od, new_attr
 
 def binary_sort_left(od2id, attr, target):
-    left, right = 0, len(od2id) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if attr[od2id[mid]] <= target and ( od2id[mid] == 0 or attr[od2id[mid]-1] < target ):
-            return mid
-        elif attr[od2id[mid]] <= target:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return left
+    index = bisect.bisect_left(attr, target)
+    if index < len(attr):
+        return index
+    else:
+        return 0
+    # left, right = 0, len(od2id) - 1
+    # while left <= right:
+    #     mid = (left + right) // 2
+    #     if attr[od2id[mid]] >= target and ( od2id[mid] == 0 or attr[od2id[mid]-1] < target ):
+    #         return mid
+    #     elif attr[od2id[mid]] < target:
+    #         left = mid + 1
+    #     else:
+    #         right = mid - 1
+    # return left
 
 def binary_sort_right(od2id, attr, target):
-    left, right = 0, len(od2id) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if attr[od2id[mid]] >= target and ( od2id[mid] == len(od2id) or attr[od2id[mid]+1] > target ):
-            return mid
-        elif attr[od2id[mid]] >= target:
-            right = mid - 1
-        else:
-            left = mid + 1
-    return right
+    index = bisect.bisect_right(attr, target)
+    if index < len(attr):
+        return index
+    else:
+        return len(attr)
+    # left, right = 0, len(od2id) - 1
+    # while left <= right:
+    #     mid = (left + right) // 2
+    #     if attr[od2id[mid]] <= target and ( od2id[mid] == len(od2id) or attr[od2id[mid]+1] > target ):
+    #         return mid
+    #     elif attr[od2id[mid]] > target:
+    #         right = mid - 1
+    #     else:
+    #         left = mid + 1
+    # return right
 
 def load_data(dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, k):# fvecs, fvecs, json, json, json
     if(".fvecs" in dataset_file):
@@ -82,12 +94,12 @@ def load_data(dataset_file, query_file, attr_file, qrange_file, gt_file, N, Nq, 
         print("error: groundtruth file format not supported")
         sys.exit(-1)
     print("sorting for label")
-    od2id, id2od = sort_id_by_attr(attr) # order, aslo as new attr
+    od2id, id2od, new_attr = sort_id_by_attr(attr) # order, aslo as new attr
     od_range = []
     print("reordering for qrange")
     for i in range(len(query_filter_ranges)):
-        left = binary_sort_left(od2id, attr, query_filter_ranges[i][0])
-        right = binary_sort_right(od2id, attr, query_filter_ranges[i][1])
+        left = binary_sort_left(od2id, new_attr, query_filter_ranges[i][0])
+        right = binary_sort_right(od2id, new_attr, query_filter_ranges[i][1])
         od_range.append((left, right))
     print("got reorded attr and qrange")
     id2od = np.array(id2od)
@@ -291,7 +303,7 @@ if __name__ == "__main__":
         "--efConstruction", type=int, default=500, help="Parameter for HNSW index"
     )
     parser.add_argument("--B", type=int, default=8, help="Number of buckets")
-    parser.add_argument("--low_range", type=float, default=0.1, help="low query range")
+    parser.add_argument("--low_range", type=float, default=0.05, help="low query range")
     parser.add_argument("--high_range", type=float, default=0.5, help="high query range")
     parser.add_argument(
         "--index_cache_path",

@@ -1,0 +1,46 @@
+Start time: 17:46
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/sift/data_query.bin ...Metadata: #pts = 10000, #dims = 128, aligned_dim = 128... allocating aligned memory of 5120000 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/sift/label/sel_1_500_random_1/sift_gt_10_sel_1_1_500_random_1.bin, size: 400008, cache_size: 400008
+Reading truthset file /mnt/data/mocheng/dataset/sift/label/sel_1_500_random_1/sift_gt_10_sel_1_1_500_random_1.bin ...
+Metadata: #pts = 10000, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.0322164s
+From graph header, expected_file_size: 144514344, _max_observed_degree: 40, _start: 123742, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/sift/diskann/index/index_diskann_sel_1_500_random_1_M40_efc1000/index_diskann...done. Index has 1000000 nodes and 35128580 out-edges, _start is set to 123742
+Identified 1 distinct label(s)
+Num frozen points:0 _nd: 1000000 _start: 123742 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 1000000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+1000      180.59          14318.77             5537.42        8025.20      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/sift/diskann/result/result_sel_1_500_random_1_efs100_1000_idx_uint32.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/sift/diskann/result/result_sel_1_500_random_1_efs100_1000_dists_float.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/sift/diskann/index/index_diskann_sel_1_500_random_1_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/sift/data_query.bin --gt_file /mnt/data/mocheng/dataset/sift/label/sel_1_500_random_1/sift_gt_10_sel_1_1_500_random_1.bin --query_filters_file /mnt/data/mocheng/dataset/sift/label/sel_1_500_random_1/sift_qrange_keywordsel_1_1_500_random_1.txt -K 10 -L 1000 --result_path /mnt/data/mocheng/dataset/sift/diskann/result/result_sel_1_500_random_1_efs100 -T 1"
+	User time (seconds): 55.76
+	System time (seconds): 0.52
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:56.31
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 768000
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 189458
+	Voluntary context switches: 2
+	Involuntary context switches: 216
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1576
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

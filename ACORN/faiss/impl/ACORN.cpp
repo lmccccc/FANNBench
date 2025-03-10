@@ -23,6 +23,7 @@
 #include <unordered_map>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 /*******************************************************
  * Added for debugging
  *******************************************************/
@@ -192,9 +193,10 @@ void ACORN::reset() {
 
 void ACORN::print_neighbor_stats(int level) const {
     FAISS_THROW_IF_NOT(level < cum_nneighbor_per_level.size());
-    printf("* stats on level %d, max %d neighbors per vertex:\n",
-           level,
-           nb_neighbors(level));
+    // printf("* stats on level %d, max %d neighbors per vertex:\n",
+    //        level,
+    //        nb_neighbors(level));
+    std::cout << "* stats on level " << level << ", max " << nb_neighbors(level) << "neighbors per vertex:\n";
 
     size_t tot_neigh = 0, tot_common = 0, tot_reciprocal = 0, n_node = 0;
 #pragma omp parallel for reduction(+: tot_neigh) reduction(+: tot_common) \
@@ -239,15 +241,28 @@ void ACORN::print_neighbor_stats(int level) const {
         }
     }
     float normalizer = n_node;
-    printf("   1. nb of nodes: %zd\n", n_node);
-    printf("   2. neighbors per node: %.2f (%zd)\n",
-           tot_neigh / normalizer,
-           tot_neigh);
-    printf("   3. nb of reciprocal neighbors: %.2f\n",
-           tot_reciprocal / normalizer);
-    printf("   4. nb of neighbors that are also neighbor-of-neighbors: %.2f (%zd)\n",
-           tot_common / normalizer,
-           tot_common);
+    // printf("   1. nb of nodes: %zd\n", n_node);
+    // printf("   2. neighbors per node: %.2f (%zd)\n",
+    //        tot_neigh / normalizer,
+    //        tot_neigh);
+    // printf("   3. nb of reciprocal neighbors: %.2f\n",
+    //        tot_reciprocal / normalizer);
+    // printf("   4. nb of neighbors that are also neighbor-of-neighbors: %.2f (%zd)\n",
+    //        tot_common / normalizer,
+    //        tot_common);
+    std::cout << "   1. nb of nodes: " << n_node << std::endl;
+
+    std::cout << "   2. neighbors per node: " 
+            << std::fixed << std::setprecision(2) << tot_neigh / normalizer 
+            << " (" << tot_neigh << ")" << std::endl;
+
+    std::cout << "   3. nb of reciprocal neighbors: " 
+            << std::fixed << std::setprecision(2) << tot_reciprocal / normalizer 
+            << std::endl;
+
+    std::cout << "   4. nb of neighbors that are also neighbor-of-neighbors: " 
+            << std::fixed << std::setprecision(2) << tot_common / normalizer 
+            << " (" << tot_common << ")" << std::endl;
 }
 
 

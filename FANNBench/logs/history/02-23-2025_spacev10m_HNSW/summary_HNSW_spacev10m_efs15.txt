@@ -1,0 +1,162 @@
+Start time: 07:09
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: spacev10m
+N: 10000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_100000_random_40_1000
+ef_search: 15
+dim: 100
+loaded base attributes from:/mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 0.829s ] Loaded metadata, 10000000 attr's found
+[ 0.829s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 100, nb=10000
+[ 0.868s ] Loaded query vectors from /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+[ 0.899s ] Loaded 10000 spacev10m queries
+[ 0.910s ] Loaded ground truth, gt_size: 10
+[ 0.910s ] Index Params -- d: 100, N: 10000000
+Total edge:200
+Average degree:0.000
+ load index size: 10000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 16.858s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.001
+[ 107.873s ] Query results (vector ids, then distances):
+query 0 nn's (15274, 15373): 2893246 (15330) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	23289.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 1 nn's (47455, 47554): -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 2 nn's (2622, 2721): 9318566 (2630) 3913522 (2654) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	13497.000 16142.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (73957, 74056): -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 4 nn's (58381, 58480): 1919573 (58401) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	9235.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+[ 107.873s ] *** Query time: 19.798
+qps: 505.092
+ *** HNSW recall 
+HNSW get 5749 postive res from 100000 results, recall@10:0.057
+recall dist(10% per bucket): 0.561 0.325 0.094 0.017 0.002 0.000 0.000 0.000 0.000 0.000 0.000 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 13827615, average: 1382.762
+finished ivfpq index examples
+[ 107.874s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query spacev10m 10000000 10 1 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_100000_random_40_1000 15 100"
+	User time (seconds): 86.18
+	System time (seconds): 12.85
+	Percent of CPU this job got: 90%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:48.90
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7262108
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 23
+	Minor (reclaiming a frame) page faults: 2991645
+	Voluntary context switches: 21005
+	Involuntary context switches: 205
+	Swaps: 0
+	File system inputs: 1895176
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:47
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: spacev10m
+N: 10000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+gt file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+index file: /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_100000_random_40_1000
+ef_search: 15
+dim: 100
+loaded base attributes from:/mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+[ 0.723s ] Loaded metadata, 10000000 attr's found
+[ 0.723s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 100, nb=10000
+[ 0.726s ] Loaded query vectors from /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+[ 0.728s ] Loaded 10000 spacev10m queries
+[ 0.735s ] Loaded ground truth, gt_size: 10
+[ 0.735s ] Index Params -- d: 100, N: 10000000
+Total edge:200
+Average degree:0.000
+ load index size: 10000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 6.802s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 90.208s ] Query results (vector ids, then distances):
+query 0 nn's (4494, 5493): 6149370 (4957) 2272371 (5258) 841307 (4995) 7971557 (4951) 8846424 (4510) 6139591 (5168) 2525390 (4928) 150742 (5127) 1641239 (4688) 6642624 (5480) 
+     dis: 	9931.000 12379.000 12937.000 13373.000 14180.000 14515.000 14541.000 15626.000 17039.000 18558.000 
+query 1 nn's (37505, 38504): 5755448 (37848) 4358727 (38259) 3563306 (37529) 6208044 (38131) 670596 (38129) 524045 (37671) 1933133 (38461) 4753113 (38039) 3559352 (38038) 6089889 (37710) 
+     dis: 	11958.000 13483.000 13624.000 14199.000 14900.000 15242.000 15310.000 15382.000 17322.000 17535.000 
+query 2 nn's (17888, 18887): 2882757 (18506) 2768752 (18434) 7958660 (18369) 6489161 (18260) 4001654 (18856) 8034017 (18651) 7090551 (18836) 8770132 (18866) 4027166 (18166) 5195477 (18651) 
+     dis: 	7205.000 7919.000 8106.000 10585.000 11019.000 12947.000 13625.000 16179.000 16458.000 16482.000 
+query 3 nn's (11109, 12108): 5687185 (12097) 6424074 (11699) 7578623 (11167) 3061123 (12077) 9894410 (11400) 859638 (11189) 9473281 (11500) 7937205 (11170) 7541575 (11631) 5897187 (11180) 
+     dis: 	11303.000 11499.000 13610.000 14346.000 14518.000 15196.000 15485.000 15495.000 15503.000 15928.000 
+query 4 nn's (17141, 18140): 7743549 (17817) 8499942 (17237) 650719 (17992) 1289054 (17901) 4820241 (18139) 3067452 (18122) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	8017.000 8706.000 10677.000 10786.000 11017.000 15112.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+[ 90.208s ] *** Query time: 14.382
+qps: 695.303
+ *** HNSW recall 
+HNSW get 23790 postive res from 100000 results, recall@10:0.238
+recall dist(10% per bucket): 0.110 0.205 0.251 0.207 0.132 0.060 0.027 0.006 0.002 0.000 0.000 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 13827615, average: 1382.762
+finished ivfpq index examples
+[ 90.209s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query spacev10m 10000000 10 1 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json /mnt/data/mocheng/dataset/spacev10m/hnsw/index/index_hnsw_sel_1_100000_random_40_1000 15 100"
+	User time (seconds): 83.99
+	System time (seconds): 6.91
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:30.91
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7265192
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1830431
+	Voluntary context switches: 2
+	Involuntary context switches: 85
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

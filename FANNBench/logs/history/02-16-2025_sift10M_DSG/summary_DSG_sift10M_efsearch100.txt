@@ -1,0 +1,52 @@
+Start time: 06:16
+Use SSE
+dataset: sift10M
+data_size: 10000000
+dataset_path: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+label_path: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json
+nthreads: 128
+query_path: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+index_dir_path: /mnt/data/mocheng/dataset/sift10m/dsg/dsg_index/index_dsg_efmax1000_efs1000_sel_1_100000_dist
+Load vecs from: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:1000
+get data label size:10000000
+index K:8 ef construction: 1000 ef_max: 1000
+# Sort Dataset Time: 18.5966200s
+method: compact parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+Building Index using IndexCompactGraph
+First point5374340
+All the forward batch nn #: 0
+Theoratical backward batch nn #: 0
+Max. nns length of one point187
+Sum of forward nn #: 1847338048
+Avg. forward nn #: 184.734
+Avg. delta nn #: 184.734
+# Build Index Time: 4603.8189580s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/build_index -dataset sift10M -N 10000000 -dataset_path /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs -index_path /mnt/data/mocheng/dataset/sift10m/dsg/dsg_index/index_dsg_efmax1000_efs1000_sel_1_100000_dist -method compact -k 8 -ef_max 1000 -ef_construction 1000 -label_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_dist/attr_sel_1_100000_dist.json -nthreads 128 -query_path /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs"
+	User time (seconds): 256636.21
+	System time (seconds): 286.63
+	Percent of CPU this job got: 5498%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17:52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 71600476
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 54379683
+	Voluntary context switches: 921088
+	Involuntary context switches: 53981221
+	Swaps: 0
+	File system inputs: 2080
+	File system outputs: 72474184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

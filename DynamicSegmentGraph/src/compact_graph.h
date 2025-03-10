@@ -974,6 +974,7 @@ public:
         }
         visited_list_pool_ = new base_hnsw::VisitedListPool(1, data_wrapper->data_size);
         // Load directed_indexed_arr
+        int num_edges = 0;
         size_t arr_size;
         in.read((char *)&arr_size, sizeof(arr_size));
         directed_indexed_arr.resize(arr_size);
@@ -987,7 +988,11 @@ public:
             in.read((char *)&rev_nns_size, sizeof(rev_nns_size));
             neighbors.rev_nns.resize(rev_nns_size);
             in.read((char *)neighbors.rev_nns.data(), rev_nns_size * sizeof(CompressedPoint<float>));
+            num_edges += nns_size + rev_nns_size;
         }
+        std::cout << "Total edge:" << num_edges << std::endl;
+        std::cout << "Average degree:" << (double)num_edges/arr_size << std::endl;
+
 
         in.close();
 

@@ -207,10 +207,12 @@ int main(int argc, char *argv[]) {
     {
         std::cout << "====================Write Index================\n" << std::endl;
         // write  index
+        index.printStats();
         write_index(&index, index_file);
         // std::cout << "[" << elapsed() - t0 << "s ] Wrote  index to file: " << filepath << std::endl;
         // printf("[%.3f s] Wrote  index to file: %s\n", elapsed() - t0, index_file);
-        std::cout << "[ " << elapsed() - t0 << "s ] Wrote ivbfpq index to file: " << index_file << std::endl;
+        
+        std::cout << "[ " << elapsed() - t0 << "s ] Wrote hnsw index to file: " << index_file << std::endl;
         
     }
 

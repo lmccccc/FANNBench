@@ -37,7 +37,6 @@ fi
 log_file=${dir}/summary_${algo}_${dataset}_beamsize${beamsize}_finalbeammul${final_beam_multiply}.txt
 TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
-
 echo "dataset: $dataset"
 echo "datasize: $N"
 echo "query_size: $query_size"
@@ -50,6 +49,7 @@ echo "rfann_result_file: $rfann_result_file"
 echo "rfann_index_prefix: $rfann_index_prefix"
 echo "top_k: $K"
 echo "threads: $threads"
+echo "log file: $log_file"
 /bin/time -v -p python -u utils/RangeFilteredANN.py --dataset $dataset \
                                  --data_size $N \
                                  --query_size $query_size \

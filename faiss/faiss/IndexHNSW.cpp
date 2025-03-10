@@ -224,6 +224,12 @@ IndexHNSW::~IndexHNSW() {
     }
 }
 
+void IndexHNSW::printStats() {
+    int nbs = hnsw.cum_nb_neighbors(hnsw.max_level);
+    std::cout << "Total edge:" << nbs << std::endl;
+    std::cout << "Average degree:" << (double) nbs/hnsw.levels.size() << std::endl;
+}
+
 void IndexHNSW::train(idx_t n, const float* x) {
     FAISS_THROW_IF_NOT_MSG(
             storage,

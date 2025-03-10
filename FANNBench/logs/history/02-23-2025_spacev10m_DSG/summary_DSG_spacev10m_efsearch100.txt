@@ -1,0 +1,325 @@
+Start time: 06:03
+Use SSE
+dataset: spacev10m
+data_size: 10000000
+dataset_path: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+label_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+nthreads: 128
+query_path: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+index_dir_path: /mnt/data/mocheng/dataset/spacev10m/dsg/dsg_index/index_dsg_efmax1000_efs1000_sel_1_100000_random
+Load vecs from: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:1000
+get data label size:10000000
+index K:8 ef construction: 1000 ef_max: 1000
+# Sort Dataset Time: 17.5653380s
+method: compact parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+Building Index using IndexCompactGraph
+First point5374340
+All the forward batch nn #: 0
+Theoratical backward batch nn #: 0
+Max. nns length of one point195
+Sum of forward nn #: 1770181894
+Avg. forward nn #: 177.018
+Avg. delta nn #: 177.018
+# Build Index Time: 3411.0136740s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/build_index -dataset spacev10m -N 10000000 -dataset_path /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs -index_path /mnt/data/mocheng/dataset/spacev10m/dsg/dsg_index/index_dsg_efmax1000_efs1000_sel_1_100000_random -method compact -k 8 -ef_max 1000 -ef_construction 1000 -label_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -nthreads 128 -query_path /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs"
+	User time (seconds): 259892.40
+	System time (seconds): 291.78
+	Percent of CPU this job got: 7495%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 57:51.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 66983236
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 42107406
+	Voluntary context switches: 920965
+	Involuntary context switches: 31075959
+	Swaps: 0
+	File system inputs: 2080
+	File system outputs: 69460272
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:16
+Use SSE
+dataset: spacev10m
+data_size: 10000000
+dataset_path: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query_path: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+groundtruth_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+nthreads: 1
+ef_search: 100
+qrange_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json
+query_num: 10000
+label_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query_k: 10
+Load vecs from: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:10000
+get data label size:10000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+# Sort Dataset Time: 18.0100920s
+search ef:
+vertex in set: {100}
+Total edge:1770181894
+Average degree:177.018
+Max. nns length of one point195
+Sum of forward nn #: 1770181894
+Avg. forward nn #: 177.018
+Avg. delta nn #: 177.018
+# Load Index Time: 62.4552390s
+load index done
+
+Search ef: 100
+========================
+range: 9461	 recall: 0.0026	 QPS: 71942	Comps: 2	 Hops: 0.3926
+range: 9537	 recall: 0.0030	 QPS: 113065	Comps: 2	 Hops: 0.5519
+range: 9538	 recall: 0.0096	 QPS: 35766	Comps: 5	 Hops: 1.8667
+range: 9539	 recall: 0.0015	 QPS: 174419	Comps: 1	 Hops: 0.4000
+range: 9613	 recall: 0.0152	 QPS: 19205	Comps: 11	 Hops: 3.0519
+range: 9614	 recall: 0.1000	 QPS: 3186	Comps: 63	 Hops: 20.3667
+range: 9615	 recall: 0.0274	 QPS: 9993	Comps: 25	 Hops: 7.5037
+range: 9689	 recall: 0.1070	 QPS: 4281	Comps: 62	 Hops: 18.8444
+range: 9690	 recall: 0.3922	 QPS: 980	Comps: 254	 Hops: 74.9963
+range: 9691	 recall: 0.4011	 QPS: 997	Comps: 267	 Hops: 78.1593
+range: 9766	 recall: 1.1570	 QPS: 357	Comps: 768	 Hops: 226.6889
+range: 9767	 recall: 2.1807	 QPS: 190	Comps: 1422	 Hops: 421.3037
+range: 9805	 recall: 0.0015	 QPS: 107570	Comps: 2	 Hops: 0.5852
+range: 9806	 recall: 0.0004	 QPS: 438312	Comps: 1	 Hops: 0.3778
+range: 9842	 recall: 1.2804	 QPS: 309	Comps: 858	 Hops: 249.4630
+range: 9843	 recall: 2.6833	 QPS: 143	Comps: 1778	 Hops: 522.7074
+range: 9844	 recall: 0.8433	 QPS: 474	Comps: 548	 Hops: 161.3222
+range: 9880	 recall: 0.0004	 QPS: 253046	Comps: 2	 Hops: 0.4259
+range: 9918	 recall: 1.0178	 QPS: 402	Comps: 675	 Hops: 196.8333
+range: 9919	 recall: 3.3170	 QPS: 118	Comps: 2224	 Hops: 648.8555
+range: 9920	 recall: 2.3537	 QPS: 165	Comps: 1584	 Hops: 458.1815
+range: 9957	 recall: 0.0026	 QPS: 113255	Comps: 2	 Hops: 0.4704
+range: 9994	 recall: 0.2778	 QPS: 1351	Comps: 206	 Hops: 57.5111
+range: 9995	 recall: 1.6626	 QPS: 236	Comps: 1110	 Hops: 317.0963
+range: 9996	 recall: 1.8407	 QPS: 226	Comps: 1235	 Hops: 356.3037
+range: 9997	 recall: 0.2189	 QPS: 1794	Comps: 149	 Hops: 43.0556
+range: 10071	 recall: 0.6874	 QPS: 557	Comps: 466	 Hops: 133.1185
+range: 10072	 recall: 1.0404	 QPS: 380	Comps: 692	 Hops: 200.4074
+range: 10073	 recall: 0.2233	 QPS: 2033	Comps: 136	 Hops: 42.0444
+range: 10147	 recall: 0.0889	 QPS: 4038	Comps: 67	 Hops: 18.1333
+range: 10148	 recall: 0.1789	 QPS: 2329	Comps: 122	 Hops: 34.8074
+range: 10149	 recall: 0.1093	 QPS: 3930	Comps: 63	 Hops: 19.2222
+range: 10150	 recall: 0.0041	 QPS: 65934	Comps: 3	 Hops: 0.8333
+range: 10223	 recall: 0.0093	 QPS: 46178	Comps: 8	 Hops: 2.1074
+range: 10224	 recall: 0.0448	 QPS: 8703	Comps: 26	 Hops: 7.7556
+range: 10225	 recall: 0.0322	 QPS: 11609	Comps: 21	 Hops: 6.0704
+range: 10226	 recall: 0.0052	 QPS: 61489	Comps: 3	 Hops: 0.9704
+Total Recall: 0.6027	 Total QPS: 657.6394	 Total Comps: 401.2930	 Total Hops: 116.9852
+========================
+# total query time: 15.3744810s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/query_index -dataset spacev10m -N 10000000 -dataset_path /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs -query_path /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs -groundtruth_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_10.json -index_path /mnt/data/mocheng/dataset/spacev10m/dsg/dsg_index/index_dsg_efmax1000_efs1000_sel_1_100000_random -method compact -k 8 -ef_max 1000 -ef_construction 1000 -nthreads 1 -ef_search 100 -qrange_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json -query_num 10000 -label_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -query_k 10"
+	User time (seconds): 49.25
+	System time (seconds): 41.41
+	Percent of CPU this job got: 84%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:46.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 39696488
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 14225906
+	Voluntary context switches: 39430
+	Involuntary context switches: 190
+	Swaps: 0
+	File system inputs: 9084304
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:53
+Use SSE
+dataset: spacev10m
+data_size: 10000000
+dataset_path: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query_path: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+groundtruth_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+nthreads: 1
+ef_search: 100
+qrange_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json
+query_num: 10000
+label_path: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query_k: 10
+Load vecs from: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:10000
+get data label size:10000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+# Sort Dataset Time: 17.8721380s
+search ef:
+vertex in set: {100}
+Total edge:1770181894
+Average degree:177.018
+Max. nns length of one point195
+Sum of forward nn #: 1770181894
+Avg. forward nn #: 177.018
+Avg. delta nn #: 177.018
+# Load Index Time: 39.6156770s
+load index done
+
+Search ef: 100
+========================
+range: 99030	 recall: 0.0106	 QPS: 66761	Comps: 14	 Hops: 1.1277
+range: 99031	 recall: 0.0106	 QPS: 62293	Comps: 13	 Hops: 1.1383
+range: 99106	 recall: 0.0511	 QPS: 11111	Comps: 79	 Hops: 5.5851
+range: 99107	 recall: 0.0447	 QPS: 11336	Comps: 73	 Hops: 5.6702
+range: 99108	 recall: 0.0202	 QPS: 17378	Comps: 48	 Hops: 3.4362
+range: 99182	 recall: 0.0330	 QPS: 14587	Comps: 56	 Hops: 4.5957
+range: 99183	 recall: 0.3160	 QPS: 1504	Comps: 536	 Hops: 42.8617
+range: 99184	 recall: 0.2702	 QPS: 2219	Comps: 377	 Hops: 30.7660
+range: 99185	 recall: 0.0213	 QPS: 29946	Comps: 29	 Hops: 2.2872
+range: 99258	 recall: 0.1457	 QPS: 3865	Comps: 205	 Hops: 17.3830
+range: 99259	 recall: 0.3819	 QPS: 1423	Comps: 574	 Hops: 46.1383
+range: 99260	 recall: 0.5032	 QPS: 1045	Comps: 823	 Hops: 62.1489
+range: 99261	 recall: 0.1649	 QPS: 3573	Comps: 234	 Hops: 17.9255
+range: 99262	 recall: 0.0106	 QPS: 58494	Comps: 13	 Hops: 1.1702
+range: 99334	 recall: 0.1457	 QPS: 3880	Comps: 223	 Hops: 17.3723
+range: 99335	 recall: 0.8426	 QPS: 556	Comps: 1321	 Hops: 104.6702
+range: 99336	 recall: 1.1255	 QPS: 460	Comps: 1795	 Hops: 141.2447
+range: 99337	 recall: 0.3191	 QPS: 1551	Comps: 537	 Hops: 41.5745
+range: 99338	 recall: 0.0383	 QPS: 14397	Comps: 55	 Hops: 4.5745
+range: 99410	 recall: 0.0617	 QPS: 9757	Comps: 87	 Hops: 6.8298
+range: 99411	 recall: 0.6606	 QPS: 816	Comps: 1009	 Hops: 78.6596
+range: 99412	 recall: 1.5511	 QPS: 323	Comps: 2542	 Hops: 193.7234
+range: 99413	 recall: 0.6883	 QPS: 778	Comps: 1051	 Hops: 80.6064
+range: 99414	 recall: 0.0755	 QPS: 6306	Comps: 136	 Hops: 10.2340
+range: 99487	 recall: 0.5043	 QPS: 1052	Comps: 788	 Hops: 62.0213
+range: 99488	 recall: 2.5766	 QPS: 192	Comps: 4154	 Hops: 326.2128
+range: 99489	 recall: 1.4021	 QPS: 369	Comps: 2239	 Hops: 170.6170
+range: 99490	 recall: 0.2798	 QPS: 1924	Comps: 437	 Hops: 33.4149
+range: 99563	 recall: 0.3457	 QPS: 1671	Comps: 495	 Hops: 39.7128
+range: 99564	 recall: 1.8479	 QPS: 286	Comps: 2889	 Hops: 227.9362
+range: 99565	 recall: 1.4085	 QPS: 344	Comps: 2235	 Hops: 177.0000
+range: 99566	 recall: 0.3553	 QPS: 1138	Comps: 539	 Hops: 44.0106
+range: 99567	 recall: 0.0202	 QPS: 29165	Comps: 31	 Hops: 2.2021
+range: 99602	 recall: 0.0106	 QPS: 57811	Comps: 14	 Hops: 1.1170
+range: 99639	 recall: 0.2234	 QPS: 2390	Comps: 346	 Hops: 28.3617
+range: 99640	 recall: 2.0862	 QPS: 244	Comps: 3287	 Hops: 256.5532
+range: 99641	 recall: 2.9340	 QPS: 180	Comps: 4471	 Hops: 353.6915
+range: 99642	 recall: 1.2638	 QPS: 409	Comps: 1934	 Hops: 153.3511
+range: 99643	 recall: 0.1138	 QPS: 4792	Comps: 172	 Hops: 13.7766
+range: 99715	 recall: 0.0862	 QPS: 5562	Comps: 144	 Hops: 11.7872
+range: 99716	 recall: 1.1457	 QPS: 458	Comps: 1843	 Hops: 142.6064
+range: 99717	 recall: 3.2064	 QPS: 162	Comps: 5136	 Hops: 395.9149
+range: 99718	 recall: 2.0202	 QPS: 260	Comps: 3182	 Hops: 245.7660
+range: 99719	 recall: 0.3766	 QPS: 1448	Comps: 579	 Hops: 45.5957
+range: 99792	 recall: 0.5723	 QPS: 903	Comps: 883	 Hops: 69.2872
+range: 99793	 recall: 5.1415	 QPS: 99	Comps: 8063	 Hops: 627.6702
+range: 99794	 recall: 3.9596	 QPS: 130	Comps: 6212	 Hops: 488.4149
+range: 99795	 recall: 0.6138	 QPS: 765	Comps: 954	 Hops: 73.6702
+range: 99868	 recall: 0.2681	 QPS: 2028	Comps: 396	 Hops: 32.5000
+range: 99869	 recall: 3.0309	 QPS: 174	Comps: 4740	 Hops: 365.9787
+range: 99870	 recall: 3.6330	 QPS: 145	Comps: 5581	 Hops: 438.9893
+range: 99871	 recall: 1.1936	 QPS: 445	Comps: 1877	 Hops: 144.3511
+range: 99872	 recall: 0.0532	 QPS: 8976	Comps: 97	 Hops: 7.0106
+range: 99945	 recall: 2.2521	 QPS: 224	Comps: 3414	 Hops: 269.8723
+range: 99946	 recall: 4.4702	 QPS: 113	Comps: 7067	 Hops: 556.5958
+range: 99947	 recall: 2.4394	 QPS: 212	Comps: 3736	 Hops: 298.4149
+range: 99948	 recall: 0.3638	 QPS: 1533	Comps: 547	 Hops: 43.5851
+range: 99984	 recall: 0.0213	 QPS: 27318	Comps: 31	 Hops: 2.3191
+range: 100021	 recall: 0.9787	 QPS: 564	Comps: 1436	 Hops: 116.4362
+range: 100022	 recall: 3.5191	 QPS: 153	Comps: 5441	 Hops: 425.3617
+range: 100023	 recall: 2.2521	 QPS: 233	Comps: 3542	 Hops: 278.2447
+range: 100024	 recall: 0.5404	 QPS: 1002	Comps: 826	 Hops: 66.3511
+range: 100098	 recall: 3.8947	 QPS: 130	Comps: 6099	 Hops: 478.1915
+range: 100099	 recall: 3.7426	 QPS: 141	Comps: 5837	 Hops: 460.5638
+range: 100100	 recall: 0.7255	 QPS: 714	Comps: 1174	 Hops: 90.8617
+range: 100174	 recall: 1.9915	 QPS: 271	Comps: 3043	 Hops: 241.3617
+range: 100175	 recall: 2.5309	 QPS: 205	Comps: 4085	 Hops: 316.4362
+range: 100176	 recall: 0.8915	 QPS: 582	Comps: 1418	 Hops: 114.8936
+range: 100177	 recall: 0.1479	 QPS: 3809	Comps: 210	 Hops: 17.6915
+range: 100250	 recall: 0.9383	 QPS: 527	Comps: 1454	 Hops: 114.3936
+range: 100251	 recall: 3.0043	 QPS: 170	Comps: 4700	 Hops: 367.5851
+range: 100252	 recall: 1.7691	 QPS: 299	Comps: 2731	 Hops: 216.5745
+range: 100253	 recall: 0.3521	 QPS: 1329	Comps: 601	 Hops: 45.8404
+range: 100326	 recall: 0.3340	 QPS: 1551	Comps: 535	 Hops: 40.9255
+range: 100327	 recall: 1.3138	 QPS: 419	Comps: 1961	 Hops: 158.2766
+range: 100328	 recall: 1.3883	 QPS: 368	Comps: 2208	 Hops: 170.9681
+range: 100329	 recall: 0.4160	 QPS: 1236	Comps: 666	 Hops: 52.2872
+range: 100366	 recall: 0.0074	 QPS: 47284	Comps: 20	 Hops: 1.3830
+range: 100403	 recall: 0.7202	 QPS: 702	Comps: 1167	 Hops: 91.5426
+range: 100404	 recall: 1.3766	 QPS: 362	Comps: 2188	 Hops: 166.6383
+range: 100405	 recall: 0.4309	 QPS: 1198	Comps: 689	 Hops: 54.4574
+range: 100406	 recall: 0.0415	 QPS: 10968	Comps: 74	 Hops: 5.6809
+range: 100479	 recall: 0.3319	 QPS: 1452	Comps: 583	 Hops: 43.5532
+range: 100480	 recall: 0.5628	 QPS: 864	Comps: 933	 Hops: 72.0319
+range: 100481	 recall: 0.3457	 QPS: 1535	Comps: 546	 Hops: 43.2021
+range: 100482	 recall: 0.0957	 QPS: 4711	Comps: 168	 Hops: 13.1064
+range: 100483	 recall: 0.0106	 QPS: 54971	Comps: 16	 Hops: 1.1702
+range: 100484	 recall: 0.0106	 QPS: 53198	Comps: 12	 Hops: 1.0957
+range: 100555	 recall: 0.1096	 QPS: 5655	Comps: 148	 Hops: 12.8404
+range: 100556	 recall: 0.2755	 QPS: 1786	Comps: 468	 Hops: 36.6170
+range: 100557	 recall: 0.2809	 QPS: 1402	Comps: 443	 Hops: 34.7021
+range: 100558	 recall: 0.0915	 QPS: 6206	Comps: 133	 Hops: 10.2872
+range: 100559	 recall: 0.0096	 QPS: 76113	Comps: 12	 Hops: 1.0851
+range: 100631	 recall: 0.0213	 QPS: 32616	Comps: 24	 Hops: 2.2340
+range: 100632	 recall: 0.1415	 QPS: 3761	Comps: 222	 Hops: 17.1702
+range: 100633	 recall: 0.0851	 QPS: 5410	Comps: 139	 Hops: 12.8830
+range: 100634	 recall: 0.0500	 QPS: 8982	Comps: 90	 Hops: 6.1915
+range: 100670	 recall: 0.0106	 QPS: 64560	Comps: 13	 Hops: 1.1277
+range: 100708	 recall: 0.0106	 QPS: 62376	Comps: 14	 Hops: 1.1915
+range: 100709	 recall: 0.0287	 QPS: 17305	Comps: 46	 Hops: 3.3511
+range: 100710	 recall: 0.0181	 QPS: 25460	Comps: 36	 Hops: 2.2340
+range: 100784	 recall: 0.0106	 QPS: 62834	Comps: 13	 Hops: 1.1170
+range: 100785	 recall: 0.0553	 QPS: 10516	Comps: 81	 Hops: 6.8085
+range: 100786	 recall: 0.0426	 QPS: 17616	Comps: 44	 Hops: 4.4574
+range: 100861	 recall: 0.0160	 QPS: 27753	Comps: 32	 Hops: 2.3511
+range: 100863	 recall: 0.0074	 QPS: 38383	Comps: 22	 Hops: 1.4043
+Total Recall: 0.8802	 Total QPS: 587.2131	 Total Comps: 1378.8484	 Total Hops: 108.0736
+========================
+# total query time: 17.1393140s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/query_index -dataset spacev10m -N 10000000 -dataset_path /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs -query_path /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs -groundtruth_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_10.json -index_path /mnt/data/mocheng/dataset/spacev10m/dsg/dsg_index/index_dsg_efmax1000_efs1000_sel_1_100000_random -method compact -k 8 -ef_max 1000 -ef_construction 1000 -nthreads 1 -ef_search 100 -qrange_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json -query_num 10000 -label_path /mnt/data/mocheng/dataset/spacev10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -query_k 10"
+	User time (seconds): 54.52
+	System time (seconds): 29.16
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:23.69
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 39707964
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 11131446
+	Voluntary context switches: 1
+	Involuntary context switches: 187
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

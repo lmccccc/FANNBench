@@ -69,7 +69,7 @@ if __name__ == "__main__":
     )
 
     # create collection
-    if client.has_collection(c_name) and mode != "construction":
+    if client.has_collection(c_name) and  "query" in mode:
         print("collection ", c_name, " exists")
 
         client.load_collection(collection_name=c_name, 
@@ -82,14 +82,25 @@ if __name__ == "__main__":
 
         print("collection size:", res)
 
-        
+    elif (not client.has_collection(c_name)) and  "query" in mode:
+        print("error no such cllection ", c_name)
+        sys.exit(-1)
         
         # client.drop_collection(c_name)
+    if mode == "drop":
+        if (client.has_collection(c_name)):
+            print("collection ", c_name, " exists, then drop it")
+            client.drop_collection(collection_name=c_name)
+        else:
+            print("collection ", c_name, " not exist")
+        sys.exit(0)
     else:
     # if True:
         if client.has_collection(c_name): # construction mode
-            print("collection ", c_name, " exists, then drop it")
-            client.drop_collection(collection_name=c_name)
+            print("collection ", c_name, " exists")
+            exit()
+            # print("collection ", c_name, " exists, then drop it")
+            # client.drop_collection(collection_name=c_name)
 
         # load data
         dataset = read_file(dataset_file)
@@ -117,25 +128,14 @@ if __name__ == "__main__":
         schema.add_field(field_name="vector", datatype=DataType.FLOAT_VECTOR, dim=d)
         schema.add_field(field_name="label", datatype=DataType.INT64)
         
-        index_params = client.prepare_index_params()
-        # index_params.add_index(
-        #     field_name="label",
-        #     index_type="STL_SORT"
-        # )
         nlist = int(math.sqrt(N))
         print("partition M:", M)
         print("nlist:", nlist)
-        index_params.add_index(
-            field_name="vector", 
-            index_type="IVF_PQ",# IVF_FLAT IVF_PQ IVF_SQ8 HNSW SCANN
-            metric_type="L2",
-            params={ "nlist": nlist, "m": M} # see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
-        )
 
         client.create_collection(collection_name=c_name, 
                                     schema=schema,
-                                    index_params=index_params,
-                                    enable_dynamic_field=True)
+                                    enable_dynamic_field=True,
+                                    consistency_level="Strong")
 
 
         
@@ -148,14 +148,44 @@ if __name__ == "__main__":
         print("start insertion")
         # set start time
         t0 = time.time()
-        batch_size = 100000
+        max_message_size = 67108864
+        max_batch_size = max_message_size // (d * 4)
+        batch_size = max_batch_size // 2  # Divide by 2 to be safe
+        print("batch size:", batch_size, " total batch:", round(N/batch_size))
         for i in range(0, N, batch_size):
-            client.insert(collection_name=c_name, data=data[i:i+batch_size])
-            print("insert batch:", i/batch_size)
+            client.insert(collection_name=c_name, data=data[i:min(i+batch_size, N)])
+            print("insert batch:", i/batch_size, " of ", round(N/batch_size), " from ", i, " to ", min(i+batch_size, N))
+
         # client.insert(collection_name=c_name, data=data)
         # print("insert res:", res)
+        
+        t2 = time.time()
+        index_params = client.prepare_index_params()
+        index_params.add_index(
+            field_name="vector", 
+            index_type="IVF_PQ",# IVF_FLAT IVF_PQ IVF_SQ8 HNSW SCANN
+            metric_type="L2",
+            params={ "nlist": nlist, "m": M} # see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
+        )
+        client.create_index(
+            collection_name=c_name,
+            index_params=index_params,
+            sync=True # Whether to wait for index creation to complete before returning. Defaults to True.
+        )
         t1 = time.time()
-        print("insert suc, time cost:", t1-t0)
+        
+        client.load_collection(collection_name=c_name, 
+                               replica_number=1,
+                               load_fields=["id", "vector", "label"])
+
+        res = client.query(
+            collection_name=c_name,
+            output_fields=["count(*)"]
+        )
+
+        print("collection size:", res)
+
+        print("insert suc, time cost:", t1-t2)
         
         if mode == "construction":
             print("construction done")

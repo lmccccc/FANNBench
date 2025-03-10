@@ -1,0 +1,77 @@
+Start time: 21:51
+====================
+START: running ACORN_INDEX_CONSTRUCTION for hnsw, sift data --
+
+dataset: YT-RGB1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json
+index file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_sel_1_500_random_M40_ga25_Mb64
+dim: 1024
+[ 0.002s ] Index Params -- d: 1024, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+====================Vectors====================
+
+[ 0.002s ] Loading database
+[ 2.242s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+data loaded, with dim: 1024, nb=1000000
+[ 2.242s ] Indexing database, size 1000000*1024 from max 1000000
+[ 2.242s ] Adding the vectors to the index
+adding to storage
+storage added
+max_level: 4
+Adding 1 elements at level 4
+Adding 15 elements at level 3
+Adding 607 elements at level 2
+Adding 24333 elements at level 1
+Adding 975044 elements at level 0
+[ 757.495s ] Vectors added to hybrid index1000000
+Hybrid index vectors added:1000000
+====================Write Index================
+
+[ 760.156s ] Wrote hybrid index to file: /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_sel_1_500_random_M40_ga25_Mb64
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999935 nodes
+level 1 : 24954 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025529
+Average degree per layer:170921.500
+node size:1000000
+Average degree:149.596
+acorn size: 598384000, memory: 4488.358MB
+[760.162 s] -----DONE-----
+[ 760.162s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_build YT-RGB1m 1000000 25 40 64 10 128 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/youtube1m/acorn/index/index_acorn_sel_1_500_random_M40_ga25_Mb64 1024"
+	User time (seconds): 87789.12
+	System time (seconds): 90.31
+	Percent of CPU this job got: 11553%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 12:40.62
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 9030788
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 8613628
+	Voluntary context switches: 286620
+	Involuntary context switches: 4279336
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 9192192
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

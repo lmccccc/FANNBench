@@ -6,5 +6,9 @@
 # ./all_query.sh smallbatch dsg
 # ./all_query.sh batch hnsw
 # ./all_query.sh smallbatch hnsw
-./run_unify.sh construction
-./all_query.sh largebatch unify
+# ./run_unify.sh construction
+
+# ./all_query.sh batch range
+./run_milvus_hnsw.sh construction
+./run_milvus_ivfpq.sh construction
+./all_query.sh batch range

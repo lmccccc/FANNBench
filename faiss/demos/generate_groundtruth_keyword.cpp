@@ -282,37 +282,58 @@ int main(int argc, char *argv[]) {
 
         std::cout << "nn and dis size: " << nns2.size() << " " << dis2.size() << std::endl;
 
+        // uint64_t sel = 0;
+        // std::vector<faiss::IDSelectorBatch*> sel_list;
+        // for (int nq_i = 0; nq_i < 1; nq_i++) { // only do one query label
+        //     std::vector<faiss::idx_t> sel_ids;
+        //     for (int xb = 0; xb < N; xb++) {
+        //         bool in_range = false;
+        //         for(int i = 0; i < attr[xb].size(); i++){
+        //             if(attr[xb][i] == qrange[nq_i * 2]){
+        //                 in_range = true;
+        //                 break;
+        //             }
+        //         }
+        //         if(in_range) sel_ids.push_back(xb);
+        //     }
+        //     sel += sel_ids.size();
+        //     sel_list.push_back(new faiss::IDSelectorBatch(sel_ids.size(), sel_ids.data()));
+        // }
+        // double selectivity = sel * 1.0 / (nq * N);
+        // std::cout << "selectivity: " << selectivity << std::endl;
         uint64_t sel = 0;
-        std::vector<faiss::IDSelectorBatch*> sel_list;
-        for (int nq_i = 0; nq_i < 1; nq_i++) { // only do one query label
-            std::vector<faiss::idx_t> sel_ids;
+        // double t1 = elapsed();
+        double t1, t2;
+        double t_total = 0;
+        for(int q_ind = 0; q_ind < nq; q_ind++){
+            std::vector<uint8_t> sel_ids;
+            sel_ids.resize(N);
             for (int xb = 0; xb < N; xb++) {
                 bool in_range = false;
                 for(int i = 0; i < attr[xb].size(); i++){
-                    if(attr[xb][i] == qrange[nq_i * 2]){
+                    if(attr[xb][i] == qrange[q_ind * 2]){
                         in_range = true;
                         break;
                     }
                 }
-                if(in_range) sel_ids.push_back(xb);
+                // filter_ids_map[nq_i][xb] = in_range;
+                if(in_range) sel++;
+                sel_ids[xb] = in_range;
             }
-            sel += sel_ids.size();
-            sel_list.push_back(new faiss::IDSelectorBatch(sel_ids.size(), sel_ids.data()));
-        }
-        double selectivity = sel * 1.0 / (nq * N);
-        // std::cout << "selectivity: " << selectivity << std::endl;
-
-        double t1 = elapsed();
-        for(int q_ind = 0; q_ind < nq; q_ind++){
+            faiss::IDSelectorBytemap sel_i = faiss::IDSelectorBytemap(sel_ids.size(), sel_ids.data());
             faiss::SearchParameters params;
-            params.sel = sel_list[0];
+            params.sel = &sel_i;
             float* xq_i = query + q_ind * d;
+            t1 = elapsed();
             index.search(1, xq_i, k, dis2[q_ind].data(), nns2[q_ind].data(), &params);
+            t2 = elapsed();
+            t_total += t2 - t1;
         }
-        double t2 = elapsed();
-        for (int i = 0; i < 1; i++) {
-            delete sel_list[i];
-        }
+        // double t2 = elapsed();
+        double selectivity = sel * 1.0 / (nq * N);
+        // for (int i = 0; i < 1; i++) {
+        //     delete sel_list[i];
+        // }
         printf("[%.3f s] Query results (vector ids, then distances):\n",
                elapsed() - t0);
 
@@ -339,7 +360,7 @@ int main(int argc, char *argv[]) {
         }
 
         printf("[%.3f s] *** Query time: %f\n",
-               elapsed() - t0, t2 - t1);
+               elapsed() - t0, t_total);
 
         // calculate selectivity
         sel = 0;
@@ -365,7 +386,7 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < 11; i++) hist[i] /= nq;
         total_selectivity /= nq;
 
-        std::cout << "qps:" << nq / (t2 - t1) << std::endl;
+        std::cout << "qps:" << nq / t_total << std::endl;
         std::cout << "cmp per query:" << N << std::endl;
         std::cout << "recall: 1 of course" << std::endl;
         std::cout << "sel distribution: ";

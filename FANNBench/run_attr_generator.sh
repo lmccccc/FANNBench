@@ -39,7 +39,9 @@ python utils/attrGenerator.py ${N} \
                               ${train_file} \
                               ${train_size} \
                               ${centroid_file} \
-                              ${query_label}
+                              ${query_label} \
+                              ${real_label} \
+                              ${real_attr_file}
 
 
 

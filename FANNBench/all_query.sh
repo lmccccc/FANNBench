@@ -2,10 +2,13 @@ run_algo=$1
 
 # search var list
 ef_search_list=(
-    10
-    12
-    15
-    18
+    # 5
+    # 8
+    # 9
+    # 10
+    # 12
+    # 15
+    # 18
     20
     40
     60
@@ -44,7 +47,7 @@ nprobe_list=(
     80
     100
     150
-    20
+    200
     300
 )
 
@@ -301,6 +304,20 @@ query_func(){
             done
         done
 
+    elif [ "$run_algo" == "unify_hybrid" ]; then
+        for al in "${al_list[@]}"; do
+            for ef_search in "${ef_search_list[@]}"; do
+                last_value=${ef_search_list[-1]}
+                last_value2=${al_list[-1]}
+                if [ $ef_search == $last_value ] && [ $al == $last_value2 ]; then
+                    echo "search unify hybrid at al=$al, ef_search=$ef_search"
+                    source run_unify_hybrid.sh query multi_unify $al $ef_search $2          # UNIFY
+                else
+                    echo "search unify at al=$al, ef_search=$ef_search"
+                    source run_unify_hybrid.sh query multi_unify $al $ef_search $2 &          # UNIFY
+                fi
+            done
+        done
     else 
         echo "Invalid multi option."
         exit 1
@@ -308,25 +325,7 @@ query_func(){
 }
 
 
-if [ $1 == "all" ]; then
-    query_func acorn
-    query_func diskann
-    query_func diskann_stitched
-    query_func hnsw
-    query_func irange
-    query_func ivfpq
-    query_func milvus_ivfpq
-    query_func milvus_hnsw
-    query_func kgraph
-    query_func nsw
-    query_func serf
-    query_func dsg
-    query_func vamana_tree
-    query_func wst_sup_opt
-    query_func unify
-    echo "All benchmarks done."
-    exit 0
-elif [ $1 == "range" ]; then
+if [ $1 == "range" ]; then
     query_func acorn
     query_func hnsw
     query_func irange
@@ -338,6 +337,7 @@ elif [ $1 == "range" ]; then
     query_func vamana_tree
     query_func wst_sup_opt
     query_func unify
+    query_func unify_hybrid
     echo "All range benchmarks done."
     exit 0
 elif [ $1 == "key" ]; then
@@ -357,195 +357,113 @@ fi
 
 
 
-qrange_list=(
-    1000
-    2000
-    3000
-    4000
-    5000
-    6000
-    7000
-    8000
-    9000
-    10000
+# qrange_list=(
+#     100   #  0.1%
+#     1000  #  1 %
+#     # 2000
+#     # 3000
+#     # 4000
+#     # 5000
+#     # 6000
+#     # 7000
+#     # 8000
+#     # 9000
+#     10000 # 10 %
+#     50000 # 50 %
+# )
+
+sel_list=(
+    # 1   # 100%
+    # 2   # 90%
+    # 3   # 80%
+    # 4   # 70%
+    # 5   # 60%
+    6   # 50%
+    # 7   # 40%
+    # 8   # 30%
+    # 9   # 20%
+    10  # 10%
+    # 11  # 9%
+    # 12  # 8%
+    # 13  # 7%
+    # 14  # 6%
+    # 15  # 5%
+    # 16  # 4%
+    # 17  # 3%
+    # 18  # 2%
+    19  # 1%
+    20  # 0.1%
 )
+
+# sel_list=(
+#     50000   # 50%
+#     10000  # 10%
+#     1000  # 1%
+#     100  # 0.1%
+# )
 
 
 if [ $1 == "batch" ]; then
-    for qrange in "${qrange_list[@]}"; do
-        echo "qrange=$qrange"
-        ./run_qrange_generator.sh batch_qr $qrange
-        ./run_groundtruth_generator.sh batch_gt $qrange
-        if [ $2 == "all" ]; then
-            query_func acorn $qrange
-            query_func diskann $qrange
-            query_func diskann_stitched $qrange
-            query_func hnsw $qrange
-            query_func irange $qrange
-            query_func ivfpq $qrange
-            query_func milvus_ivfpq $qrange
-            query_func milvus_hnsw $qrange
-            query_func kgraph $qrange
-            query_func nsw $qrange
-            query_func serf $qrange
-            query_func dsg $qrange
-            query_func vamana_tree $qrange
-            query_func wst_sup_opt $qrange
-            query_func unify $qrange
-            echo "All benchmarks done."
-        elif [ $2 == "range" ]; then
-            # query_func acorn $qrange
-            # query_func hnsw $qrange
-            # query_func irange $qrange
-            # query_func ivfpq $qrange
-            query_func milvus_ivfpq $qrange
-            # query_func milvus_hnsw $qrange
-            # query_func serf $qrange
-            # query_func dsg $qrange
-            # query_func vamana_tree $qrange
-            # query_func wst_sup_opt $qrange
-            # query_func unify $qrange
+    if [ $2 == "range" ]; then
+        python utils/modify_var.py label_range 100000
+        python utils/modify_var.py label_cnt 1
+        python utils/modify_var.py query_label_cnt 6
+        python utils/modify_var.py query_label 0
+        # ./run_attr_generator.sh
+        # ./run_qrange_generator.sh
+        # ./run_groundtruth_generator.sh
+        # ./all_construct.sh range
+        for qrange in "${sel_list[@]}"; do
+            echo "qrange=$qrange"
+            python utils/modify_var.py query_label_cnt $qrange
+            # query_func acorn
+            # query_func hnsw
+            # query_func irange
+            # query_func ivfpq
+            # query_func serf
+            # query_func dsg
+            # query_func vamana_tree
+            # query_func wst_sup_opt
+            # query_func unify
+            query_func milvus_ivfpq
+            query_func milvus_hnsw
+            # query_func unify_hybrid
             echo "All range benchmarks done"
-        elif [ $2 == "key" ]; then
-            query_func acorn $qrange
-            query_func diskann $qrange
-            query_func diskann_stitched $qrange
-            query_func hnsw $qrange
-            query_func ivfpq $qrange
-            query_func kgraph $qrange
-            query_func nsw $qrange
+        done
+    elif [ $2 == "keyword" ]; then
+        python utils/modify_var.py label_range 500
+        python utils/modify_var.py label_cnt 1
+        python utils/modify_var.py query_label_cnt 1
+        python utils/modify_var.py query_label 6
+        ./run_attr_generator.sh
+        ./run_qrange_generator.sh
+        source vars.sh query
+        rm $ground_truth_file
+        rm $ground_truth_bin_file
+        ./run_groundtruth_generator.sh
+        ./all_construct.sh keyword
+        for q_label in "${sel_list[@]}"; do
+            python utils/modify_var.py query_label $q_label
+            ./run_qrange_generator.sh
+            ./run_groundtruth_generator.sh
+            query_func acorn
+            query_func diskann
+            query_func diskann_stitched
+            query_func hnsw
+            query_func ivfpq
+            query_func kgraph
+            query_func nsw
+            query_func milvus_hnsw
+            query_func milvus_ivfpq
             echo "All label benchmarks done."
-        else
+        done
+    else
+        for qrange in "${sel_list[@]}"; do
+            echo "qrange=$qrange"
+            python utils/modify_var.py query_label_cnt $qrange
             query_func $2 $qrange
-        fi
-    done
+            echo "All range benchmarks done"
+        done
+    fi
     exit 0
 fi
-
-smallqrange_list=(
-    100
-    200
-    300
-    400
-    500
-    600
-    700
-    800
-    900
-)
-
-if [ $1 == "smallbatch" ]; then
-    for qrange in "${smallqrange_list[@]}"; do
-        echo "qrange=$qrange"
-        ./run_qrange_generator.sh batch_qr $qrange
-        ./run_groundtruth_generator.sh batch_gt $qrange
-        if [ $2 == "all" ]; then
-            query_func acorn $qrange
-            query_func diskann $qrange
-            query_func diskann_stitched $qrange
-            query_func hnsw $qrange
-            query_func irange $qrange
-            query_func ivfpq $qrange
-            query_func milvus_ivfpq $qrange
-            query_func milvus_hnsw $qrange
-            query_func kgraph $qrange
-            query_func nsw $qrange
-            query_func serf $qrange
-            query_func dsg $qrange
-            query_func vamana_tree $qrange
-            query_func wst_sup_opt $qrange
-            query_func unify $qrange
-            echo "All benchmarks done."
-        elif [ $2 == "range" ]; then
-            query_func acorn $qrange
-            query_func hnsw $qrange
-            query_func irange $qrange
-            query_func ivfpq $qrange
-            # query_func milvus_ivfpq $qrange
-            # query_func milvus_hnsw $qrange
-            query_func serf $qrange
-            query_func dsg $qrange
-            query_func vamana_tree $qrange
-            query_func wst_sup_opt $qrange
-            query_func unify $qrange
-            echo "All range benchmarks done"
-        elif [ $2 == "key" ]; then
-            query_func acorn $qrange
-            query_func diskann $qrange
-            query_func diskann_stitched $qrange
-            query_func hnsw $qrange
-            query_func ivfpq $qrange
-            query_func kgraph $qrange
-            query_func nsw $qrange
-            echo "All label benchmarks done."
-        else
-            query_func $2 $qrange
-        fi
-    done
-    exit 0
-fi
-
-
-largeqrange_list=(
-    20000
-    30000
-    40000
-    50000
-    60000
-    70000
-    80000
-    90000
-    100000
-)
-
-if [ $1 == "largebatch" ]; then
-    for qrange in "${largeqrange_list[@]}"; do
-        echo "qrange=$qrange"
-        ./run_qrange_generator.sh batch_qr $qrange
-        ./run_groundtruth_generator.sh batch_gt $qrange
-        if [ $2 == "all" ]; then
-            query_func acorn $qrange
-            query_func diskann $qrange
-            query_func diskann_stitched $qrange
-            query_func hnsw $qrange
-            query_func irange $qrange
-            query_func ivfpq $qrange
-            query_func milvus_ivfpq $qrange
-            query_func milvus_hnsw $qrange
-            query_func kgraph $qrange
-            query_func nsw $qrange
-            query_func serf $qrange
-            query_func dsg $qrange
-            query_func vamana_tree $qrange
-            query_func wst_sup_opt $qrange
-            query_func unify $qrange
-            echo "All benchmarks done."
-        elif [ $2 == "range" ]; then
-            query_func acorn $qrange
-            # query_func hnsw $qrange
-            query_func irange $qrange
-            # query_func ivfpq $qrange
-            # query_func milvus_ivfpq $qrange
-            # query_func milvus_hnsw $qrange
-            query_func serf $qrange
-            query_func dsg $qrange
-            query_func vamana_tree $qrange
-            query_func wst_sup_opt $qrange
-            query_func unify $qrange
-            echo "All range benchmarks done"
-        elif [ $2 == "key" ]; then
-            query_func acorn $qrange
-            query_func diskann $qrange
-            query_func diskann_stitched $qrange
-            query_func hnsw $qrange
-            query_func ivfpq $qrange
-            query_func kgraph $qrange
-            query_func nsw $qrange
-            echo "All label benchmarks done."
-        else
-            query_func $2 $qrange
-        fi
-    done
-    exit 0
-fi
-

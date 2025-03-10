@@ -31,8 +31,58 @@ elif [ "$1" == "dist" ]; then
                                     $query_size \
                                     $label_attr \
                                     $query_attr
-elif [ "$1" == "query2" ]; then
+elif [ "$1" == "queryplot" ]; then
     python utils/plot/recall_qps2.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "cpqqps" ]; then
+    python utils/plot/cpq_qps.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "querybar" ]; then
+    python utils/plot/recall_qps3.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "querybarlabel" ]; then
+    python utils/plot/recall_bar_label.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "queryplotkeyword" ]; then
+    python utils/plot/recall_qps_keyword.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "index" ]; then
+    python utils/plot/index.py exp_results.csv \
                                     $dataset \
                                     $query_label_cnt \
                                     $label_range \

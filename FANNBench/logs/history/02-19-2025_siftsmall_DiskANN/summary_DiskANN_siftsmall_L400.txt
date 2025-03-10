@@ -1,0 +1,1967 @@
+Start time: 17:46
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 1 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.899116s
+Index built with degree: max:40  avg:28.8331  min:5  count(deg<2):0
+Indexing time: 0.966298
+Not saving tags as they are not enabled.
+Time taken for save: 0.034287s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_1_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_1/data_attr.txt -T 128"
+	User time (seconds): 25.98
+	System time (seconds): 1.44
+	Percent of CPU this job got: 2597%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 10
+	Minor (reclaiming a frame) page faults: 6789
+	Voluntary context switches: 366
+	Involuntary context switches: 748390
+	Swaps: 0
+	File system inputs: 19952
+	File system outputs: 12440
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:47
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_1/sift_gt_10_sel_1_1_500_random_1.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_1/sift_gt_10_sel_1_1_500_random_1.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.00061324s
+From graph header, expected_file_size: 1193348, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_1_M40_efc1000/index_diskann...done. Index has 10000 nodes and 288331 out-edges, _start is set to 3732
+Identified 1 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     1070.20           2313.01              934.14       12760.51      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_1_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_1_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_1_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_1/sift_gt_10_sel_1_1_500_random_1.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_1/sift_qrange_keywordsel_1_1_500_random_1.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_1_efs100 -T 1"
+	User time (seconds): 0.06
+	System time (seconds): 0.01
+	Percent of CPU this job got: 57%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 25600
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 3980
+	Voluntary context switches: 12
+	Involuntary context switches: 135
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:49
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 433 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.937352s
+Index built with degree: max:40  avg:36.007  min:13  count(deg<2):0
+Indexing time: 0.963947
+Not saving tags as they are not enabled.
+Time taken for save: 0.019927s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_2_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/data_attr.txt -T 128"
+	User time (seconds): 27.34
+	System time (seconds): 1.33
+	Percent of CPU this job got: 2768%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6791
+	Voluntary context switches: 360
+	Involuntary context switches: 461479
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13024
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:49
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_gt_10_sel_1_1_500_random_2.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_gt_10_sel_1_1_500_random_2.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000579372s
+From graph header, expected_file_size: 1480304, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_2_M40_efc1000/index_diskann...done. Index has 10000 nodes and 360070 out-edges, _start is set to 3732
+Identified 433 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     1238.75           2002.35              806.98       12722.60      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_2_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_2_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_2_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_gt_10_sel_1_1_500_random_2.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_qrange_keywordsel_1_1_500_random_2.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_2_efs100 -T 1"
+	User time (seconds): 0.07
+	System time (seconds): 0.01
+	Percent of CPU this job got: 43%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.19
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4041
+	Voluntary context switches: 1
+	Involuntary context switches: 133
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:52
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 487 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.904149s
+Index built with degree: max:40  avg:39.1452  min:20  count(deg<2):0
+Indexing time: 0.924271
+Not saving tags as they are not enabled.
+Time taken for save: 0.020241s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_3_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_3/data_attr.txt -T 128"
+	User time (seconds): 30.10
+	System time (seconds): 1.51
+	Percent of CPU this job got: 3229%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.97
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 36864
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6833
+	Voluntary context switches: 366
+	Involuntary context switches: 565080
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13272
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:52
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_3/sift_gt_10_sel_1_1_500_random_3.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_3/sift_gt_10_sel_1_1_500_random_3.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000558478s
+From graph header, expected_file_size: 1605832, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_3_M40_efc1000/index_diskann...done. Index has 10000 nodes and 391452 out-edges, _start is set to 3732
+Identified 487 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400      365.21           1657.45             2737.83       25916.19      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_3_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_3_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_3_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_3/sift_gt_10_sel_1_1_500_random_3.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_3/sift_qrange_keywordsel_1_1_500_random_3.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_3_efs100 -T 1"
+	User time (seconds): 0.08
+	System time (seconds): 0.01
+	Percent of CPU this job got: 28%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.34
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4065
+	Voluntary context switches: 1
+	Involuntary context switches: 146
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:55
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 498 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.845173s
+Index built with degree: max:40  avg:39.9055  min:28  count(deg<2):0
+Indexing time: 0.865672
+Not saving tags as they are not enabled.
+Time taken for save: 0.020148s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_4_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_4/data_attr.txt -T 128"
+	User time (seconds): 27.38
+	System time (seconds): 2.39
+	Percent of CPU this job got: 3134%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.95
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6823
+	Voluntary context switches: 321
+	Involuntary context switches: 985937
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13344
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:55
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_4/sift_gt_10_sel_1_1_500_random_4.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_4/sift_gt_10_sel_1_1_500_random_4.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000596587s
+From graph header, expected_file_size: 1636244, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_4_M40_efc1000/index_diskann...done. Index has 10000 nodes and 399055 out-edges, _start is set to 3732
+Identified 498 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400      489.54           1384.11             2042.32       32786.15      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_4_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_4_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_4_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_4/sift_gt_10_sel_1_1_500_random_4.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_4/sift_qrange_keywordsel_1_1_500_random_4.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_4_efs100 -T 1"
+	User time (seconds): 0.08
+	System time (seconds): 0.01
+	Percent of CPU this job got: 31%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.30
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 26624
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4073
+	Voluntary context switches: 1
+	Involuntary context switches: 140
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:57
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.632458s
+Index built with degree: max:40  avg:39.993  min:29  count(deg<2):0
+Indexing time: 0.653428
+Not saving tags as they are not enabled.
+Time taken for save: 0.026674s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_5_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_5/data_attr.txt -T 128"
+	User time (seconds): 29.71
+	System time (seconds): 1.32
+	Percent of CPU this job got: 4262%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6832
+	Voluntary context switches: 354
+	Involuntary context switches: 320136
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13352
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 17:57
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_5/sift_gt_10_sel_1_1_500_random_5.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_5/sift_gt_10_sel_1_1_500_random_5.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000386877s
+From graph header, expected_file_size: 1639744, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_5_M40_efc1000/index_diskann...done. Index has 10000 nodes and 399930 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400      455.41           1183.15             2195.46       49637.73      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_5_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_5_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_5_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_5/sift_gt_10_sel_1_1_500_random_5.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_5/sift_qrange_keywordsel_1_1_500_random_5.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_5_efs100 -T 1"
+	User time (seconds): 0.07
+	System time (seconds): 0.01
+	Percent of CPU this job got: 27%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.31
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 26624
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4078
+	Voluntary context switches: 1
+	Involuntary context switches: 139
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:00
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.631697s
+Index built with degree: max:40  avg:39.9979  min:38  count(deg<2):0
+Indexing time: 0.652693
+Not saving tags as they are not enabled.
+Time taken for save: 0.020392s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_6_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_6/data_attr.txt -T 128"
+	User time (seconds): 28.41
+	System time (seconds): 1.33
+	Percent of CPU this job got: 4120%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6828
+	Voluntary context switches: 372
+	Involuntary context switches: 347775
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13368
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:00
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_6/sift_gt_10_sel_1_1_500_random_6.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_6/sift_gt_10_sel_1_1_500_random_6.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000555826s
+From graph header, expected_file_size: 1639940, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_6_M40_efc1000/index_diskann...done. Index has 10000 nodes and 399979 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400      851.22           1112.49             1174.40       18685.53      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_6_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_6_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_6_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_6/sift_gt_10_sel_1_1_500_random_6.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_6/sift_qrange_keywordsel_1_1_500_random_6.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_6_efs100 -T 1"
+	User time (seconds): 0.06
+	System time (seconds): 0.01
+	Percent of CPU this job got: 35%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.21
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 26624
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 4087
+	Voluntary context switches: 2
+	Involuntary context switches: 143
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:03
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.624265s
+Index built with degree: max:40  avg:39.9988  min:38  count(deg<2):0
+Indexing time: 0.64576
+Not saving tags as they are not enabled.
+Time taken for save: 0.020872s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_7_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_7/data_attr.txt -T 128"
+	User time (seconds): 28.40
+	System time (seconds): 1.43
+	Percent of CPU this job got: 4203%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6857
+	Voluntary context switches: 305
+	Involuntary context switches: 508439
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13376
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:03
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_7/sift_gt_10_sel_1_1_500_random_7.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_7/sift_gt_10_sel_1_1_500_random_7.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.0006203s
+From graph header, expected_file_size: 1639976, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_7_M40_efc1000/index_diskann...done. Index has 10000 nodes and 399988 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400      702.80            968.86             1422.54       32729.66       99.90
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_7_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_7_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_7_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_7/sift_gt_10_sel_1_1_500_random_7.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_7/sift_qrange_keywordsel_1_1_500_random_7.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_7_efs100 -T 1"
+	User time (seconds): 0.06
+	System time (seconds): 0.01
+	Percent of CPU this job got: 34%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.25
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4074
+	Voluntary context switches: 1
+	Involuntary context switches: 138
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:05
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.546663s
+Index built with degree: max:40  avg:39.9998  min:39  count(deg<2):0
+Indexing time: 0.5677
+Not saving tags as they are not enabled.
+Time taken for save: 0.020505s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_8_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_8/data_attr.txt -T 128"
+	User time (seconds): 29.61
+	System time (seconds): 1.37
+	Percent of CPU this job got: 4681%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 33792
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6863
+	Voluntary context switches: 373
+	Involuntary context switches: 315852
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13368
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:06
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_8/sift_gt_10_sel_1_1_500_random_8.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_8/sift_gt_10_sel_1_1_500_random_8.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000646898s
+From graph header, expected_file_size: 1640016, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_8_M40_efc1000/index_diskann...done. Index has 10000 nodes and 399998 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     2920.46            885.02              342.12         542.45       99.30
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_8_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_8_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_8_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_8/sift_gt_10_sel_1_1_500_random_8.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_8/sift_qrange_keywordsel_1_1_500_random_8.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_8_efs100 -T 1"
+	User time (seconds): 0.04
+	System time (seconds): 0.01
+	Percent of CPU this job got: 67%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4086
+	Voluntary context switches: 2
+	Involuntary context switches: 132
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:08
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.623674s
+Index built with degree: max:40  avg:39.9999  min:39  count(deg<2):0
+Indexing time: 0.653463
+Not saving tags as they are not enabled.
+Time taken for save: 0.014201s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_9_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_9/data_attr.txt -T 128"
+	User time (seconds): 23.92
+	System time (seconds): 1.17
+	Percent of CPU this job got: 3452%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 36864
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6859
+	Voluntary context switches: 322
+	Involuntary context switches: 446447
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13384
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:08
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_9/sift_gt_10_sel_1_1_500_random_9.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_9/sift_gt_10_sel_1_1_500_random_9.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000627171s
+From graph header, expected_file_size: 1640020, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_9_M40_efc1000/index_diskann...done. Index has 10000 nodes and 399999 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     3087.31            745.65              323.69         526.85       98.10
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_9_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_9_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_9_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_9/sift_gt_10_sel_1_1_500_random_9.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_9/sift_qrange_keywordsel_1_1_500_random_9.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_9_efs100 -T 1"
+	User time (seconds): 0.04
+	System time (seconds): 0.01
+	Percent of CPU this job got: 59%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.09
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4073
+	Voluntary context switches: 1
+	Involuntary context switches: 132
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:11
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.567809s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.588563
+Not saving tags as they are not enabled.
+Time taken for save: 0.014919s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_10_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_10/data_attr.txt -T 128"
+	User time (seconds): 24.28
+	System time (seconds): 1.37
+	Percent of CPU this job got: 3888%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6854
+	Voluntary context switches: 325
+	Involuntary context switches: 505951
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:11
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_10/sift_gt_10_sel_1_1_500_random_10.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_10/sift_gt_10_sel_1_1_500_random_10.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000624193s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_10_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     3385.55            528.20              295.12         474.96       92.20
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_10_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_10_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_10_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_10/sift_gt_10_sel_1_1_500_random_10.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_10/sift_qrange_keywordsel_1_1_500_random_10.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_10_efs100 -T 1"
+	User time (seconds): 0.04
+	System time (seconds): 0.01
+	Percent of CPU this job got: 75%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4072
+	Voluntary context switches: 1
+	Involuntary context switches: 130
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:14
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.544401s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.578388
+Not saving tags as they are not enabled.
+Time taken for save: 0.02031s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_11_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_11/data_attr.txt -T 128"
+	User time (seconds): 23.37
+	System time (seconds): 1.31
+	Percent of CPU this job got: 3791%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6857
+	Voluntary context switches: 350
+	Involuntary context switches: 537923
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13384
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:14
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_11/sift_gt_10_sel_1_1_500_random_11.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_11/sift_gt_10_sel_1_1_500_random_11.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000638125s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_11_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     4427.23            327.00              225.58         341.88       53.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_11_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_11_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_11_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_11/sift_gt_10_sel_1_1_500_random_11.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_11/sift_qrange_keywordsel_1_1_500_random_11.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_11_efs100 -T 1"
+	User time (seconds): 0.03
+	System time (seconds): 0.01
+	Percent of CPU this job got: 42%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4070
+	Voluntary context switches: 1
+	Involuntary context switches: 130
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:16
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.547901s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.579101
+Not saving tags as they are not enabled.
+Time taken for save: 0.020544s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_12_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_12/data_attr.txt -T 128"
+	User time (seconds): 21.65
+	System time (seconds): 1.25
+	Percent of CPU this job got: 3508%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6869
+	Voluntary context switches: 467
+	Involuntary context switches: 651436
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:17
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_12/sift_gt_10_sel_1_1_500_random_12.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_12/sift_gt_10_sel_1_1_500_random_12.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000623909s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_12_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     6469.96            291.00              154.32         326.00       53.90
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_12_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_12_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_12_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_12/sift_gt_10_sel_1_1_500_random_12.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_12/sift_qrange_keywordsel_1_1_500_random_12.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_12_efs100 -T 1"
+	User time (seconds): 0.02
+	System time (seconds): 0.01
+	Percent of CPU this job got: 69%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4081
+	Voluntary context switches: 1
+	Involuntary context switches: 129
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:19
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.483665s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.504281
+Not saving tags as they are not enabled.
+Time taken for save: 0.020335s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_13_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_13/data_attr.txt -T 128"
+	User time (seconds): 27.93
+	System time (seconds): 1.37
+	Percent of CPU this job got: 5096%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.57
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 33792
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6866
+	Voluntary context switches: 391
+	Involuntary context switches: 346306
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:19
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_13/sift_gt_10_sel_1_1_500_random_13.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_13/sift_gt_10_sel_1_1_500_random_13.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000599795s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_13_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     4995.78            244.00              199.94         264.92       53.60
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_13_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_13_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_13_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_13/sift_gt_10_sel_1_1_500_random_13.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_13/sift_qrange_keywordsel_1_1_500_random_13.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_13_efs100 -T 1"
+	User time (seconds): 0.02
+	System time (seconds): 0.01
+	Percent of CPU this job got: 66%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 25600
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4111
+	Voluntary context switches: 16
+	Involuntary context switches: 133
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:22
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.535016s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.556135
+Not saving tags as they are not enabled.
+Time taken for save: 0.035039s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_14_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_14/data_attr.txt -T 128"
+	User time (seconds): 22.43
+	System time (seconds): 1.55
+	Percent of CPU this job got: 3714%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.64
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6848
+	Voluntary context switches: 411
+	Involuntary context switches: 833676
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13408
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:22
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_14/sift_gt_10_sel_1_1_500_random_14.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_14/sift_gt_10_sel_1_1_500_random_14.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000612759s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_14_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400    10500.72            113.00               94.83         277.62       17.30
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_14_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_14_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_14_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_14/sift_gt_10_sel_1_1_500_random_14.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_14/sift_qrange_keywordsel_1_1_500_random_14.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_14_efs100 -T 1"
+	User time (seconds): 0.02
+	System time (seconds): 0.01
+	Percent of CPU this job got: 33%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 26624
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4113
+	Voluntary context switches: 5
+	Involuntary context switches: 132
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:25
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.476843s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.4976
+Not saving tags as they are not enabled.
+Time taken for save: 0.020112s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_15_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_15/data_attr.txt -T 128"
+	User time (seconds): 28.91
+	System time (seconds): 1.40
+	Percent of CPU this job got: 5403%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 36864
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6883
+	Voluntary context switches: 334
+	Involuntary context switches: 301040
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:25
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_15/sift_gt_10_sel_1_1_500_random_15.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_15/sift_gt_10_sel_1_1_500_random_15.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000604332s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_15_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+ 400    81549.84              7.00               12.00          62.28        0.10
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_15_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_15_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_15_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_15/sift_gt_10_sel_1_1_500_random_15.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_15/sift_qrange_keywordsel_1_1_500_random_15.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_15_efs100 -T 1"
+	User time (seconds): 0.00
+	System time (seconds): 0.01
+	Percent of CPU this job got: 38%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 4098
+	Voluntary context switches: 5
+	Involuntary context switches: 130
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:27
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.588694s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.610347
+Not saving tags as they are not enabled.
+Time taken for save: 0.041998s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_16_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_16/data_attr.txt -T 128"
+	User time (seconds): 29.22
+	System time (seconds): 1.62
+	Percent of CPU this job got: 4290%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6857
+	Voluntary context switches: 340
+	Involuntary context switches: 604831
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:27
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_16/sift_gt_10_sel_1_1_500_random_16.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_16/sift_gt_10_sel_1_1_500_random_16.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000636172s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_16_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400    91740.26             10.00               10.66          46.70        3.10
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_16_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_16_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_16_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_16/sift_gt_10_sel_1_1_500_random_16.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_16/sift_qrange_keywordsel_1_1_500_random_16.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_16_efs100 -T 1"
+	User time (seconds): 0.00
+	System time (seconds): 0.01
+	Percent of CPU this job got: 39%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 26624
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4071
+	Voluntary context switches: 1
+	Involuntary context switches: 131
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:30
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.519092s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.540474
+Not saving tags as they are not enabled.
+Time taken for save: 0.020264s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_17_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_17/data_attr.txt -T 128"
+	User time (seconds): 26.64
+	System time (seconds): 1.43
+	Percent of CPU this job got: 4694%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6859
+	Voluntary context switches: 365
+	Involuntary context switches: 369555
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:30
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_17/sift_gt_10_sel_1_1_500_random_17.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_17/sift_gt_10_sel_1_1_500_random_17.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000424136s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_17_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+ 400    51695.72              0.00               19.04          86.15        0.30
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_17_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_17_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_17_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_17/sift_gt_10_sel_1_1_500_random_17.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_17/sift_qrange_keywordsel_1_1_500_random_17.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_17_efs100 -T 1"
+	User time (seconds): 0.01
+	System time (seconds): 0.02
+	Percent of CPU this job got: 78%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.04
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4075
+	Voluntary context switches: 0
+	Involuntary context switches: 130
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:33
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.471192s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.491842
+Not saving tags as they are not enabled.
+Time taken for save: 0.020086s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_18_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_18/data_attr.txt -T 128"
+	User time (seconds): 29.71
+	System time (seconds): 1.55
+	Percent of CPU this job got: 5486%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.57
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6863
+	Voluntary context switches: 380
+	Involuntary context switches: 305115
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:33
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_18/sift_gt_10_sel_1_1_500_random_18.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_18/sift_gt_10_sel_1_1_500_random_18.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000543894s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_18_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+ 400    79231.39              0.00               12.34          65.64        0.10
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_18_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_18_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_18_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_18/sift_gt_10_sel_1_1_500_random_18.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_18/sift_qrange_keywordsel_1_1_500_random_18.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_18_efs100 -T 1"
+	User time (seconds): 0.00
+	System time (seconds): 0.01
+	Percent of CPU this job got: 34%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.07
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4078
+	Voluntary context switches: 0
+	Involuntary context switches: 133
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:35
+Starting index build with R: 40  Lbuild: 100  alpha: 1.2  #threads: 128
+L2: Using AVX2 distance computation DistanceL2Float
+Identified 500 distinct label(s)
+Using only first 10000 from file.. 
+Starting index build with 10000 points... 
+0% of index build completed.Starting final cleanup..done. Link time: 0.466894s
+Index built with degree: max:40  avg:40  min:40  count(deg<2):0
+Indexing time: 0.488732
+Not saving tags as they are not enabled.
+Time taken for save: 0.014428s.
+	Command being timed: "../DiskANN/build/apps/build_memory_index --data_type float --dist_fn l2 --data_path /mnt/data/mocheng/dataset/siftsmall/data_base.bin --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_19_M40_efc1000/index_diskann -R 40 --alpha 1.2 --label_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_19/data_attr.txt -T 128"
+	User time (seconds): 21.88
+	System time (seconds): 1.29
+	Percent of CPU this job got: 4300%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 35840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 6868
+	Voluntary context switches: 374
+	Involuntary context switches: 598371
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 13400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 18:36
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_19/sift_gt_10_sel_1_1_500_random_19.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_19/sift_gt_10_sel_1_1_500_random_19.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.000497355s
+From graph header, expected_file_size: 1640024, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_19_M40_efc1000/index_diskann...done. Index has 10000 nodes and 400000 out-edges, _start is set to 3732
+Identified 500 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+Found fewer than K elements for query
+ 400    46500.73              0.00               21.17          91.54        1.90
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_19_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_19_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_19_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_19/sift_gt_10_sel_1_1_500_random_19.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_19/sift_qrange_keywordsel_1_1_500_random_19.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_19_efs100 -T 1"
+	User time (seconds): 0.01
+	System time (seconds): 0.01
+	Percent of CPU this job got: 58%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4089
+	Voluntary context switches: 0
+	Involuntary context switches: 130
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 20:13
+Start time: 20:14
+Reading (with alignment) bin file /mnt/data/mocheng/dataset/siftsmall/data_query.bin ...Metadata: #pts = 100, #dims = 128, aligned_dim = 128... allocating aligned memory of 51200 bytes... done. Copying data to mem_aligned buffer... done.
+Opened: /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_gt_10_sel_1_1_500_random_2.bin, size: 4008, cache_size: 4008
+Reading truthset file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_gt_10_sel_1_1_500_random_2.bin ...
+Metadata: #pts = 100, #dims = 10... 
+L2: Using AVX2 distance computation DistanceL2Float
+Resizing took: 0.00131394s
+From graph header, expected_file_size: 1480304, _max_observed_degree: 40, _start: 3732, file_frozen_pts: 0
+Loading vamana graph /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_2_M40_efc1000/index_diskann...done. Index has 10000 nodes and 360070 out-edges, _start is set to 3732
+Identified 433 distinct label(s)
+Num frozen points:0 _nd: 10000 _start: 3732 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 10000
+Index loaded
+Using 1 threads to search
+  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency   Recall@10
+=================================================================================
+ 400     1937.60           2002.35              515.78         738.76      100.00
+Done searching. Now saving results 
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_2_efs100_400_idx_uint32.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+Writing bin: /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_2_efs100_400_dists_float.bin
+bin: #pts = 100, #dims = 10, size = 4008B
+Finished writing bin.
+	Command being timed: "../DiskANN/build/apps/search_memory_index --data_type float --dist_fn l2 --index_path_prefix /mnt/data/mocheng/dataset/siftsmall/diskann/index/index_diskann_sel_1_500_random_2_M40_efc1000/index_diskann --query_file /mnt/data/mocheng/dataset/siftsmall/data_query.bin --gt_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_gt_10_sel_1_1_500_random_2.bin --query_filters_file /mnt/data/mocheng/dataset/siftsmall/label/sel_1_500_random_2/sift_qrange_keywordsel_1_1_500_random_2.txt -K 10 -L 400 --result_path /mnt/data/mocheng/dataset/siftsmall/diskann/result/result_sel_1_500_random_2_efs100 -T 1"
+	User time (seconds): 0.06
+	System time (seconds): 0.01
+	Percent of CPU this job got: 73%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 27648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4037
+	Voluntary context switches: 1
+	Involuntary context switches: 129
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
