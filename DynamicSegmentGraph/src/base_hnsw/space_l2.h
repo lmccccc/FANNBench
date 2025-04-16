@@ -174,14 +174,18 @@ class L2Space : public SpaceInterface<float> {
   L2Space(size_t dim) {
     fstdistfunc_ = L2Sqr;
 #if defined(USE_SSE) || defined(USE_AVX)
-    if (dim % 16 == 0)
+    if (dim % 16 == 0){
+      std::cout << "using simd16" << std::endl;
       fstdistfunc_ = L2SqrSIMD16Ext;
+    }
     else if (dim % 4 == 0)
       fstdistfunc_ = L2SqrSIMD4Ext;
     else if (dim > 16)
       fstdistfunc_ = L2SqrSIMD16ExtResiduals;
     else if (dim > 4)
       fstdistfunc_ = L2SqrSIMD4ExtResiduals;
+#else 
+    std::cout << "no simd" << std::endl;
 #endif
     dim_ = dim;
     data_size_ = dim * sizeof(float);

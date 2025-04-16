@@ -1384,15 +1384,15 @@ class HierarchicalNSW : public AlgorithmInterface<dist_t> {
             changed = false;
             unsigned int *data;
             std::unique_lock<std::mutex> lock(link_list_locks_[currObj]);
-            data = get_linklist(currObj, level);                               //neighbors of current point?
+            data = get_linklist(currObj, level);                               //neighbors of current point
             int size = getListCount(data);
 
             tableint *datal = (tableint *)(data + 1);
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) {                               // each neighbor
               tableint cand = datal[i];
               if (cand < 0 || cand > max_elements_)
                 throw std::runtime_error("cand error");
-              dist_t d = fstdistfunc_(data_point, getDataByInternalId(cand),
+              dist_t d = fstdistfunc_(data_point, getDataByInternalId(cand),   // distance to the neighbor
                                       dist_func_param_);
               if (d < curdist) {
                 curdist = d;

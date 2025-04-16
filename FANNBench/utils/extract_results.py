@@ -88,7 +88,10 @@ def get_info_from_diskann_stitched(df, lines, mode):
             nn_line = lines[idx+2]
             info = nn_line.split()
             print("info:", info)
-            recall = float(info[5])/100
+            try:
+                recall = float(info[5])/100
+            except ValueError:
+                continue
             df.at[0, "Recall"] = recall
             df.at[0, "QPS"] = float(info[1])
             df.at[0, "CompsPerQuery"] = float(info[2])
@@ -324,6 +327,9 @@ def get_info_from_serf(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        elif "nns time pct: " in line:
+            pct = float(line.split(":")[1])
+            print("fetch nn time percentage:", pct)
         # if "Average degree:" in line:
         #     avg_deg = float(line.split(":")[1])
         #     df.at[0, "avg_deg"] = avg_deg
@@ -354,6 +360,9 @@ def get_info_from_dsg(df, lines, mode):
         elif "Maximum resident set size (kbytes)" in line:
             mem = float(line.split(":")[1]) / 1024
             df.at[0, "Memory"] = mem
+        elif "Fetch percentage: " in line:
+            pct = float(line.split(":")[1])
+            print("fetch nn time percentage:", pct)
         # if "Average degree:" in line:
         #     avg_deg = float(line.split(":")[1])
         #     df.at[0, "avg_deg"] = avg_deg
@@ -543,14 +552,14 @@ if __name__ == "__main__":
     # if label_cnt > 1 and query_label_cnt == 1:
     df.at[0, "query_label"] = query_label
 
-    if(algo == 'ACORN'):
+    if('ACORN' in algo):
         df.at[0, "M"] = M
         df.at[0, "ef_construction"] = ef_construction
         df.at[0, "ef_search"] = ef_search
         df.at[0, "gamma"] = gamma
         df.at[0, "M_beta"] = M_beta
         df.at[0, "IndexSize"] = get_size(acorn_index_file)
-    elif(algo == 'HNSW'):
+    elif(algo == 'HNSW' or "HNSW_" in algo):
         df.at[0, "M"] = M
         df.at[0, "ef_construction"] = ef_construction
         df.at[0, "ef_search"] = ef_search
@@ -566,7 +575,7 @@ if __name__ == "__main__":
         df.at[0, "L"] = L
         df.at[0, "IndexSize"] = get_size(diskann_index_label_root)
         df.at[0, "Stitched_R"] = Stitched_R
-    elif(algo == 'SeRF'):
+    elif('SeRF' in algo):
         df.at[0, "serf_M"] = serf_M
         df.at[0, "ef_construction"] = ef_construction
         df.at[0, "ef_search"] = ef_search
@@ -582,6 +591,7 @@ if __name__ == "__main__":
         df.at[0, "final_beam_multiply"] = final_beam_multiply
         df.at[0, "IndexSize"] = get_size(rfann_index_prefix)
     elif(algo == 'Milvus_IVFPQ'):
+        df.at[0, "partition_size_M"] = partition_size_M
         df.at[0, "nprobe"] = nprobe
         df.at[0, "IndexSize"] = -1
         # df.at[0, "IndexSize"] = get_size(milvus_coll_path)
@@ -625,21 +635,15 @@ if __name__ == "__main__":
         df.at[0, "split_factor"] = split_factor
         df.at[0, "final_beam_multiply"] = final_beam_multiply
         df.at[0, "IndexSize"] = get_size(vtree_index_prefix)
-    elif(algo == 'UNIFY'):
+    elif('UNIFY' in algo):
         df.at[0, "ef_construction"] = ef_construction
         df.at[0, "ef_search"] = ef_search
         df.at[0, "AL"] = AL
         df.at[0, "M"] = M
         df.at[0, "B_unify"] = B_unify
         df.at[0, "IndexSize"] = get_size(unify_index_file)
-    elif(algo == 'UNIFY_hybrid'):
-        df.at[0, "ef_construction"] = ef_construction
-        df.at[0, "ef_search"] = ef_search
-        df.at[0, "AL"] = AL
-        df.at[0, "M"] = M
-        df.at[0, "B_unify"] = B_unify
-        df.at[0, "IndexSize"] = get_size(unify_index_file)
-    elif(algo == 'DSG'):
+    elif('DSG' in algo):
+        df.at[0, "serf_M"] = serf_M
         df.at[0, "ef_max"] = ef_max
         df.at[0, "ef_construction"] = ef_construction
         df.at[0, "ef_search"] = ef_search
@@ -672,7 +676,7 @@ if __name__ == "__main__":
                 start_list.append(idx)
         if(algo == "WST_opt"):
             df = get_info_from_wst(df, lines[start_list[-1]:], mode)
-        elif(algo == "ACORN"):
+        elif("ACORN" in algo):
             df = get_info_from_acorn(df, lines[start_list[-1]:], mode)
         elif(algo == 'DiskANN'):
             df = get_info_from_diskann(df, lines[start_list[-1]:], mode)
@@ -680,7 +684,7 @@ if __name__ == "__main__":
             df = get_info_from_diskann_stitched(df, lines[start_list[-1]:], mode)
         elif(algo == "IVFPQ"):
             df = get_info_from_ivfpq(df, lines[start_list[-1]:], mode)
-        elif(algo == "HNSW"):
+        elif(algo == "HNSW" or "HNSW_" in algo):
             df = get_info_from_hnsw(df, lines[start_list[-1]:], mode)
         elif(algo == "WST_vamana"):
             df = get_info_from_vtree(df, lines[start_list[-1]:], mode)
@@ -690,7 +694,7 @@ if __name__ == "__main__":
             df = get_info_from_nhqnsw(df, lines[start_list[-1]:], mode)
         elif(algo == "RII"):
             df = get_info_from_rii(df, lines[start_list[-1]:], mode)
-        elif(algo == "SeRF"):
+        elif('SeRF' in algo):
             df = get_info_from_serf(df, lines[start_list[-1]:], mode)
         elif(algo == 'Milvus_IVFPQ'):
             df = get_info_from_milvus(df, lines[start_list[-1]:], mode)
@@ -698,11 +702,9 @@ if __name__ == "__main__":
             df = get_info_from_milvus(df, lines[start_list[-1]:], mode)
         elif(algo == 'iRangeGraph'):
             df = get_info_from_irange(df, lines[start_list[-1]:], mode)
-        elif(algo == 'UNIFY'):
+        elif('UNIFY' in algo):
             df = get_info_from_unify(df, lines[start_list[-1]:], mode)
-        elif(algo == 'UNIFY_hybrid'):
-            df = get_info_from_unify(df, lines[start_list[-1]:], mode)
-        elif(algo == 'DSG'):
+        elif('DSG' in algo):
             df = get_info_from_dsg(df, lines[start_list[-1]:], mode)
         else:
             print("error: algorithm not supported for dir:", res_filename)

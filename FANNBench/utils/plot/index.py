@@ -27,7 +27,7 @@ def print_latex(query_maps):
     print("\\cline{2-9}")
     print(" & ", end="")
     for i in range(len(dataset_list)):
-        print(" Size & Time ", end="")
+        print(" Memory & Time ", end="")
         if i != len(dataset_list) - 1:
             print(" & ", end="")
         else:
@@ -45,7 +45,7 @@ def print_latex(query_maps):
                 if dataset != dataset_list[-1]:
                     print(" & ", end="")
                 continue
-            size = int(query_maps[dataset][algo]["IndexSize"])
+            size = int(query_maps[dataset][algo]["Memory"])
             if size <= 0:
                 size = '-'
             time = int(query_maps[dataset][algo]["ConstructionTime"])
@@ -90,8 +90,19 @@ if __name__ == "__main__":
         algo = row["Paper"]
         dataset = row["Dataset"]
         index_size = row["IndexSize"]
-        memory = row["Memory"]
         const_time = row["ConstructionTime"]
+
+        if row["Recall"] > 0.1 and row["Threads"] == 1 and (row["query_label"] == 6 or row["query_label_cnt"] == 6 or row["query_label_cnt"] == 50000):
+            memory = row["Memory"]
+            if dataset not in query_maps.keys():
+                query_maps[dataset] = {}
+            if algo not in query_maps[dataset].keys():
+                query_maps[dataset][algo] = {}
+            query_maps[dataset][algo]["Memory"] = memory
+            continue
+        else:
+            memory = 0
+
         if const_time <= 0:
             continue
         
@@ -99,7 +110,8 @@ if __name__ == "__main__":
             query_maps[dataset] = {}
         if algo not in query_maps[dataset].keys():
             query_maps[dataset][algo] = {}
-        query_maps[dataset][algo] = {"IndexSize": index_size, "ConstructionTime": const_time}
+        query_maps[dataset][algo]["IndexSize"] = index_size
+        query_maps[dataset][algo]["ConstructionTime"] = const_time
     
     # print(query_maps)
     print_latex(query_maps)

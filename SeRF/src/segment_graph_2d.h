@@ -327,7 +327,7 @@ class SegmentGraph2DHNSW : public HierarchicalNSW<float> {
           //   visited_nn_dists.insert({nn_pair, curdist});
           // }
 
-          if (curdist < dist_to_query) {
+          if (curdist < dist_to_query) {   // rng prune
             good = false;
             break;
           }
@@ -518,6 +518,7 @@ class IndexSegmentGraph2D : public BaseIndex {
         for (auto nn : batch.nns_id) {                                        //
           // add reverse edge
           // this->directed_indexed_arr.at(nn).reverse_nns.emplace_back(i);
+          
           this->directed_indexed_arr.at(nn).reverse_nns.insert(
               this->directed_indexed_arr.at(nn).reverse_nns.begin(), i);
         }
@@ -863,10 +864,13 @@ class IndexSegmentGraph2D : public BaseIndex {
     // finding enters
     vector<int> enter_list;
     {
+      int interval_size = 3;
       int lbound = query_bound.first;
-      int interval = (query_bound.second - lbound) / 3;
-      for (size_t i = 0; i < 3; i++) {
-        int point = lbound + interval * i;
+      int interval = (query_bound.second - lbound) / interval_size;
+      for (size_t i = 0; i < interval_size; i++) {
+        int point = lbound + interval * i; 
+        // int point = lbound + i; // head of query
+        // int point = query_bound.second - i - 1;// tail of query
         float dist = EuclideanDistance(data_wrapper->nodes[point], query);        //get euclidean dis to query. only 3 nodes. why euclidean? why 3?
         candidate_set.push(make_pair(-dist, point));
         enter_list.emplace_back(point);
@@ -1047,7 +1051,7 @@ class IndexSegmentGraph2D : public BaseIndex {
     in.read(reinterpret_cast<char*>(&(index_info->avg_reverse_nns)), sizeof(float));
 
     // read data
-    size_t data_size, fwd_size, bwd_size, nns_size;
+    size_t data_size, fwd_size, bwd_size, nns_size, all_fwd, all_bwd;
     in.read(reinterpret_cast<char*>(&data_size), sizeof(size_t));
     assert(data_size == data_wrapper->data_size);
     directed_indexed_arr.resize(data_size);
@@ -1070,8 +1074,12 @@ class IndexSegmentGraph2D : public BaseIndex {
       in.read(reinterpret_cast<char*>(directed_indexed_arr[i].reverse_nns.data()),
               directed_indexed_arr[i].reverse_nns.size() * sizeof(int));
       num_edges += bwd_size + fwd_size;
+      all_fwd += fwd_size;
+      all_bwd +- bwd_size;
     }
     
+    std::cout << "fwd size:" << all_fwd << std::endl;
+    std::cout << "bwd size:" << all_bwd << std::endl;
     std::cout << "Total edge:" << num_edges << std::endl;
     std::cout << "Average degree:" << (double)num_edges/data_size << std::endl;
     in.close();

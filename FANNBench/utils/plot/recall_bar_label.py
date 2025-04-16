@@ -213,10 +213,10 @@ if __name__ == "__main__":
     for id in id2sel.keys():
         sel2id[id2sel[id]] = id
     
-    dataset="YTRGB1m"
+    # dataset="spacev10m"
     distribution = "random"
     label_range = 500
-    target_recall_list = [0.8, 0.99]
+    target_recall_list = [0.9, 0.95]
     target_id_list = [sel2id[sel] for sel in target_sel_list]
 
     for index, row in data.iterrows():
@@ -250,7 +250,7 @@ if __name__ == "__main__":
         query_map[algo][sel].append(res_turple)
     
 
-    print("query_map:", query_map)
+    # print("query_map:", query_map)
     # plot by selectivity
     # plot 0.9 recall   
     for target_recall in target_recall_list:

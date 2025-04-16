@@ -94,7 +94,7 @@ if __name__ == "__main__":
         else:
             print("collection ", c_name, " not exist")
         sys.exit(0)
-    else:
+    elif mode == "construction":
     # if True:
         if client.has_collection(c_name): # construction mode
             print("collection ", c_name, " exists")
@@ -133,12 +133,8 @@ if __name__ == "__main__":
         print("nlist:", nlist)
 
         client.create_collection(collection_name=c_name, 
-                                    schema=schema,
-                                    enable_dynamic_field=True,
-                                    consistency_level="Strong")
+                                    schema=schema)
 
-
-        
         data = [
             {"id": i, "vector": dataset[i].tolist(), "label": attr[i]}
             for i in range(N)
@@ -155,16 +151,19 @@ if __name__ == "__main__":
         for i in range(0, N, batch_size):
             client.insert(collection_name=c_name, data=data[i:min(i+batch_size, N)])
             print("insert batch:", i/batch_size, " of ", round(N/batch_size), " from ", i, " to ", min(i+batch_size, N))
-
+        
+        client.flush(collection_name=c_name)
         # client.insert(collection_name=c_name, data=data)
         # print("insert res:", res)
-        
         t2 = time.time()
+        print("insertion cost:", t2-t0)
+
         index_params = client.prepare_index_params()
         index_params.add_index(
             field_name="vector", 
             index_type="IVF_PQ",# IVF_FLAT IVF_PQ IVF_SQ8 HNSW SCANN
             metric_type="L2",
+            index_name="IVFPQ",
             params={ "nlist": nlist, "m": M} # see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
         )
         client.create_index(
@@ -172,6 +171,7 @@ if __name__ == "__main__":
             index_params=index_params,
             sync=True # Whether to wait for index creation to complete before returning. Defaults to True.
         )
+        
         t1 = time.time()
         
         client.load_collection(collection_name=c_name, 

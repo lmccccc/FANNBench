@@ -22,7 +22,7 @@ label_range=500
 label_cnt=1
 # qrange
 query_label_cnt=1
-query_label=20
+query_label=6
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,88 @@ query_label=20
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # ---begin dataset---
-# siftsmall（10k）
+
+## sift10m
+# dataset=sift10M
+
+## spacev10m
+# dataset=spacev10m
+
+## redcaps1m
+# dataset=redcaps1m
+
+## YT-RGB1m
+dataset=YTRGB1m
+
+## sift1M
+# dataset=sift1M
+
+# ---end dataset---
+
+
+
+
+
+if [  "$dataset" == "sift10M" ]; then
+    dim=128
+    N=10000000
+    query_size=10000
+    train_size=1000000
+    root="/mnt/data/mocheng/dataset/sift10m/" 
+    dataset_file=${root}sift10m.fvecs
+    query_file=${root}sift10m_query.fvecs
+    train_file=${root}sift10m_train.fvecs
+    distribution=random
+elif [  "$dataset" == "spacev10m" ]; then
+    dim=100
+    N=10000000
+    query_size=10000
+    train_size=1000000
+    root="/mnt/data/mocheng/dataset/spacev10m/"
+    dataset_file=${root}base10M.fvecs
+    query_file=${root}query10k.fvecs
+    train_file=${root}train.fvecs
+    distribution=random
+elif [  "$dataset" == "redcaps1m" ]; then
+    dim=512
+    N=1000000
+    query_size=10000
+    train_size=100000
+    root="/mnt/data/mocheng/dataset/redcaps1m/"
+    dataset_file=${root}image_embeddings.fvecs
+    query_file=${root}query.fvecs
+    train_file=${root}train.fvecs
+    real_attr_file=${root}timestamp.json
+    distribution=real
+elif [  "$dataset" == "YTRGB1m" ]; then
+    dim=1024
+    N=1000000
+    query_size=10000
+    train_size=1000000
+    root="/mnt/data/mocheng/dataset/youtube1m/" 
+    dataset_file=${root}rgb.fvecs
+    query_file=${root}rgb_query.fvecs
+    train_file=${root}rgb_train.fvecs
+    real_attr_file=${root}views.json
+    distribution=real
+elif [ "$dataset" == "sift1M" ]; then
+    dim=128
+    N=1000000
+    query_size=10000
+    train_size=100000
+    root="/mnt/data/mocheng/dataset/sift/" 
+    dataset_file=${root}sift_base.fvecs
+    query_file=${root}sift_query.fvecs
+    train_file=${root}sift_learn.fvecs
+fi
+
+if [ $query_label -gt 0 ]; then
+    distribution=random
+fi
+    
+
+
+## siftsmall（10k）
 # dataset=siftsmall
 # dim=128
 # N=10000
@@ -52,17 +133,17 @@ query_label=20
 # query_file=${root}sift_query.fvecs
 # train_file=${root}sift_learn.fvecs
 
-## sift10m
-dataset=sift10M
-dim=128
-N=10000000
-query_size=10000
-train_size=1000000
-root="/mnt/data/mocheng/dataset/sift10m/" 
-dataset_file=${root}sift10m.fvecs
-query_file=${root}sift10m_query.fvecs
-train_file=${root}sift10m_train.fvecs
-
+## yfcc10m
+# dataset=yfcc10m
+# dim=192
+# N=10000000
+# query_size=10000
+# train_size=100000
+# root="/mnt/data/mocheng/dataset/yfcc10m/"
+# dataset_file=${root}base10M.fvecs
+# query_file=${root}query10k.fvecs
+# train_file=${root}train.fvecs
+# distribution=random
 
 ## deep10m
 # dataset=deep10m
@@ -74,65 +155,9 @@ train_file=${root}sift10m_train.fvecs
 # dataset_file=${root}base.10M.fvecs      
 # query_file=${root}query.public.10K.fvecs
 # train_file=${root}deep_learn100K.fvecs  
+# distribution=random
 
-## spacev10m
-# dataset=spacev10m
-# dim=100
-# N=10000000
-# query_size=10000
-# train_size=1000000
-# root="/mnt/data/mocheng/dataset/spacev10m/"
-# dataset_file=${root}base10M.fvecs
-# query_file=${root}query10k.fvecs
-# train_file=${root}train.fvecs
 
-## redcaps1m
-# dataset=redcaps1m
-# dim=512
-# N=1000000
-# query_size=10000
-# train_size=100000
-# root="/mnt/data/mocheng/dataset/redcaps1m/"
-# dataset_file=${root}image_embeddings.fvecs
-# query_file=${root}query.fvecs
-# train_file=${root}train.fvecs
-# real_attr_file=${root}timestamp.json
-
-## redcaps4m
-# dataset=redcaps4m
-# dim=512
-# N=4000000
-# query_size=10000
-# train_size=100000
-# root="/mnt/data/mocheng/dataset/redcaps4m/"
-# dataset_file=${root}image_embeddings.fvecs
-# query_file=${root}query.fvecs
-# train_file=${root}train.fvecs
-
-## yfcc10m
-# dataset=yfcc10m
-# dim=192
-# N=10000000
-# query_size=10000
-# train_size=100000
-# root="/mnt/data/mocheng/dataset/yfcc10m/"
-# dataset_file=${root}base10M.fvecs
-# query_file=${root}query10k.fvecs
-# train_file=${root}train.fvecs
-
-## YT-RGB1m
-# dataset=YTRGB1m
-# dim=1024
-# N=1000000
-# query_size=10000
-# train_size=1000000
-# root="/mnt/data/mocheng/dataset/youtube1m/" 
-# dataset_file=${root}rgb.fvecs
-# query_file=${root}rgb_query.fvecs
-# train_file=${root}rgb_train.fvecs
-# real_attr_file=${root}views.json
-
-# ---end dataset---
 # # for all dataset
 dataset_bin_file=${root}data_base.bin # to be generated
 query_bin_file=${root}data_query.bin  # to be generated
@@ -169,13 +194,13 @@ query_bin_file=${root}data_query.bin  # to be generated
 # hnsw vars
 M=40 # normarlly 40
 ef_construction=1000
-ef_search=1000
+ef_search=200
 
 #serf vars
-serf_M=8 # fixed
+serf_M=8
 
 #dsg vars
-ef_max=500
+ef_max=1000
 
 #acorn vars
 gamma=25
@@ -187,10 +212,11 @@ alpha=1.2 # fixed
 L=1000 # "10 20 30 40 50 100" efsearch
 
 # DiskANN Stitched
-Stitched_R=80 
+Stitched_R=80
 
 #rii an pq based
-partition_size_M=$(($dim/2))
+partition_size_M=$dim
+# $(($dim/2)) $dim
 nprobe=10
 
 #RangeFilteredANN, super opt postfiltering
@@ -216,6 +242,7 @@ L_search=${ef_search}
 B_unify=8
 AL=16 # "[8, 16, 32]"
 
+# airship: not used
 alter_ratio=0.5
 
 # common vars
@@ -340,6 +367,7 @@ result_file=exp_results.csv
 #         query_attr=sel_${query_label_cnt}_${label_cnt}_${label_range}_${distribution}
 #     fi
 # fi
+
 if [ $query_label -gt 0 ]; then
     echo "categorical index"
     # label_attr=sel_${label_cnt}_${label_range}_${distribution}_${query_label} # to name different label files
@@ -388,7 +416,9 @@ fi
 
 
 # milvus_ivfpq collection name
-collection_name=collection_${dataset}_${label_attr}
+# collection_name=collection_${dataset}_${label_attr}
+collection_name=collection_${dataset}_${label_attr}_${partition_size_M}
+#_${partition_size_M}
 milvus_coll_path=/var/lib/milvus/etcd/data/${collection_name}/   # useless
 
 # milvus_hnsw collection name
@@ -403,6 +433,17 @@ acorn_index_root=${acorn_root}index/
 acorn_index_file=${acorn_index_root}index_acorn_${label_attr}_M${M}_ga${gamma}_Mb${M_beta}
 # acorn_result_root=${acorn_root}result/
 
+
+#acorn_rng res path
+acorn_rng_root=${root}acorn_rng/
+acorn_rng_index_root=${acorn_rng_root}index/
+acorn_rng_index_file=${acorn_rng_index_root}index_acorn_rng_${label_attr}_M${M}_ga${gamma}_Mb${M_beta}
+
+#acorn_kgraph res path
+acorn_kg_root=${root}acorn_kg/
+acorn_kg_index_root=${acorn_kg_root}index/
+acorn_kg_index_file=${acorn_kg_index_root}index_acorn_kg_${label_attr}_M${M}_ga${gamma}_Mb${M_beta}
+
 #ivfpq res path
 ivfpq_root=${root}ivfpq/
 ivfpq_index_root=${ivfpq_root}index/
@@ -413,7 +454,18 @@ hnsw_root=${root}hnsw/
 hnsw_index_root=${hnsw_root}index/
 hnsw_index_file=${hnsw_index_root}index_hnsw_${label_attr}_${M}_${ef_construction}
 
-#hnsw res path
+#hnsw kgraph path
+hnsw_kg_root=${root}hnsw_kg/
+hnsw_kg_index_root=${hnsw_kg_root}index/
+hnsw_kg_index_file=${hnsw_kg_index_root}index_hnsw_kg_${label_attr}_${M}_${ef_construction}
+
+
+#hnsw 2hop path
+hnsw_2hop_root=${root}hnsw_2hop/
+hnsw_2hop_index_root=${hnsw_2hop_root}index/
+hnsw_2hop_index_file=${hnsw_2hop_index_root}index_hnsw_kg_${label_attr}_${M}_${ef_construction}
+
+# airship res path
 airship_root=${root}airship/
 airship_index_root=${airship_root}index/
 airship_index_file=${airship_index_root}index_hnsw_${label_attr}_${M}_${ef_construction}_${alter_ratio}
@@ -474,10 +526,15 @@ serf_root=${root}serf/
 serf_index_root=${serf_root}serf_index/
 serf_index_file=${serf_index_root}index_serf_efmax${ef_max}_M${serf_M}_efs${ef_construction}_${label_attr}
 
+#serf_kg
+serf_kg_root=${root}serf_kg/
+serf_kg_index_root=${serf_kg_root}serf_kg_index/
+serf_kg_index_file=${serf_kg_index_root}index_serf_kg_efmax${ef_max}_M${serf_M}_efs${ef_construction}_${label_attr}
+
 #dsg
 dsg_root=${root}dsg/
 dsg_index_root=${dsg_root}dsg_index/
-dsg_index_file=${dsg_index_root}index_dsg_efmax${ef_max}_efs${ef_construction}_${label_attr}
+dsg_index_file=${dsg_index_root}index_dsg_efmax${ef_max}_efc${ef_construction}_M${serf_M}_${label_attr}
 
 #nhq_nsw
 nhq_root=${root}nhq/

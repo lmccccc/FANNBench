@@ -1,0 +1,276 @@
+Start time: 00:00
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 3.6961510s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {1200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-YTRGB1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:9223372032563280326
+bwd size:0
+Total edge:28428586
+Average degree:28.4286
+Total # of Neighbors: 49914382
+ef search:1200
+query id: 3 Range: 0 999999 sel: 1 recall: 0.7
+groundtruth: 748237 951505 454730 399145 762635 636827 746808 674525 998893 201529 
+result: 828016 795371 899605 201529 998893 746808 762635 454730 951505 748237 
+
+Search ef: 1200
+========================
+range: 0	 recall: 0.7417	 QPS: 117	 Comps: 12081
+========================
+qps: 117
+# total query time: 85.2131820s
+recall hist:
+0:346 1:284 2:299 3:408 4:471 5:563 6:667 7:815 8:1147 9:1517 10:3483 
+sel hist:
+0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:10000 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_kg -dataset YTRGB1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs -query_path /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs -label_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 1200 -index_file /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 87.70
+	System time (seconds): 5.73
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:33.44
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8138948
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2213166
+	Voluntary context switches: 1
+	Involuntary context switches: 150
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 00:03
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 3.8758680s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {1200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-YTRGB1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:60245509734506
+bwd size:0
+Total edge:28428586
+Average degree:28.4286
+Total # of Neighbors: 49914382
+ef search:1200
+query id: 3 Range: 418682 918715 sel: 0.500034 recall: 0.8
+groundtruth: 748237 454730 762635 636827 746808 674525 899605 795371 828016 740281 
+result: 509729 765978 740281 828016 795371 899605 746808 762635 454730 748237 
+
+Search ef: 1200
+========================
+range: 0	 recall: 0.7445	 QPS: 117	 Comps: 11472
+========================
+qps: 117
+# total query time: 85.8158290s
+recall hist:
+0:260 1:249 2:335 3:408 4:479 5:577 6:728 7:917 8:1073 9:1603 10:3371 
+sel hist:
+0:0 1:0 2:0 3:0 4:0 5:10000 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_kg -dataset YTRGB1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs -query_path /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs -label_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 1200 -index_file /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 88.17
+	System time (seconds): 5.89
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:34.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8138960
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2291056
+	Voluntary context switches: 1
+	Involuntary context switches: 158
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 00:04
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 3.8649910s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {1200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-YTRGB1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:75862010831021
+bwd size:0
+Total edge:28428586
+Average degree:28.4286
+Total # of Neighbors: 49914382
+ef search:1200
+query id: 3 Range: 211903 312053 sel: 0.100151 recall: 0.6
+groundtruth: 258614 254613 301637 302321 259192 258673 222860 216346 222411 249778 
+result: 224780 229150 308754 284872 222411 216346 222860 258673 302321 258614 
+
+Search ef: 1200
+========================
+range: 0	 recall: 0.7558	 QPS: 141	 Comps: 10047
+========================
+qps: 141
+# total query time: 71.1398690s
+recall hist:
+0:129 1:141 2:241 3:363 4:493 5:633 6:869 7:1084 8:1420 9:1695 10:2932 
+sel hist:
+0:0 1:10000 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_kg -dataset YTRGB1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs -query_path /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs -label_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 1200 -index_file /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 73.59
+	System time (seconds): 5.91
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8138960
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2149844
+	Voluntary context switches: 1
+	Involuntary context switches: 86
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 00:06
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 3.9162670s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {1200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-YTRGB1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:5312878017730
+bwd size:0
+Total edge:28428586
+Average degree:28.4286
+Total # of Neighbors: 49914382
+ef search:1200
+query id: 3 Range: 383940 394073 sel: 0.010134 recall: 0.9
+groundtruth: 387908 392946 390598 392735 384611 392503 389847 391930 387300 390592 
+result: 388336 387300 391930 389847 392503 384611 392735 390598 392946 387908 
+
+Search ef: 1200
+========================
+range: 0	 recall: 0.8622	 QPS: 278	 Comps: 4890
+========================
+qps: 278
+# total query time: 36.0311520s
+recall hist:
+0:10 1:1 2:14 3:34 4:73 5:231 6:501 7:1066 8:1841 9:2840 10:3389 
+sel hist:
+0:10000 1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_kg -dataset YTRGB1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs -query_path /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs -label_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/youtube1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 1200 -index_file /mnt/data/mocheng/dataset/youtube1m/serf_kg/serf_kg_index/index_serf_kg_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 38.60
+	System time (seconds): 5.76
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:44.37
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8137936
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2149838
+	Voluntary context switches: 1
+	Involuntary context switches: 69
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

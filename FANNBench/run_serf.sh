@@ -18,7 +18,7 @@ now=$(date +"%m-%d-%Y")
 
 source ./vars.sh $1 $2 $3 $4
 source ./file_check.sh
-algo=SeRF
+algo=SeRF_300
 
 # run of sift1M test
 

@@ -1925,37 +1925,37 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
     if(comp_cnt!=nullptr) (*comp_cnt)++;
     dist_t curdist = fstdistfunc_(query_data, GetDataByInternalId(curr_obj),
                                   dist_func_param_);
-    for (int level = maxlevel; level > 0; level--)
-    {
-      bool changed = true;
-      while (changed)
-      {
-        changed = false;
-        for (unsigned slot_i : activated_slots)
-        {
-          const tableint *links = GetLinks(curr_obj, level, slot_i);
-          int size              = std::min(GetLinkCount(links), al_per_slot);
-          const tableint *data  = links + 1;
+    // for (int level = maxlevel; level > 0; level--)
+    // {
+    //   bool changed = true;
+    //   while (changed)
+    //   {
+    //     changed = false;
+    //     for (unsigned slot_i : activated_slots)
+    //     {
+    //       const tableint *links = GetLinks(curr_obj, level, slot_i);
+    //       int size              = std::min(GetLinkCount(links), al_per_slot);
+    //       const tableint *data  = links + 1;
 
-          for (int j = 0; j < size; j++)
-          {
-            tableint cand = data[j];
-            if (cand < 0 || cand > max_elements_)
-              throw std::runtime_error("cand error");
-            if(comp_cnt!=nullptr) (*comp_cnt)++;
-            dist_t d = fstdistfunc_(query_data, GetDataByInternalId(cand),
-                                    dist_func_param_);
+    //       for (int j = 0; j < size; j++)
+    //       {
+    //         tableint cand = data[j];
+    //         if (cand < 0 || cand > max_elements_)
+    //           throw std::runtime_error("cand error");
+    //         if(comp_cnt!=nullptr) (*comp_cnt)++;
+    //         dist_t d = fstdistfunc_(query_data, GetDataByInternalId(cand),
+    //                                 dist_func_param_);
 
-            if (d < curdist)
-            {
-              curdist  = d;
-              curr_obj = cand;
-              changed  = true;
-            }
-          }
-        }
-      }
-    }
+    //         if (d < curdist)
+    //         {
+    //           curdist  = d;
+    //           curr_obj = cand;
+    //           changed  = true;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     HybridSearchBaseLayer(top_ef_results, curr_obj, query_data,
                           std::max(ef_, k), payload_query, activated_slots,
@@ -1982,6 +1982,7 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
         candidate_set;  // candidates
 
     if(comp_cnt!=nullptr) (*comp_cnt)++;
+
     dist_t dist =
         fstdistfunc_(data_point, GetDataByInternalId(ep_id), dist_func_param_);
 
@@ -1993,6 +1994,31 @@ class HSIG : public HybridIndexInterface<dist_t, QueryExtension>
 
     candidate_set.emplace(-dist, ep_id);
     visited_array[ep_id] = visited_array_tag;
+
+    // ------------ bottom entry point ----------------
+    tableint lb = payload_query.first;
+    tableint ub = payload_query.second;
+    int ep_size = 300;
+    tableint interval = (ub - lb) / ep_size;
+
+    for(int i = 0; i < ep_size; ++i){
+      tableint idx = lb + i * interval;
+      // tableint idx = lb + i;
+      // tableint idx = ub - i-1;
+      dist_t _dist =
+      fstdistfunc_(data_point, GetDataByInternalId(idx), dist_func_param_);
+
+      if (QueryExtension::IsPayloadQualified(GetPayloadByInternalId(idx),
+                                            payload_query))
+      {
+        top_ef_results.emplace(_dist, idx);
+      }
+
+      candidate_set.emplace(-_dist, idx);
+      visited_array[idx] = visited_array_tag;
+    }
+    // -----------------------------------------------
+
 
     // Add current top-ef results to candidate set
     std::priority_queue<std::pair<dist_t, tableint>,

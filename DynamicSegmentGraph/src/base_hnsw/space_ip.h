@@ -253,14 +253,18 @@ class InnerProductSpace : public SpaceInterface<float> {
   InnerProductSpace(size_t dim) {
     fstdistfunc_ = InnerProduct;
 #if defined(USE_AVX) || defined(USE_SSE)
-    if (dim % 16 == 0)
+    if (dim % 16 == 0){
+      std::cout << "using simd16" << std::endl;
       fstdistfunc_ = InnerProductSIMD16Ext;
+    }
     else if (dim % 4 == 0)
       fstdistfunc_ = InnerProductSIMD4Ext;
     else if (dim > 16)
       fstdistfunc_ = InnerProductSIMD16ExtResiduals;
     else if (dim > 4)
       fstdistfunc_ = InnerProductSIMD4ExtResiduals;
+#else 
+      std::cout << "using normal ip, no simd" << std::endl;
 #endif
     dim_ = dim;
     data_size_ = dim * sizeof(float);

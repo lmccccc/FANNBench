@@ -1,0 +1,276 @@
+Start time: 04:23
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 2.3874730s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-redcaps1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:2555935
+bwd size:0
+Total edge:18926564
+Average degree:18.9266
+Total # of Neighbors: 32741258
+ef search:200
+query id: 3 Range: 0 999999 sel: 1 recall: 1
+groundtruth: 436949 792743 86262 660183 35858 434107 722009 793642 21563 659290 
+result: 659290 21563 793642 722009 434107 35858 660183 86262 792743 436949 
+
+Search ef: 200
+========================
+range: 0	 recall: 0.9883	 QPS: 493	 Comps: 2535
+========================
+qps: 492
+# total query time: 20.3074690s
+recall hist:
+0:15 1:0 2:2 3:2 4:6 5:8 6:17 7:31 8:110 9:532 10:9277 
+sel hist:
+0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:10000 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_left -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 200 -index_file /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 20.29
+	System time (seconds): 5.59
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.88
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4117304
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2294640
+	Voluntary context switches: 2
+	Involuntary context switches: 62
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:24
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 2.3382270s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-redcaps1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:13510486888130235663
+bwd size:0
+Total edge:18926564
+Average degree:18.9266
+Total # of Neighbors: 32741258
+ef search:200
+query id: 3 Range: 458419 958419 sel: 0.500001 recall: 1
+groundtruth: 792743 660183 722009 793642 659290 927999 559488 638095 659240 510765 
+result: 510765 659240 638095 559488 927999 659290 793642 722009 660183 792743 
+
+Search ef: 200
+========================
+range: 0	 recall: 0.9860	 QPS: 697	 Comps: 2100
+========================
+qps: 695
+# total query time: 14.3906100s
+recall hist:
+0:13 1:3 2:2 3:1 4:4 5:8 6:17 7:42 8:142 9:680 10:9088 
+sel hist:
+0:0 1:0 2:0 3:0 4:0 5:10000 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_left -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 200 -index_file /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 16.19
+	System time (seconds): 3.83
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:20.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4118060
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1514367
+	Voluntary context switches: 1
+	Involuntary context switches: 36
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:26
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 2.2721480s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-redcaps1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:2555935
+bwd size:0
+Total edge:18926564
+Average degree:18.9266
+Total # of Neighbors: 32741258
+ef search:200
+query id: 3 Range: 559481 659481 sel: 0.100001 recall: 0.9
+groundtruth: 659290 559488 638095 659240 642654 614607 640929 574170 624163 580819 
+result: 590596 580819 624163 574170 614607 642654 659240 638095 559488 659290 
+
+Search ef: 200
+========================
+range: 0	 recall: 0.9854	 QPS: 1147	 Comps: 1458
+========================
+qps: 1143
+# total query time: 8.7527050s
+recall hist:
+0:13 1:1 2:1 3:2 4:1 5:7 6:16 7:52 8:158 9:725 10:9024 
+sel hist:
+0:0 1:10000 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_left -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 200 -index_file /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 10.79
+	System time (seconds): 2.92
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4118060
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1115989
+	Voluntary context switches: 2
+	Involuntary context switches: 28
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:26
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 2.2901020s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {200}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-redcaps1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:2555935
+bwd size:0
+Total edge:18926564
+Average degree:18.9266
+Total # of Neighbors: 32741258
+ef search:200
+query id: 3 Range: 245276 255276 sel: 0.010001 recall: 1
+groundtruth: 252373 251140 252233 251221 250911 250630 245706 248992 253894 245294 
+result: 245294 253894 248992 245706 250630 250911 251221 252233 251140 252373 
+
+Search ef: 200
+========================
+range: 0	 recall: 0.9353	 QPS: 2285	 Comps: 661
+========================
+qps: 2268
+# total query time: 4.4084840s
+recall hist:
+0:122 1:9 2:13 3:14 4:15 5:54 6:96 7:262 8:679 9:2074 10:6662 
+sel hist:
+0:10000 1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_left -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json -query_num 10000 -K 10 -M 8 -ef_construction 1000 -ef_search 200 -index_file /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 6.38
+	System time (seconds): 2.92
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4118496
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1115987
+	Voluntary context switches: 1
+	Involuntary context switches: 42
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

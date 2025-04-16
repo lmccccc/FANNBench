@@ -176,14 +176,18 @@ namespace hnswlib_incre {
         L2Space(size_t dim) {
             fstdistfunc_ = L2Sqr;
         #if defined(USE_SSE) || defined(USE_AVX)
-            if (dim % 16 == 0)
+            if (dim % 16 == 0){
+                std::cout << "using simd16" << std::endl;
                 fstdistfunc_ = L2SqrSIMD16Ext;
+            }
             else if (dim % 4 == 0)
                 fstdistfunc_ = L2SqrSIMD4Ext;
             else if (dim > 16)
                 fstdistfunc_ = L2SqrSIMD16ExtResiduals;
             else if (dim > 4)
                 fstdistfunc_ = L2SqrSIMD4ExtResiduals;
+        #else
+            std::cout << "no simd opt" << std::endl;
         #endif
             dim_ = dim;
             data_size_ = dim * sizeof(float);
@@ -254,9 +258,11 @@ namespace hnswlib_incre {
     public:
         L2SpaceI(size_t dim) {
             if(dim % 4 == 0) {
+                std::cout << "int dist func 4" << std::endl;
                 fstdistfunc_ = L2SqrI4x;
             }
             else {
+                std::cout << "int dist func " << std::endl;
                 fstdistfunc_ = L2SqrI;
             }
             dim_ = dim;

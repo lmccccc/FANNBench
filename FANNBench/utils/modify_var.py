@@ -22,7 +22,6 @@ if __name__ == "__main__":
     if target_variable == "dataset":
         assert new_value in datasets
         # 找到要修改的变量所在的位置
-        ori_flag = flag_map[target_variable]
         new_flag = flag_map[new_value]
         print("modify dataset to: ", new_value)
 

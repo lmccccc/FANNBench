@@ -199,7 +199,7 @@ if __name__ == "__main__":
         print("save file to ", file)
         # Open the file in write mode
         # writ to csv file
-        print("algo:", cpq_label_query_algo)
+        # print("algo:", cpq_label_query_algo)
         xlsfile = xlspath + label + tail
         savedata(data, xlsfile, sel_list)
 

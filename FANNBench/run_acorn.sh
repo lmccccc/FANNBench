@@ -1,4 +1,4 @@
-export debugSearchFlag=0
+# export debugSearchFlag=0
 #! /bin/bash
 
 

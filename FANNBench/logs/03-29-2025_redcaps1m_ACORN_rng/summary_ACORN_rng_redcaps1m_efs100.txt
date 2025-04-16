@@ -1,0 +1,719 @@
+Start time: 04:56
+====================
+START: running ACORN_INDEX_CONSTRUCTION for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+dim: 512
+[ 0.003s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+====================Vectors====================
+
+[ 0.003s ] Loading database
+[ 3.715s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+data loaded, with dim: 512, nb=1000000
+[ 3.715s ] Indexing database, size 1000000*512 from max 1000000
+[ 3.715s ] Adding the vectors to the index
+adding to storage
+storage added
+max_level: 4
+Adding 1 elements at level 4
+Adding 15 elements at level 3
+Adding 607 elements at level 2
+Adding 24333 elements at level 1
+Adding 975044 elements at level 0
+[ 468.975s ] Vectors added to hybrid index1000000
+Hybrid index vectors added:1000000
+====================Write Index================
+
+[ 470.471s ] Wrote hybrid index to file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+acorn size: 598384000, memory: 2535.233MB
+[470.477 s] -----DONE-----
+[ 470.477s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_build redcaps1m 1000000 25 40 64 10 128 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 512"
+	User time (seconds): 53705.39
+	System time (seconds): 52.15
+	Percent of CPU this job got: 11419%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:50.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5031028
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 5187470
+	Voluntary context switches: 22618
+	Involuntary context switches: 2342881
+	Swaps: 0
+	File system inputs: 4010712
+	File system outputs: 5192184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:09
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+ef_search: 100 
+dim: 512
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.144s ] Loaded metadata, 1000000 attr's found
+[ 0.144s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.156s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json
+[ 0.159s ] Loaded 10000 redcaps1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json
+[ 0.169s ] Loaded ground truth, gt_size: 10
+[ 0.169s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 2535.233MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2.396s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 1.000
+[ 29.507s ] Query results (vector ids, then distances):
+query 0 nn's (1250443791): 727106 (1557359735) 562528 (1586530455) 268161 (1597188224) 247269 (1563268918) 646437 (1533316338) 864174 (1586141206) 451328 (1592339349) 7102 (1609385900) 64073 (1552081912) 302070 (1529172082) 
+     dis: 	0.629 0.641 0.659 0.676 0.696 0.743 0.750 0.758 0.760 0.763 
+query 1 nn's (1609459076): 363220 (1580588215) 253654 (1604521057) 741325 (1559616195) 666880 (1555641433) 979250 (1523372340) 728340 (1587919683) 660394 (1588821207) 622447 (1532959985) 964028 (1579883899) 199154 (1601707637) 
+     dis: 	0.092 0.099 0.100 0.101 0.101 0.101 0.103 0.103 0.106 0.106 
+query 2 nn's (1250443791): 355537 (1550334893) 880455 (1548258623) 964377 (1605131892) 306439 (1575579764) 757728 (1605423787) 940490 (1538475549) 193180 (1562795054) 216922 (1609232106) 75885 (1601934153) 410774 (1549698655) 
+     dis: 	0.224 0.225 0.226 0.238 0.240 0.246 0.249 0.256 0.256 0.258 
+query 3 nn's (1609459076): 689368 (1563091635) 889987 (1593644784) 583699 (1511048352) 783586 (1584449301) 428067 (1496315424) 907599 (1562830155) 124464 (1588791594) 640717 (1593715105) 905275 (1491272214) 687871 (1584368476) 
+     dis: 	0.403 0.403 0.405 0.409 0.433 0.446 0.449 0.455 0.459 0.460 
+query 4 nn's (1250443791): 582698 (1557087889) 522469 (1606475445) 176027 (1580588338) 695669 (1587844268) 797013 (1605732191) 234795 (1600891554) 189529 (1600981496) 931553 (1570901224) 598411 (1595872318) 892178 (1586648068) 
+     dis: 	0.260 0.260 0.269 0.269 0.273 0.274 0.281 0.284 0.286 0.288 
+[ 29.507s ] *** Query time: 20.871
+qps: 479.138
+ *** acorn recall 
+efs:100
+acorn get 99108 postive res from 100000 results, recall@10:0.991
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.001 0.001 0.003 0.010 0.043 0.941 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[29.509s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 22219845
+ndis: 0
+nreorder: 0
+average distance computations per query: 2221.984
+[ 29.509s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query redcaps1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 100 512"
+	User time (seconds): 27.31
+	System time (seconds): 2.43
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:29.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3227876
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 821590
+	Voluntary context switches: 4
+	Involuntary context switches: 66
+	Swaps: 0
+	File system inputs: 320
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:11
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+ef_search: 100 
+dim: 512
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.149s ] Loaded metadata, 1000000 attr's found
+[ 0.149s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.160s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json
+[ 0.163s ] Loaded 10000 redcaps1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json
+[ 0.174s ] Loaded ground truth, gt_size: 10
+[ 0.174s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 2535.233MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2.366s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 1.000
+[ 30.094s ] Query results (vector ids, then distances):
+query 0 nn's (1250443791): 727106 (1557359735) 562528 (1586530455) 268161 (1597188224) 247269 (1563268918) 646437 (1533316338) 864174 (1586141206) 451328 (1592339349) 7102 (1609385900) 64073 (1552081912) 302070 (1529172082) 
+     dis: 	0.629 0.641 0.659 0.676 0.696 0.743 0.750 0.758 0.760 0.763 
+query 1 nn's (1609459076): 363220 (1580588215) 253654 (1604521057) 741325 (1559616195) 666880 (1555641433) 979250 (1523372340) 728340 (1587919683) 660394 (1588821207) 622447 (1532959985) 964028 (1579883899) 199154 (1601707637) 
+     dis: 	0.092 0.099 0.100 0.101 0.101 0.101 0.103 0.103 0.106 0.106 
+query 2 nn's (1250443791): 355537 (1550334893) 880455 (1548258623) 964377 (1605131892) 306439 (1575579764) 757728 (1605423787) 940490 (1538475549) 193180 (1562795054) 216922 (1609232106) 75885 (1601934153) 410774 (1549698655) 
+     dis: 	0.224 0.225 0.226 0.238 0.240 0.246 0.249 0.256 0.256 0.258 
+query 3 nn's (1609459076): 689368 (1563091635) 889987 (1593644784) 583699 (1511048352) 783586 (1584449301) 428067 (1496315424) 907599 (1562830155) 124464 (1588791594) 640717 (1593715105) 905275 (1491272214) 687871 (1584368476) 
+     dis: 	0.403 0.403 0.405 0.409 0.433 0.446 0.449 0.455 0.459 0.460 
+query 4 nn's (1250443791): 582698 (1557087889) 522469 (1606475445) 176027 (1580588338) 695669 (1587844268) 797013 (1605732191) 234795 (1600891554) 189529 (1600981496) 931553 (1570901224) 598411 (1595872318) 892178 (1586648068) 
+     dis: 	0.260 0.260 0.269 0.269 0.273 0.274 0.281 0.284 0.286 0.288 
+[ 30.094s ] *** Query time: 20.726
+qps: 482.485
+ *** acorn recall 
+efs:100
+acorn get 99108 postive res from 100000 results, recall@10:0.991
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.001 0.001 0.003 0.010 0.043 0.941 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[30.095s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 22219845
+ndis: 0
+nreorder: 0
+average distance computations per query: 2221.984
+[ 30.095s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query redcaps1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 100 512"
+	User time (seconds): 27.93
+	System time (seconds): 2.31
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:30.25
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3227876
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 817201
+	Voluntary context switches: 1
+	Involuntary context switches: 42
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:13
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+ef_search: 100 
+dim: 512
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.150s ] Loaded metadata, 1000000 attr's found
+[ 0.150s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.161s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json
+[ 0.196s ] Loaded 10000 redcaps1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json
+[ 0.251s ] Loaded ground truth, gt_size: 10
+[ 0.251s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 2535.233MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2.398s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 0.500
+[ 68.980s ] Query results (vector ids, then distances):
+query 0 nn's (1540574211): 727106 (1557359735) 562528 (1586530455) 247269 (1563268918) 864174 (1586141206) 64073 (1552081912) 880422 (1565574478) 297407 (1562582134) 84548 (1557155880) 316095 (1551987403) 302187 (1566023840) 
+     dis: 	0.629 0.641 0.676 0.743 0.760 0.769 0.772 0.786 0.787 0.788 
+query 1 nn's (1590004802): 741325 (1559616195) 666880 (1555641433) 979250 (1523372340) 622447 (1532959985) 803332 (1530141155) 427146 (1514695882) 428754 (1560720094) 110189 (1507487399) 139424 (1535633696) 284310 (1570817806) 
+     dis: 	0.100 0.101 0.101 0.103 0.106 0.106 0.107 0.109 0.110 0.112 
+query 2 nn's (1502815998): 964377 (1605131892) 306439 (1575579764) 757728 (1605423787) 75885 (1601934153) 374226 (1576918189) 71515 (1570882811) 445298 (1589162214) 771849 (1570744783) 903106 (1586146246) 792564 (1597961764) 
+     dis: 	0.226 0.238 0.240 0.256 0.263 0.263 0.264 0.265 0.268 0.271 
+query 3 nn's (1574739098): 889987 (1593644784) 783586 (1584449301) 124464 (1588791594) 640717 (1593715105) 687871 (1584368476) 595884 (1603585196) 889856 (1574977953) 306883 (1582504320) 110113 (1584365036) 456770 (1569878368) 
+     dis: 	0.403 0.409 0.449 0.455 0.460 0.462 0.465 0.476 0.496 0.496 
+query 4 nn's (1565134124): 582698 (1557087889) 959629 (1553076435) 191044 (1542912543) 46163 (1552605357) 279888 (1555515184) 700754 (1557101934) 754904 (1532757000) 68136 (1537086660) 556169 (1553542108) 54130 (1553866600) 
+     dis: 	0.260 0.293 0.300 0.300 0.303 0.304 0.305 0.306 0.307 0.308 
+[ 68.980s ] *** Query time: 17.215
+qps: 580.893
+ *** acorn recall 
+efs:100
+acorn get 96527 postive res from 100000 results, recall@10:0.965
+recall dist(10% per bucket): 0.003 0.001 0.000 0.001 0.001 0.003 0.005 0.013 0.038 0.149 0.786 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[68.981s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 14470979
+ndis: 0
+nreorder: 0
+average distance computations per query: 1447.098
+[ 68.981s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query redcaps1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 100 512"
+	User time (seconds): 64.49
+	System time (seconds): 4.71
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09.30
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3227880
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1383911
+	Voluntary context switches: 11
+	Involuntary context switches: 124
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:14
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+ef_search: 100 
+dim: 512
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.147s ] Loaded metadata, 1000000 attr's found
+[ 0.147s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.158s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json
+[ 0.174s ] Loaded 10000 redcaps1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json
+[ 0.214s ] Loaded ground truth, gt_size: 10
+[ 0.214s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 2535.233MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2.478s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 0.100
+[ 50.934s ] Query results (vector ids, then distances):
+query 0 nn's (1582001887): 823706 (1585149377) 77303 (1588455303) 979888 (1582983162) 709104 (1582722452) 446445 (1586645880) 455196 (1586945719) 101616 (1583206515) 405743 (1583800821) 584560 (1586547796) 100593 (1588098809) 
+     dis: 	0.905 0.913 0.978 0.986 0.995 0.996 0.998 0.999 1.004 1.007 
+query 1 nn's (1589499026): 282567 (1566876775) 24655 (1564086818) 441334 (1568068013) 943382 (1561297204) 345516 (1569108998) 353097 (1564861389) 280917 (1563301218) 380196 (1561616825) 217168 (1565541803) 291802 (1568895966) 
+     dis: 	0.296 0.301 0.306 0.325 0.356 0.363 0.367 0.377 0.388 0.389 
+query 2 nn's (1560999281): 306439 (1575579764) 374226 (1576918189) 328089 (1574112193) 800558 (1578206579) 919763 (1580427352) 882709 (1573089021) 684897 (1579890463) 136876 (1579879526) 509068 (1582362871) 812326 (1580129904) 
+     dis: 	0.238 0.263 0.280 0.284 0.284 0.288 0.292 0.298 0.300 0.301 
+query 3 nn's (1570293538): 687871 (1584368476) 889856 (1574977953) 306883 (1582504320) 110113 (1584365036) 555783 (1582924247) 879049 (1580410467) 225830 (1582762176) 397607 (1576582831) 800827 (1581281066) 931871 (1577236835) 
+     dis: 	0.460 0.465 0.476 0.496 0.517 0.517 0.531 0.533 0.538 0.546 
+query 4 nn's (1572763542): 754904 (1532757000) 330129 (1525225883) 969773 (1527858141) 870723 (1530111079) 616623 (1529427583) 262276 (1518198483) 805996 (1530049195) 51681 (1535136336) 148545 (1518097309) 569466 (1522175329) 
+     dis: 	0.305 0.325 0.328 0.332 0.332 0.333 0.335 0.335 0.345 0.347 
+[ 50.934s ] *** Query time: 8.989
+qps: 1112.481
+ *** acorn recall 
+efs:100
+acorn get 60341 postive res from 100000 results, recall@10:0.603
+recall dist(10% per bucket): 0.137 0.023 0.023 0.033 0.056 0.072 0.100 0.130 0.158 0.163 0.104 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[50.935s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 6511304
+ndis: 0
+nreorder: 0
+average distance computations per query: 651.130
+[ 50.935s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query redcaps1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 100 512"
+	User time (seconds): 47.59
+	System time (seconds): 3.54
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:51.23
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3227880
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1054060
+	Voluntary context switches: 7
+	Involuntary context switches: 127
+	Swaps: 0
+	File system inputs: 128
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:15
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+ef_search: 100 
+dim: 512
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.141s ] Loaded metadata, 1000000 attr's found
+[ 0.141s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.152s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json
+[ 0.199s ] Loaded 10000 redcaps1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json
+[ 0.276s ] Loaded ground truth, gt_size: 10
+[ 0.276s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 2535.233MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2.592s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 0.010
+[ 34.684s ] Query results (vector ids, then distances):
+query 0 nn's (1538594774): 0 (1568768349) 1 (1587241519) 2 (1603315169) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	1.253 1.274 1.426 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 1 nn's (1540118398): 0 (1568768349) 2 (1603315169) 1 (1587241519) 191519 (1558475339) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	0.806 0.948 0.965 0.976 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 2 nn's (1558313707): 0 (1568768349) 2 (1603315169) 1 (1587241519) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	0.748 0.865 0.913 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (1559317195): 0 (1568768349) 1 (1587241519) 242528 (1541475239) 2 (1603315169) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	1.025 1.180 1.256 1.324 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 4 nn's (1581675605): 1 (1587241519) 399243 (1548116666) 571789 (1548022156) 0 (1568768349) 2 (1603315169) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	0.784 0.937 0.958 0.997 1.039 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+[ 34.684s ] *** Query time: 0.806
+qps: 12408.794
+ *** acorn recall 
+efs:100
+acorn get 24 postive res from 100000 results, recall@10:0.000
+recall dist(10% per bucket): 0.998 0.001 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[34.684s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 254266
+ndis: 0
+nreorder: 0
+average distance computations per query: 25.427
+[ 34.684s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query redcaps1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 100 512"
+	User time (seconds): 32.27
+	System time (seconds): 2.67
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:35.10
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3227880
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 817206
+	Voluntary context switches: 11
+	Involuntary context switches: 60
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 06:16
+====================
+START: running TEST_ACORN for hnsw, sift data --
+
+dataset: redcaps1m
+N: 1000000
+gamma: 25
+M: 40
+M_beta: 64
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_20_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_20_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64
+ef_search: 100 
+dim: 512
+metadata or vector loaded from json, size: 1000000
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.145s ] Loaded metadata, 1000000 attr's found
+[ 0.145s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.158s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+metadata or vector loaded from json, size: 20000
+loaded query attributes from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_20_1_100000_real.json
+[ 0.220s ] Loaded 10000 redcaps1m queries
+metadata or vector loaded from json, size: 100000
+loaded gt from: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_20_1_100000_real_10.json
+[ 0.308s ] Loaded ground truth, gt_size: 10
+[ 0.308s ] Index Params -- d: 512, M: 40, N: 1000000, gamma: 25
+--ACORN index created
+acorn size: 598384000, memory: 2535.233MB
+====================================
+============ ACORN INDEX =============
+====================================
+METADATA VEC for number nodes per level
+level 0 : 999959 nodes
+level 1 : 24956 nodes
+level 2 : 623 nodes
+level 3 : 16 nodes
+level 4 : 1 nodes
+level 5 : 0 nodes
+Total edge:1025555
+Average degree per layer:170925.833
+node size:1000000
+Average degree:149.596
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== ACORN INDEX ====================
+[ 2.637s ] Searching the 10 nearest neighbors of 10000 vectors in the index, efsearch 100
+selectivity: 0.001
+[ 34.023s ] Query results (vector ids, then distances):
+query 0 nn's (1538054874): 0 (1568768349) 1 (1587241519) 2 (1603315169) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	1.253 1.274 1.426 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 1 nn's (1538228285): 0 (1568768349) 2 (1603315169) 1 (1587241519) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	0.806 0.948 0.965 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 2 nn's (1506909292): 0 (1568768349) 2 (1603315169) 1 (1587241519) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	0.748 0.865 0.913 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (1507230692): 0 (1568768349) 1 (1587241519) 2 (1603315169) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	1.025 1.180 1.324 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 4 nn's (1552519107): 1 (1587241519) 0 (1568768349) 2 (1603315169) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) -1 (0) 
+     dis: 	0.784 0.997 1.039 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+[ 34.023s ] *** Query time: 0.930
+qps: 10756.504
+ *** acorn recall 
+efs:100
+acorn get 5 postive res from 100000 results, recall@10:0.000
+recall dist(10% per bucket): 1.000 0.001 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 
+finished hybrid index examples
+============= ACORN QUERY PROFILING STATS =============
+[34.029s] Timing results for search of k=10 nearest neighbors of nq=10000 vectors in the index
+n1: 10000
+n2: 10000
+n3 (number distance comps at level 0): 23431
+ndis: 0
+nreorder: 0
+average distance computations per query: 2.343
+[ 34.029s ] -----DONE-----
+	Command being timed: "../ACORN/build/demos/acorn_query redcaps1m 1000000 25 40 64 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_20_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_20_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/acorn_rng/index/index_acorn_rng_sel_1_100000_real_M40_ga25_Mb64 100 512"
+	User time (seconds): 31.55
+	System time (seconds): 2.83
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:34.67
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3227868
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 834173
+	Voluntary context switches: 9
+	Involuntary context switches: 113
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

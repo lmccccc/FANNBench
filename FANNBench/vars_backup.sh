@@ -175,7 +175,7 @@ ef_construction=1000
 ef_search=100
 
 #serf vars
-serf_M=8 # fixed
+serf_M=40
 
 #dsg vars
 ef_max=1000

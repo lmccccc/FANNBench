@@ -41,7 +41,7 @@ void log_result_recorder(
     const std::map<int, std::tuple<double, double, double, double>> &result_recorder,
     const std::map<int, std::tuple<float, float>> &comparison_recorder,
     const int amount) {
-    double total_recall = 0, total_comps = 0, total_qps = 0, total_hops = 0;
+    double total_recall = 0, total_comps = 0, total_qps = 0, total_hops = 0, total_fetch = 0;
     for (auto item : result_recorder) {
         const auto &[recall, calDistTime, internal_search_time, fetch_nn_time] = item.second;
         const auto &[comps, hops] = comparison_recorder.at(item.first);
@@ -50,6 +50,7 @@ void log_result_recorder(
         total_comps += comps;
         total_qps += internal_search_time;
         total_hops += hops;
+        total_fetch += fetch_nn_time;
         cout << std::setiosflags(ios::fixed) << std::setprecision(4)
              << "range: " << item.first
              << "\t recall: " << recall / cur_range_amount
@@ -65,6 +66,7 @@ void log_result_recorder(
          << "\t Total QPS: " << amount / total_qps
          << "\t Total Comps: " << total_comps / amount
          << "\t Total Hops: " << total_hops / amount << std::endl;
+    cout << "Fetch percentage: " << total_fetch / total_qps << std::endl;
 }
 
 vector<int> get_label(int N, string file_name){  //read json file, only [1,\n2,\n3,\n...]

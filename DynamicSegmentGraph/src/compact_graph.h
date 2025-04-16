@@ -803,10 +803,13 @@ public:
 
         // 初始化三个entry points
         {
+            int interval_cnt = 3;
             int lbound = query_bound.first;
-            int interval = (query_bound.second - lbound) / 3;
-            for (size_t i = 0; i < 3; i++) {
+            int interval = (query_bound.second - lbound) / interval_cnt;
+            for (size_t i = 0; i < interval_cnt; i++) {
                 int point = lbound + interval * i;
+                // int point = lbound + i;
+                // int point = query_bound.second - i - 1;
                 float dist = EuclideanDistance(data_wrapper->nodes[point], query); 
                 candidate_set.push(make_pair(-dist, point));                       
                 visited_array[point] = visited_array_tag;                          

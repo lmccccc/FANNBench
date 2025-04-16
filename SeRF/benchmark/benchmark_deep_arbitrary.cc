@@ -382,14 +382,23 @@ int main(int argc, char **argv) {
             timeval tt3, tt4;
             BaseIndex::SearchParams s_params;
             s_params.query_K = data_wrapper.query_k;
+            int recall_hist[11];
+            int sel_hist[11];
+            for(int i = 0; i < 11; i++){
+              recall_hist[i] = 0;
+              sel_hist[i] = 0;
+            }
             for (auto one_searchef : ef_search_list) {
               cout << "ef search:" << one_searchef << endl;
               s_params.search_ef = one_searchef;
               std::map<int, std::pair<float, float>>
                   result_recorder;  // first->precision, second->query_time
               std::map<int, float> comparison_recorder;
+              double nns_time = 0;
               gettimeofday(&tt3, NULL);
+              int tmp_size = 10; //
               for (int idx = 0; idx < data_wrapper.query_ids.size(); idx++) {//each query
+              // for (int idx = 0; idx < tmp_size; idx++) {//each query
                 int one_id = data_wrapper.query_ids.at(idx);
                 s_params.query_range =
                     data_wrapper.query_ranges.at(idx).second -
@@ -405,6 +414,28 @@ int main(int argc, char **argv) {
                     search_info.internal_search_time;
                 comparison_recorder[0] +=
                     search_info.total_comparison;
+                nns_time += search_info.fetch_nns_time;
+
+                recall_hist[int(search_info.precision * 10)]++;
+                sel_hist[int(s_params.query_range * 1.0 / data_size * 10)]++;
+
+                if(idx == 3){
+                  cout << "query id: " << one_id;
+                  cout << " Range: " << data_wrapper.query_ranges.at(idx).first << " " << data_wrapper.query_ranges.at(idx).second;
+                  cout << " sel: " << s_params.query_range * 1.0 / data_size;
+                  cout << " recall: " << search_info.precision << endl;
+
+                  cout << "groundtruth: ";
+                  for(int i = 0; i < data_wrapper.groundtruth.at(idx).size(); i++){
+                    cout << data_wrapper.groundtruth.at(idx)[i] << " ";
+                  }
+                  cout << endl;
+                  cout << "result: ";
+                  for(int i = 0; i < res.size(); i++){
+                    cout << res[i] << " ";
+                  }
+                  cout << endl;
+                }
               }
               gettimeofday(&tt4, NULL);
               cout << endl
@@ -416,6 +447,22 @@ int main(int argc, char **argv) {
               auto time_val = CountTime(tt3, tt4);
               cout << "qps: " << data_wrapper.query_ids.size() / time_val << endl;
               logTime(tt3, tt4, "total query time");
+
+              double nns_pct = nns_time / time_val;
+              cout << "search nns time:" << nns_time << endl;
+              cout << "nns time pct: " << nns_pct << endl;
+              
+
+              cout << "recall hist:" << endl;
+              for(int i = 0; i < 11; i++){
+                cout << i << ":" << recall_hist[i] << " ";
+              }
+              cout << endl;
+              cout << "sel hist:" << endl;
+              for(int i = 0; i < 11; i++){
+                cout << i << ":" << sel_hist[i] << " ";
+              }
+              cout << endl;
             }
           }
         }

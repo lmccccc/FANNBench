@@ -137,6 +137,7 @@ if __name__ == "__main__":
             field_name="vector", 
             index_type="HNSW",# IVF_FLAT IVF_PQ IVF_SQ8 HNSW SCANN
             metric_type="L2",
+            index_name="hnsw",
             params={ "M": M, "efConstruction": ef_construction } # see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
         )
 

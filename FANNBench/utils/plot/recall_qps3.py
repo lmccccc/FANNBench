@@ -19,21 +19,21 @@ range_query_algo = ["Milvus_IVFPQ",
           "HNSW",
           "ACORN",
           "SeRF",
+          "DSG",
           "WST_vamana",
           "WST_opt",
           "UNIFY",
           "UNIFY_hybrid",
-          "DSG",
           "iRangeGraph"]
 cpq_range_query_algo = [
           "HNSW",
           "ACORN",
           "SeRF",
+          "DSG",
           "WST_vamana",
           "WST_opt",
           "UNIFY",
           "UNIFY_hybrid",
-          "DSG",
           "iRangeGraph"]
 line_styles = ['-', '--', '-.', ':']
 markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', '*', 'h', '|', '+', 'x', 'X', 'H', '_']
@@ -50,56 +50,18 @@ def get_qps_by_recall(algo, sel_list, target_recall):
             qps_values.append(1)
             continue
 
-        if len(query_map[algo][sel]) > 20:
-            tmp_len = len(query_map[algo][sel])
-            tmp = query_map[algo][sel][tmp_len-20:]
-        else:
-            tmp = query_map[algo][sel]
-        # sort by recall
+        tmp = []
+        for item in query_map[algo][sel].values():
+            tmp.append(item)
         tmp = sorted(tmp, key=lambda x: x["Recall"])
         result = []
 
-        start = 0
         for i in range(len(tmp)):
             if tmp[i]["QPS"] > 1:
                 result.append(tmp[i])
-                start = i+1
                 break
-
-        # if QPS is small than previous one, remove it
-        # print(algo, sel)
-        # print(tmp)
-        # for i in range(start, len(tmp)):
-        #     # 获取当前元素和前一个元素
-        #     current = tmp[i]
-        #     prev = result[-1]
-        #     # 检查 a 是否单调递增且 b 是否单调递减
-        #     if current["QPS"] <= prev["QPS"]:
-        #         # 如果满足条件，将当前元素加入结果列表
-        #         if current["Recall"] > prev["Recall"]:
-        #             result.append(current)
-        #         else:
-        #             # print(algo, sel, " replace ", result[-1], " with ", current)
-        #             result[-1] = current
-        # if len(result) < 3:
-        #     for r in result:
-        #         if (result[-1]["Recall"] > 0.95 * target_recall):
-        #             linear_result = r["QPS"]
-        #             break
-        #         else:
-        #             linear_result = 1
-        #     print("invalid result for ", algo, sel, " result size:", len(result), " save qps:", linear_result)
-        # else:
-        #     # interpolation
-        #     if (result[0]["Recall"] > 0.95 * target_recall):
-        #             linear_result = result[0]["QPS"]
-        #     else:
-        #         x = [val["Recall"] for val in result]
-        #         y = [val["QPS"] for val in result]
-        #         linear_interp = interp1d(x, y, kind='quadratic', fill_value='extrapolate')
-        #         linear_result = linear_interp(target_recall)
         max_qps = 1
-        for entry in query_map[algo][sel]:
+        for entry in query_map[algo][sel].values():
             if entry["Recall"] >= target_recall-0.01 and entry["QPS"] > max_qps:
                 max_qps = entry["QPS"]
         qps_values.append(max_qps)
@@ -115,60 +77,22 @@ def get_comps_by_recall(algo, sel_list, target_recall):
             comp_values.append(1)
             continue
         min_comps = int(1e9)
-        if len(query_map[algo][sel]) > 10:
-            tmp_len = len(query_map[algo][sel])
-            tmp = query_map[algo][sel][tmp_len-10:]
-        else:
-            tmp = query_map[algo][sel]
-        # sort by recall
+        tmp = []
+        for item in query_map[algo][sel].values():
+            tmp.append(item)
         tmp = sorted(tmp, key=lambda x: x["Recall"])
         result = []
 
-        start = 0
         for i in range(len(tmp)):
             if tmp[i]["QPS"] > 1:
                 result.append(tmp[i])
-                start = i+1
                 break
 
-        # if QPS is small than previous one, remove it
-        # for i in range(start, len(tmp)):
-        #     # 获取当前元素和前一个元素
-        #     current = tmp[i]
-        #     prev = result[-1]
-        #     # 检查 a 是否单调递增且 b 是否单调递减
-        #     if current["CompsPerQuery"] >= prev["CompsPerQuery"]:
-        #         # 如果满足条件，将当前元素加入结果列表
-        #         if current["Recall"] > prev["Recall"]:
-        #             result.append(current)
-        #         else:
-        #             # print(algo, sel, " replace ", result[-1], " with ", current)
-        #             result[-1] = current
-
-        # if len(result) < 3:
-        #     for r in result:
-        #         if (result[-1]["Recall"] > 0.95 * target_recall):
-        #             linear_result = r["CompsPerQuery"]
-        #             break
-        #         else:
-        #             linear_result = 1
-        #     print("invalid result for ", algo, sel, " result size:", len(result), " save cmp:", linear_result)
-        # else:
-        #     # interpolation
-        #     if (result[0]["Recall"] > 0.95 * target_recall):
-        #             linear_result = result[0]["CompsPerQuery"]
-        #     else:
-        #         x = [val["Recall"] for val in result]
-        #         y = [val["CompsPerQuery"] for val in result]
-        #         linear_interp = interp1d(x, y, kind='quadratic', fill_value='extrapolate')
-        #         linear_result = linear_interp(target_recall)
-
-        for entry in query_map[algo][sel]:
+        for entry in query_map[algo][sel].values():
             if entry["Recall"] >= target_recall-0.01 and entry["CompsPerQuery"] < min_comps:
                 min_comps = entry["CompsPerQuery"]
         if min_comps == int(1e9):
             min_comps = 1
-        # assert(min_comps > 0)
         comp_values.append(min_comps)
     return comp_values
 
@@ -224,10 +148,10 @@ if __name__ == "__main__":
     for _range in range2sel.keys():
         sel2range[range2sel[_range]] = _range
     
-    dataset="YTRGB1m"
-    distribution = "real"
-    label_range = 100000
-    target_recall_list = [0.8, 0.99]
+    # dataset="spacev10m"
+    # distribution = "real"
+    # label_range = 100000
+    target_recall_list = [0.9, 0.95]
     target_id_list = [sel2id[sel] for sel in target_sel_list]
     target_qrange_list = [sel2range[sel] for sel in target_sel_list]
 
@@ -257,11 +181,41 @@ if __name__ == "__main__":
             sel = id2sel[row["query_label_cnt"]]
         else:
             sel = range2sel[row["query_label_cnt"]]
-        if sel not in query_map[algo].keys():
-            query_map[algo][sel] = []
 
+        if sel not in query_map[algo].keys():
+            query_map[algo][sel] = {}
+        
+        if recall < 0.3:
+            continue
         res_turple = {"Recall": recall, "QPS": qps, "CompsPerQuery": comps}
-        query_map[algo][sel].append(res_turple)
+        if algo == "ACORN" or algo == "HNSW" or algo == "iRangeGraph" or algo == "NHQ_nsw" or algo == "SeRF" or algo == "DSG" or algo == "Milvus_HNSW":
+            efs = row["ef_search"]
+            query_map[algo][sel][efs] = res_turple
+        elif algo == "DiskANN" or algo == "DiskANN_Stitched":
+            l = row["L"]
+            query_map[algo][sel][l] = res_turple
+        elif algo == "NHQ_kgraph":
+            l_learch = row["kgraph_L"]
+            query_map[algo][sel][l_learch] = res_turple
+        elif algo == "WST_opt":
+            beam = row["beamSize"]
+            mul = row["final_beam_multiply"]
+            query_map[algo][sel][beam*mul] = res_turple
+        elif algo == "WST_vamana":
+            beam = row["beamSize"]
+            query_map[algo][sel][beam] = res_turple
+        elif algo == "UNIFY" or algo == "UNIFY_hybrid":
+            efs = row["ef_search"]
+            al = row["AL"]
+            query_map[algo][sel][efs*al] = res_turple
+        elif algo == "IVFPQ" or algo == "Milvus_IVFPQ":
+            # if row["partition_size_M"] != "" and row["partition_size_M"] != row["dim"]/2:
+            #     continue
+            nprobe = row["nprobe"]
+            query_map[algo][sel][nprobe] = res_turple            
+
+        # res_turple = {"Recall": recall, "QPS": qps, "CompsPerQuery": comps}
+        # query_map[algo][sel].append(res_turple)
     
 
     

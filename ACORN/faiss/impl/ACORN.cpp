@@ -567,10 +567,24 @@ void ACORN::shrink_neighbor_list(
         bool good = true;
 
         // check if current candidate is in the neighbors of output 
-        if (node_num > this->M_beta  && neigh_of_neigh.count(v1.id) > 0) {
-            good = false;
-            debug("PRUNE v1: %d\n", v1.id);
+        // if (node_num > this->M_beta  && neigh_of_neigh.count(v1.id) > 0) {
+        //     good = false;
+        //     debug("PRUNE v1: %d\n", v1.id);
+        // }
+
+        // ---RNG prune
+        for (NodeDistFarther v2 : output) {
+            float dist_v1_v2 = qdis.symmetric_dis(v2.id, v1.id);
+
+            if (dist_v1_v2 < dist_v1_q) {
+                good = false;
+                break;
+            }
         }
+        // ---
+
+        // kg prune
+        // not prune, connect with nearest neighbors.
         
         
         if (good) {
@@ -1554,8 +1568,6 @@ ACORNStats ACORN::hybrid_search(
             ndis_upper += hybrid_greedy_update_nearest(*this, qdis, filter_map, level, nearest, d_nearest);
             // ndis_upper += hybrid_greedy_update_nearest(*this, qdis, filter, op, regex, level, nearest, d_nearest);
             debug_search("-at level %d, new nearest: %d, d: %f, metadata: %d\n", level, nearest, d_nearest, metadata[nearest]);
-            
-
         }
         stats.n3 += ndis_upper;
 
@@ -1565,7 +1577,12 @@ ACORNStats ACORN::hybrid_search(
 
             MinimaxHeap candidates(ef);
 
-            candidates.push(nearest, d_nearest);
+            // candidates.push(nearest, d_nearest);
+            for (int i = 0; i < 3; i++) {
+                storage_idx_t nearest_i = i;
+                float d_nearest_i = qdis(nearest_i);
+                candidates.push(nearest_i, d_nearest_i);
+            }
             debug_search("-starting BFS at level 0 with ef: %d, nearest: %d, d: %f, metadata: %d\n", ef, nearest, d_nearest, metadata[nearest]);
             hybrid_search_from_candidates(
                     *this, qdis, filter_map, k, I, D, candidates, vt, stats, 0, 0, params);

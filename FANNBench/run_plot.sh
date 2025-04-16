@@ -8,16 +8,6 @@ mkdir plot
 
 if [ "$1" == "construct" ]; then
     python utils/plot/construction_time_and_size.py exp_results.csv $dataset $label_attr
-elif [ "$1" == "query" ]; then
-    python utils/plot/recall_qps.py exp_results.csv \
-                                    $dataset \
-                                    $query_label_cnt \
-                                    $label_range \
-                                    $label_cnt \
-                                    $query_label \
-                                    $distribution \
-                                    $label_attr \
-                                    $query_attr
 elif [ "$1" == "dist" ]; then
     python utils/plot/attr_dist.py  $dataset \
                                     $query_label_cnt \
@@ -51,7 +41,127 @@ elif [ "$1" == "cpqqps" ]; then
                                     $distribution \
                                     $label_attr \
                                     $query_attr
-elif [ "$1" == "querybar" ]; then
+elif [ "$1" == "recallqps" ]; then
+    python utils/plot/recall_qps.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "recallqpsserf" ]; then
+    python utils/plot/recall_qps_serf.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "recallqpsoneth" ]; then
+    python utils/plot/recall_qps_oneth.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "recallqpsstitched" ]; then
+    python utils/plot/recall_qps_stitched.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "recallqpslabel" ]; then
+    python utils/plot/recall_qps_label.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "selqpsbest" ]; then
+    python utils/plot/sel_qps_best.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "entrycmp" ]; then
+    python utils/plot/entry_cmp.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "entrysizecmp" ]; then
+    python utils/plot/entry_size_cmp.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "prunecmp" ]; then
+    python utils/plot/prune_cmp.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "selcpqfilter" ]; then
+    python utils/plot/sel_cpq_filtering.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "selqpsbestlabel" ]; then
+    python utils/plot/sel_qps_best_label.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "recallqpsdist" ]; then
+    python utils/plot/recall_qps_dist.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "qpsbar" ]; then
     python utils/plot/recall_qps3.py exp_results.csv \
                                     $dataset \
                                     $query_label_cnt \
@@ -61,7 +171,27 @@ elif [ "$1" == "querybar" ]; then
                                     $distribution \
                                     $label_attr \
                                     $query_attr
-elif [ "$1" == "querybarlabel" ]; then
+elif [ "$1" == "qpsparam" ]; then
+    python utils/plot/qps_para.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "qpsparamlabel" ]; then
+    python utils/plot/qps_para_label.py exp_results.csv \
+                                    $dataset \
+                                    $query_label_cnt \
+                                    $label_range \
+                                    $label_cnt \
+                                    $query_label \
+                                    $distribution \
+                                    $label_attr \
+                                    $query_attr
+elif [ "$1" == "qpsbarlabel" ]; then
     python utils/plot/recall_bar_label.py exp_results.csv \
                                     $dataset \
                                     $query_label_cnt \

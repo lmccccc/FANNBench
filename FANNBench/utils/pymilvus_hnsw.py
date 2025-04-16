@@ -158,15 +158,19 @@ if __name__ == "__main__":
         # client.insert(collection_name=c_name, data=data)
         # print("insert res:", res)
         
+        client.flush(collection_name=c_name)
+
+        t1 = time.time()
+        print("insertion time:", t1-t0)
         index_params = client.prepare_index_params()
         index_params.add_index(
             field_name="vector", 
             index_type="HNSW",# IVF_FLAT IVF_PQ IVF_SQ8 HNSW SCANN
             metric_type="L2",
+            index_name="HNSW",
             params={ "M": M, "efConstruction": ef_construction }, # see https://milvus.io/docs/configure_querynode.md#queryNodesegcoreinterimIndexnlist
             sync=True
         )
-        t1 = time.time()
         # print("creating index")
         client.create_index(
             collection_name=c_name,

@@ -6,7 +6,7 @@ source ./file_check.sh
 
 
 
-algo=UNIFY_hybrid
+algo=UNIFY_middle_300
 
 ##########################################
 # TESTING SIFT1M and PAPER
@@ -49,7 +49,7 @@ echo "ef_search: $ef_search"
 
 if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
     if [ -e $unify_index_file ]; then
-        echo "index file already exist"
+        echo "index file already exist at $unify_index_file"
         exit 0
     fi
 fi

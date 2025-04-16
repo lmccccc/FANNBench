@@ -274,22 +274,39 @@ int main(int argc, char *argv[]) {
         std::vector<float> dis2(k * nq);
 
         // create filter_ids_map, ie a bitmap of the ids that are in the filter
-        std::vector<char> filter_ids_map(nq * N);
+        // std::vector<char> filter_ids_map(nq * N);
+        // uint64_t sel = 0;
+        // for (int xq = 0; xq < nq; xq++) {
+        //     for (int xb = 0; xb < N; xb++) {
+        //         bool in_range = (metadata[xb] >= aq[xq*2] && metadata[xb] <= aq[xq*2+1]);
+        //         filter_ids_map[xq * N + xb] = in_range;
+        //         if(in_range) sel++;
+        //     }
+        // }
+        
+        
+        std::vector<char> filter_ids_map(N);
         uint64_t sel = 0;
-        for (int xq = 0; xq < nq; xq++) {
+        double t1_x, t2_x;
+        double total_t = 0;
+        for (int query_i = 0; query_i < nq; query_i++) {
             for (int xb = 0; xb < N; xb++) {
-                bool in_range = (metadata[xb] >= aq[xq*2] && metadata[xb] <= aq[xq*2+1]);
-                filter_ids_map[xq * N + xb] = in_range;
+                bool in_range = (metadata[xb] >= aq[query_i*2] && metadata[xb] <= aq[query_i*2+1]);
+                filter_ids_map[xb] = in_range;
                 if(in_range) sel++;
             }
+            t1_x = elapsed();
+            hybrid_index.search(1, xq+query_i * d, k, dis2.data()+query_i*k, nns2.data()+query_i*k, filter_ids_map.data()); // TODO change first argument back to nq
+            t2_x = elapsed();
+            total_t += t2_x - t1_x;
         }
+        
         double selectivity = sel * 1.0 / (nq * N);
         std::cout << "selectivity: " << selectivity << std::endl;
 
-        double t1_x = elapsed();
-        hybrid_index.search(nq, xq, k, dis2.data(), nns2.data(), filter_ids_map.data()); // TODO change first argument back to nq
-        double t2_x = elapsed();
-
+        // t1_x = elapsed();
+        // hybrid_index.search(nq, xq, k, dis2.data(), nns2.data(), filter_ids_map.data()); // TODO change first argument back to nq
+        // t2_x = elapsed();
         // printf("[%.3f s] Query results (vector ids, then distances):\n",
         //        elapsed() - t0);
         std::cout << "[ " << elapsed() - t0 << "s ] Query results (vector ids, then distances):" << std::endl;
@@ -308,10 +325,10 @@ int main(int argc, char *argv[]) {
 
 
         // printf("[%.3f s] *** Query time: %f\n",
-        //        elapsed() - t0, t2_x - t1_x);
-        std::cout << "[ " << elapsed() - t0 << "s ] *** Query time: " << t2_x - t1_x << std::endl;
+        //        elapsed() - t0, total_t);
+        std::cout << "[ " << elapsed() - t0 << "s ] *** Query time: " << total_t << std::endl;
                
-        std::cout << "qps: " << nq / (t2_x - t1_x) << std::endl;
+        std::cout << "qps: " << nq / (total_t) << std::endl;
 
         std::cout << " *** acorn recall " << std::endl;
         int total_size = nq * k;

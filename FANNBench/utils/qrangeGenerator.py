@@ -113,8 +113,11 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
                 # sort index by attr
                 sorted_index = np.argsort(attr)
                 # generate random query range
-                q_ordered_range = np.random.randint(0, N-query_nbr, (query_size, 2), dtype='int32')
-                q_ordered_range[:, 1] = q_ordered_range[:, 0] + query_nbr # [x, x+query_attr_size]
+                if query_nbr == N:
+                    q_ordered_range = np.zeros((query_size, 2), dtype='int32')
+                else:
+                    q_ordered_range = np.random.randint(0, N-query_nbr+1, (query_size, 2), dtype='int32')
+                q_ordered_range[:, 1] = q_ordered_range[:, 0] + query_nbr-1 # [x, x+query_attr_size]
                 # convert query index range to attr range
                 q_idx = sorted_index[q_ordered_range]
                 queryattr = attr[q_idx]

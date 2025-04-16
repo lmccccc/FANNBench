@@ -53,10 +53,12 @@ def get_comps_by_recall(algo, sel):
     if algo not in query_map.keys():
         return [], []
     tmp = []
-    for item in query_map[algo][sel].keys():
-        tmp.append(query_map[algo][sel][item])
+    for item in query_map[algo][sel].values():
+        best_qps = item["QPS"]
+        best_cpq = item["CompsPerQuery"]
+        tmp.append({"QPS": best_qps, "CompsPerQuery": best_cpq})
     # print(tmp)
-    tmp = sorted(tmp, key=lambda x: x["Recall"])
+    tmp = sorted(tmp, key=lambda x: x["QPS"], reverse=True)
     
     qps_list = []
     cpq_list = []
@@ -75,6 +77,7 @@ def savedata(data, _file):
     # df = pd.DataFrame(data, columns=[0.1 * i for i in range(1, 11)])
     # df.to_excel(xlsfile, index=False)
     print("save file to ", _file)
+
 
 # main function
 if __name__ == "__main__":
@@ -106,7 +109,7 @@ if __name__ == "__main__":
 
     
     
-    target_sel_list = [0.1]
+    target_sel_list = [0.001, 0.01, 0.1, 0.5]
     id2sel = {1:1, 2:0.9, 3:0.8, 4:0.7, 5:0.6, 6:0.5, 7:0.4, 8:0.3, 9:0.2, 10:0.1, 11:0.09, 12:0.08, 13:0.07, 14:0.06, 15:0.05, 16:0.04, 17:0.03, 18:0.02, 19:0.01, 20:0.001}
     sel2id = {}
     for id in id2sel.keys():
@@ -117,11 +120,11 @@ if __name__ == "__main__":
     for _range in range2sel.keys():
         sel2range[range2sel[_range]] = _range
     
-    dataset="YTRGB1m"
-    distribution = "real"
-    label_range = 100000
-    label_range2 = 500
-    target_recall = 0.8
+    # dataset="sift10M"
+    # distribution = "random"
+    # label_range = 100000
+    # label_range2 = 500
+    # target_recall = 0.8
     target_id_list = [sel2id[sel] for sel in target_sel_list]
     target_qrange_list = [sel2range[sel] for sel in target_sel_list]
 
@@ -131,19 +134,17 @@ if __name__ == "__main__":
             label_cnt != row["label_cnt"] or \
             row["Threads"] != 1:
             continue
-        if query_label_cnt == 1 and label_cnt > 1 and row["query_label"] != query_label:
-            continue
         query_label_cnt = row["query_label_cnt"]
         recall = row["Recall"]
         qps = row["QPS"]
         comps = row["CompsPerQuery"]
         algo = row["Paper"]
-        if algo in range_algo and row["label_range"] != label_range:
+        if row["label_range"] != label_range:
             continue
-        if algo in label_algo and row["label_range"] != label_range2:
-            continue
-        if row["query_label_cnt"] not in target_id_list and row["query_label_cnt"] not in target_qrange_list:
-            continue
+        if row["query_label_cnt"] not in target_id_list:
+            if row["query_label_cnt"] not in target_qrange_list:
+                continue
+            
         if recall <= 0:
             continue
         if recall > 1:
@@ -152,13 +153,17 @@ if __name__ == "__main__":
             query_map[algo] = {}
         if row["query_label_cnt"] in target_id_list:
             sel = id2sel[row["query_label_cnt"]]
-        else:
+        elif row["query_label_cnt"] in target_qrange_list:
             sel = range2sel[row["query_label_cnt"]]
+        else:
+            continue
+        # elif row["query_label"] in target_id_list:
+        #     sel = id2sel[row["query_label"]]
         if sel not in query_map[algo].keys():
             query_map[algo][sel] = {}
         
         res_turple = {"Recall": recall, "QPS": qps, "CompsPerQuery": comps}
-        if algo == "ACORN" or algo == "HNSW" or algo == "iRangeGraph" or algo == "NHQ_nsw" or algo == "SeRF" or algo == "DSG":
+        if algo == "ACORN" or algo == "HNSW" or algo == "iRangeGraph" or algo == "NHQ_nsw" or algo == "SeRF" or algo == "DSG" or algo == "Milvus_HNSW":
             efs = row["ef_search"]
             query_map[algo][sel][efs] = res_turple
         elif algo == "DiskANN" or algo == "DiskANN_Stitched":
@@ -177,15 +182,27 @@ if __name__ == "__main__":
         elif algo == "UNIFY" or algo == "UNIFY_hybrid":
             efs = row["ef_search"]
             al = row["AL"]
-            query_map[algo][sel][efs*al] = res_turple
+            query_map[algo][sel][efs*21+al*107] = res_turple
+        elif algo == "IVFPQ" or algo == "Milvus_IVFPQ":
+            nprobe = row["nprobe"]
+            query_map[algo][sel][nprobe] = res_turple
 
-    
+        # if val not in query_map[algo][sel].keys():
+        #     query_map[algo][sel][val] = []
+        # query_map[algo][sel][val].append(res_turple)
 
+    target_sel = 0.5
     columns = ['Algorithm', 'QPS', 'CPQ']
     df = pd.DataFrame(columns=columns)
     plt.figure(figsize=(10, 6))
     for idx, algo in enumerate(cpq_range_query_algo):
-        qps, cpq = get_comps_by_recall(algo, sel)
+        if algo not in query_map.keys():
+            print("algo ", algo, " not in query_map")
+            continue
+        if target_sel not in query_map[algo].keys():
+            print("target sel ", target_sel, " not in query_map[", algo, "]")
+            continue
+        qps, cpq = get_comps_by_recall(algo, target_sel)
         for i in range(len(qps)):
             row = {"Algorithm": algo, "QPS": qps[i], "CPQ": cpq[i]}
             new_row = pd.DataFrame([row])

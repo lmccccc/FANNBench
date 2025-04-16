@@ -4,18 +4,112 @@ import matplotlib.ticker as ticker
 import matplotlib.patches as mpatches
 import pandas as pd
 import sys
-
+import pandas as pd
+import os
+import csv
 
 # title = "Paper Dataset dim N query_size label_method query_method distribution label_range query_label_cnt K Threads M serf_M nprobe ef_construction ef_search gamma M_beta alpha L  partition_size_M beamSize split_factor shift_factor final_beam_multiply kgraph_L iter S R B kgraph_M weight_search Recall QPS selectivity ConstructionTime IndexSize CompsPerQuery File Memory"
 # title_list = title.split(' ')
 
-algorithms = ["ACORN", "DiskANN", "HNSW", "IVFPQ", "NHQ_kgraph", "NHQ_nsw", "Milvus_IVFPQ", "Milvus_HNSW", "WST_opt", "Vamana_tree", 
-              "RII", "SeRF", "iRangeGraph", "UNIFY"]
-comps_algo = ["ACORN", "DiskANN", "HNSW", "NHQ_kgraph", "NHQ_nsw", "WST_opt", "Vamana_tree", 
-              "SeRF", "iRangeGraph","UNIFY"]
+
+cpq_range_query_algo = [
+          "HNSW",
+          "ACORN",
+          "DiskANN", 
+          "DiskANN_Stitched",
+          "NHQ_kgraph", 
+          "NHQ_nsw", 
+          "SeRF",
+          "WST_vamana",
+          "WST_opt",
+          "UNIFY",
+          "UNIFY_hybrid",
+          "DSG",
+          "iRangeGraph"]
+all_algo = [
+          "Milvus_HNSW",
+          "Milvus_IVFPQ",
+          "HNSW",
+          "IVFPQ",
+          "ACORN",
+          "DiskANN", 
+          "DiskANN_Stitched",
+          "NHQ_kgraph", 
+          "NHQ_nsw", 
+          "SeRF",
+          "WST_vamana",
+          "WST_opt",
+          "UNIFY",
+          "UNIFY_hybrid",
+          "DSG",
+          "iRangeGraph"]
+range_algo = [
+          "Milvus_HNSW",
+          "Milvus_IVFPQ",
+          "HNSW",
+          "IVFPQ",
+          "ACORN",
+          "SeRF",
+          "WST_vamana",
+          "WST_opt",
+          "UNIFY",
+          "UNIFY_hybrid",
+          "DSG",
+          "iRangeGraph"]
+label_algo = [
+        #   "Milvus_HNSW",
+        #   "Milvus_IVFPQ",
+        #   "HNSW",
+        #   "IVFPQ",
+        #   "ACORN",
+          "DiskANN", 
+          "DiskANN_Stitched",
+          "NHQ_kgraph", 
+          "NHQ_nsw"]
+
 line_styles = ['-', '--', '-.', ':']
 markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', '*', 'h', '|', '+', 'x', 'X', 'H', '_']
 query_map = {}
+
+
+def get_comps_by_recall(algo, sel):
+    if algo not in query_map.keys():
+        return [], [], []
+    if sel not in query_map[algo].keys():
+        return [], [], []
+    tmp = []
+    for item in query_map[algo][sel].keys():
+        tmp.append(query_map[algo][sel][item])
+    # print(tmp)
+    tmp = sorted(tmp, key=lambda x: x["Recall"])
+    
+    recall_list = []
+    qps_list = []
+    cpq_list = []
+    for idx, item in enumerate(tmp):
+        while len(qps_list) > 0 and item["QPS"] > qps_list[-1]:
+            recall_list.pop(-1)
+            qps_list.pop(-1)
+            cpq_list.pop(-1)
+        recall_list.append(item["Recall"])
+        qps_list.append(item["QPS"])
+        cpq_list.append(item["CompsPerQuery"])
+    # if algo == "WST_vamana" and sel == 0.5:
+    #     print(tmp)
+    #     print(recall_list)
+    
+    return recall_list, qps_list, cpq_list
+
+def savedata(data, _file):
+    data = pd.DataFrame(data)
+    data.to_csv(_file, index=False)
+
+
+    
+    # df = pd.DataFrame(data, columns=[0.1 * i for i in range(1, 11)])
+    # df.to_excel(xlsfile, index=False)
+    print("save file to ", _file)
+
 # main function
 if __name__ == "__main__":
     file_path = sys.argv[1]
@@ -27,6 +121,15 @@ if __name__ == "__main__":
     distribution = sys.argv[7]
     label_method = sys.argv[8]
     query_method = sys.argv[9]
+    
+    plotpath = "plot/"
+    xlspath = "plot/csv/"
+    tail = ".csv"
+    if not os.path.exists(plotpath):
+        os.mkdir(plotpath)
+    if not os.path.exists(xlspath):
+        os.mkdir(xlspath)
+    
 
     # print("file ", file_path)
     with open(file_path, 'r') as file:
@@ -34,126 +137,123 @@ if __name__ == "__main__":
     # print(data)
     # get index size and construction time
     # due to various configurations, we need to find the suitable row. use the latest row as the reference
+
+    
+    
+    target_sel_list = [0.001, 0.01, 0.1, 0.5]
+    id2sel = {1:1, 2:0.9, 3:0.8, 4:0.7, 5:0.6, 6:0.5, 7:0.4, 8:0.3, 9:0.2, 10:0.1, 11:0.09, 12:0.08, 13:0.07, 14:0.06, 15:0.05, 16:0.04, 17:0.03, 18:0.02, 19:0.01, 20:0.001}
+    sel2id = {}
+    for id in id2sel.keys():
+        sel2id[id2sel[id]] = id
+    range2sel = {100000:1, 90000:0.9, 80000:0.8, 70000:0.7, 60000:0.6, 50000:0.5, 40000:0.4, 30000:0.3, 20000:0.2, 10000:0.1, 
+                 9000:0.09, 8000:0.08, 7000:0.07, 6000:0.06, 5000:0.05, 4000:0.04, 3000:0.03, 2000:0.02, 1000:0.01, 100:0.001}
+    sel2range = {}
+    for _range in range2sel.keys():
+        sel2range[range2sel[_range]] = _range
+    
+    # dataset="sift10M"
+    # distribution = "random"
+    label_range = 100000
+    # label_range2 = 500
+    # target_recall = 0.8
+    target_id_list = [sel2id[sel] for sel in target_sel_list]
+    target_qrange_list = [sel2range[sel] for sel in target_sel_list]
+
+
     for index, row in data.iterrows():
         if row["Dataset"] != dataset or \
-            query_label_cnt != row["query_label_cnt"] or \
-            label_range != row["label_range"] or \
+            distribution != row["distribution"] or \
             label_cnt != row["label_cnt"] or \
-            distribution != row["distribution"] or\
             row["Threads"] != 1:
             continue
-        if query_label_cnt == 1 and label_cnt > 1 and row["query_label"] != query_label:
-            continue
+        # if query_label_cnt == 1 and label_cnt > 1 and row["query_label"] != query_label:
+        #     continue
+        query_label_cnt = row["query_label_cnt"]
         recall = row["Recall"]
         qps = row["QPS"]
         comps = row["CompsPerQuery"]
         algo = row["Paper"]
+        if algo not in range_algo or row["label_range"] != label_range:
+            continue
+        # if algo in label_algo and row["label_range"] != label_range2:
+        #     continue
+        if row["query_label_cnt"] not in target_id_list and row["query_label_cnt"] not in target_qrange_list:
+            continue
         if recall <= 0:
             continue
         if recall > 1:
             recall = recall / 100
         if algo not in query_map.keys():
-            query_map[algo] = []
-
-        query_map[algo].append({"Recall": recall, "QPS": qps, "CompsPerQuery": comps})
-    
-    # print("query_map:", query_map)
-    for algo in algorithms:
-        if algo not in query_map.keys():
+            query_map[algo] = {}
+        if row["query_label_cnt"] in target_id_list:
+            sel = id2sel[row["query_label_cnt"]]
+        elif row["query_label_cnt"] in target_qrange_list:
+            sel = range2sel[row["query_label_cnt"]]
+        else:
             continue
-        query_map[algo] = sorted(query_map[algo], key=lambda x: x["Recall"])
-
-    #     reversed_list = query_map[algo][::-1]
-    #     res = []
-    #     for idx, entry in enumerate(reversed_list):
-    #         if idx == 0:
-    #             res.append(entry)
-    #         if entry["QPS"] >= res[-1]["QPS"]:
-    #             continue
-    #         else:
-    #             res.append(entry)
-    #     query_map[algo] = res[::-1]
-                
-            
-    # plot size
-    # algorithms = list(query_map.keys())
-        # Plot Recall vs QPS
-    plt.figure(figsize=(10, 6))
-    idx = 0
-    for idx, algo in enumerate(query_map.keys()):
-        recalls = [entry["Recall"] for entry in query_map[algo]]
-        qps_values = [entry["QPS"] for entry in query_map[algo]]
-        line_style = line_styles[idx % len(line_styles)]
-        marker = markers[idx % len(markers)]
-        plt.plot(recalls, qps_values, label=algo, linestyle=line_style, marker=marker)
-        # print("algo:", algo)
-        # print("recall:", recalls)
-        # print("qps_values:", qps_values)
-
-    plt.xlabel('Recall')
-    plt.ylabel('QPS')
-    plt.yscale('log')
-    plt.title('Recall vs QPS for Different Algorithms at {query_method} Label Method'.format(query_method=query_method))
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-    label = query_method + "_" + dataset
-    file = "plot/recall_vs_qps_" + label + ".png"
-    plt.savefig(file)
-
-
-    # Plot Recall vs CompsPerQuery
-    plt.figure(figsize=(10, 6))
-    idx = 0
-    for idx, algo in enumerate(query_map.keys()):
-        recalls = [entry["Recall"] for entry in query_map[algo]]
-        comps_values = [entry["CompsPerQuery"] for entry in query_map[algo]]
-        line_style = line_styles[idx % len(line_styles)]
-        marker = markers[idx % len(markers)]
-        plt.plot(recalls, comps_values, label=algo, linestyle=line_style, marker=marker)
-        # print("algo:", algo)
-        # print("recall:", recalls)
-        # print("comps_values:", comps_values)
-
-    plt.xlabel('Recall')
-    plt.ylabel('Comparisons Per Query')
-    plt.yscale('log')
-    plt.title('Recall vs Comps for Different Algorithms at {query_method} Label Method'.format(query_method=query_method))
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-    label = query_method + "_" + dataset
-    file = "plot/recall_vs_comps_" + label + ".png"
-    plt.savefig(file)
-
-
-    # Plot qps vs CompsPerQuery
-    plt.figure(figsize=(10, 6))
-    idx = 0
-    for idx, algo in enumerate(query_map.keys()):
-        if algo not in comps_algo:
+        if sel not in query_map[algo].keys():
+            query_map[algo][sel] = {}
+        
+        if recall < 0.3:
             continue
-        qps = [entry["QPS"] for entry in query_map[algo]]
-        comps_values = [entry["CompsPerQuery"] for entry in query_map[algo]]
-        line_style = line_styles[idx % len(line_styles)]
-        marker = markers[idx % len(markers)]
-        plt.plot(qps, comps_values, label=algo, linestyle=line_style, marker=marker)
-        # print("algo:", algo)
-        # print("qps:", qps)
-        # print("comps_values:", comps_values)
-
-    plt.xlabel('QPS')
-    plt.ylabel('Comparisons Per Query')
-    # plt.yscale('log')
-    plt.title('QPS vs Comps for Different Algorithms at {query_method} Label Method'.format(query_method=query_method))
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-    label = query_method + "_" + dataset
-    file = "plot/qps_vs_comps_" + label + ".png"
-    plt.savefig(file)
+        res_turple = {"Recall": recall, "QPS": qps, "CompsPerQuery": comps}
+        if algo == "ACORN" or algo == "HNSW" or algo == "iRangeGraph" or algo == "NHQ_nsw" or algo == "SeRF" or algo == "DSG" or algo == "Milvus_HNSW":
+            efs = row["ef_search"]
+            query_map[algo][sel][efs] = res_turple
+        elif algo == "DiskANN" or algo == "DiskANN_Stitched":
+            l = row["L"]
+            query_map[algo][sel][l] = res_turple
+        elif algo == "NHQ_kgraph":
+            l_learch = row["kgraph_L"]
+            query_map[algo][sel][l_learch] = res_turple
+        elif algo == "WST_opt":
+            beam = row["beamSize"]
+            mul = row["final_beam_multiply"]
+            query_map[algo][sel][beam*mul] = res_turple
+        elif algo == "WST_vamana":
+            beam = row["beamSize"]
+            query_map[algo][sel][beam] = res_turple
+        elif algo == "UNIFY" or algo == "UNIFY_hybrid":
+            efs = row["ef_search"]
+            al = row["AL"]
+            query_map[algo][sel][efs*al] = res_turple
+        elif algo == "IVFPQ" or algo == "Milvus_IVFPQ":
+            nprobe = row["nprobe"]
+            query_map[algo][sel][nprobe] = res_turple
 
     
+    print(query_map["DSG"][0.5])
+    columns = ['Algorithm', 'QPS', 'CPQ']
+    # print(query_map)
+    for sel in target_sel_list:
+        df = pd.DataFrame(columns=columns)
+        plt.figure(figsize=(10, 6))
+        for idx, algo in enumerate(range_algo):
+            recall, qps, cpq = get_comps_by_recall(algo, sel)
+            for i in range(len(qps)):
+                row = {"Algorithm": algo, "QPS": qps[i], "CPQ": cpq[i], "recall": recall[i]}
+                new_row = pd.DataFrame([row])
+                df = pd.concat([df, new_row], ignore_index=True)
+            line_style = line_styles[idx % len(line_styles)]
+            marker = markers[idx % len(markers)]
+            # print("algo ", algo, "recall: ", recall, "qps: ", qps)
+            plt.plot(recall, qps, label=algo, linestyle=line_style, marker=marker)
+
+        plt.xlabel('recall')
+        plt.ylabel('QPS')
+        plt.yscale('log')
+        # plt.xscale('log')
+        plt.title('recall/qps with {query_method} Label'.format(query_method=str(label_range)+ ' ' + distribution))
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+        label = "recall_qps_" + str(label_range) + "label_" + str(sel) + "sel_" + distribution + "_" + dataset
+        file = "plot/png/" + label + ".png"
+        plt.savefig(file)
+        print("save image to ", file)
+
+
+        label = "recall_qps_" + str(label_range) + "label_" + str(sel) + "sel_" + distribution + "_" + dataset
+        xlsfile = xlspath + label + tail
+        savedata(df, xlsfile)

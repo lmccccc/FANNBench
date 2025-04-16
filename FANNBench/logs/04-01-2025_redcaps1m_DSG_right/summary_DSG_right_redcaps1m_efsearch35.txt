@@ -1,0 +1,274 @@
+Start time: 20:23
+Use SSE
+dataset: redcaps1m
+data_size: 1000000
+dataset_path: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query_path: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+groundtruth_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+nthreads: 1
+ef_search: 35
+qrange_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json
+query_num: 10000
+label_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+query_k: 10
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+# Sort Dataset Time: 2.9552320s
+search ef:
+vertex in set: {35}
+using simd16
+Total edge:170156702
+Average degree:170.157
+Max. nns length of one point186
+Sum of forward nn #: 170156702
+Avg. forward nn #: 170.157
+Avg. delta nn #: 170.157
+# Load Index Time: 3.9416520s
+load index done
+
+Search ef: 35
+========================
+range: 1000000	 recall: 0.9266	 QPS: 632	Comps: 778	 Hops: 45.9154
+Total Recall: 0.9266	 Total QPS: 631.9110	 Total Comps: 778.4979	 Total Hops: 45.9154
+========================
+# total query time: 16.0124140s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/query_index -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_1_1_100000_real_10.json -index_path /mnt/data/mocheng/dataset/redcaps1m/dsg/dsg_index/index_dsg_efmax1000_efc1000_M8_sel_1_100000_real -method compact -k 8 -ef_max 1000 -ef_construction 1000 -nthreads 1 -ef_search 35 -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_1_1_100000_real.json -query_num 10000 -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -query_k 10"
+	User time (seconds): 20.20
+	System time (seconds): 4.84
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5471288
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1879647
+	Voluntary context switches: 2
+	Involuntary context switches: 76
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 20:23
+Use SSE
+dataset: redcaps1m
+data_size: 1000000
+dataset_path: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query_path: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+groundtruth_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+nthreads: 1
+ef_search: 35
+qrange_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json
+query_num: 10000
+label_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+query_k: 10
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+# Sort Dataset Time: 3.0344640s
+search ef:
+vertex in set: {35}
+using simd16
+Total edge:170156702
+Average degree:170.157
+Max. nns length of one point186
+Sum of forward nn #: 170156702
+Avg. forward nn #: 170.157
+Avg. delta nn #: 170.157
+# Load Index Time: 3.8547200s
+load index done
+
+Search ef: 35
+========================
+range: 500001	 recall: 2.8190	 QPS: 207	Comps: 2403	 Hops: 130.8551
+range: 500002	 recall: 0.0295	 QPS: 18768	Comps: 26	 Hops: 1.4269
+range: 500003	 recall: 0.0003	 QPS: 1988663	Comps: 0	 Hops: 0.0132
+Total Recall: 0.9495	 Total QPS: 613.5054	 Total Comps: 809.7996	 Total Hops: 44.0940
+========================
+# total query time: 16.4950200s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/query_index -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_10.json -index_path /mnt/data/mocheng/dataset/redcaps1m/dsg/dsg_index/index_dsg_efmax1000_efc1000_M8_sel_1_100000_real -method compact -k 8 -ef_max 1000 -ef_construction 1000 -nthreads 1 -ef_search 35 -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json -query_num 10000 -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -query_k 10"
+	User time (seconds): 20.70
+	System time (seconds): 4.79
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5471288
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1879650
+	Voluntary context switches: 1
+	Involuntary context switches: 46
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 20:24
+Use SSE
+dataset: redcaps1m
+data_size: 1000000
+dataset_path: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query_path: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+groundtruth_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+nthreads: 1
+ef_search: 35
+qrange_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json
+query_num: 10000
+label_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+query_k: 10
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+# Sort Dataset Time: 2.9695250s
+search ef:
+vertex in set: {35}
+using simd16
+Total edge:170156702
+Average degree:170.157
+Max. nns length of one point186
+Sum of forward nn #: 170156702
+Avg. forward nn #: 170.157
+Avg. delta nn #: 170.157
+# Load Index Time: 3.8271120s
+load index done
+
+Search ef: 35
+========================
+range: 100001	 recall: 2.8738	 QPS: 246	Comps: 2040	 Hops: 123.7909
+range: 100002	 recall: 0.0389	 QPS: 18849	Comps: 27	 Hops: 1.6643
+range: 100003	 recall: 0.0006	 QPS: 1147332	Comps: 0	 Hops: 0.0276
+Total Recall: 0.9710	 Total QPS: 727.6442	 Total Comps: 688.8681	 Total Hops: 41.8234
+========================
+# total query time: 13.9376410s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/query_index -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_10_1_100000_real_10.json -index_path /mnt/data/mocheng/dataset/redcaps1m/dsg/dsg_index/index_dsg_efmax1000_efc1000_M8_sel_1_100000_real -method compact -k 8 -ef_max 1000 -ef_construction 1000 -nthreads 1 -ef_search 35 -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_10_1_100000_real.json -query_num 10000 -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -query_k 10"
+	User time (seconds): 18.12
+	System time (seconds): 4.77
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:22.89
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5471288
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1879650
+	Voluntary context switches: 1
+	Involuntary context switches: 33
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 20:25
+Use SSE
+dataset: redcaps1m
+data_size: 1000000
+dataset_path: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query_path: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+groundtruth_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json
+method: compact
+index_k: 8
+ef_max: 1000
+ef_construction: 1000
+nthreads: 1
+ef_search: 35
+qrange_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json
+query_num: 10000
+label_path: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+query_k: 10
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+# Sort Dataset Time: 2.9056310s
+search ef:
+vertex in set: {35}
+using simd16
+Total edge:170156702
+Average degree:170.157
+Max. nns length of one point186
+Sum of forward nn #: 170156702
+Avg. forward nn #: 170.157
+Avg. delta nn #: 170.157
+# Load Index Time: 3.8312280s
+load index done
+
+Search ef: 35
+========================
+range: 10001	 recall: 2.8581	 QPS: 502	Comps: 1011	 Hops: 123.0435
+range: 10002	 recall: 0.0344	 QPS: 41493	Comps: 12	 Hops: 1.4863
+range: 10003	 recall: 0.0003	 QPS: 5658744	Comps: 0	 Hops: 0.0138
+Total Recall: 0.9642	 Total QPS: 1487.9664	 Total Comps: 341.2000	 Total Hops: 41.5104
+========================
+# total query time: 6.9307040s
+	Command being timed: "../DynamicSegmentGraph/build/benchmark/query_index -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json -index_path /mnt/data/mocheng/dataset/redcaps1m/dsg/dsg_index/index_dsg_efmax1000_efc1000_M8_sel_1_100000_real -method compact -k 8 -ef_max 1000 -ef_construction 1000 -nthreads 1 -ef_search 35 -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json -query_num 10000 -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -query_k 10"
+	User time (seconds): 11.10
+	System time (seconds): 4.74
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.86
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5471288
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1879647
+	Voluntary context switches: 1
+	Involuntary context switches: 52
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

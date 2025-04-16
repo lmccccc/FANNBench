@@ -1,0 +1,81 @@
+Start time: 06:33
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: redcaps1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/hnsw/index/index_hnsw_sel_1_100000_real_40_1000
+ef_search: 400
+dim: 512
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+[ 0.630s ] Loaded metadata, 1000000 attr's found
+[ 0.630s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.688s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+[ 0.735s ] Loaded 10000 redcaps1m queries
+[ 0.791s ] Loaded ground truth, gt_size: 10
+[ 0.791s ] Index Params -- d: 512, N: 1000000
+Total edge:200
+Average degree:0.000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 4.831s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 41.550s ] Query results (vector ids, then distances):
+query 0 nn's (1538594774, 1540118398): 754695 (1539668172) 105181 (1539349926) 80643 (1539819925) 688747 (1539751467) 438901 (1539813717) 761464 (1539388044) 195457 (1538934010) 714105 (1539901706) 852506 (1538704387) 466111 (1539474262) 
+     dis: 	0.826 0.935 0.971 0.974 0.982 0.986 0.987 0.990 0.992 0.995 
+query 1 nn's (1558313707, 1559317195): 634858 (1559095216) 747350 (1558405403) 328886 (1559221626) 878375 (1559157897) 840825 (1559253647) 433046 (1558315145) 977957 (1559149838) 348487 (1559253366) 619059 (1559307158) 409525 (1558370684) 
+     dis: 	0.134 0.138 0.139 0.144 0.148 0.153 0.158 0.158 0.161 0.162 
+query 2 nn's (1581675605, 1582524306): 341373 (1582339286) 509068 (1582362871) 459595 (1582500502) 782730 (1581701847) 838497 (1582143070) 91884 (1582294672) 864290 (1582406470) 354254 (1581792997) 426699 (1581810177) 705 (1582226978) 
+     dis: 	0.297 0.300 0.305 0.321 0.328 0.331 0.333 0.353 0.356 0.357 
+query 3 nn's (1541361198, 1542915636): 769868 (1542487532) 493967 (1542294990) 953342 (1542471165) 136421 (1542307684) 175440 (1542245841) 238924 (1542209507) 972437 (1541427748) 385496 (1541953821) 762523 (1542714651) 742777 (1541363545) 
+     dis: 	0.474 0.561 0.576 0.594 0.597 0.605 0.608 0.611 0.629 0.630 
+query 4 nn's (1547965400, 1549164333): 929991 (1548794594) 843400 (1549019747) 556735 (1548803052) 359872 (1548277437) 924765 (1548418215) 855122 (1548705861) 802461 (1548697185) 62976 (1548022732) 488089 (1548395559) 213717 (1548537413) 
+     dis: 	0.317 0.360 0.374 0.377 0.381 0.383 0.391 0.403 0.406 0.406 
+[ 41.550s ] *** Query time: 31.603
+qps: 316.426
+ *** HNSW recall 
+HNSW get 96464 postive res from 100000 results, recall@10:0.965
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.001 0.005 0.013 0.046 0.195 0.739 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 163999383, average: 16399.938
+finished ivfpq index examples
+[ 41.551s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query redcaps1m 1000000 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_19_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_19_1_100000_real_10.json /mnt/data/mocheng/dataset/redcaps1m/hnsw/index/index_hnsw_sel_1_100000_real_40_1000 400 512"
+	User time (seconds): 34.61
+	System time (seconds): 4.17
+	Percent of CPU this job got: 92%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2367392
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1178414
+	Voluntary context switches: 6860
+	Involuntary context switches: 57
+	Swaps: 0
+	File system inputs: 182400
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
