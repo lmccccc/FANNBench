@@ -10,9 +10,9 @@ import numpy as np
 # To run this file, clone the redcaps-downloader repo (https://github.com/redcaps-dataset/redcaps-downloader)
 # and run this file from the root directory of the repo
 
-annotations_folder = "/mnt/data/mocheng/dataset/redcaps/annotations"
+annotations_folder = "datasets/redcaps/annotations"
 
-embedding_folder = "/mnt/data/mocheng/dataset/redcaps/image_embeddings"
+embedding_folder = "datasets/redcaps/image_embeddings"
 
 image_folder = "temp_images"
 

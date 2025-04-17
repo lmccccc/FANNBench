@@ -1,66 +1,0 @@
-Start time: 21:02
-Starting index build with R: 32  Lbuild: 100  alpha: 1.2  #threads: 128
-L2: Using AVX2 distance computation DistanceL2Float
-Identified 12 distinct label(s)
-Using only first 1000000 from file.. 
-Starting index build with 1000000 points... 
-0% of index build completed.20% of index build completed.10% of index build completed.50% of index build completed.40% of index build completed.30% of index build completed.70% of index build completed.60% of index build completed.90% of index build completed.80% of index build completed.Starting final cleanup..done. Link time: 12.3607s
-Index built with degree: max:32  avg:31.997  min:17  count(deg<2):0
-Indexing time: 14.0461
-Not saving tags as they are not enabled.
-Time taken for save: 1.35056s.
-Reading (with alignment) bin file ../../dataset/sift/data_query.bin ...Metadata: #pts = 10000, #dims = 128, aligned_dim = 128... allocating aligned memory of 5120000 bytes... done. Copying data to mem_aligned buffer... done.
- Truthset file --filter_label not found. Not computing recall.
-L2: Using AVX2 distance computation DistanceL2Float
-Resizing took: 0.029847s
-From graph header, expected_file_size: 131988044, _max_observed_degree: 32, _start: 123742, file_frozen_pts: 0
-Loading vamana graph ../../dataset/sift/data_diskann_index.txt...done. Index has 1000000 nodes and 31997005 out-edges, _start is set to 123742
-Identified 12 distinct label(s)
-Num frozen points:0 _nd: 1000000 _start: 123742 size(_location_to_tag): 0 size(_tag_to_location):0 Max points: 1000000
-Index loaded
-Using 128 threads to search
-  Ls         QPS     Avg dist cmps  Mean Latency (mus)   99.9 Latency
-=====================================================================
-  10   226887.21            446.50              501.99        4844.95
-  20   222696.44            631.57              563.89        3907.74
-  30   187500.57            799.51              677.87        4353.30
-  40   166859.69            958.71              753.36        4894.13
-  50   154997.51           1112.04              806.96        5136.48
- 100    91800.47           1823.63             1364.29        6341.17
-Done searching. Now saving results 
-Writing bin: filtered_search_results_10_idx_uint32.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_10_dists_float.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_20_idx_uint32.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_20_dists_float.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_30_idx_uint32.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_30_dists_float.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_40_idx_uint32.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_40_dists_float.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_50_idx_uint32.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_50_dists_float.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_100_idx_uint32.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.
-Writing bin: filtered_search_results_100_dists_float.bin
-bin: #pts = 10000, #dims = 10, size = 400008B
-Finished writing bin.

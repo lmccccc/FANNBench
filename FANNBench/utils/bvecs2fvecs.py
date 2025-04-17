@@ -16,13 +16,13 @@ def bvecs2fvecs(bvecs_file):
     fvecs = bvecs.astype('float32')
     return fvecs
 
-
-bvecs_file = "/mnt/data/mocheng/dataset/sift1b/bigann_base.bvecs"
-query_file = "/mnt/data/mocheng/dataset/sift1b/bigann_query.bvecs"
-
-fvecs_file = "/mnt/data/mocheng/dataset/sift10m/sift10m.fvecs"
-train_fvecs_file = "/mnt/data/mocheng/dataset/sift10m/sift10m_train.fvecs"
-query_fvecs_file = "/mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs"
+root = "/path/dataset/sift1b/"         # need modify
+output_root = "/path/dataset/sift10m/" # need modify
+bvecs_file = root + "bigann_base.bvecs"
+query_file = root + "bigann_query.bvecs"
+fvecs_file = output_root + "sift10m.fvecs"
+train_fvecs_file = output_root + "sift10m_train.fvecs"
+query_fvecs_file = output_root + "sift10m_query.fvecs"
 
 size = 10000000 # 10M
 train_size = 1000000 # 1M

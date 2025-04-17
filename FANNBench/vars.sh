@@ -57,7 +57,7 @@ if [  "$dataset" == "sift10M" ]; then
     N=10000000
     query_size=10000
     train_size=1000000
-    root="/mnt/data/mocheng/dataset/sift10m/" 
+    root="/your_path/dataset/sift10m/"         # need modify
     dataset_file=${root}sift10m.fvecs
     query_file=${root}sift10m_query.fvecs
     train_file=${root}sift10m_train.fvecs
@@ -67,7 +67,7 @@ elif [  "$dataset" == "spacev10m" ]; then
     N=10000000
     query_size=10000
     train_size=1000000
-    root="/mnt/data/mocheng/dataset/spacev10m/"
+    root="/your_path/dataset/spacev10m/"        # need modify
     dataset_file=${root}base10M.fvecs
     query_file=${root}query10k.fvecs
     train_file=${root}train.fvecs
@@ -77,7 +77,7 @@ elif [  "$dataset" == "redcaps1m" ]; then
     N=1000000
     query_size=10000
     train_size=100000
-    root="/mnt/data/mocheng/dataset/redcaps1m/"
+    root="/your_path/dataset/redcaps1m/"        # need modify
     dataset_file=${root}image_embeddings.fvecs
     query_file=${root}query.fvecs
     train_file=${root}train.fvecs
@@ -88,7 +88,7 @@ elif [  "$dataset" == "YTRGB1m" ]; then
     N=1000000
     query_size=10000
     train_size=1000000
-    root="/mnt/data/mocheng/dataset/youtube1m/" 
+    root="/your_path/dataset/youtube1m/"         # need modify
     dataset_file=${root}rgb.fvecs
     query_file=${root}rgb_query.fvecs
     train_file=${root}rgb_train.fvecs
@@ -99,7 +99,7 @@ elif [ "$dataset" == "sift1M" ]; then
     N=1000000
     query_size=10000
     train_size=100000
-    root="/mnt/data/mocheng/dataset/sift/" 
+    root="/your_path/dataset/sift/"         # need modify
     dataset_file=${root}sift_base.fvecs
     query_file=${root}sift_query.fvecs
     train_file=${root}sift_learn.fvecs
@@ -117,7 +117,7 @@ fi
 # N=10000
 # query_size=100
 # train_size=10000
-# root="/mnt/data/mocheng/dataset/siftsmall/" 
+# root="/your_path/dataset/siftsmall/" 
 # dataset_file=${root}siftsmall_base.fvecs
 # query_file=${root}siftsmall_query.fvecs
 # train_file=${root}siftsmall_learn.fvecs
@@ -128,7 +128,7 @@ fi
 # N=1000000
 # query_size=10000
 # train_size=100000
-# root="/mnt/data/mocheng/dataset/sift/" 
+# root="/your_path/dataset/sift/" 
 # dataset_file=${root}sift_base.fvecs
 # query_file=${root}sift_query.fvecs
 # train_file=${root}sift_learn.fvecs
@@ -139,7 +139,7 @@ fi
 # N=10000000
 # query_size=10000
 # train_size=100000
-# root="/mnt/data/mocheng/dataset/yfcc10m/"
+# root="/your_path/dataset/yfcc10m/"
 # dataset_file=${root}base10M.fvecs
 # query_file=${root}query10k.fvecs
 # train_file=${root}train.fvecs
@@ -151,7 +151,7 @@ fi
 # N=10000000
 # query_size=10000
 # train_size=10000
-# root="/mnt/data/mocheng/dataset/deep10m/"
+# root="/your_path/dataset/deep10m/"
 # dataset_file=${root}base.10M.fvecs      
 # query_file=${root}query.public.10K.fvecs
 # train_file=${root}deep_learn100K.fvecs  

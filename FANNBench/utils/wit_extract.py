@@ -4,8 +4,10 @@ import sys
 import os
 from defination import fvecs_write
 
-dir = "/mnt/data/mocheng/dataset/wikipedia/image_data_test/resnet_embeddings"
-root = "/mnt/data/mocheng/dataset/wikipedia10m/"
+
+
+dir = "/path/wikipedia/image_data_test/resnet_embeddings"   # need modify
+root = "/path/wikipedia10m/"  # need modify
 save_data_file = root + "data.fvecs"
 save_train_file = root + "train.fvecs"
 save_query_file = root + "query.fvecs"

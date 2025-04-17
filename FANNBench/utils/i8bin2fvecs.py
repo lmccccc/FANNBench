@@ -42,8 +42,11 @@ size = 10000000 # 10M
 train_size = 1000000 # 1M
 qsize = 10000 # 10k
 
-filename = "/mnt/data/mocheng/dataset/spacev/base.1B.i8bin"
-query_filename = "/mnt/data/mocheng/dataset/spacev/query.30K.i8bin"
+root = "/path/dataset/spacev/"                   # need modify
+output_root = "/path/dataset/spacev10m/"         # need modify
+
+filename = root + "base.1B.i8bin"
+query_filename = root + "query.30K.i8bin"
 data, dim = read_i8bin(filename)
 query_data, dim2 = read_i8bin(query_filename)
 assert dim == dim2
@@ -56,10 +59,9 @@ data = data[sampled_indices]
 train = data[:train_size]
 query = query_data[:qsize]
 
-output_root = "/mnt/data/mocheng/dataset/spacev10m/"
-output_file = "/mnt/data/mocheng/dataset/spacev10m/base10M.fvecs"
-output_query_file = "/mnt/data/mocheng/dataset/spacev10m/query10k.fvecs"
-output_train_file = "/mnt/data/mocheng/dataset/spacev10m/train.fvecs"
+output_file = output_root + "base10M.fvecs"
+output_query_file = output_root + "query10k.fvecs"
+output_train_file = output_root + "train.fvecs"
 
 if not os.path.exists(output_root):
     os.makedirs(output_root)

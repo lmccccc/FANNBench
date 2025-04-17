@@ -11,6 +11,19 @@ import re
 import concurrent.futures
 from googleapiclient.errors import HttpError
 
+dir = "/path/youtube-8m/data/yt8m/video/"   # need modify
+output_root = "/path/dataset/youtube/"      # need moidfy
+
+
+output_rgb_file = output_root + "data_rgb.fvecs"
+output_audio_file = output_root + "data_audio.fvecs"
+output_comments_file = output_root + "data_comments.json"
+output_views_file = output_root + "data_views.json"
+output_likes_file = output_root + "data_likes.json"
+output_publish_dates_file = output_root + "data_publish_dates.json"
+output_info_file = output_root + "info.json"
+progress_file = output_root + "progress.json"
+
 
 def get_element_by_id(id, timeout=2):
     """
@@ -181,14 +194,7 @@ data_size = 1200000
 # train_size = 10
 total_size = data_size
 
-output_rgb_file = "/mnt/data/mocheng/dataset/youtube/data_rgb.fvecs"
-output_audio_file = "/mnt/data/mocheng/dataset/youtube/data_audio.fvecs"
-output_comments_file = "/mnt/data/mocheng/dataset/youtube/data_comments.json"
-output_views_file = "/mnt/data/mocheng/dataset/youtube/data_views.json"
-output_likes_file = "/mnt/data/mocheng/dataset/youtube/data_likes.json"
-output_publish_dates_file = "/mnt/data/mocheng/dataset/youtube/data_publish_dates.json"
-output_info_file = "/mnt/data/mocheng/dataset/youtube/info.json"
-progress_file = "/mnt/data/mocheng/dataset/youtube/progress.json"
+
 
 # load output_comments_file to check the progress
 
@@ -216,26 +222,13 @@ output_likes_file = output_likes_file + '.' + str(index)
 output_publish_dates_file = output_publish_dates_file + '.' + str(index)
 
 # youtube key
-key1 = 'AIzaSyC7zEJzQyhg5BmKpIMQzo_VNq-f0nQ7CP4'
-key2 = 'AIzaSyBCJKs2cfDAvRjY4vJ1Rk2eM6KWzHO-shU'
-key3 = 'AIzaSyBxNBPCjWyg8nnQbXpOiVUJcRbs4lc5BpY'
-key4 = 'AIzaSyCXhimXqB0c4hCc2yCoiZOEM5skpilba2Q'
-key5 = 'AIzaSyAc3H2lHMd9SjZk4SUaJmeuLhg0sw7ZIUA'
-key6 = 'AIzaSyBjd-UyU9vON04jNcPZ9W3MFyRKmNKecL0'
-key7 = 'AIzaSyCCrwuDuw_XrHiZ6ZJBfDt9zRn7FpFNAYM'
-key8 = 'AIzaSyBMCFg1M7tgiNdg7_T_EseEsb587TX6FZ8'
-key9 = 'AIzaSyBnL9WEcknR5-WVnFEZO1_h5wQqg2KyWoE' 
-key10 = 'AIzaSyB9PlbLyapUJayXYuAe08EfxmKF3gdr9FE'
-key11 = 'AIzaSyAzwAz2P4R3pzcWop4PNKAKkqqAvYj5g9E'
-key12 = 'AIzaSyDxYZFFaT27MJsWNCWQJTeHMDRhG3MMhlw'
-key13 = 'AIzaSyD5WyT0bVXCO-D5XStShiVcmxIv1rL0VRI'
-key14 = 'AIzaSyDH-fHAnor3l_QQQvPa0IjAr9RwBwTjnts'
+# we don't provide youtube key, it need you to get it from google api
+key1 = 'ttt1'
+key2 = 'ttt2'
 
-api_keys = [key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14]  # Replace with your actual API keys
+api_keys = [key1, key2]  # Replace with your actual API keys
 api_key_manager = YouTubeAPIKeyManager(api_keys)
 # Load a dataset from TFRecord files
-dir = "/mnt/data/mocheng/dataset/youtube-8m/data/yt8m/video/"
-# file = "/mnt/data/mocheng/dataset/youtube-8m/data/yt8m/video/train0702.tfrecord"
 
 # load files
 files = get_file_list(dir, "train")

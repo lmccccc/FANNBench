@@ -37,12 +37,14 @@ if __name__ == "__main__":
     #     fvecs_file = sys.argv[2]
 
     #     datasize = int(sys.argv[3])
-    fbin_file = "/mnt/data/mocheng/dataset/deep/base.1B.fbin"
-    fbin_query_file = "/mnt/data/mocheng/dataset/deep/query.public.10K.fbin"
+    root = "/path/dataset/deep/"                   # need modify
+    output_root = "/path/dataset/deep10m/"      # need modify
+    fbin_file = root + "base.1B.fbin"
+    fbin_query_file = root + "query.public.10K.fbin"
 
-    fvecs_file = "/mnt/data/mocheng/dataset/deep10m/base.10M.fvecs"
-    fvecs_train_file = "/mnt/data/mocheng/dataset/deep10m/deep_learn100K.fvecs"
-    fvecs_query_file = "/mnt/data/mocheng/dataset/deep10m/query.public.10K.fvecs"
+    fvecs_file = output_root + "base.10M.fvecs"
+    fvecs_train_file = output_root + "deep_learn100K.fvecs"
+    fvecs_query_file = output_root + "query.public.10K.fvecs"
     
     original_size = 1000000000
     datasize = 10000000

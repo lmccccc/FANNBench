@@ -11,9 +11,9 @@ data_size  = 1000000
 train_size = 100000
 query_size = 10000
 
-root = "/mnt/data/mocheng/dataset/youtube/"
-output_audio_root = "/mnt/data/mocheng/dataset/youtube_audio1m/"
-output_root = "/mnt/data/mocheng/dataset/youtube1m/"
+root = "path/to/your/youtube/"
+output_audio_root = "path/to/your/youtube_audio1m/"
+output_root = "path/to/your/youtube1m/"
 
 
 

@@ -37,10 +37,11 @@ def csr_matrix_to_list(matrix):
         data_list[i].append(int(j))
     return data_list
 
-filename = "/mnt/data/mocheng/dataset/yfcc100M/base.10M.u8bin"
-metadata_filename = "/mnt/data/mocheng/dataset/yfcc100M/base.metadata.10M.spmat"
-query_filename = "/mnt/data/mocheng/dataset/yfcc100M/query.public.100K.u8bin"
-query_metaedata_filename = "/mnt/data/mocheng/dataset/yfcc100M/query.metadata.public.100K.spmat"
+
+filename = "/path/yfcc100M/base.10M.u8bin"          # need modify
+metadata_filename = "/path/yfcc100M/base.metadata.10M.spmat"        # need modify
+query_filename = "/path/yfcc100M/query.public.100K.u8bin"        # need modify
+query_metaedata_filename = "/path/yfcc100M/query.metadata.public.100K.spmat"        # need modify
 dim = 192
 
 size = 10000000
@@ -65,11 +66,11 @@ print("data shape:", data.shape)
 print("query data shape:", query_data.shape)
 
 
-output_file = "/mnt/data/mocheng/dataset/yfcc10m/base10M.fvecs"
-output_train_file = "/mnt/data/mocheng/dataset/yfcc10m/train.fvecs"
-output_query_file = "/mnt/data/mocheng/dataset/yfcc10m/query10k.fvecs"
-output_attr_file = "/mnt/data/mocheng/dataset/yfcc10m/attr10M.json"
-output_query_attr_file = "/mnt/data/mocheng/dataset/yfcc10m/query_attr10k.json"
+output_file = "/path/yfcc10m/base10M.fvecs"
+output_train_file = "/path/yfcc10m/train.fvecs"
+output_query_file = "/path/yfcc10m/query10k.fvecs"
+output_attr_file = "/path/yfcc10m/attr10M.json"
+output_query_attr_file = "/path/yfcc10m/query_attr10k.json"
 fvecs_write(output_file, data)
 fvecs_write(output_train_file, train_data)
 fvecs_write(output_query_file, query_data)

@@ -3,11 +3,13 @@ from defination import fvecs_write
 import json
 import os
 
-file = "/mnt/data/mocheng/dataset/redcaps/image_embeddings/redcaps-512-angular.npy"
-timestame_file = "/mnt/data/mocheng/dataset/redcaps/image_embeddings/redcaps-512-angular_filter-timestamps.npy"
+root = "/path/dataset/redcaps/"                # need modify
+output_folder1 = "/path/dataset/redcaps1m/"    # need modify
+output_folder2 = "/path/dataset/redcaps4m/"    # need modify
 
-output_folder1 = "/mnt/data/mocheng/dataset/redcaps1m/"
-output_folder2 = "/mnt/data/mocheng/dataset/redcaps4m/"
+file = root + "image_embeddings/redcaps-512-angular.npy"                                   
+timestame_file = "image_embeddings/redcaps-512-angular_filter-timestamps.npy"
+
 size1 = 1000000
 size2 = 4000000
 query_size = 10000
