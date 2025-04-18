@@ -1,4 +1,4 @@
-### Hello Runoob!# FANN Bench
+# FANN Bench
 Unified interface for Filtering Approximate Nearest Neighbor (Filtering ANN) search.
 
 ## 📚 Table of Contents
