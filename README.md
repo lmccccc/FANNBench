@@ -18,7 +18,7 @@ Unified interface for Filtering Approximate Nearest Neighbor (Filtering ANN) sea
 
 - [Usage](#usage)
   - [1.Data preparison](#1-data-preparison)
-  - [2.Index construction](#index)
+  - [2.Index construction](#index-construction)
   - [3.Query](#query)
   - [3.Data processing](#data-processing)
 - [Source Code Reference (Optional)](#-source-code-reference-optional)
