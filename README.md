@@ -5,22 +5,23 @@ Unified interface for Filtering Approximate Nearest Neighbor (Filtering ANN) sea
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-  - [1.ACORN](#ACORN-installation)
-  - [2.DiskANN](#DiskANN-installation)
-  - [3.DynamicSegmentGraph(DSG)](#DSG-installation)
-  - [4.Faiss](#faiss-installation)
-  - [5.iRangeGraph](#iRangeGraph-installation)
-  - [6.RangeFilteredANN(beta-WST)](#WST-installation)
-  - [7.SeRF](#SeRF-installation)
-  - [8.UNIFY](#UNIFY-installation)
-  - [9.Milvus](#Milvus-installation)
-  - [10.NHQ](#NHQ-NSW)
+  - [1.ACORN](#1-ACORN-installation)
+  - [2.DiskANN](#2-DiskANN-installation)
+  - [3.DynamicSegmentGraph(DSG)](#3-DSG-installation)
+  - [4.Faiss](#4-faiss-installation)
+  - [5.iRangeGraph](#5-iRangeGraph-installation)
+  - [6.RangeFilteredANN(beta-WST)](#6-WST-installation)
+  - [7.SeRF](#7-SeRF-installation)
+  - [8.UNIFY](#8-UNIFY-installation)
+  - [9.Milvus](#9-Milvus-installation)
+  - [10.NHQ](#10-NHQ-NSW)
 
 - [Usage](#usage)
-  - [1.Data preparison](#Data preparison)
-  - [2.Index construction](#index construction)
+  - [1.Data preparison](#1-data-preparison)
+  - [2.Index construction](#index)
   - [3.Query](#query)
-  - [3.Data processing](#data processing)
+  - [3.Data processing](#data-processing)
+- [Source Code Reference (Optional)](#-source-code-reference-optional)
 - [License](#license)
 
 ---
@@ -283,3 +284,8 @@ But if you are curious, here is where each app lives in the repo:
 | UNIFY | https://github.com/sjtu-dbgroup/UNIFY |
 | Milvus | https://github.com/milvus-io/milvus |
 | NHQ | Not avaliable |
+
+
+## Licnese
+
+This project is licensed under the [MIT License](./LICENSE).
