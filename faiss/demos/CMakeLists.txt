@@ -31,6 +31,11 @@ target_link_libraries(utils PRIVATE faiss)
 add_executable(generate_groundtruth EXCLUDE_FROM_ALL generate_groundtruth.cpp)
 target_link_libraries(generate_groundtruth PRIVATE faiss)
 
+add_executable(generate_groundtruth_arbi EXCLUDE_FROM_ALL generate_groundtruth_arbi.cpp)
+target_link_libraries(generate_groundtruth_arbi PRIVATE faiss)
+find_package(OpenMP REQUIRED)
+target_link_libraries(generate_groundtruth_arbi PRIVATE OpenMP::OpenMP_CXX)
+
 add_executable(ivfpq_build EXCLUDE_FROM_ALL ivfpq_build.cpp)
 target_link_libraries(ivfpq_build PRIVATE faiss)
 
@@ -60,3 +65,9 @@ target_link_libraries(airship_query PRIVATE faiss)
 
 add_executable(airship_query_keyword EXCLUDE_FROM_ALL airship_query_keyword.cpp)
 target_link_libraries(airship_query_keyword PRIVATE faiss)
+
+add_executable(hnsw_query_arbi EXCLUDE_FROM_ALL hnsw_query_arbi.cpp)
+target_link_libraries(hnsw_query_arbi PRIVATE faiss)
+
+add_executable(ivfpq_query_arbi EXCLUDE_FROM_ALL ivfpq_query_arbi.cpp)
+target_link_libraries(ivfpq_query_arbi PRIVATE faiss)

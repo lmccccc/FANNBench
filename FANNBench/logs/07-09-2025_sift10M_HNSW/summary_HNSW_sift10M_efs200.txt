@@ -1,0 +1,131 @@
+Start time: 00:01
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: sift10M
+N: 10000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000
+ef_search: 200
+dim: 128
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 1.427s ] Loaded metadata, 10000000 attr's found
+[ 1.427s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.430s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+[ 1.433s ] Loaded 10000 sift10M queries
+[ 1.441s ] Loaded ground truth, gt_size: 10
+[ 1.441s ] Index Params -- d: 128, N: 10000000
+terminate called after throwing an instance of 'faiss::FaissException'
+  what():  Error in faiss::FileIOReader::FileIOReader(const char*) at /home/mocheng/code/faiss/faiss/impl/io.cpp:67: Error: 'f' failed: could not open /mnt/data/mocheng/dataset/sift10m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 for reading: No such file or directory
+Command terminated by signal 6
+	Command being timed: "../faiss/build/demos/hnsw_query_arbi sift10M 10000000 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json /mnt/data/mocheng/dataset/sift10m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 200 128"
+	User time (seconds): 1.30
+	System time (seconds): 0.14
+	Percent of CPU this job got: 92%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 142248
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 54312
+	Voluntary context switches: 3
+	Involuntary context switches: 4
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 00:02
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: sift10M
+N: 10000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+gt file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+index file: /mnt/data/mocheng/dataset/sift10m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000
+ef_search: 200
+dim: 128
+loaded base attributes from:/mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 1.378s ] Loaded metadata, 10000000 attr's found
+[ 1.378s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 128, nb=10000
+[ 1.381s ] Loaded query vectors from /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+[ 1.384s ] Loaded 10000 sift10M queries
+[ 1.391s ] Loaded ground truth, gt_size: 10
+[ 1.391s ] Index Params -- d: 128, N: 10000000
+Total edge:200
+Average degree:0.000
+ load index size: 10000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 7.203s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.500
+[ 560.688s ] Query results (vector ids, then distances):
+query 0 nn's (6, 15386, 98713): 4160485 (64292) 6141318 (6) 1160663 (39732) 4738758 (6) 7293718 (6) 4538400 (6) 1020562 (10) 7077742 (10) 9397776 (6) 238649 (53246) 
+     dis: 	65950.000 73183.000 74292.000 74463.000 75573.000 76603.000 76767.000 76934.000 77424.000 77858.000 
+query 1 nn's (6, 9087, 92417): 8449497 (36517) 5552416 (10) 285986 (6) 4234271 (81802) 2253711 (96811) 4907604 (6) 1273419 (43620) 7501440 (6) 1263214 (6) 9492445 (7547) 
+     dis: 	32633.000 42944.000 43778.000 44439.000 45140.000 46066.000 46522.000 46910.000 47608.000 48691.000 
+query 2 nn's (6, 3328, 86670): 3900297 (20164) 4588082 (6) 8667807 (56895) 289025 (48384) 237844 (10) 5982237 (2651) 4480383 (83754) 3493381 (7597) 6296252 (10) 2795236 (6) 
+     dis: 	43033.000 47637.000 47988.000 48416.000 49294.000 50144.000 50702.000 51043.000 51071.000 51181.000 
+query 3 nn's (6, 14596, 97918): 980813 (94636) 1527942 (10) 2205832 (10) 4147780 (6) 6151275 (98235) 8410503 (46018) 7269483 (65893) 3643741 (56342) 1985932 (6) 5124856 (6) 
+     dis: 	4296.000 4309.000 4343.000 4550.000 4602.000 4817.000 4894.000 5279.000 5371.000 5492.000 
+query 4 nn's (6, 1537, 84881): 7091990 (6) 5493369 (75388) 3389697 (45953) 6062843 (7875) 4344456 (19) 1149636 (10) 6388463 (46781) 4119530 (10) 3220361 (76212) 4366121 (72105) 
+     dis: 	77167.000 81626.000 84350.000 84746.000 85939.000 85940.000 86061.000 86120.000 86625.000 86842.000 
+[ 560.688s ] *** Query time: 33.841
+qps: 295.502
+ *** HNSW recall 
+HNSW get 34222 postive res from 100000 results, recall@10:0.342
+recall dist(10% per bucket): 0.016 0.084 0.180 0.245 0.238 0.152 0.066 0.017 0.002 0.000 0.000 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 108425939, average: 10842.594
+finished ivfpq index examples
+[ 560.689s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query_arbi sift10M 10000000 10 1 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json /mnt/data/mocheng/dataset/sift10m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 200 128"
+	User time (seconds): 546.29
+	System time (seconds): 15.12
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:21.46
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8398752
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4268525
+	Voluntary context switches: 1
+	Involuntary context switches: 1402
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

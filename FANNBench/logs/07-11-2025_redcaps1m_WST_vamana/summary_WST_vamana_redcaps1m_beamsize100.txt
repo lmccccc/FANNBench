@@ -1,0 +1,49 @@
+Start time: 20:36
+set threads:  1
+data file:  /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file:  /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file:  /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+qrange file:  /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json
+gt file:  /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_100.json
+top k:  100
+data size:  1000000
+query size:  10000
+output file:  /mnt/data/mocheng/dataset/redcaps1m/vtree/result/result_sel_1_100000_real.csv
+index prefix:  /mnt/data/mocheng/dataset/redcaps1m/vtree/index/index_sel_1_100000_real/
+mode:  query
+DATASETS:  ['redcaps1m']
+using alpha:  1
+building tree
+Total edge:704000000
+Average degree:704
+ tree construction suc
+Vamana tree build time: 6013.610s
+using this batch search3 
+total point comp 125240236
+avg comp:12524
+qps: 227.94592903594517
+method, recall, total time, build time, split factor, memory
+('', 'vamana-tree_1.000_2_100', 0.9954629999999693, 44.16962289810181, 6013.610150098801, 2, 5480408)
+	Command being timed: "python -u utils/RangeFilteredANN.py --dataset redcaps1m --data_size 1000000 --query_size 10000 --dataset_file /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs --query_file /mnt/data/mocheng/dataset/redcaps1m/query.fvecs --attr_file /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json --qrange_file /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json --gt_file /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_100.json --output_file /mnt/data/mocheng/dataset/redcaps1m/vtree/result/result_sel_1_100000_real.csv --index_prefix /mnt/data/mocheng/dataset/redcaps1m/vtree/index/index_sel_1_100000_real/ --top_k 100 --vamana_tree --threads 1 --beam_search_size 100 --num_final_multiplies 16 --super_opt_postfiltering_split_factor 2 --super_opt_postfiltering_shift_factor 0.5 --mode query"
+	User time (seconds): 6048.20
+	System time (seconds): 13.16
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:41:00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 9526640
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 7808619
+	Voluntary context switches: 267
+	Involuntary context switches: 8464
+	Swaps: 0
+	File system inputs: 8
+	File system outputs: 994872
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

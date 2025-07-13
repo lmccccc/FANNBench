@@ -106,9 +106,10 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                 --index_path_prefix $diskann_stit_index_file \
                                                 -R $M \
                                                 --alpha $alpha \
+                                                --Lbuild $L_construction \
                                                 --label_file $label_file \
-                                                -T $threads \
-                                                Stitched_R $stitched_R \
+                                                --num_threads $threads \
+                                                --stitched_R $Stitched_R \
                                                 &>> $log_file
         status=$?
         if [ $? -ne 0 ]; then
@@ -135,7 +136,7 @@ if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
                                             -K $K \
                                             -L $L \
                                             --result_path $diskann_stit_result_path \
-                                            -T $threads \
+                                            --num_threads $threads \
                                             &>> $log_file
     # echo "../DiskANN/build/apps/search_memory_index  --data_type float  --dist_fn l2  --index_path_prefix $diskann_index_file  --query_file $query_bin_file  --gt_file $ground_truth_bin_file --query_filters_file $keyword_query_range_file -K $K -L $L --result_path $diskann_result_path -T $threads &>> $log_file"
     status=$?

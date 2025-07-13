@@ -116,6 +116,10 @@ add_executable(acorn_query EXCLUDE_FROM_ALL acorn_query.cpp)
 target_include_directories(acorn_query PRIVATE ${nlohmann_json_SOURCE_DIR}/include)
 target_link_libraries(acorn_query PRIVATE faiss)
 
+add_executable(acorn_query_arbi EXCLUDE_FROM_ALL acorn_query_arbi.cpp)
+target_include_directories(acorn_query_arbi PRIVATE ${nlohmann_json_SOURCE_DIR}/include)
+target_link_libraries(acorn_query_arbi PRIVATE faiss)
+
 add_executable(test_json EXCLUDE_FROM_ALL test_json.cpp)
 target_link_libraries(test_json PRIVATE faiss)
 

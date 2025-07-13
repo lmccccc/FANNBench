@@ -316,6 +316,20 @@ acorn_query/fast:
 .PHONY : acorn_query/fast
 
 # Convenience name for target.
+demos/CMakeFiles/acorn_query_arbi.dir/rule:
+	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demos/CMakeFiles/acorn_query_arbi.dir/rule
+.PHONY : demos/CMakeFiles/acorn_query_arbi.dir/rule
+
+# Convenience name for target.
+acorn_query_arbi: demos/CMakeFiles/acorn_query_arbi.dir/rule
+.PHONY : acorn_query_arbi
+
+# fast build rule for target.
+acorn_query_arbi/fast:
+	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f demos/CMakeFiles/acorn_query_arbi.dir/build.make demos/CMakeFiles/acorn_query_arbi.dir/build
+.PHONY : acorn_query_arbi/fast
+
+# Convenience name for target.
 demos/CMakeFiles/test_json.dir/rule:
 	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demos/CMakeFiles/test_json.dir/rule
 .PHONY : demos/CMakeFiles/test_json.dir/rule
@@ -390,6 +404,30 @@ acorn_query.s: acorn_query.cpp.s
 acorn_query.cpp.s:
 	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f demos/CMakeFiles/acorn_query.dir/build.make demos/CMakeFiles/acorn_query.dir/acorn_query.cpp.s
 .PHONY : acorn_query.cpp.s
+
+acorn_query_arbi.o: acorn_query_arbi.cpp.o
+.PHONY : acorn_query_arbi.o
+
+# target to build an object file
+acorn_query_arbi.cpp.o:
+	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f demos/CMakeFiles/acorn_query_arbi.dir/build.make demos/CMakeFiles/acorn_query_arbi.dir/acorn_query_arbi.cpp.o
+.PHONY : acorn_query_arbi.cpp.o
+
+acorn_query_arbi.i: acorn_query_arbi.cpp.i
+.PHONY : acorn_query_arbi.i
+
+# target to preprocess a source file
+acorn_query_arbi.cpp.i:
+	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f demos/CMakeFiles/acorn_query_arbi.dir/build.make demos/CMakeFiles/acorn_query_arbi.dir/acorn_query_arbi.cpp.i
+.PHONY : acorn_query_arbi.cpp.i
+
+acorn_query_arbi.s: acorn_query_arbi.cpp.s
+.PHONY : acorn_query_arbi.s
+
+# target to generate assembly for a file
+acorn_query_arbi.cpp.s:
+	cd /home/mocheng/code/ACORN/build && $(MAKE) $(MAKESILENT) -f demos/CMakeFiles/acorn_query_arbi.dir/build.make demos/CMakeFiles/acorn_query_arbi.dir/acorn_query_arbi.cpp.s
+.PHONY : acorn_query_arbi.cpp.s
 
 acorn_query_keyword.o: acorn_query_keyword.cpp.o
 .PHONY : acorn_query_keyword.o
@@ -669,6 +707,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... acorn_build"
 	@echo "... acorn_query"
+	@echo "... acorn_query_arbi"
 	@echo "... acorn_query_keyword"
 	@echo "... demo_imi_flat"
 	@echo "... demo_imi_pq"
@@ -686,6 +725,9 @@ help:
 	@echo "... acorn_query.o"
 	@echo "... acorn_query.i"
 	@echo "... acorn_query.s"
+	@echo "... acorn_query_arbi.o"
+	@echo "... acorn_query_arbi.i"
+	@echo "... acorn_query_arbi.s"
 	@echo "... acorn_query_keyword.o"
 	@echo "... acorn_query_keyword.i"
 	@echo "... acorn_query_keyword.s"

@@ -1,0 +1,71 @@
+Start time: 04:51
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+# of vecs: 1000000
+get data size:1000000 query size:10000
+get data label size:1000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:1000000
+# Sort Dataset Time: 1.8567660s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {900}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-redcaps1m-1000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real
+fwd size:2555935
+bwd size:0
+Total edge:18926564
+Average degree:18.9266
+Total # of Neighbors: 32741258
+ef search:900
+query id: 3 Range: 458419 958419 sel: 0.500001 recall: 1
+groundtruth: 792743 660183 722009 793642 659290 927999 559488 638095 659240 510765 795299 910665 536329 669309 789633 915851 470593 887831 882214 884581 642654 614607 894976 698851 506007 906747 721754 490916 827282 506247 764278 829781 499850 772071 640929 756907 550970 864154 574170 758815 897672 687763 541651 624163 767101 528871 459541 553446 520391 755693 695199 916480 516160 510957 580819 778504 590596 752504 530411 602480 672950 617042 746129 757577 926154 596641 891067 504253 461230 463816 862064 645583 716133 692440 859307 769704 896224 636093 487064 752096 576158 625581 831551 833111 520831 508740 566966 510452 526369 588467 633649 941350 603523 663876 666300 883064 747201 658079 863107 478469 
+result: 478469 863107 658079 747201 883064 666300 663876 603523 941350 633649 588467 526369 510452 566966 508740 520831 833111 831551 625581 576158 752096 487064 636093 896224 769704 859307 692440 716133 645583 862064 463816 461230 504253 891067 596641 926154 757577 746129 617042 672950 602480 530411 752504 590596 778504 580819 510957 516160 916480 695199 755693 520391 553446 459541 528871 767101 624163 541651 687763 897672 758815 574170 864154 550970 756907 640929 772071 499850 829781 764278 506247 827282 490916 721754 906747 506007 698851 894976 614607 642654 884581 882214 887831 470593 915851 789633 669309 536329 910665 795299 510765 659240 638095 559488 927999 659290 793642 722009 660183 792743 
+
+Search ef: 900
+========================
+range: 0	 recall: 0.9944	 QPS: 269	 Comps: 6527
+========================
+qps: 269
+# total query time: 37.2055320s
+search nns time:3
+nns time pct: 0
+recall hist:
+0:1 1:0 2:0 3:0 4:1 5:0 6:3 7:3 8:65 9:2146 10:7781 
+sel hist:
+0:0 1:0 2:0 3:0 4:0 5:10000 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_300 -dataset redcaps1m -N 1000000 -dataset_path /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs -query_path /mnt/data/mocheng/dataset/redcaps1m/query.fvecs -label_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json -qrange_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json -groundtruth_path /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_100.json -query_num 10000 -K 100 -M 8 -ef_construction 1000 -ef_search 900 -index_file /mnt/data/mocheng/dataset/redcaps1m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_real -ef_max 1000 -nthreads 1"
+	User time (seconds): 39.01
+	System time (seconds): 2.48
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4121136
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 1116931
+	Voluntary context switches: 21
+	Involuntary context switches: 57
+	Swaps: 0
+	File system inputs: 30616
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

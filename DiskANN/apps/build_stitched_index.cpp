@@ -340,6 +340,8 @@ int main(int argc, char **argv)
     auto index_timer = std::chrono::high_resolution_clock::now();
     handle_args(argc, argv, data_type, input_data_path, final_index_path_prefix, label_data_path, universal_label,
                 num_threads, R, L, stitched_R, alpha);
+    std::cout << "stitched_R=" << stitched_R << std::endl;
+    std::cout << "Thread=" << num_threads << std::endl;
 
     path labels_file_to_use = final_index_path_prefix + "_label_formatted.txt";
     path labels_map_file = final_index_path_prefix + "_labels_map.txt";

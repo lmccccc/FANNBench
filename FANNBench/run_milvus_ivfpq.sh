@@ -27,7 +27,22 @@ TZ='America/Los_Angeles' date +"Start time: %H:%M" &>> $log_file
 
 
 # echo nprobe: $nprobe
-if [ "$label_cnt" -gt 1 ]; then
+if [ "$label_cnt" -eq 2 ]; then
+    /bin/time -v -p python -u utils/pymilvus_ivfpq_arbi.py $dataset \
+                                    $N \
+                                    $dataset_file \
+                                    $query_file \
+                                    $dataset_attr_file \
+                                    $query_range_file \
+                                    $ground_truth_file \
+                                    $K \
+                                    $nprobe \
+                                    $collection_name \
+                                    $mode \
+                                    $partition_size_M \
+                                    $dim \
+                                    &>> $log_file
+elif [ "$label_cnt" -gt 1 ]; then
     /bin/time -v -p python -u utils/pymilvus_ivfpq_keyword.py $dataset \
                                     $N \
                                     $dataset_file \

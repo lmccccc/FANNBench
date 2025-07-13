@@ -14,6 +14,7 @@ name_mapping = ["Faiss_HNSW", "Faiss_IVFPQ", "Milvus_HNSW", "Milvus_IVFPQ", "ACO
 line_styles = ['-', '--', '-.', ':']
 markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', '*', 'h', '|', '+', 'x', 'X', 'H', '_']
 dataset_list = ["sift10M", "spacev10m", "redcaps1m", "YTRGB1m"]
+d = {"sift10M": 128, "spacev10m": 100, "redcaps1m": 512, "YTRGB1m": 1024}
 query_maps = {}
 
 def print_latex(query_maps):
@@ -27,7 +28,7 @@ def print_latex(query_maps):
     print("\\cline{2-9}")
     print(" & ", end="")
     for i in range(len(dataset_list)):
-        print(" Memory & Time ", end="")
+        print(" Size & Memory(GB) & Time ", end="")
         if i != len(dataset_list) - 1:
             print(" & ", end="")
         else:
@@ -41,17 +42,29 @@ def print_latex(query_maps):
         print(out_algo, " & ", end="")
         for dataset in dataset_list:
             if dataset not in query_maps.keys() or algo not in query_maps[dataset].keys():
-                print(" - & - ", end="")
+                print(" - & - & - ", end="")
                 if dataset != dataset_list[-1]:
                     print(" & ", end="")
                 continue
-            size = int(query_maps[dataset][algo]["Memory"])
+            disk_size = int(query_maps[dataset][algo]["IndexSize"])/1024
+            if disk_size <= 0:
+                disk_size = '-'
+            else:
+                disk_size = "{:.2f}".format(disk_size)
+            # print(disk_size, " & ", end="")
+            size = int(query_maps[dataset][algo]["Memory"])/1024
             if size <= 0:
                 size = '-'
+            else:
+                size = "{:.2f}".format(size)
             time = int(query_maps[dataset][algo]["ConstructionTime"])
             if time <= 0:
                 time = '-'
-            print(size, " & ", time, end="")
+            else:
+                time = "{:d}".format(time)
+            # print(size, " & ", time, end="")
+
+            print("{} & {} & {}".format(disk_size, size, time), end="")
             if dataset != dataset_list[-1]:
                 print(" & ", end="")
         print("\\\\")
@@ -92,6 +105,13 @@ if __name__ == "__main__":
         index_size = row["IndexSize"]
         const_time = row["ConstructionTime"]
 
+        if algo == "SeRF":
+            if row["serf_M"] != 8:
+                continue
+        if "DiskANN" in algo:
+            if row["M"] != 40:
+                continue
+
         if row["Recall"] > 0.1 and row["Threads"] == 1 and (row["query_label"] == 6 or row["query_label_cnt"] == 6 or row["query_label_cnt"] == 50000):
             memory = row["Memory"]
             if dataset not in query_maps.keys():
@@ -105,6 +125,9 @@ if __name__ == "__main__":
 
         if const_time <= 0:
             continue
+        if "IVF" in algo and row["partition_size_M"] == d[dataset]:
+            print("algo:", algo, " partition_size_M:", row["partition_size_M"], " d:", d[dataset])
+            continue
         
         if dataset not in query_maps.keys():
             query_maps[dataset] = {}
@@ -112,8 +135,45 @@ if __name__ == "__main__":
             query_maps[dataset][algo] = {}
         query_maps[dataset][algo]["IndexSize"] = index_size
         query_maps[dataset][algo]["ConstructionTime"] = const_time
+        
     
     # print(query_maps)
     print_latex(query_maps)
+    
+    times = []
+    sizes = []
+    plt.figure(figsize=(10, 6))
+    for dataset in query_maps:
+        t_times = []
+        t_sizes = []
+        for algo in query_maps[dataset]:
+            if algo not in algorithms:
+                continue
+            if "Milvus" in algo or "DiskANN" in algo or "iRange" in algo:
+                continue
+            if "Memory" not in query_maps[dataset][algo] or "ConstructionTime" not in query_maps[dataset][algo]:
+                continue
+            size = int(query_maps[dataset][algo]["IndexSize"])
+            time = int(query_maps[dataset][algo]["ConstructionTime"])
+            # print("algo:", algo)
+            times.append(time)
+            sizes.append(size)
+            t_times.append(time)
+            t_sizes.append(size)
+        plt.scatter(times, sizes, alpha=0.7, label=dataset)
+    plt.xlabel('ConstructionTime')
+    plt.ylabel('Memory')
+    correlation = np.corrcoef(times, sizes)[0, 1]
+
+    file = "plot/png/correlation.png"
+    plt.savefig(file)
+    print("save image to ", file)
+
+
+    print("Pearson correlation:", correlation)
+
+
+
+
     
     

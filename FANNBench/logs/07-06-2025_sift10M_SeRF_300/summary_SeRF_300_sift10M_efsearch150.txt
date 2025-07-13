@@ -1,0 +1,284 @@
+Start time: 04:32
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:10000
+get data label size:10000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:10000000
+# Sort Dataset Time: 7.8052370s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {150}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-sift10M-10000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random
+fwd size:429419449472099
+bwd size:0
+Total edge:225783830
+Average degree:22.5784
+Total # of Neighbors: 393200770
+ef search:150
+query id: 3 Range: 4926736 9931547 sel: 0.500481 recall: 1
+groundtruth: 5736899 9664770 9654939 5419460 5755708 5062764 8088109 5798377 4977279 9562212 8319566 8897711 7934709 6590228 5275353 8464370 7546897 9630653 5388350 5459823 9223902 6477166 9397016 9620111 9429333 5652535 5946982 5954797 7304615 6264568 6995107 7635895 8775210 8813533 5061970 5805111 9705406 7431000 6746794 5600037 5840865 6583310 6903004 8273446 5844208 9099635 9748243 6849768 7693431 5011877 6180124 6755433 7756228 6770824 9037819 6629586 7712070 8918317 9720071 8489267 9075918 6658415 5565526 8683079 7463159 9045810 5105767 6071833 8380291 7644649 9455149 9770568 4967869 5157986 9153999 7781816 6091693 5185435 5579263 8393669 9745425 6728060 6140143 6988916 8447237 8490665 8726667 5674692 9867468 8827032 6400997 5016279 7733306 5039493 9251912 7795660 8505827 8384248 5174479 8563012 
+result: 8563012 5174479 8384248 8505827 7795660 9251912 5039493 7733306 5016279 6400997 8827032 9867468 5674692 8726667 8490665 8447237 6988916 6140143 6728060 9745425 8393669 5579263 5185435 6091693 7781816 9153999 5157986 4967869 9770568 9455149 7644649 8380291 6071833 5105767 9045810 7463159 8683079 5565526 6658415 9075918 8489267 9720071 8918317 7712070 6629586 9037819 6770824 7756228 6755433 6180124 5011877 7693431 6849768 9748243 9099635 5844208 8273446 6903004 6583310 5840865 5600037 6746794 7431000 9705406 5805111 5061970 8813533 8775210 7635895 6995107 6264568 7304615 5954797 5946982 5652535 9429333 9620111 9397016 6477166 9223902 5459823 5388350 9630653 7546897 8464370 5275353 6590228 7934709 8897711 8319566 9562212 4977279 5798377 8088109 5062764 5755708 5419460 9654939 9664770 5736899 
+
+Search ef: 150
+========================
+range: 0	 recall: 0.8128	 QPS: 1432	 Comps: 2232
+========================
+qps: 1421
+# total query time: 7.0380740s
+search nns time:1
+nns time pct: 0
+recall hist:
+0:1 1:0 2:19 3:71 4:254 5:626 6:1158 7:1808 8:2341 9:3300 10:422 
+sel hist:
+0:0 1:0 2:0 3:0 4:2958 5:7042 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_300 -dataset sift10M -N 10000000 -dataset_path /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs -query_path /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs -label_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -qrange_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_50000_1_100000_random.json -groundtruth_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_50000_1_100000_random_100.json -query_num 10000 -K 100 -M 8 -ef_construction 1000 -ef_search 150 -index_file /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random -ef_max 1000 -nthreads 1"
+	User time (seconds): 21.33
+	System time (seconds): 8.11
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:30.38
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10950564
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 3726014
+	Voluntary context switches: 1574
+	Involuntary context switches: 40
+	Swaps: 0
+	File system inputs: 1060208
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:33
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:10000
+get data label size:10000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:10000000
+# Sort Dataset Time: 9.8276570s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {150}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-sift10M-10000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random
+fwd size:429419449472099
+bwd size:0
+Total edge:225783830
+Average degree:22.5784
+Total # of Neighbors: 393200770
+ef search:150
+query id: 3 Range: 6823900 7824701 sel: 0.10008 recall: 0.99
+groundtruth: 7546897 7304615 6995107 7635895 7431000 6903004 6849768 7693431 7756228 7712070 7463159 7644649 7781816 6988916 7733306 7795660 6958594 7661899 7446852 7527091 7200177 7160264 7452944 7665333 7653036 7810362 7527601 7787712 7533267 7512343 6922869 7355174 6827837 7684014 7399285 7321312 7179278 7261172 7566904 6921016 6963889 7801416 7413396 7644412 7823471 7371500 7192746 7596801 7627980 7756930 7584665 7058470 7748969 7577325 6852806 7206851 7022891 7320839 6971893 7165980 7633794 7463478 7020814 6902618 6967339 7634796 7011171 7720929 7449377 7723677 7399229 7189823 6961975 7183962 7174395 7283851 7164273 7117795 7277775 7738591 7306449 6979132 7619452 6833406 6985689 7606892 7643799 6971896 7418218 7357769 7357905 7692044 7584660 7251879 7179932 7799260 7248656 6869161 7306905 7102075 
+result: 7461608 7102075 7306905 6869161 7248656 7799260 7179932 7251879 7584660 7692044 7357905 7357769 7418218 6971896 7643799 7606892 6985689 6833406 7619452 6979132 7306449 7738591 7277775 7117795 7164273 7283851 7174395 7183962 6961975 7189823 7399229 7723677 7449377 7720929 7011171 7634796 6967339 6902618 7020814 7463478 7633794 7165980 6971893 7320839 7022891 7206851 6852806 7577325 7748969 7058470 7584665 7756930 7596801 7192746 7371500 7823471 7644412 7413396 7801416 6963889 6921016 7566904 7261172 7179278 7321312 7399285 7684014 6827837 7355174 6922869 7512343 7533267 7787712 7527601 7810362 7653036 7665333 7452944 7160264 7200177 7527091 7446852 7661899 6958594 7795660 7733306 6988916 7781816 7644649 7463159 7712070 7756228 7693431 6849768 6903004 7431000 7635895 6995107 7304615 7546897 
+
+Search ef: 150
+========================
+range: 0	 recall: 0.8217	 QPS: 1206	 Comps: 1743
+========================
+qps: 1196
+# total query time: 8.3608390s
+search nns time:1
+nns time pct: 0
+recall hist:
+0:1 1:0 2:3 3:41 4:169 5:542 6:1077 7:1900 8:2562 9:3330 10:375 
+sel hist:
+0:3938 1:6062 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_300 -dataset sift10M -N 10000000 -dataset_path /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs -query_path /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs -label_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -qrange_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_10000_1_100000_random.json -groundtruth_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_10000_1_100000_random_100.json -query_num 10000 -K 100 -M 8 -ef_construction 1000 -ef_search 150 -index_file /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random -ef_max 1000 -nthreads 1"
+	User time (seconds): 27.34
+	System time (seconds): 9.81
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:37.46
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10948496
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3726015
+	Voluntary context switches: 0
+	Involuntary context switches: 613
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:34
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:10000
+get data label size:10000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:10000000
+# Sort Dataset Time: 11.4130070s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {150}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-sift10M-10000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random
+fwd size:29183445
+bwd size:0
+Total edge:225783830
+Average degree:22.5784
+Total # of Neighbors: 393200770
+ef search:150
+query id: 3 Range: 682387 781821 sel: 0.0099435 recall: 1
+groundtruth: 702005 703366 693894 742938 685530 725295 725289 753862 697463 682500 690972 781361 757369 687335 718996 718262 718785 686801 689503 701595 738988 706326 759284 707551 691565 779793 712145 736032 705760 725607 686236 741324 734493 773962 761515 773018 742117 748908 751706 754561 730430 772917 696270 717614 742906 765292 729531 702821 716246 719638 696563 702894 766617 725414 754420 708113 763632 738838 709140 703099 705906 683562 745450 765135 688796 767708 766042 682465 748358 780980 719455 754521 737093 724614 707204 703938 697812 768386 749044 765402 758632 763137 704805 762263 761993 728366 775776 727474 762203 718447 732482 733856 723694 767546 686042 693623 716690 717398 719618 766591 
+result: 766591 719618 717398 716690 693623 686042 767546 723694 733856 732482 718447 762203 727474 775776 728366 761993 762263 704805 763137 758632 765402 749044 768386 697812 703938 707204 724614 737093 754521 719455 780980 748358 682465 766042 767708 688796 765135 745450 683562 705906 703099 709140 738838 763632 708113 754420 725414 766617 702894 696563 719638 716246 702821 729531 765292 742906 717614 696270 772917 730430 754561 751706 748908 742117 773018 761515 773962 734493 741324 686236 725607 705760 736032 712145 779793 691565 707551 759284 706326 738988 701595 689503 686801 718785 718262 718996 687335 757369 781361 690972 682500 697463 753862 725289 725295 685530 742938 693894 703366 702005 
+
+Search ef: 150
+========================
+range: 0	 recall: 0.7995	 QPS: 1731	 Comps: 958
+========================
+qps: 1709
+# total query time: 5.8506690s
+search nns time:1
+nns time pct: 0
+recall hist:
+0:14 1:2 2:8 3:33 4:178 5:505 6:1313 7:2246 8:3004 9:2565 10:132 
+sel hist:
+0:10000 1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_300 -dataset sift10M -N 10000000 -dataset_path /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs -query_path /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs -label_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -qrange_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_1000_1_100000_random.json -groundtruth_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_1000_1_100000_random_100.json -query_num 10000 -K 100 -M 8 -ef_construction 1000 -ef_search 150 -index_file /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random -ef_max 1000 -nthreads 1"
+	User time (seconds): 26.74
+	System time (seconds): 10.70
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:38.33
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10950644
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3810623
+	Voluntary context switches: 0
+	Involuntary context switches: 523
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:35
+Use SSE
+Load vecs from: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+# of vecs: 10000000
+get data size:10000000 query size:10000
+get data label size:10000000
+get query range size:10000
+get groundtruth size:10000
+get query id size:10000
+query range size:10000
+get od2id size:10000000
+# Sort Dataset Time: 8.2758690s
+index K(M?):
+8
+ef construction:
+1000
+ef search:
+vertex in set: {150}
+thread num:1
+ef max:1000
+using simd
+
+Save result to :../exp/search/benchmark-Benchmark-SeRF_2D-sift10M-10000000.csv
+Method: SeRF_2D
+parameters: ef_construction ( 1000 )  index-k( 8)  ef_max (1000) 
+load index from /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random
+fwd size:29183445
+bwd size:0
+Total edge:225783830
+Average degree:22.5784
+Total # of Neighbors: 393200770
+ef search:150
+query id: 3 Range: 2580580 2590727 sel: 0.0010148 recall: 0.49
+groundtruth: 2589936 2582297 2588895 2586897 2581393 2584592 2580806 2588430 2589551 2582573 2588826 2581884 2587153 2586504 2588303 2589369 2580910 2587733 2582070 2586468 2590171 2587577 2582602 2584390 2590210 2590724 2580734 2583976 2582140 2581591 2581736 2580828 2587237 2588402 2582469 2583438 2582787 2587805 2588213 2589744 2584177 2585144 2590608 2588831 2587582 2589929 2583572 2584081 2584686 2588498 2581173 2580613 2581752 2586071 2589169 2586745 2583535 2587905 2590392 2581102 2582045 2584697 2589133 2584397 2582119 2590338 2581219 2588810 2590474 2583716 2590566 2583131 2585871 2583435 2587883 2586819 2589227 2583001 2583503 2588819 2581859 2588606 2584773 2582084 2588175 2580999 2584614 2581746 2590377 2587997 2581653 2583865 2583933 2588374 2589170 2586477 2582950 2584641 2584755 2580636 
+result: 2590011 2583157 2586646 2584547 2582439 2590589 2585077 2590129 2589191 2590254 2583797 2585667 2588135 2585966 2584244 2588559 2590100 2587707 2583542 2586536 2590013 2583646 2587688 2588677 2589348 2586515 2589459 2587899 2585427 2589050 2588949 2580857 2587654 2586210 2581963 2586147 2588676 2581698 2581157 2580793 2588265 2587698 2583551 2585944 2582961 2587194 2581333 2585497 2581714 2585657 2588257 2584755 2582950 2588374 2587997 2590377 2580999 2588175 2584773 2581859 2588819 2583503 2587883 2583435 2585871 2590566 2590474 2590338 2582045 2581102 2583535 2589169 2586071 2580613 2588498 2584686 2583572 2589929 2587582 2590608 2584177 2589744 2587805 2583438 2582469 2588402 2587237 2582140 2583976 2580734 2590210 2584390 2582602 2582070 2586504 2589551 2584592 2581393 2588895 2582297 
+
+Search ef: 150
+========================
+range: 0	 recall: 0.2999	 QPS: 6572	 Comps: 267
+========================
+qps: 6373
+# total query time: 1.5692760s
+search nns time:0
+nns time pct: 0
+recall hist:
+0:4494 1:582 2:632 3:621 4:687 5:619 6:634 7:610 8:591 9:495 10:35 
+sel hist:
+0:10000 1:0 2:0 3:0 4:0 5:0 6:0 7:0 8:0 9:0 10:0 
+	Command being timed: "../SeRF/build/benchmark/deep_arbitrary -method SeRF_300 -dataset sift10M -N 10000000 -dataset_path /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs -query_path /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs -label_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json -qrange_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_100_1_100000_random.json -groundtruth_path /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_100_1_100000_random_100.json -query_num 10000 -K 100 -M 8 -ef_construction 1000 -ef_search 150 -index_file /mnt/data/mocheng/dataset/sift10m/serf/serf_index/index_serf_efmax1000_M8_efs1000_sel_1_100000_random -ef_max 1000 -nthreads 1"
+	User time (seconds): 16.46
+	System time (seconds): 7.92
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:24.38
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10950560
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3726014
+	Voluntary context switches: 1
+	Involuntary context switches: 37
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

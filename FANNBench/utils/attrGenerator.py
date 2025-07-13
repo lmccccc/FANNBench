@@ -78,6 +78,46 @@ def genearte_attr(db_size, attr_cnt, attr_range, distribution, query_attr_cnt, q
             print("selectivity:", stat/db_size)
             attr = attr.tolist()
             return attr
+        elif attr_cnt == 2: 
+            label_attr_cnt = 500
+            range_attr_cnt = 100000
+            # generate 2 attrs, one is categorical, one is numerical
+            prob_map_label = {6: 0.6, 10: 0.3, 19: 0.05, 20: 0.0316}
+            prob_map_range = {6: 0.5/0.6, 10: 0.1/0.3, 19: 0.01/0.05, 20: 0.001/0.0316}
+
+            support_query_label = [6, 10, 19, 20]
+            prob_list = np.array([prob_map_label[val] for val in support_query_label])
+            prob_sum = [np.sum(prob_list[:i]) for i in range(1, prob_list.shape[0]+1)]
+            print("support query label:", support_query_label)
+            print("corresponding selectivity:", prob_list)
+            print("prob_sum:", prob_sum)
+            label_attr = np.zeros(db_size, dtype='int32').reshape(db_size)
+            if query_label not in support_query_label:
+                print("error only support query label:", support_query_label)
+                sys.exit(-1)
+            if prob_sum[-1] > 1:
+                print("error too much labels to assign")
+                sys.exit(-1)
+
+            stat = np.zeros(len(support_query_label), dtype='int32')
+            for i in range(db_size):
+                val = random.random()
+                for idx, prob in enumerate(prob_sum):
+                    if val < prob_sum[idx]:
+                        label_attr[i] = support_query_label[idx]
+                        stat[idx] += 1
+                        break
+                    label_attr[i] = np.random.randint(low=0, high=label_attr_cnt)
+                    while label_attr[i] in support_query_label:
+                        label_attr[i] = np.random.randint(low=0, high=label_attr_cnt)
+            print("selectivity:", stat/db_size)
+            label_attr = label_attr
+            
+            range_attr = np.random.randint(0, range_attr_cnt, db_size, dtype='int32').reshape(db_size)
+            attr = np.column_stack((label_attr, range_attr)).reshape(-1).tolist()
+            print("attr len: ", len(attr))
+            return attr
+
 
 
         # elif(attr_cnt > 1 and query_attr_cnt == 1):# keywords

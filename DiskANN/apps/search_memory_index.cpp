@@ -166,7 +166,7 @@ int search_memory_index(diskann::Metric &metric, const std::string &index_path, 
             auto qs = std::chrono::high_resolution_clock::now();
             if (filtered_search && !tags)
             {
-                std::cout << "search with filters" << std::endl;
+                // std::cout << "search with filters" << std::endl;
                 std::string raw_filter = query_filters.size() == 1 ? query_filters[0] : query_filters[i];
 
                 auto retval = index->search_with_filters(query + i * query_aligned_dim, raw_filter, recall_at, L,

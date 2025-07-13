@@ -9,25 +9,27 @@ ef_search_list=(
     # 9
     # 10
     # 12
-    15
-    18
-    20
-    25
+    # 15
+    # 18
+    # 20
+    # 25
     30
     35
     40
     60
     80
     100
+    120
     150
+    180
     200
     300
-    400
-    500
-    600
-    700
-    800
-    900
+    # 400
+    # 500
+    # 600
+    # 700
+    # 800
+    # 900
     # 1000
     # 1200
     # 1400
@@ -40,11 +42,11 @@ L_list=(
     # 8
     # 10
     # 12
-    15
-    20
-    40
-    60
-    80
+    # 15
+    # 20
+    # 40
+    # 60
+    # 80
     100
     150
     200
@@ -64,22 +66,23 @@ nprobe_list=( # ivfpq
     # 1
     # 3
     # 5
-    # 10
-    # 20
-    # 30
-    # 50
-    # 80
-    # 100
-    # 150
-    # 200
-    # 300
+    10
+    20
+    30
+    50
+    80
+    100
+    120
+    150
+    200
+    300
     # 400
     # 500
     # 600
-    700
-    800
-    900
-    1000
+    # 700
+    # 800
+    # 900
+    # 1000
 )
 
 # nhq_kgraph
@@ -109,24 +112,24 @@ beamsize_list=(
     # 2
     # 3
     # 5
-    # 10
+    10
     # 12
-    # 15
+    15
     # 18
-    # 20
-    # 40
-    # 60
-    # 80
-    # 100
-    # 150
-    # 200
-    # 300
+    20
+    40
+    60
+    80
+    100
+    150
+    200
+    300
     # 400
     # 500
-    600
-    700
-    800
-    900
+    # 600
+    # 700
+    # 800
+    # 900
     # 1000
 )
 
@@ -145,20 +148,20 @@ al_list=(
     32
 )
 
-# qrange_list=(
-#     100   #  0.1%
-#     1000  #  1 %
-#     # 2000
-#     # 3000
-#     # 4000
-#     # 5000
-#     # 6000
-#     # 7000
-#     # 8000
-#     # 9000
-#     10000 # 10 %
-#     50000 # 50 %
-# )
+qrange_list=(
+    100   #  0.1%
+    1000  #  1 %
+    # 2000
+    # 3000
+    # 4000
+    # 5000
+    # 6000
+    # 7000
+    # 8000
+    # 9000
+    10000 # 10 %
+    50000 # 50 %
+)
 
 sel_list=(
     # 1   # 100%
@@ -622,14 +625,14 @@ query_func(){
 
 
 if [ $1 == "range" ]; then
-    query_func acorn
-    query_func hnsw
-    query_func irange
-    query_func ivfpq
-    query_func milvus_ivfpq
-    query_func milvus_hnsw
-    query_func serf
-    query_func dsg
+    # query_func acorn
+    # query_func hnsw
+    # query_func irange
+    # query_func ivfpq
+    # query_func milvus_ivfpq
+    # query_func milvus_hnsw
+    # query_func serf
+    # query_func dsg
     query_func vamana_tree
     query_func wst_sup_opt
     query_func unify
@@ -646,7 +649,7 @@ elif [ $1 == "key" ]; then
     query_func nsw
     echo "All label benchmarks done."
     exit 0
-elif [ $1 != "batch" ] && [ $1 != "smallbatch" ] && [ $1 != "largebatch" ]; then 
+elif [ $1 != "batch" ] && [ $1 != "batchkey" ]; then 
     query_func $1
     exit 0
 fi
@@ -660,31 +663,31 @@ if [ $1 == "batch" ]; then
     if [ $2 == "range" ]; then
         python utils/modify_var.py label_range 100000
         python utils/modify_var.py label_cnt 1
-        python utils/modify_var.py query_label_cnt 50000
+        python utils/modify_var.py query_label_cnt 6
         python utils/modify_var.py query_label 0
-        ./run_attr_generator.sh
-        ./run_qrange_generator.sh
-        ./run_groundtruth_generator.sh
+        # ./run_attr_generator.sh
+        # ./run_qrange_generator.sh
+        # ./run_groundtruth_generator.sh
         for qrange in "${sel_list[@]}"; do
             echo "qrange=$qrange"
             python utils/modify_var.py query_label_cnt $qrange
-            ./run_qrange_generator.sh
+            # ./run_qrange_generator.sh
             ./run_groundtruth_generator.sh
-            # query_func acorn
-            # query_func hnsw
-            # query_func irange
+            query_func acorn
+            query_func hnsw
+            query_func irange
             query_func ivfpq
             query_func milvus_ivfpq
-            # query_func serf
-            # query_func dsg
-            # query_func vamana_tree
-            # query_func wst_sup_opt
-            # query_func unify
-            # query_func milvus_hnsw
-            # query_func unify_hybrid
+            query_func milvus_hnsw
+            query_func serf
+            query_func dsg
+            query_func vamana_tree
+            query_func wst_sup_opt
+            query_func unify
+            query_func unify_hybrid
             echo "All range benchmarks done"
         done
-    elif [ $2 == "keyword" ]; then
+    elif [ $2 == "label" ]; then
         python utils/modify_var.py label_range 500
         python utils/modify_var.py label_cnt 1
         python utils/modify_var.py query_label_cnt 1
@@ -695,19 +698,44 @@ if [ $1 == "batch" ]; then
         # ./all_construct.sh keyword
         for q_label in "${sel_list[@]}"; do
             python utils/modify_var.py query_label $q_label
-            ./run_attr_generator.sh
-            ./run_qrange_generator.sh
+            # ./run_attr_generator.sh
+            # ./run_qrange_generator.sh
             ./run_groundtruth_generator.sh
             # ./run_diskann_stitched.sh construction
-            # query_func acorn
-            # query_func diskann
+            query_func acorn
+            query_func diskann
             query_func diskann_stitched
-            # query_func hnsw
-            # query_func ivfpq
-            # query_func kgraph
-            # query_func nsw
-            # query_func milvus_hnsw
-            # query_func milvus_ivfpq
+            query_func hnsw
+            query_func ivfpq
+            query_func kgraph
+            query_func nsw
+            query_func milvus_hnsw
+            query_func milvus_ivfpq
+            echo "All label benchmarks done."
+        done
+    elif [ $2 == "arbitrary" ]; then
+        python utils/modify_var.py label_range 500
+        python utils/modify_var.py label_cnt 2
+        python utils/modify_var.py query_label_cnt 6
+        python utils/modify_var.py query_label 6
+        ./run_attr_generator.sh
+        ./run_qrange_generator.sh
+        ./run_groundtruth_generator.sh
+        ./run_acorn.sh construction
+        ./run_hnsw.sh construction
+        ./run_ivfpq.sh construction
+        ./run_milvus_hnsw.sh construction
+        ./run_milvus_ivfpq.sh construction
+        for q_label in "${sel_list[@]}"; do
+            python utils/modify_var.py query_label_cnt $q_label
+            python utils/modify_var.py query_label $q_label
+            ./run_qrange_generator.sh
+            ./run_groundtruth_generator.sh
+            query_func acorn
+            query_func hnsw
+            query_func ivfpq
+            query_func milvus_hnsw
+            query_func milvus_ivfpq
             echo "All label benchmarks done."
         done
     else
@@ -751,11 +779,14 @@ if [ $1 == "batchkey" ]; then
             echo "All label benchmarks done."
         done
     else
+        python utils/modify_var.py label_range 500
+        python utils/modify_var.py label_cnt 1
+        python utils/modify_var.py query_label_cnt 1
+        python utils/modify_var.py query_label 6
         for q_label in "${sel_list[@]}"; do
             echo "q_label=$q_label"
             python utils/modify_var.py query_label $q_label
             # ./run_qrange_generator.sh
-            # ./run_groundtruth_generator.sh
             query_func $2
         done
         echo "All range benchmarks done"

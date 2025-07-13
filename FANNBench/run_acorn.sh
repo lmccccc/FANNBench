@@ -67,7 +67,26 @@ fi
 
 if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
 
-    if [ "$label_cnt" -gt 1 ]; then
+    if [ "$label_cnt" -eq 2 ]; then
+        echo  "start arbitrary query, efs: $ef_search"
+        /bin/time -v -p ../ACORN/build/demos/acorn_query_arbi $dataset \
+                                        $N \
+                                        $gamma \
+                                        $M \
+                                        $M_beta \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $acorn_index_file \
+                                        $ef_search \
+                                        $dim \
+                                        &>> $log_file
+
+    elif [ "$label_cnt" -gt 1 ]; then
         echo  "start query, efs: $ef_search"
         /bin/time -v -p ../ACORN/build/demos/acorn_query_keyword $dataset \
                                         $N \

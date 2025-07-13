@@ -357,6 +357,19 @@ acorn_query/fast:
 .PHONY : acorn_query/fast
 
 #=============================================================================
+# Target rules for targets named acorn_query_arbi
+
+# Build rule for target.
+acorn_query_arbi: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 acorn_query_arbi
+.PHONY : acorn_query_arbi
+
+# fast build rule for target.
+acorn_query_arbi/fast:
+	$(MAKE) $(MAKESILENT) -f demos/CMakeFiles/acorn_query_arbi.dir/build.make demos/CMakeFiles/acorn_query_arbi.dir/build
+.PHONY : acorn_query_arbi/fast
+
+#=============================================================================
 # Target rules for targets named test_json
 
 # Build rule for target.
@@ -479,6 +492,7 @@ help:
 	@echo "... 5-Multiple-GPUs"
 	@echo "... acorn_build"
 	@echo "... acorn_query"
+	@echo "... acorn_query_arbi"
 	@echo "... acorn_query_keyword"
 	@echo "... bench_ivf_selector"
 	@echo "... demo_imi_flat"

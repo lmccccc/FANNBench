@@ -1,0 +1,51 @@
+Start time: 04:48
+dataset: redcaps1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json
+query range file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json
+ground truth file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 300
+distribution: sel_1_100000_real
+collection name: collection_hnsw_redcaps1m_sel_1_100000_real_efc1000
+mode: query
+d: 512
+collection  collection_hnsw_redcaps1m_sel_1_100000_real_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 512
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  999598  postive res from  1000000  results, recall@ 100 : 0.999598
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 0.000e+00 2.000e-04 2.800e-02 9.718e-01]
+10000  queries cost: 128.7113516330719 , qps: 77.69322498071365
+	Command being timed: "python -u utils/pymilvus_hnsw.py redcaps1m 1000000 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/attr_sel_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/qrangesel_6_1_100000_real.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_1_100000_real/sif_gt_sel_6_1_100000_real_100.json 100 40 1000 300 sel_1_100000_real collection_hnsw_redcaps1m_sel_1_100000_real_efc1000 query 512"
+	User time (seconds): 66.31
+	System time (seconds): 5.62
+	Percent of CPU this job got: 41%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:53.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 152156
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 100499
+	Voluntary context switches: 24301
+	Involuntary context switches: 502390
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

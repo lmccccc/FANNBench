@@ -109,6 +109,7 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
                                                 --index_path_prefix $diskann_index_file \
                                                 -R $M \
                                                 --alpha $alpha \
+                                                --Lbuild $L_construction \
                                                 --label_file $label_file \
                                                 -T $threads \
                                                 &>> $log_file

@@ -6,7 +6,7 @@ source ./file_check.sh
 
 
 
-algo=UNIFY_middle_300
+algo=UNIFY_hybrid
 
 ##########################################
 # TESTING SIFT1M and PAPER

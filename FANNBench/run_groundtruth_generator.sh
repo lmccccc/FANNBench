@@ -32,7 +32,7 @@ if [ -f "$ground_truth_file" ]; then
     exit 1
 fi
 
-if [ "$label_cnt" -gt 1 ]; then
+if [ "$label_cnt" -gt 2 ]; then
     # echo "generate gt for keyword query"
     # echo "N: $N"
     # echo "dataset_file: $dataset_file"
@@ -52,6 +52,27 @@ if [ "$label_cnt" -gt 1 ]; then
     #                                         $dim \
     #                                         &>> ${dir}/summary_${algo}_${dataset}.txt 
     echo "not support"
+
+elif [ "$label_cnt" -eq 2 ]; then
+    echo "eneerating gt for arbitrary query"
+    echo "N: $N"
+    echo "dataset_file: $dataset_file"
+    echo "dataset_attr_file: $dataset_attr_file"
+    echo "query_file: $query_file"
+    echo "query_range_file: $query_range_file"
+    echo "ground_truth_file: $ground_truth_file"
+    echo "gt_topk: $gt_topk"
+    echo "dim: $dim"
+    /bin/time -v -p ../faiss/build/demos/generate_groundtruth_arbi $N \
+                                            $dataset_file \
+                                            $dataset_attr_file \
+                                            $query_file \
+                                            $query_range_file \
+                                            $ground_truth_file \
+                                            $gt_topk \
+                                            $dim \
+                                            $threads \
+                                            &>> ${dir}/summary_${algo}_${dataset}.txt 
 
 else
     # <number vecs> <dataset> <attr> <query> <queryrange> <output> <k>

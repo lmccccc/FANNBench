@@ -106,6 +106,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "demos/CMakeFiles/test_acorn.dir/DependInfo.cmake"
   "demos/CMakeFiles/acorn_build.dir/DependInfo.cmake"
   "demos/CMakeFiles/acorn_query.dir/DependInfo.cmake"
+  "demos/CMakeFiles/acorn_query_arbi.dir/DependInfo.cmake"
   "demos/CMakeFiles/test_json.dir/DependInfo.cmake"
   "demos/CMakeFiles/acorn_query_keyword.dir/DependInfo.cmake"
   "benchs/CMakeFiles/bench_ivf_selector.dir/DependInfo.cmake"

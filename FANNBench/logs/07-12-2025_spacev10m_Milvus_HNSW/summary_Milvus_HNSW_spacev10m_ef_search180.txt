@@ -1,0 +1,228 @@
+Start time: 04:17
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 180
+distribution: sel_1_500_random
+collection name: collection_hnsw_spacev10m_sel_1_500_random_efc1000
+mode: query
+d: 100
+2025-07-12 19:18:04,208 [ERROR][_create_connection]: Failed to create new connection using: cd6b60db8c0e4e2daa8621c5b54dcf7e (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw.py", line 75, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json 100 40 1000 180 sel_1_500_random collection_hnsw_spacev10m_sel_1_500_random_efc1000 query 100"
+	User time (seconds): 2.10
+	System time (seconds): 0.09
+	Percent of CPU this job got: 20%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 76800
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 40
+	Minor (reclaiming a frame) page faults: 22186
+	Voluntary context switches: 2302
+	Involuntary context switches: 395
+	Swaps: 0
+	File system inputs: 3960
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 04:46
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_10_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 180
+distribution: sel_1_500_random
+collection name: collection_hnsw_spacev10m_sel_1_500_random_efc1000
+mode: query
+d: 100
+2025-07-12 19:46:28,899 [ERROR][_create_connection]: Failed to create new connection using: 7fead0e83c454393bf4f16692ebc450c (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw.py", line 75, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_10.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_10_100.json 100 40 1000 180 sel_1_500_random collection_hnsw_spacev10m_sel_1_500_random_efc1000 query 100"
+	User time (seconds): 1.61
+	System time (seconds): 0.11
+	Percent of CPU this job got: 16%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 78848
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 33
+	Minor (reclaiming a frame) page faults: 22164
+	Voluntary context switches: 2140
+	Involuntary context switches: 359
+	Swaps: 0
+	File system inputs: 1576
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 05:12
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_19_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 180
+distribution: sel_1_500_random
+collection name: collection_hnsw_spacev10m_sel_1_500_random_efc1000
+mode: query
+d: 100
+2025-07-12 20:12:31,459 [ERROR][_create_connection]: Failed to create new connection using: b67be0a4392c4b13be9a44b8e1244e36 (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw.py", line 75, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_19.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_19_100.json 100 40 1000 180 sel_1_500_random collection_hnsw_spacev10m_sel_1_500_random_efc1000 query 100"
+	User time (seconds): 2.49
+	System time (seconds): 20.40
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:23.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 76796
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 771
+	Minor (reclaiming a frame) page faults: 39025
+	Voluntary context switches: 3694
+	Involuntary context switches: 1950
+	Swaps: 0
+	File system inputs: 192456
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 05:39
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 180
+distribution: sel_1_500_random
+collection name: collection_hnsw_spacev10m_sel_1_500_random_efc1000
+mode: query
+d: 100
+2025-07-12 20:39:43,898 [ERROR][_create_connection]: Failed to create new connection using: 7ac1a20812074cdabccabd920b568791 (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw.py", line 75, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json 100 40 1000 180 sel_1_500_random collection_hnsw_spacev10m_sel_1_500_random_efc1000 query 100"
+	User time (seconds): 2.00
+	System time (seconds): 0.09
+	Percent of CPU this job got: 19%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 77824
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 34
+	Minor (reclaiming a frame) page faults: 22244
+	Voluntary context switches: 2289
+	Involuntary context switches: 551
+	Swaps: 0
+	File system inputs: 3624
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

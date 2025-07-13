@@ -22,7 +22,7 @@ attr_cnt = 1: range query
 '''
 def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribution, query_attr, N, attr_file, centroid_file=None, query_file=None):
     #generate attribution and query range
-    if(attr_cnt > 1):# keyword query. for each vector may have more than one attr. So query should be only one fixed attr
+    if(attr_cnt > 2):# keyword query. for each vector may have more than one attr. So query should be only one fixed attr
         pass
         # #attr format: random integer from 0 to attr_range
         # if distribution == "random":
@@ -93,7 +93,49 @@ def genearte_qrange(attr_cnt, query_size, attr_range, query_attr_size, distribut
         #         print("error, query_attr_size should be 1 or attr_cnt")
         #         exit(-1)
 
+    elif (attr_cnt == 2):# For each vector with two attr.
+        prob_map_label = {6: 0.6, 10: 0.3, 19: 0.05, 20: 0.0316}
+        prob_map_range = {6: 0.5/0.6, 10: 0.1/0.3, 19: 0.01/0.05, 20: 0.001/0.0316}
 
+        assert(distribution != "real")
+        print("generate for categorical query, label:", query_attr)
+        label_queryattr = np.full((query_size, 2), query_attr)
+        
+        if not query_attr_size in prob_map_range.keys():
+            print("error, query_attr_size should be in prob_map_range:", prob_map_range.keys())
+            exit(-1)
+        selectivity = prob_map_range[query_attr_size]
+        print("selectivity:", selectivity)
+        query_nbr = int(N * selectivity)
+        print("N:", N, "query range cnt:", query_nbr)
+        attr = np.array(json.load(open(attr_file)))
+        range_attr = attr[1::2] # get the second attr as range attr
+        # sort index by attr
+        sorted_index = np.argsort(range_attr)
+        # generate random query range
+        if query_nbr == N:
+            q_ordered_range = np.zeros((query_size, 2), dtype='int32')
+        else:
+            q_ordered_range = np.random.randint(0, N-query_nbr+1, (query_size, 2), dtype='int32')
+        q_ordered_range[:, 1] = q_ordered_range[:, 0] + query_nbr-1 # [x, x+query_attr_size]
+        # convert query index range to attr range
+        q_idx = sorted_index[q_ordered_range]
+        range_queryattr = range_attr[q_idx]
+
+        query_attr = np.column_stack((label_queryattr, range_queryattr)) # combine label and range attr
+        return query_attr
+        #check selectivity
+        # list_qr = queryattr.reshape(-1).tolist()
+        # for i in range(5):
+        #     print("attr ", i, ": ", attr[i])
+        # for i in range(5):
+        #     left = list_qr[i*2]
+        #     right = list_qr[i*2+1]
+        #     valid = 0
+        #     for j in range(N):
+        #         if attr[j] >= left and attr[j] <= right:
+        #             valid += 1
+        #     print(i, " query range:", left, right, " valid cnt:", valid, " selectivity:", valid/N)
 
     elif(attr_cnt == 1):# For each vector with only one attr.
 
@@ -340,7 +382,7 @@ if __name__ == "__main__":
     #write attribution and query range to file
     # write_attr(output_dataset_attr_file, randattr)
     # write_query_range(output_query_range_file, queryattr)
-
+    print("write query attr to file:", output_query_range_file)
     write_query_range_json(output_query_range_file, queryattr)
     #debug
     
@@ -348,9 +390,9 @@ if __name__ == "__main__":
         print("query attr", i, " range=", queryattr[i])
     
     # plot query attr distribution
-    import matplotlib.pyplot as plt
-    plt.hist(queryattr.reshape(-1), bins=min(128, attr_range))
-    plt.show()
+    # import matplotlib.pyplot as plt
+    # plt.hist(queryattr.reshape(-1), bins=min(128, attr_range))
+    # plt.show()
 
 
     

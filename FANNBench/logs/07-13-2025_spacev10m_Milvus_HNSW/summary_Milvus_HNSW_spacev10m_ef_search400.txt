@@ -1,0 +1,296 @@
+Start time: 10:42
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_6_2_500_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_6_2_500_random_6_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 400
+distribution: sel_2_500_random
+collection name: collection_hnsw_spacev10m_sel_2_500_random_efc1000
+mode: query
+d: 100
+collection  collection_hnsw_spacev10m_sel_2_500_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+2025-07-13 01:42:13,307 [ERROR][handler]: RPC error: [search], <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 6 and 4634 <= range_attr <= 87963, error: line 1:11 token recognition error at: '= ': invalid parameter)>, <Time:{'RPC start': '2025-07-13 01:42:13.111971', 'RPC error': '2025-07-13 01:42:13.307499'}> (decorators.py:140)
+2025-07-13 01:42:13,307 [ERROR][search]: Failed to search collection: collection_hnsw_spacev10m_sel_2_500_random_efc1000 (milvus_client.py:415)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 246, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 416, in search
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 837, in _execute_search
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 826, in _execute_search
+    check_status(response.status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 6 and 4634 <= range_attr <= 87963, error: line 1:11 token recognition error at: '= ': invalid parameter)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_6_2_500_random_6.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_6_2_500_random_6_100.json 100 40 1000 400 sel_2_500_random collection_hnsw_spacev10m_sel_2_500_random_efc1000 query 100"
+	User time (seconds): 3.31
+	System time (seconds): 2.10
+	Percent of CPU this job got: 537%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 131392
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 24
+	Minor (reclaiming a frame) page faults: 40306
+	Voluntary context switches: 598
+	Involuntary context switches: 655669
+	Swaps: 0
+	File system inputs: 6568
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 11:21
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_10_2_500_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_10_2_500_random_10_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 400
+distribution: sel_2_500_random
+collection name: collection_hnsw_spacev10m_sel_2_500_random_efc1000
+mode: query
+d: 100
+collection  collection_hnsw_spacev10m_sel_2_500_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+2025-07-13 02:21:24,412 [ERROR][handler]: RPC error: [search], <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 10 and 49216 <= range_attr <= 82548, error: line 1:11 token recognition error at: '= ': invalid parameter)>, <Time:{'RPC start': '2025-07-13 02:21:24.311628', 'RPC error': '2025-07-13 02:21:24.412769'}> (decorators.py:140)
+2025-07-13 02:21:24,413 [ERROR][search]: Failed to search collection: collection_hnsw_spacev10m_sel_2_500_random_efc1000 (milvus_client.py:415)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 246, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 416, in search
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 837, in _execute_search
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 826, in _execute_search
+    check_status(response.status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 10 and 49216 <= range_attr <= 82548, error: line 1:11 token recognition error at: '= ': invalid parameter)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_10_2_500_random_10.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_10_2_500_random_10_100.json 100 40 1000 400 sel_2_500_random collection_hnsw_spacev10m_sel_2_500_random_efc1000 query 100"
+	User time (seconds): 2.33
+	System time (seconds): 2.08
+	Percent of CPU this job got: 546%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.81
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 127720
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 40368
+	Voluntary context switches: 464
+	Involuntary context switches: 830406
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 11:34
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_19_2_500_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_19_2_500_random_19_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 400
+distribution: sel_2_500_random
+collection name: collection_hnsw_spacev10m_sel_2_500_random_efc1000
+mode: query
+d: 100
+collection  collection_hnsw_spacev10m_sel_2_500_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+2025-07-13 02:34:54,550 [ERROR][handler]: RPC error: [search], <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 19 and 54085 <= range_attr <= 74094, error: line 1:11 token recognition error at: '= ': invalid parameter)>, <Time:{'RPC start': '2025-07-13 02:34:54.474760', 'RPC error': '2025-07-13 02:34:54.550636'}> (decorators.py:140)
+2025-07-13 02:34:54,550 [ERROR][search]: Failed to search collection: collection_hnsw_spacev10m_sel_2_500_random_efc1000 (milvus_client.py:415)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 246, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 416, in search
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 837, in _execute_search
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 826, in _execute_search
+    check_status(response.status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 19 and 54085 <= range_attr <= 74094, error: line 1:11 token recognition error at: '= ': invalid parameter)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_19_2_500_random_19.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_19_2_500_random_19_100.json 100 40 1000 400 sel_2_500_random collection_hnsw_spacev10m_sel_2_500_random_efc1000 query 100"
+	User time (seconds): 3.09
+	System time (seconds): 4.23
+	Percent of CPU this job got: 721%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.01
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 129620
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 40850
+	Voluntary context switches: 476
+	Involuntary context switches: 56011
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 11:46
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_20_2_500_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_20_2_500_random_20_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 400
+distribution: sel_2_500_random
+collection name: collection_hnsw_spacev10m_sel_2_500_random_efc1000
+mode: query
+d: 100
+collection  collection_hnsw_spacev10m_sel_2_500_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+2025-07-13 02:46:01,861 [ERROR][handler]: RPC error: [search], <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 20 and 90181 <= range_attr <= 93345, error: line 1:11 token recognition error at: '= ': invalid parameter)>, <Time:{'RPC start': '2025-07-13 02:46:01.730869', 'RPC error': '2025-07-13 02:46:01.861194'}> (decorators.py:140)
+2025-07-13 02:46:01,861 [ERROR][search]: Failed to search collection: collection_hnsw_spacev10m_sel_2_500_random_efc1000 (milvus_client.py:415)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 246, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 416, in search
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 837, in _execute_search
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 826, in _execute_search
+    check_status(response.status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 20 and 90181 <= range_attr <= 93345, error: line 1:11 token recognition error at: '= ': invalid parameter)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/attr_sel_2_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/qrangesel_20_2_500_random_20.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_500_random/sif_gt_sel_20_2_500_random_20_100.json 100 40 1000 400 sel_2_500_random collection_hnsw_spacev10m_sel_2_500_random_efc1000 query 100"
+	User time (seconds): 8.02
+	System time (seconds): 1.64
+	Percent of CPU this job got: 1051%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.92
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 128032
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 40844
+	Voluntary context switches: 521
+	Involuntary context switches: 802002
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

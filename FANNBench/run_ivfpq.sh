@@ -67,7 +67,22 @@ if [ "$mode" == "construction" ] || [ "$mode" == "all" ]; then
 fi
 
 if [ "$mode" == "query" ] || [ "$mode" == "all" ]; then
-    if [ "$label_cnt" -gt 1 ]; then
+    if [ "$label_cnt" -eq 2 ]; then
+        echo  "start arbitrary query"
+        /bin/time -v -p ../faiss/build/demos/ivfpq_query_arbi $dataset \
+                                        $N \
+                                        $K \
+                                        $threads \
+                                        $dataset_file \
+                                        $query_file \
+                                        $dataset_attr_file \
+                                        $query_range_file \
+                                        $ground_truth_file \
+                                        $ivfpq_index_file \
+                                        $nprobe \
+                                        $dim \
+                                        &>> $log_file
+    elif [ "$label_cnt" -gt 1 ]; then
         echo  "start keyword query"
         /bin/time -v -p ../faiss/build/demos/ivfpq_query_keyword $dataset \
                                         $N \
