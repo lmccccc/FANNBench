@@ -1,0 +1,566 @@
+Start time: 01:10
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+2025-07-18 16:10:17,488 [ERROR][_create_connection]: Failed to create new connection using: 65fb33c20891479da6eb6c190ead75ee (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 67, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 5.57
+	System time (seconds): 0.10
+	Percent of CPU this job got: 53%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.70
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 78848
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 22171
+	Voluntary context switches: 1940
+	Involuntary context switches: 659
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 01:39
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_10_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+2025-07-18 16:40:07,406 [ERROR][_create_connection]: Failed to create new connection using: 647002aa30a04ae193005729db87f2bf (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 67, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_10.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_10_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 2.64
+	System time (seconds): 0.08
+	Percent of CPU this job got: 25%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 78848
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22107
+	Voluntary context switches: 1889
+	Involuntary context switches: 974
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 02:01
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_19_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+2025-07-18 17:01:54,599 [ERROR][_create_connection]: Failed to create new connection using: b15fbd8efaca4447bd4dbeb243a8a5ba (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 67, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_19.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_19_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 1.93
+	System time (seconds): 0.08
+	Percent of CPU this job got: 18%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.67
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 79872
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22112
+	Voluntary context switches: 1893
+	Involuntary context switches: 342
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 02:28
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+2025-07-18 17:28:18,933 [ERROR][_create_connection]: Failed to create new connection using: bae61b1566784b9c87d5edfb655e07f5 (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 67, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 1.79
+	System time (seconds): 0.12
+	Percent of CPU this job got: 18%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.60
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 77824
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22127
+	Voluntary context switches: 1882
+	Involuntary context switches: 480
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 03:07
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+collection  collection_spacev10m_sel_1_500_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq.py", line 227, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 825, in _execute_search
+    response = self._stub.Search(request, timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 277, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 343, in with_call
+    return self._with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 329, in _with_call
+    call = self._interceptor.intercept_unary_unary(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/interceptor.py", line 35, in intercept_unary_unary
+    response = continuation(new_details, next(new_request_iterator))
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_interceptor.py", line 315, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1195, in with_call
+    ) = self._blocking(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/grpc/_channel.py", line 1162, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 388, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 213, in grpc._cython.cygrpc._next_call_event
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/threading.py", line 246, in __enter__
+    def __enter__(self):
+KeyboardInterrupt
+Command terminated by signal 2
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 4.54
+	System time (seconds): 1.35
+	Percent of CPU this job got: 86%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.80
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 130260
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 30
+	Minor (reclaiming a frame) page faults: 44280
+	Voluntary context switches: 1266
+	Involuntary context switches: 571599
+	Swaps: 0
+	File system inputs: 3968
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 03:07
+Start time: 04:01
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+collection  collection_spacev10m_sel_1_500_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  976059  postive res from  1000000  results, recall@ 100 : 0.976059
+recall dist(10\% per bucket):  [2.000e-04 0.000e+00 1.000e-04 1.000e-04 4.000e-04 9.000e-04 1.000e-04
+ 1.400e-03 1.510e-02 8.796e-01 1.021e-01]
+10000  queries cost: 883.6012678146362 , qps: 11.317321923646018
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_6.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_6_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 82.47
+	System time (seconds): 6.01
+	Percent of CPU this job got: 9%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:32.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 129248
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 95098
+	Voluntary context switches: 37149
+	Involuntary context switches: 607401
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:25
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_10_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+collection  collection_spacev10m_sel_1_500_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  976303  postive res from  1000000  results, recall@ 100 : 0.976303
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 8.000e-04 1.230e-02 8.963e-01 9.060e-02]
+10000  queries cost: 351.8299117088318 , qps: 28.42282497082233
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_10.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_10_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 102.16
+	System time (seconds): 4.01
+	Percent of CPU this job got: 24%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:07.16
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 128256
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 120142
+	Voluntary context switches: 29602
+	Involuntary context switches: 700338
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:38
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_19_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+collection  collection_spacev10m_sel_1_500_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  970813  postive res from  1000000  results, recall@ 100 : 0.970813
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.000e-04 7.000e-04
+ 1.100e-03 1.970e-02 9.091e-01 6.930e-02]
+10000  queries cost: 244.47080302238464 , qps: 40.904680135093116
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_19.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_19_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 106.54
+	System time (seconds): 4.70
+	Percent of CPU this job got: 34%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:24.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 131124
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 92086
+	Voluntary context switches: 27085
+	Involuntary context switches: 695381
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:48
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_1_500_random_100
+collection  collection_spacev10m_sel_1_500_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  911726  postive res from  1000000  results, recall@ 100 : 0.911726
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 1.000e-04 1.400e-03 5.400e-03 1.050e-02 1.680e-02
+ 5.490e-02 2.161e-01 6.439e-01 5.090e-02]
+10000  queries cost: 212.4847583770752 , qps: 47.06219907902294
+	Command being timed: "python -u utils/pymilvus_ivfpq.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json /mnt/data/mocheng/dataset/spacev10m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json 100 600 collection_spacev10m_sel_1_500_random_100 query 100 100"
+	User time (seconds): 113.83
+	System time (seconds): 4.93
+	Percent of CPU this job got: 39%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:58.57
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 132548
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 92277
+	Voluntary context switches: 26432
+	Involuntary context switches: 987710
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:15
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_2_100000_random_100
+collection  collection_spacev10m_sel_2_100000_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  976590  postive res from  1000000  results, recall@ 100 : 0.97659
+recall dist(10\% per bucket):  [0.00e+00 1.00e-04 6.00e-04 2.00e-04 1.00e-04 6.00e-04 4.00e-04 1.20e-03
+ 1.20e-02 8.86e-01 9.88e-02]
+10000  queries cost: 500.06515979766846 , qps: 19.99739394771294
+	Command being timed: "python -u utils/pymilvus_ivfpq_arbi.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json 100 600 collection_spacev10m_sel_2_100000_random_100 query 100 100"
+	User time (seconds): 78.67
+	System time (seconds): 6.07
+	Percent of CPU this job got: 15%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:12.99
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 129092
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 92421
+	Voluntary context switches: 30826
+	Involuntary context switches: 918346
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 08:23
+dataset: spacev10m
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs
+query file: /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs
+attr file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_100.json
+K: 100
+nprobe: 600
+collection name: collection_spacev10m_sel_2_100000_random_100
+collection  collection_spacev10m_sel_2_100000_random_100  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 100
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  975565  postive res from  1000000  results, recall@ 100 : 0.975565
+recall dist(10\% per bucket):  [0.     0.     0.     0.     0.     0.     0.0011 0.0018 0.0127 0.9016
+ 0.0828]
+10000  queries cost: 456.561092376709 , qps: 21.902873825588692
+	Command being timed: "python -u utils/pymilvus_ivfpq_arbi.py spacev10m 10000000 /mnt/data/mocheng/dataset/spacev10m/base10M.fvecs /mnt/data/mocheng/dataset/spacev10m/query10k.fvecs /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json /mnt/data/mocheng/dataset/spacev10m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_100.json 100 600 collection_spacev10m_sel_2_100000_random_100 query 100 100"
+	User time (seconds): 87.40
+	System time (seconds): 7.24
+	Percent of CPU this job got: 18%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:30.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 128664
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 92477
+	Voluntary context switches: 32081
+	Involuntary context switches: 278177
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

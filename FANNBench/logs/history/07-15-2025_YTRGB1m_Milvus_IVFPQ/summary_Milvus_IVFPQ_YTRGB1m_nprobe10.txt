@@ -1,0 +1,94 @@
+Start time: 10:03
+dataset: YTRGB1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json
+K: 10
+nprobe: 10
+collection name: collection_YTRGB1m_sel_2_100000_random_1024
+collection  collection_YTRGB1m_sel_2_100000_random_1024  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 1024
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  81380  postive res from  100000  results, recall@ 10 : 0.8138
+recall dist(10\% per bucket):  [0.0004 0.0014 0.0047 0.0117 0.0236 0.0464 0.0863 0.1333 0.1875 0.2322
+ 0.2725]
+10000  queries cost: 521.6745436191559 , qps: 19.169039628854147
+	Command being timed: "python -u utils/pymilvus_ivfpq_arbi.py YTRGB1m 1000000 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json 10 10 collection_YTRGB1m_sel_2_100000_random_1024 query 1024 1024"
+	User time (seconds): 56.73
+	System time (seconds): 6.73
+	Percent of CPU this job got: 12%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:46.43
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 156264
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 59582
+	Voluntary context switches: 30982
+	Involuntary context switches: 702272
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 11:19
+dataset: YTRGB1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json
+K: 10
+nprobe: 10
+collection name: collection_YTRGB1m_sel_2_100000_random_1024
+collection  collection_YTRGB1m_sel_2_100000_random_1024  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 1024
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+error, get  9  results, expect  10
+res: data: ["[{'id': 185365, 'distance': 117.50395965576172, 'entity': {}}, {'id': 553356, 'distance': 145.4679412841797, 'entity': {}}, {'id': 758736, 'distance': 146.68295288085938, 'entity': {}}, {'id': 636555, 'distance': 146.98658752441406, 'entity': {}}, {'id': 304480, 'distance': 149.54788208007812, 'entity': {}}, {'id': 619854, 'distance': 153.26109313964844, 'entity': {}}, {'id': 60085, 'distance': 158.39895629882812, 'entity': {}}, {'id': 107546, 'distance': 214.60794067382812, 'entity': {}}, {'id': 871604, 'distance': 234.7222442626953, 'entity': {}}]"]
+exp: label_attr == 20 and 83850 <= range_attr <= 87021
+Traceback (most recent call last):
+  File "utils/pymilvus_ivfpq_arbi.py", line 247, in <module>
+    if(ids[i][top] == gt[i][gtind]):
+IndexError: list index out of range
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_ivfpq_arbi.py YTRGB1m 1000000 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json 10 10 collection_YTRGB1m_sel_2_100000_random_1024 query 1024 1024"
+	User time (seconds): 25.36
+	System time (seconds): 6.63
+	Percent of CPU this job got: 15%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:30.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 156840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 44991
+	Voluntary context switches: 13292
+	Involuntary context switches: 462834
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

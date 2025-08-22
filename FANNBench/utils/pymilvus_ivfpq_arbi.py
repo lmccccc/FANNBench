@@ -199,7 +199,7 @@ if __name__ == "__main__":
     print("get query szie:", Nq)  
     
     qrange = read_attr(query_range_file)
-    qrange = qrange.reshape(-1, 2)
+    qrange = qrange.reshape(-1, 4)
     _Nq = len(qrange)
     print("get range cnt:", _Nq)
     assert(_Nq == Nq)

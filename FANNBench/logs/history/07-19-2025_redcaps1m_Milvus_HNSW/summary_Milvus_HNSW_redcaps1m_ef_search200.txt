@@ -1,0 +1,243 @@
+Start time: 23:53
+dataset: redcaps1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 200
+distribution: sel_2_100000_random
+collection name: collection_hnsw_redcaps1m_sel_2_100000_random_efc1000
+mode: construction
+d: 512
+construction mode, collection  collection_hnsw_redcaps1m_sel_2_100000_random_efc1000  exists
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py redcaps1m 1000000 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json 100 40 1000 200 sel_2_100000_random collection_hnsw_redcaps1m_sel_2_100000_random_efc1000 construction 512"
+	User time (seconds): 12.03
+	System time (seconds): 0.09
+	Percent of CPU this job got: 3312%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.36
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 79872
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22063
+	Voluntary context switches: 311
+	Involuntary context switches: 1170
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 00:18
+dataset: redcaps1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 200
+distribution: sel_2_100000_random
+collection name: collection_hnsw_redcaps1m_sel_2_100000_random_efc1000
+mode: query
+d: 512
+collection  collection_hnsw_redcaps1m_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 512
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  999310  postive res from  1000000  results, recall@ 100 : 0.99931
+recall dist(10\% per bucket):  [0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 1.00e-04
+ 1.00e-04 4.38e-02 9.56e-01]
+10000  queries cost: 180.8901903629303 , qps: 55.28215753400685
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py redcaps1m 1000000 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json 100 40 1000 200 sel_2_100000_random collection_hnsw_redcaps1m_sel_2_100000_random_efc1000 query 512"
+	User time (seconds): 72.45
+	System time (seconds): 5.43
+	Percent of CPU this job got: 33%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:52.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 152676
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 98294
+	Voluntary context switches: 25762
+	Involuntary context switches: 934404
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 01:38
+dataset: redcaps1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 200
+distribution: sel_2_100000_random
+collection name: collection_hnsw_redcaps1m_sel_2_100000_random_efc1000
+mode: query
+d: 512
+collection  collection_hnsw_redcaps1m_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 512
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  999752  postive res from  1000000  results, recall@ 100 : 0.999752
+recall dist(10\% per bucket):  [0.     0.     0.     0.     0.     0.     0.     0.     0.     0.0216
+ 0.9784]
+10000  queries cost: 311.676114320755 , qps: 32.08458890663886
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py redcaps1m 1000000 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_100.json 100 40 1000 200 sel_2_100000_random collection_hnsw_redcaps1m_sel_2_100000_random_efc1000 query 512"
+	User time (seconds): 90.93
+	System time (seconds): 7.70
+	Percent of CPU this job got: 26%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:12.62
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 149036
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 101229
+	Voluntary context switches: 27741
+	Involuntary context switches: 638492
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 03:01
+dataset: redcaps1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 200
+distribution: sel_2_100000_random
+collection name: collection_hnsw_redcaps1m_sel_2_100000_random_efc1000
+mode: query
+d: 512
+collection  collection_hnsw_redcaps1m_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 512
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  999999  postive res from  1000000  results, recall@ 100 : 0.999999
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 0.000e+00 0.000e+00 1.000e-04 9.999e-01]
+10000  queries cost: 48.59745526313782 , qps: 205.7720912721372
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py redcaps1m 1000000 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_100.json 100 40 1000 200 sel_2_100000_random collection_hnsw_redcaps1m_sel_2_100000_random_efc1000 query 512"
+	User time (seconds): 55.17
+	System time (seconds): 6.61
+	Percent of CPU this job got: 70%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:28.17
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 153124
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 97639
+	Voluntary context switches: 22647
+	Involuntary context switches: 6980
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 04:08
+dataset: redcaps1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 200
+distribution: sel_2_100000_random
+collection name: collection_hnsw_redcaps1m_sel_2_100000_random_efc1000
+mode: query
+d: 512
+collection  collection_hnsw_redcaps1m_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 512
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  1000000  postive res from  1000000  results, recall@ 100 : 1.0
+recall dist(10\% per bucket):  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+10000  queries cost: 37.510159969329834 , qps: 266.5944375650889
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py redcaps1m 1000000 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_100.json 100 40 1000 200 sel_2_100000_random collection_hnsw_redcaps1m_sel_2_100000_random_efc1000 query 512"
+	User time (seconds): 49.06
+	System time (seconds): 2.01
+	Percent of CPU this job got: 68%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:14.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 153236
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 87895
+	Voluntary context switches: 22462
+	Involuntary context switches: 609438
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

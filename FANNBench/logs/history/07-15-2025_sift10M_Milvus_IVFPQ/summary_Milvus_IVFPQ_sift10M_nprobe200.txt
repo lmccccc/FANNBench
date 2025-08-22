@@ -1,0 +1,46 @@
+Start time: 05:42
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_50000_1_100000_random.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_50000_1_100000_random_100.json
+K: 100
+nprobe: 200
+collection name: collection_sift10M_sel_1_100000_random_128
+collection  collection_sift10M_sel_1_100000_random_128  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+ids shape: 10000 100
+gt shape: (10000, 100)
+milvus get  972518  postive res from  1000000  results, recall@ 100 : 0.972518
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 0.000e+00 3.000e-04 9.686e-01 3.110e-02]
+10000  queries cost: 402.9396085739136 , qps: 24.817614816751483
+	Command being timed: "python -u utils/pymilvus_ivfpq.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/attr_sel_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/qrangesel_50000_1_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_1_100000_random/sif_gt_sel_50000_1_100000_random_100.json 100 200 collection_sift10M_sel_1_100000_random_128 query 128 128"
+	User time (seconds): 101.28
+	System time (seconds): 5.33
+	Percent of CPU this job got: 22%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:03.62
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 131448
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 100813
+	Voluntary context switches: 35902
+	Involuntary context switches: 951217
+	Swaps: 0
+	File system inputs: 1952
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,108 @@
+Start time: 19:11
+dataset: YTRGB1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 2000
+distribution: sel_2_100000_random
+collection name: collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000
+mode: query
+d: 1024
+2025-07-22 10:11:41,387 [ERROR][_create_connection]: Failed to create new connection using: 6b33c81fa5dc41c0ae7152cbb3281665 (milvus_client.py:923)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 75, in <module>
+    client = MilvusClient(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 67, in __init__
+    self._using = self._create_connection(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 924, in _create_connection
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 921, in _create_connection
+    connections.connect(using, user, password, db_name, token, uri=uri, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 461, in connect
+    connect_milvus(**kwargs, user=user, password=password, token=token, db_name=db_name)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/orm/connections.py", line 411, in connect_milvus
+    gh._wait_for_channel_ready(timeout=timeout)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 155, in _wait_for_channel_ready
+    raise MilvusException(
+pymilvus.exceptions.MilvusException: <MilvusException: (code=2, message=Fail connecting to server on localhost:19530, illegal connection params or server unavailable)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py YTRGB1m 1000000 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json 10 40 1000 2000 sel_2_100000_random collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000 query 1024"
+	User time (seconds): 13.09
+	System time (seconds): 0.30
+	Percent of CPU this job got: 120%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.09
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 77824
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 178
+	Minor (reclaiming a frame) page faults: 22067
+	Voluntary context switches: 3093
+	Involuntary context switches: 826
+	Swaps: 0
+	File system inputs: 168368
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 19:12
+dataset: YTRGB1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 2000
+distribution: sel_2_100000_random
+collection name: collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000
+mode: query
+d: 1024
+collection  collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 1024
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  88981  postive res from  100000  results, recall@ 10 : 0.88981
+recall dist(10\% per bucket):  [1.000e-04 8.000e-04 2.200e-03 6.800e-03 1.300e-02 2.950e-02 4.680e-02
+ 7.350e-02 1.059e-01 1.835e-01 5.379e-01]
+10000  queries cost: 199.73811078071594 , qps: 50.06555814968421
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py YTRGB1m 1000000 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json 10 40 1000 2000 sel_2_100000_random collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000 query 1024"
+	User time (seconds): 30.00
+	System time (seconds): 7.19
+	Percent of CPU this job got: 14%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:24.35
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 158836
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 44
+	Minor (reclaiming a frame) page faults: 57155
+	Voluntary context switches: 30861
+	Involuntary context switches: 870
+	Swaps: 0
+	File system inputs: 120072
+	File system outputs: 32
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

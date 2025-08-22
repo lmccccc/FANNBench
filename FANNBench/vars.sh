@@ -14,16 +14,15 @@
 # label range   label_cnt     query_label_cnt   query_label
 # 100000        1             1~20              0(inactivate)              # For range query, query range [random, random+{query_label_cnt}], each vector has {1} label.
 # 500           1             1                 1~20                       # for label query for both diskann and nhq_nsw.(range filtering can do it too. But not necessary to compare)
-#               2             6,10,19,20        6,10,19,20                 # for arbitrary filtering, generate 1 cate and 1 numer randomly with hybrid selectivity = 50%(0.7071^2), 10%(0.3162^2), 1%(0.1^2) and 0.1%(0.0316^2).
+# 100000        2             6,10,19,20        6,10,19,20                 # for arbitrary filtering, generate 1 cate and 1 numer randomly with hybrid selectivity = 50%(0.7071^2), 10%(0.3162^2), 1%(0.1^2) and 0.1%(0.0316^2).
 # lable generation
 distribution=random     # random, in_dist, out_dist, real
 label_range=100000
-
-# keyword or range for query. Only one of them can >1 at once
-label_cnt=2
-# qrange
+# =1 : range/label query, 2: hybrid query
+label_cnt=1
+# query selectivity tag
 query_label_cnt=6
-query_label=6
+query_label=0
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,13 +32,13 @@ query_label=6
 # ---begin dataset---
 
 ## siftsmall
-# dataset=siftsmall
+dataset=siftsmall
 
 ## sift1m
 # dataset=sift1M
 
 ## sift10m
-dataset=sift10M
+# dataset=sift10M
 
 ## spacev10m
 # dataset=spacev10m
@@ -50,12 +49,11 @@ dataset=sift10M
 ## YT-RGB1m
 # dataset=YTRGB1m
 
-## sift1M
-# dataset=sift1M
-
 # ---end dataset---
 
-
+# common vars
+K=10
+threads=128
 
 
 if [  "$dataset" == "siftsmall" ]; then
@@ -266,11 +264,9 @@ alter_ratio=0.5
 # common vars
 # label_method=keyword # don't change
 # query_method=keyword # don't change
-K=10
 gt_topk=${K}
 
 # threads
-threads=128
 
 # all modify ends here, don't change the following code
 
@@ -493,7 +489,8 @@ airship_index_file=${airship_index_root}index_hnsw_${label_attr}_${M}_${ef_const
 
 diskann_root=${root}diskann/
 diskann_index_root=${diskann_root}index/
-diskann_index_label_root=${diskann_index_root}index_diskann_${label_attr}_M${M}_Lcons${L_construction}/
+diskann_index_label_root=${diskann_index_root}index_diskann_${label_attr}_M${M}_efc${ef_construction}/
+# diskann_index_label_root=${diskann_index_root}index_diskann_${label_attr}_M${M}_Lcons${L_construction}/
 diskann_index_file=${diskann_index_label_root}index_diskann
 
 diskann_result_root=${diskann_root}result/
@@ -506,7 +503,8 @@ label_file=${label_path}data_attr.txt
 
 diskann_stit_root=${root}diskann_stitched/
 diskann_stit_index_root=${diskann_stit_root}index/
-diskann_stit_index_label_root=${diskann_stit_index_root}index_diskann_${label_attr}_M${M}_Lcons${L_construction}_stR${Stitched_R}/
+diskann_stit_index_label_root=${diskann_stit_index_root}index_diskann_${label_attr}_M${M}_efc${ef_construction}_stR${Stitched_R}/
+# diskann_stit_index_label_root=${diskann_stit_index_root}index_diskann_${label_attr}_M${M}_Lcons${L_construction}_stR${Stitched_R}/
 diskann_stit_index_file=${diskann_stit_index_label_root}index_diskann
 
 diskann_stit_result_root=${diskann_root}result/

@@ -1,0 +1,324 @@
+Start time: 09:22
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000
+ef_search: 200
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.133s ] Loaded metadata, 1000000 attr's found
+[ 0.133s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.156s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.159s ] Loaded 10000 YTRGB1m queries
+[ 0.166s ] Loaded ground truth, gt_size: 10
+[ 0.166s ] Index Params -- d: 1024, N: 1000000
+Total edge:200
+Average degree:0.000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 3.171s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 40.508s ] Query results (vector ids, then distances):
+query 0 nn's (19, 35475, 55518): 728698 (19, 51416) 473207 (19, 49992) 659286 (19, 50990) 2220 (19, 40484) 331569 (19, 48868) 990950 (19, 51899) 849185 (19, 37153) 655750 (19, 51762) 272648 (19, 46391) 251068 (19, 39631) 
+     dis: 	96.697 97.046 100.973 101.904 102.146 102.541 103.202 103.473 104.377 106.267 
+query 1 nn's (19, 70907, 90904): 431933 (19, 73697) 203058 (19, 73212) 556209 (19, 76577) 146952 (19, 73515) 157212 (19, 74651) 369868 (19, 88771) 202887 (19, 84519) 867961 (19, 74241) 684080 (19, 83346) 70844 (19, 77184) 
+     dis: 	56.479 59.126 59.243 63.427 64.487 65.169 66.665 66.885 67.871 70.140 
+query 2 nn's (19, 61384, 81348): 497144 (19, 65506) 816913 (19, 68370) 134385 (19, 76332) 329925 (19, 74646) 745057 (19, 79840) 329093 (19, 70692) 91950 (19, 75463) 168063 (19, 79459) 335507 (19, 77428) 592646 (19, 74450) 
+     dis: 	145.650 151.268 154.588 155.170 155.534 155.613 156.388 156.485 157.531 158.961 
+query 3 nn's (19, 50119, 70114): 46589 (19, 56775) 530994 (19, 59704) 298927 (19, 62793) 297587 (19, 55529) 365898 (19, 64646) 106455 (19, 62629) 659286 (19, 50990) 388985 (19, 65375) 45930 (19, 57679) 889201 (19, 56563) 
+     dis: 	188.893 191.644 192.349 192.707 193.370 194.520 194.885 196.063 196.418 196.696 
+query 4 nn's (19, 45372, 65351): 404547 (19, 60358) 991503 (19, 53604) 433585 (19, 59437) 124062 (19, 46464) 950946 (19, 59449) 146434 (19, 56733) 86156 (19, 47113) 991418 (19, 54022) 979396 (19, 61690) 631909 (19, 57490) 
+     dis: 	104.333 116.496 145.103 180.156 195.318 220.338 230.735 266.784 269.490 280.729 
+[ 40.508s ] *** Query time: 22.964
+qps: 435.458
+ *** HNSW recall 
+HNSW get 64087 postive res from 100000 results, recall@10:0.641
+recall dist(10% per bucket): 0.002 0.009 0.030 0.064 0.098 0.133 0.159 0.158 0.156 0.125 0.066 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 69779616, average: 6977.962
+finished ivfpq index examples
+[ 40.508s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query_arbi YTRGB1m 1000000 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 200 1024"
+	User time (seconds): 37.38
+	System time (seconds): 3.32
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:40.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4392860
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1097818
+	Voluntary context switches: 1
+	Involuntary context switches: 78
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 10:39
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000
+ef_search: 200
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.132s ] Loaded metadata, 1000000 attr's found
+[ 0.132s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.158s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.161s ] Loaded 10000 YTRGB1m queries
+[ 0.168s ] Loaded ground truth, gt_size: 10
+[ 0.168s ] Index Params -- d: 1024, N: 1000000
+Total edge:200
+Average degree:0.000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 3.352s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.001
+[ 45.396s ] Query results (vector ids, then distances):
+query 0 nn's (20, 52366, 55541): 966312 (20, 53722) 293077 (20, 54700) 501174 (20, 53931) 697711 (20, 52686) 467970 (20, 52652) 991752 (20, 52568) 529809 (20, 52715) 682524 (20, 53712) 165556 (20, 55365) -1 (8392706, 0) 
+     dis: 	104.460 105.569 106.278 109.112 111.192 113.867 116.125 123.217 132.877 340282346638528859811704183484516925440.000 
+query 1 nn's (20, 94640, 97818): 856461 (20, 95782) 351730 (20, 96353) 708462 (20, 95883) 195272 (20, 97564) 17103 (20, 96747) 882039 (20, 97525) 745258 (20, 94748) 306007 (20, 95487) -1 (8392706, 0) -1 (8392706, 0) 
+     dis: 	73.105 74.710 76.833 82.517 87.240 118.642 156.317 202.594 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 2 nn's (20, 18490, 21686): 640372 (20, 20787) 692090 (20, 19018) 829621 (20, 19953) 432492 (20, 19628) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) 
+     dis: 	148.706 211.243 250.057 260.033 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+query 3 nn's (20, 71282, 74428): 825275 (20, 71698) 483968 (20, 73015) 716207 (20, 72003) 406563 (20, 72725) 445074 (20, 73678) 732287 (20, 74365) 690475 (20, 73227) 333517 (20, 74216) 326989 (20, 73647) -1 (8392706, 0) 
+     dis: 	195.028 202.906 203.945 205.665 207.862 211.896 220.682 255.349 331.251 340282346638528859811704183484516925440.000 
+query 4 nn's (20, 73484, 76659): -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) -1 (8392706, 0) 
+     dis: 	340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 340282346638528859811704183484516925440.000 
+[ 45.396s ] *** Query time: 30.195
+qps: 331.178
+ *** HNSW recall 
+HNSW get 20772 postive res from 100000 results, recall@10:0.208
+recall dist(10% per bucket): 0.164 0.253 0.235 0.171 0.096 0.046 0.024 0.009 0.002 0.000 0.000 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 69779616, average: 6977.962
+finished ivfpq index examples
+[ 45.397s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query_arbi YTRGB1m 1000000 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 200 1024"
+	User time (seconds): 38.04
+	System time (seconds): 7.60
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:45.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4391836
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2165426
+	Voluntary context switches: 1
+	Involuntary context switches: 106
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 20:20
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000
+ef_search: 200
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.136s ] Loaded metadata, 1000000 attr's found
+[ 0.136s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.160s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.163s ] Loaded 10000 YTRGB1m queries
+[ 0.170s ] Loaded ground truth, gt_size: 10
+[ 0.170s ] Index Params -- d: 1024, N: 1000000
+Total edge:200
+Average degree:0.000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 3.229s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 40.907s ] Query results (vector ids, then distances):
+query 0 nn's (19, 35475, 55518): 728698 (19, 51416) 473207 (19, 49992) 659286 (19, 50990) 2220 (19, 40484) 331569 (19, 48868) 990950 (19, 51899) 849185 (19, 37153) 655750 (19, 51762) 272648 (19, 46391) 251068 (19, 39631) 
+     dis: 	96.697 97.046 100.973 101.904 102.146 102.541 103.202 103.473 104.377 106.267 
+query 1 nn's (19, 70907, 90904): 431933 (19, 73697) 203058 (19, 73212) 556209 (19, 76577) 146952 (19, 73515) 157212 (19, 74651) 369868 (19, 88771) 202887 (19, 84519) 867961 (19, 74241) 684080 (19, 83346) 70844 (19, 77184) 
+     dis: 	56.479 59.126 59.243 63.427 64.487 65.169 66.665 66.885 67.871 70.140 
+query 2 nn's (19, 61384, 81348): 497144 (19, 65506) 816913 (19, 68370) 134385 (19, 76332) 329925 (19, 74646) 745057 (19, 79840) 329093 (19, 70692) 91950 (19, 75463) 168063 (19, 79459) 335507 (19, 77428) 592646 (19, 74450) 
+     dis: 	145.650 151.268 154.588 155.170 155.534 155.613 156.388 156.485 157.531 158.961 
+query 3 nn's (19, 50119, 70114): 46589 (19, 56775) 530994 (19, 59704) 298927 (19, 62793) 297587 (19, 55529) 365898 (19, 64646) 106455 (19, 62629) 659286 (19, 50990) 388985 (19, 65375) 45930 (19, 57679) 889201 (19, 56563) 
+     dis: 	188.893 191.644 192.349 192.707 193.370 194.520 194.885 196.063 196.418 196.696 
+query 4 nn's (19, 45372, 65351): 404547 (19, 60358) 991503 (19, 53604) 433585 (19, 59437) 124062 (19, 46464) 950946 (19, 59449) 146434 (19, 56733) 86156 (19, 47113) 991418 (19, 54022) 979396 (19, 61690) 631909 (19, 57490) 
+     dis: 	104.333 116.496 145.103 180.156 195.318 220.338 230.735 266.784 269.490 280.729 
+[ 40.907s ] *** Query time: 23.268
+qps: 429.782
+ *** HNSW recall 
+HNSW get 64087 postive res from 100000 results, recall@10:0.641
+recall dist(10% per bucket): 0.002 0.009 0.030 0.064 0.098 0.133 0.159 0.158 0.156 0.125 0.066 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 69779616, average: 6977.962
+finished ivfpq index examples
+[ 40.907s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query_arbi YTRGB1m 1000000 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 200 1024"
+	User time (seconds): 37.84
+	System time (seconds): 3.23
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4392868
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1097823
+	Voluntary context switches: 1
+	Involuntary context switches: 62
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 20:23
+====================
+START: running TEST_HNSW, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000
+ef_search: 200
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.132s ] Loaded metadata, 1000000 attr's found
+[ 0.132s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.157s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.159s ] Loaded 10000 YTRGB1m queries
+[ 0.167s ] Loaded ground truth, gt_size: 10
+[ 0.167s ] Index Params -- d: 1024, N: 1000000
+Total edge:200
+Average degree:0.000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== HNSW INDEX ====================
+[ 3.208s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 41.722s ] Query results (vector ids, then distances):
+query 0 nn's (19, 35475, 55518): 728698 (19, 51416) 473207 (19, 49992) 659286 (19, 50990) 2220 (19, 40484) 331569 (19, 48868) 990950 (19, 51899) 849185 (19, 37153) 655750 (19, 51762) 272648 (19, 46391) 251068 (19, 39631) 
+     dis: 	96.697 97.046 100.973 101.904 102.146 102.541 103.202 103.473 104.377 106.267 
+query 1 nn's (19, 70907, 90904): 431933 (19, 73697) 203058 (19, 73212) 556209 (19, 76577) 146952 (19, 73515) 157212 (19, 74651) 369868 (19, 88771) 202887 (19, 84519) 867961 (19, 74241) 684080 (19, 83346) 70844 (19, 77184) 
+     dis: 	56.479 59.126 59.243 63.427 64.487 65.169 66.665 66.885 67.871 70.140 
+query 2 nn's (19, 61384, 81348): 497144 (19, 65506) 816913 (19, 68370) 134385 (19, 76332) 329925 (19, 74646) 745057 (19, 79840) 329093 (19, 70692) 91950 (19, 75463) 168063 (19, 79459) 335507 (19, 77428) 592646 (19, 74450) 
+     dis: 	145.650 151.268 154.588 155.170 155.534 155.613 156.388 156.485 157.531 158.961 
+query 3 nn's (19, 50119, 70114): 46589 (19, 56775) 530994 (19, 59704) 298927 (19, 62793) 297587 (19, 55529) 365898 (19, 64646) 106455 (19, 62629) 659286 (19, 50990) 388985 (19, 65375) 45930 (19, 57679) 889201 (19, 56563) 
+     dis: 	188.893 191.644 192.349 192.707 193.370 194.520 194.885 196.063 196.418 196.696 
+query 4 nn's (19, 45372, 65351): 404547 (19, 60358) 991503 (19, 53604) 433585 (19, 59437) 124062 (19, 46464) 950946 (19, 59449) 146434 (19, 56733) 86156 (19, 47113) 991418 (19, 54022) 979396 (19, 61690) 631909 (19, 57490) 
+     dis: 	104.333 116.496 145.103 180.156 195.318 220.338 230.735 266.784 269.490 280.729 
+[ 41.722s ] *** Query time: 24.367
+qps: 410.386
+ *** HNSW recall 
+HNSW get 64087 postive res from 100000 results, recall@10:0.641
+recall dist(10% per bucket): 0.002 0.009 0.030 0.064 0.098 0.133 0.159 0.158 0.156 0.125 0.066 
+numbner of vectors searched: 10000, average: 1.000
+number of queries for which the candidate list is exhasted: 10000, average: 1.000
+number of distances computed: 69779616, average: 6977.962
+finished ivfpq index examples
+[ 41.723s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/hnsw_query_arbi YTRGB1m 1000000 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json /mnt/data/mocheng/dataset/youtube1m/hnsw/index/index_hnsw_sel_2_100000_random_40_1000 200 1024"
+	User time (seconds): 38.53
+	System time (seconds): 3.45
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.98
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4392872
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1097821
+	Voluntary context switches: 2
+	Involuntary context switches: 78
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

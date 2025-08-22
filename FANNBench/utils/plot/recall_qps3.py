@@ -152,7 +152,7 @@ if __name__ == "__main__":
     # dataset="spacev10m"
     # distribution = "real"
     # label_range = 100000
-    target_recall_list = [0.9, 0.95]
+    target_recall_list = [0.9, 0.95, 0.99]
     target_id_list = [sel2id[sel] for sel in target_sel_list]
     target_qrange_list = [sel2range[sel] for sel in target_sel_list]
 
@@ -160,7 +160,7 @@ if __name__ == "__main__":
         if row["Dataset"] != dataset or \
             distribution != row["distribution"] or \
             label_range != row["label_range"] or \
-            label_cnt != row["label_cnt"] or \
+            row["label_cnt"] != 1 or \
             row["Threads"] != 1 or \
             row["K"] != K:
             continue

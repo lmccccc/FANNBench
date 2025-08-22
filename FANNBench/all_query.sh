@@ -13,27 +13,27 @@ ef_search_list=(
     # 18
     # 20
     # 25
-    30
-    35
-    40
-    60
-    80
+    # 30
+    # 35
+    # 40
+    # 60
+    # 80
     100
     120
     150
     180
     200
     300
-    # 400
-    # 500
-    # 600
-    # 700
-    # 800
-    # 900
-    # 1000
-    # 1200
-    # 1400
-    # 1600
+    400
+    500
+    600
+    700
+    800
+    900
+    1000
+    1200
+    1400
+    1600
 )
 
 # diskann diskann_stitched 
@@ -60,24 +60,27 @@ L_list=(
     1000
     1200
     1400
+    1600
+    1800
+    2000
 )
 
 nprobe_list=( # ivfpq
     # 1
     # 3
     # 5
-    10
-    20
-    30
-    50
+    # 10
+    # 20
+    # 30
+    # 50
     80
     100
     120
     150
     200
     300
-    # 400
-    # 500
+    400
+    500
     # 600
     # 700
     # 800
@@ -87,24 +90,30 @@ nprobe_list=( # ivfpq
 
 # nhq_kgraph
 L_search_list=( 
-    10
-    13
-    15
-    18
-    20
-    40
-    60
-    80
+    # 10
+    # 13
+    # 15
+    # 18
+    # 20
+    # 40
+    # 60
+    # 80
     100
+    120
     150
+    180
     200
     300
     400
     500
+    600
+    700
+    800
+    900
     1000
-    # 1200
-    # 1400
-    # 1600
+    1200
+    1400
+    1600
 )
 
 # wst_vamana wst_opt
@@ -112,22 +121,22 @@ beamsize_list=(
     # 2
     # 3
     # 5
-    10
+    # 10
     # 12
-    15
+    # 15
     # 18
-    20
-    40
-    60
-    80
+    # 20
+    # 40
+    # 60
+    # 80
     100
     150
     200
     300
-    # 400
-    # 500
-    # 600
-    # 700
+    400
+    500
+    600
+    700
     # 800
     # 900
     # 1000
@@ -148,66 +157,66 @@ al_list=(
     32
 )
 
-qrange_list=(
-    100   #  0.1%
-    1000  #  1 %
-    # 2000
-    # 3000
-    # 4000
-    # 5000
-    # 6000
-    # 7000
-    # 8000
-    # 9000
-    10000 # 10 %
-    50000 # 50 %
-)
-
-sel_list=(
-    # 1   # 100%
-    # 2   # 90%
-    # 3   # 80%
-    # 4   # 70%
-    # 5   # 60%
-    6   # 50%
-    # 7   # 40%
-    # 8   # 30%
-    # 9   # 20%
-    10  # 10%
-    # 11  # 9%
-    # 12  # 8%
-    # 13  # 7%
-    # 14  # 6%
-    # 15  # 5%
-    # 16  # 4%
-    # 17  # 3%
-    # 18  # 2%
-    19  # 1%
-    20  # 0.1%
-)
+# qrange_list=(
+#     100   #  0.1%
+#     1000  #  1 %
+#     # 2000
+#     # 3000
+#     # 4000
+#     # 5000
+#     # 6000
+#     # 7000
+#     # 8000
+#     # 9000
+#     10000 # 10 %
+#     50000 # 50 %
+# )
 
 # sel_list=(
-#     # 100000
-#     # 90000
-#     # 80000
-#     # 70000
-#     # 60000
-#     50000   # 50%
-#     # 40000
-#     # 30000
-#     # 20000
-#     10000  # 10%
-#     # 9000
-#     # 8000
-#     # 7000
-#     # 6000
-#     # 5000
-#     # 4000
-#     # 3000
-#     # 2000
-#     1000  # 1%
-#     100  # 0.1%
+#     # 1   # 100%
+#     # 2   # 90%
+#     # 3   # 80%
+#     # 4   # 70%
+#     # 5   # 60%
+#     # 6   # 50%
+#     # 7   # 40%
+#     # 8   # 30%
+#     # 9   # 20%
+#     10  # 10%
+#     # 11  # 9%
+#     # 12  # 8%
+#     # 13  # 7%
+#     # 14  # 6%
+#     # 15  # 5%
+#     # 16  # 4%
+#     # 17  # 3%
+#     # 18  # 2%
+#     19  # 1%
+#     20  # 0.1%
 # )
+
+sel_list=(
+    # 100000
+    # 90000
+    # 80000
+    # 70000
+    # 60000
+    50000   # 50%
+    # 40000
+    # 30000
+    # 20000
+    10000  # 10%
+    # 9000
+    # 8000
+    # 7000
+    # 6000
+    # 5000
+    # 4000
+    # 3000
+    # 2000
+    1000  # 1%
+    100  # 0.1%
+)
 
 
 if [ "$mode" == "construction" ]; then
@@ -672,19 +681,19 @@ if [ $1 == "batch" ]; then
             echo "qrange=$qrange"
             python utils/modify_var.py query_label_cnt $qrange
             # ./run_qrange_generator.sh
-            ./run_groundtruth_generator.sh
+            # ./run_groundtruth_generator.sh
             query_func acorn
-            query_func hnsw
-            query_func irange
-            query_func ivfpq
-            query_func milvus_ivfpq
-            query_func milvus_hnsw
-            query_func serf
-            query_func dsg
-            query_func vamana_tree
-            query_func wst_sup_opt
-            query_func unify
-            query_func unify_hybrid
+            # query_func hnsw
+            # query_func irange
+            # query_func ivfpq
+            # query_func milvus_ivfpq
+            # query_func milvus_hnsw
+            # query_func serf
+            # query_func dsg
+            # query_func vamana_tree
+            # query_func wst_sup_opt
+            # query_func unify
+            # query_func unify_hybrid
             echo "All range benchmarks done"
         done
     elif [ $2 == "label" ]; then
@@ -694,27 +703,27 @@ if [ $1 == "batch" ]; then
         python utils/modify_var.py query_label 6
         # ./run_attr_generator.sh
         # ./run_qrange_generator.sh
-        # ./run_groundtruth_generator.sh
+        ./run_groundtruth_generator.sh
         # ./all_construct.sh keyword
         for q_label in "${sel_list[@]}"; do
             python utils/modify_var.py query_label $q_label
             # ./run_attr_generator.sh
-            # ./run_qrange_generator.sh
+            ./run_qrange_generator.sh
             ./run_groundtruth_generator.sh
             # ./run_diskann_stitched.sh construction
-            query_func acorn
-            query_func diskann
-            query_func diskann_stitched
-            query_func hnsw
-            query_func ivfpq
-            query_func kgraph
-            query_func nsw
+            # query_func acorn
+            # query_func diskann
+            # query_func diskann_stitched
+            # query_func hnsw
+            # query_func ivfpq
+            # query_func kgraph
+            # query_func nsw
             query_func milvus_hnsw
             query_func milvus_ivfpq
             echo "All label benchmarks done."
         done
     elif [ $2 == "arbitrary" ]; then
-        python utils/modify_var.py label_range 500
+        python utils/modify_var.py label_range 100000
         python utils/modify_var.py label_cnt 2
         python utils/modify_var.py query_label_cnt 6
         python utils/modify_var.py query_label 6

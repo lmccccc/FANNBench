@@ -1,0 +1,304 @@
+Start time: 00:53
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: redcaps1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512
+nprobe: 80
+dim: 512
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.138s ] Loaded metadata, 2000000 attr's found
+[ 0.138s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.150s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+[ 0.153s ] Loaded 10000 redcaps1m queries
+[ 0.160s ] Loaded ground truth, gt_size: 10
+[ 0.160s ] Index Params -- d: 512, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 2.903s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.501
+[ 177.760s ] Query results (vector ids, then distances):
+query 0 nn's (6, 1058, 84346): 727106 (6) 562528 (19) 646437 (4080) 864174 (6) 451328 (6) 64073 (3080) 302070 (6) 812018 (10) 7102 (10) 880422 (10) 
+     dis: 	0.632 0.638 0.691 0.741 0.742 0.750 0.755 0.760 0.761 0.768 
+query 1 nn's (6, 7061, 90400): 741325 (9382) 660394 (19) 622447 (83917) 964028 (6) 199154 (6) 427146 (6) 361663 (21698) 361537 (83842) 428754 (6) 30989 (38653) 
+     dis: 	0.100 0.103 0.103 0.106 0.106 0.106 0.106 0.107 0.108 0.109 
+query 2 nn's (6, 16654, 99978): 355537 (64184) 880455 (86265) 964377 (94796) 306439 (57083) 757728 (6) 193180 (10) 75885 (4390) 410774 (10) 620585 (91800) 273250 (10) 
+     dis: 	0.223 0.225 0.226 0.238 0.240 0.249 0.257 0.258 0.259 0.262 
+query 3 nn's (6, 310, 83602): 689368 (6) 124464 (6) 595884 (10) 461110 (6) 889856 (10) 609006 (10) 213744 (6) 306883 (54086) 483626 (6) 128901 (75430) 
+     dis: 	0.402 0.447 0.461 0.463 0.463 0.464 0.475 0.476 0.496 0.497 
+query 4 nn's (6, 10534, 93885): 582698 (10) 189529 (80737) 931553 (69580) 598411 (49936) 892178 (6) 421184 (10) 315361 (25656) 886608 (20) 191044 (6) 227862 (10) 
+     dis: 	0.260 0.280 0.283 0.286 0.288 0.289 0.296 0.298 0.300 0.302 
+[ 177.760s ] *** Query time: 122.887
+qps: 81.376
+ *** ivfpq recall 
+ivfpq get 98116 postive res from 100000 results, recall@10:0.981
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.000 0.001 0.003 0.015 0.144 0.837 
+finished ivfpq index examples
+[ 177.761s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query_arbi redcaps1m 1000000 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512 80 512"
+	User time (seconds): 176.15
+	System time (seconds): 1.81
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:57.96
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2607564
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 651938
+	Voluntary context switches: 1
+	Involuntary context switches: 85
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 01:32
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: redcaps1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512
+nprobe: 80
+dim: 512
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.147s ] Loaded metadata, 2000000 attr's found
+[ 0.147s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.160s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+[ 0.162s ] Loaded 10000 redcaps1m queries
+[ 0.169s ] Loaded ground truth, gt_size: 10
+[ 0.169s ] Index Params -- d: 512, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 2.904s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.100
+[ 130.470s ] Query results (vector ids, then distances):
+query 0 nn's (10, 66234, 99627): 268161 (96264) 549163 (84314) 334544 (10) 766737 (23599) 49228 (10) 606467 (78112) 596166 (6) 966405 (71092) 533175 (43041) 174023 (64856) 
+     dis: 	0.647 0.761 0.809 0.816 0.827 0.842 0.844 0.846 0.889 0.906 
+query 1 nn's (10, 15875, 49153): 728340 (6) 803332 (10) 896567 (65282) 7931 (93555) 399497 (54572) 85059 (61117) 441534 (6) 857939 (9912) 377202 (6) 779657 (40034) 
+     dis: 	0.101 0.106 0.111 0.114 0.118 0.118 0.118 0.122 0.124 0.124 
+query 2 nn's (10, 5684, 39001): 940490 (6) 301614 (6) 773055 (93844) 771849 (63559) 718316 (10) 530996 (10) 995900 (10) 494541 (94906) 328089 (60955) 41616 (6) 
+     dis: 	0.246 0.262 0.265 0.266 0.269 0.275 0.277 0.277 0.280 0.283 
+query 3 nn's (10, 34629, 67933): 640717 (73295) 108295 (63497) 305237 (27829) 269754 (10) 276603 (94801) 469326 (6) 219959 (83862) 480974 (6) 799434 (10) 433518 (10) 
+     dis: 	0.456 0.510 0.514 0.520 0.522 0.526 0.530 0.535 0.539 0.549 
+query 4 nn's (10, 11515, 44854): 695669 (51024) 176027 (11855) 440553 (58185) 742084 (6) 311275 (89697) 604239 (97615) 605725 (34136) 601541 (40926) 65795 (43582) 487840 (6) 
+     dis: 	0.269 0.269 0.306 0.309 0.323 0.337 0.337 0.337 0.343 0.344 
+[ 130.470s ] *** Query time: 80.080
+qps: 124.875
+ *** ivfpq recall 
+ivfpq get 97693 postive res from 100000 results, recall@10:0.977
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.001 0.001 0.002 0.005 0.022 0.153 0.816 
+finished ivfpq index examples
+[ 130.471s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query_arbi redcaps1m 1000000 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_10.json /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512 80 512"
+	User time (seconds): 128.97
+	System time (seconds): 1.68
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:10.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2609064
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 651934
+	Voluntary context switches: 1
+	Involuntary context switches: 75
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 02:10
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: redcaps1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512
+nprobe: 80
+dim: 512
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.137s ] Loaded metadata, 2000000 attr's found
+[ 0.137s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.149s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+[ 0.152s ] Loaded 10000 redcaps1m queries
+[ 0.159s ] Loaded ground truth, gt_size: 10
+[ 0.159s ] Index Params -- d: 512, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 2.917s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.010
+[ 90.816s ] Query results (vector ids, then distances):
+query 0 nn's (19, 7547, 27573): 460924 (6) 123899 (21702) 848510 (6) 217968 (6) 866249 (5256) 334275 (964) 648092 (6) 943892 (10) 252024 (6) 56665 (22767) 
+     dis: 	0.920 0.958 0.999 0.999 1.001 1.015 1.020 1.022 1.023 1.026 
+query 1 nn's (19, 19289, 39230): 118532 (6) 654319 (17154) 584544 (6) 946986 (10) 889339 (29860) 702451 (50331) 145137 (64258) 651702 (10) 162918 (6) 254995 (41592) 
+     dis: 	0.117 0.132 0.134 0.140 0.141 0.144 0.144 0.145 0.147 0.148 
+query 2 nn's (19, 21121, 41068): 610678 (10) 589140 (6) 677414 (6) 400571 (22940) 897152 (6) 925220 (6) 449631 (8327) 999566 (10) 551679 (50663) 271621 (16942) 
+     dis: 	0.284 0.287 0.324 0.341 0.346 0.349 0.351 0.358 0.360 0.361 
+query 3 nn's (19, 28857, 48803): 725969 (89970) 528192 (10) 456993 (77323) 996191 (32188) 82793 (71717) 729567 (44365) 170396 (10) 64584 (10) 131512 (10) 324678 (6) 
+     dis: 	0.527 0.574 0.581 0.593 0.603 0.606 0.617 0.619 0.627 0.632 
+query 4 nn's (19, 67584, 87612): 143565 (49212) 98599 (5092) 517879 (2309) 151023 (41123) 102916 (6) 838409 (80116) 96096 (6) 660107 (67257) 496003 (8720) 224737 (96064) 
+     dis: 	0.331 0.344 0.370 0.376 0.378 0.393 0.396 0.397 0.424 0.426 
+[ 90.816s ] *** Query time: 73.011
+qps: 136.965
+ *** ivfpq recall 
+ivfpq get 94576 postive res from 100000 results, recall@10:0.946
+recall dist(10% per bucket): 0.000 0.000 0.001 0.001 0.003 0.006 0.013 0.032 0.064 0.206 0.674 
+finished ivfpq index examples
+[ 90.817s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query_arbi redcaps1m 1000000 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512 80 512"
+	User time (seconds): 89.38
+	System time (seconds): 1.62
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:31.01
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2609060
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 651931
+	Voluntary context switches: 1
+	Involuntary context switches: 66
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 02:42
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: redcaps1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs
+query file: /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+attr file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json
+gt file: /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json
+index file: /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512
+nprobe: 80
+dim: 512
+loaded base attributes from:/mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.148s ] Loaded metadata, 2000000 attr's found
+[ 0.148s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 512, nb=10000
+[ 0.160s ] Loaded query vectors from /mnt/data/mocheng/dataset/redcaps1m/query.fvecs
+[ 0.163s ] Loaded 10000 redcaps1m queries
+[ 0.170s ] Loaded ground truth, gt_size: 10
+[ 0.170s ] Index Params -- d: 512, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 2.888s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.001
+[ 84.584s ] Query results (vector ids, then distances):
+query 0 nn's (20, 62584, 65755): 936239 (3210) 330621 (59140) 744530 (6) 823486 (6) 449194 (6) 867619 (27161) 204905 (10906) 763327 (3770) 595736 (6) 473546 (232) 
+     dis: 	1.020 1.047 1.117 1.125 1.134 1.136 1.137 1.177 1.183 1.219 
+query 1 nn's (20, 33359, 36530): 47436 (6) 855537 (76169) 849599 (4379) 690014 (19) 845155 (44800) 379711 (78033) 458546 (6) 443187 (73344) 310879 (61359) 247027 (37826) 
+     dis: 	0.164 0.205 0.235 0.286 0.306 0.323 0.340 0.347 0.358 0.381 
+query 2 nn's (20, 65022, 68166): 290984 (19) 119482 (10) 35487 (64046) 97834 (10) 251841 (26391) 967691 (15492) 374073 (99421) 682890 (6) 455911 (42086) 707139 (39754) 
+     dis: 	0.314 0.367 0.375 0.384 0.385 0.385 0.391 0.394 0.399 0.404 
+query 3 nn's (20, 77495, 80696): 385406 (10) 615829 (83162) 137689 (70082) 868263 (17320) 888873 (8339) 990364 (6) 38395 (82376) 896 (6) 775050 (6) 108257 (33024) 
+     dis: 	0.617 0.657 0.719 0.734 0.742 0.744 0.751 0.757 0.777 0.783 
+query 4 nn's (20, 53915, 57058): 561735 (60870) 210342 (428) 333272 (6) 283898 (6) 444339 (19879) 198779 (63298) 427111 (26140) 400844 (6) 640147 (71174) 688028 (6) 
+     dis: 	0.411 0.417 0.442 0.455 0.475 0.481 0.483 0.495 0.497 0.534 
+[ 84.584s ] *** Query time: 69.645
+qps: 143.586
+ *** ivfpq recall 
+ivfpq get 74669 postive res from 100000 results, recall@10:0.747
+recall dist(10% per bucket): 0.001 0.004 0.012 0.027 0.052 0.084 0.119 0.153 0.175 0.180 0.192 
+finished ivfpq index examples
+[ 84.585s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query_arbi redcaps1m 1000000 10 1 /mnt/data/mocheng/dataset/redcaps1m/image_embeddings.fvecs /mnt/data/mocheng/dataset/redcaps1m/query.fvecs /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json /mnt/data/mocheng/dataset/redcaps1m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json /mnt/data/mocheng/dataset/redcaps1m/ivfpq/index/index_ivfpq_sel_2_100000_random_512 80 512"
+	User time (seconds): 83.32
+	System time (seconds): 1.42
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:24.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2609060
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 651932
+	Voluntary context switches: 1
+	Involuntary context switches: 120
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

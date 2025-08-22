@@ -188,6 +188,8 @@ if __name__ == "__main__":
     distribution = sys.argv[7]
     label_method = sys.argv[8]
     query_method = sys.argv[9]
+    K = int(sys.argv[10])
+    print("K:", K)
     
     plotpath = "plot/"
     xlspath = "plot/csv/"
@@ -213,20 +215,19 @@ if __name__ == "__main__":
     for id in id2sel.keys():
         sel2id[id2sel[id]] = id
     
-    # dataset="spacev10m"
+    # dataset="redcaps1m"
     distribution = "random"
     label_range = 500
-    target_recall_list = [0.9, 0.95]
+    target_recall_list = [0.9, 0.95, 0.99]
     target_id_list = [sel2id[sel] for sel in target_sel_list]
 
     for index, row in data.iterrows():
         if row["Dataset"] != dataset or \
             distribution != row["distribution"] or \
             label_range != row["label_range"] or \
-            label_cnt != row["label_cnt"] or \
-            row["Threads"] != 1:
-            continue
-        if query_label_cnt == 1 and label_cnt > 1 and row["query_label"] != query_label:
+            row["label_cnt"] != 1 or \
+            row["Threads"] != 1 or \
+            row["K"] != K:
             continue
         query_label = row["query_label"]
         recall = row["Recall"]
@@ -286,7 +287,7 @@ if __name__ == "__main__":
             # print("save file to ", file)
             # Open the file in write mode
             # writ to csv file
-        label = "bar_label_qps_" + str(target_recall) + "recall_" + str(sel) + "label_" + distribution + "_" + dataset
+        label = "bar_label_qps_" + str(target_recall) + "recall_" + str(sel) + "label_" + distribution + "_" + dataset + "_K" + str(K)
         xlsfile = xlspath + label + tail
         # print("algo:", range_query_algo)
         savedata(data, xlsfile, target_sel_list)
@@ -324,6 +325,6 @@ if __name__ == "__main__":
             # print("save file to ", file)
             # Open the file in write mode
             # writ to csv file
-        label = "bar_label_cpq_" + str(target_recall) + "recall_" + distribution + "_" + dataset
+        label = "bar_label_cpq_" + str(target_recall) + "recall_" + distribution + "_" + dataset + "_K" + str(K)
         xlsfile = xlspath + label + tail
         savedata(data, xlsfile, target_sel_list)

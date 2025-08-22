@@ -1,0 +1,51 @@
+Start time: 05:14
+dataset: YTRGB1m
+N: 1000000
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 1500
+distribution: sel_2_100000_random
+collection name: collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000
+mode: query
+d: 1024
+collection  collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 1000000}"]
+query d: 1024
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  88481  postive res from  100000  results, recall@ 10 : 0.88481
+recall dist(10\% per bucket):  [2.000e-04 1.100e-03 2.200e-03 8.100e-03 1.520e-02 3.080e-02 4.900e-02
+ 7.600e-02 1.075e-01 1.815e-01 5.284e-01]
+10000  queries cost: 190.1180601119995 , qps: 52.59889562364012
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py YTRGB1m 1000000 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json 10 40 1000 1500 sel_2_100000_random collection_hnsw_YTRGB1m_sel_2_100000_random_efc1000 query 1024"
+	User time (seconds): 30.67
+	System time (seconds): 6.93
+	Percent of CPU this job got: 19%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:12.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 156748
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 58460
+	Voluntary context switches: 24847
+	Involuntary context switches: 218758
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,152 @@
+Start time: 05:21
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_2_100000_random_1024
+nprobe: 120
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.259s ] Loaded metadata, 2000000 attr's found
+[ 0.259s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.289s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.294s ] Loaded 10000 YTRGB1m queries
+[ 0.308s ] Loaded ground truth, gt_size: 10
+[ 0.308s ] Index Params -- d: 1024, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 1.209s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.500
+[ 2551.451s ] Query results (vector ids, then distances):
+query 0 nn's (6, 10418, 93742): 889953 (68213) 807214 (6) 333483 (49490) 521249 (14113) 418474 (6) 662806 (6) 467816 (6) 239994 (6) 694505 (89822) 809944 (6) 
+     dis: 	83.516 85.612 86.873 88.147 88.692 88.695 89.513 90.033 90.728 91.388 
+query 1 nn's (6, 871, 84222): 963956 (19) 506689 (83207) 630027 (60046) 326679 (4165) 172456 (6) 627139 (56170) 689633 (43777) 867145 (68811) 380703 (15922) 546210 (6) 
+     dis: 	53.152 53.410 53.657 54.385 54.616 54.616 54.666 55.627 55.658 56.392 
+query 2 nn's (6, 2953, 86302): 423205 (46713) 531527 (49795) 871743 (85658) 947479 (343) 633590 (10) 308085 (55976) 528201 (60263) 529153 (96313) 509845 (63335) 666817 (61632) 
+     dis: 	132.549 135.341 136.082 137.181 137.406 137.751 137.994 138.967 139.102 139.333 
+query 3 nn's (6, 1285, 84611): 462979 (51579) 421752 (10) 505074 (20) 870912 (19) 26879 (16840) 99295 (13036) 873503 (85666) 62225 (27952) 469561 (29678) 376313 (57309) 
+     dis: 	141.945 145.214 147.416 153.019 159.994 167.020 167.142 168.651 170.421 170.594 
+query 4 nn's (6, 13289, 96651): 314093 (51859) 719380 (6) 690285 (95271) 223865 (30084) 461345 (34528) 89809 (62375) 829463 (43989) 62933 (58365) 135316 (6) 33136 (6) 
+     dis: 	52.786 56.196 63.005 65.580 71.458 72.469 74.054 75.221 75.255 75.782 
+[ 2551.451s ] *** Query time: 2497.585
+qps: 4.004
+ *** ivfpq recall 
+ivfpq get 98754 postive res from 100000 results, recall@10:0.988
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.000 0.001 0.001 0.008 0.104 0.887 
+finished ivfpq index examples
+[ 2551.452s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query_arbi YTRGB1m 1000000 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_2_100000_random_1024 120 1024"
+	User time (seconds): 2549.82
+	System time (seconds): 1.41
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 42:31.52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1090468
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 272839
+	Voluntary context switches: 1
+	Involuntary context switches: 4114
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:52
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 10
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_10.json
+index file: /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_2_100000_random_1024
+nprobe: 120
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+[ 0.132s ] Loaded metadata, 2000000 attr's found
+[ 0.132s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.155s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.158s ] Loaded 10000 YTRGB1m queries
+[ 0.165s ] Loaded ground truth, gt_size: 10
+[ 0.165s ] Index Params -- d: 1024, N: 1000000
+ load index size: 1000000
+--Index created
+==============================================
+====================Search Results====================
+==============================================
+==============================================
+====================Search====================
+==============================================
+==================== IVFPQ INDEX ====================
+[ 0.917s ] Searching the 10 nearest neighbors of 10000 vectors in the index
+selectivity: 0.100
+[ 1325.629s ] Query results (vector ids, then distances):
+query 0 nn's (10, 29652, 63053): 980214 (6) 737273 (55252) 952701 (65239) 336603 (41586) 16765 (90599) 991479 (76766) 863882 (6) 202136 (20) 76521 (96391) 283397 (4891) 
+     dis: 	88.558 91.190 93.345 94.030 94.103 95.997 96.198 96.274 96.676 96.720 
+query 1 nn's (10, 21798, 55183): 358433 (13457) 411735 (53826) 762596 (6) 653907 (70875) 753176 (10) 485054 (6) 295338 (20) 908662 (10) 821906 (6) 578863 (50735) 
+     dis: 	54.557 55.073 57.300 59.085 59.367 59.387 59.486 60.146 60.200 60.917 
+query 2 nn's (10, 52376, 85679): 225875 (13229) 464997 (41748) 698610 (6) 677717 (22673) 67581 (54414) 907166 (10) 812421 (30697) 39208 (10) 189077 (61917) 308623 (70098) 
+     dis: 	136.548 139.450 140.792 140.878 142.192 142.652 142.720 143.307 143.495 143.934 
+query 3 nn's (10, 54432, 87740): 263195 (52685) 178166 (6) 136177 (10503) 117658 (10) 159269 (1572) 960065 (21061) 373736 (6) 496154 (6) 195003 (84381) 242590 (6) 
+     dis: 	178.014 180.412 181.342 184.246 184.687 186.296 186.831 187.131 187.153 187.452 
+query 4 nn's (10, 16884, 50269): 729225 (73615) 725265 (93655) 565522 (10) 693282 (10) 203716 (10) 561793 (81060) 258251 (47005) 86342 (6) 88323 (53150) 652567 (22431) 
+     dis: 	74.408 78.044 79.706 79.910 93.073 94.450 96.538 99.218 101.477 101.703 
+[ 1325.629s ] *** Query time: 1276.878
+qps: 7.832
+ *** ivfpq recall 
+ivfpq get 98623 postive res from 100000 results, recall@10:0.986
+recall dist(10% per bucket): 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.002 0.007 0.118 0.873 
+finished ivfpq index examples
+[ 1325.631s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_query_arbi YTRGB1m 1000000 10 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json /mnt/data/mocheng/dataset/youtube1m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_10.json /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_2_100000_random_1024 120 1024"
+	User time (seconds): 1323.63
+	System time (seconds): 2.03
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 22:05.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1090468
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 498792
+	Voluntary context switches: 1
+	Involuntary context switches: 2310
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

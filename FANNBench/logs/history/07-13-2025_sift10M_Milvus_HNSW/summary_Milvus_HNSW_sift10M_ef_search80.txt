@@ -1,0 +1,350 @@
+Start time: 04:27
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 80
+distribution: sel_2_100000_random
+collection name: collection_hnsw_sift10M_sel_2_100000_random_efc1000
+mode: query
+d: 128
+collection  collection_hnsw_sift10M_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+2025-07-13 19:27:11,476 [ERROR][handler]: RPC error: [search], <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 6 and 15386 <= range_attr <= 98713, error: line 1:11 token recognition error at: '= ': invalid parameter)>, <Time:{'RPC start': '2025-07-13 19:27:11.423659', 'RPC error': '2025-07-13 19:27:11.476879'}> (decorators.py:140)
+2025-07-13 19:27:11,477 [ERROR][search]: Failed to search collection: collection_hnsw_sift10M_sel_2_100000_random_efc1000 (milvus_client.py:415)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 246, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 416, in search
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 837, in _execute_search
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 826, in _execute_search
+    check_status(response.status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=failed to create query plan: cannot parse expression: label_attr = 6 and 15386 <= range_attr <= 98713, error: line 1:11 token recognition error at: '= ': invalid parameter)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json 100 40 1000 80 sel_2_100000_random collection_hnsw_sift10M_sel_2_100000_random_efc1000 query 128"
+	User time (seconds): 3.15
+	System time (seconds): 4.87
+	Percent of CPU this job got: 111%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.22
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 127592
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 40347
+	Voluntary context switches: 1040
+	Involuntary context switches: 619226
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 04:28
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json
+K: 100
+M: 40
+ef_construction: 1000
+ef_search: 80
+distribution: sel_2_100000_random
+collection name: collection_hnsw_sift10M_sel_2_100000_random_efc1000
+mode: query
+d: 128
+collection  collection_hnsw_sift10M_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 100
+2025-07-13 19:28:52,716 [ERROR][handler]: RPC error: [search], <MilvusException: (code=65535, message=fail to search on QueryNode 8: worker(8) query failed: invalid format string)>, <Time:{'RPC start': '2025-07-13 19:28:51.912574', 'RPC error': '2025-07-13 19:28:52.716877'}> (decorators.py:140)
+2025-07-13 19:28:52,717 [ERROR][search]: Failed to search collection: collection_hnsw_sift10M_sel_2_100000_random_efc1000 (milvus_client.py:415)
+Traceback (most recent call last):
+  File "utils/pymilvus_hnsw_arbi.py", line 246, in <module>
+    res = client.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 416, in search
+    raise ex from ex
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/milvus_client/milvus_client.py", line 401, in search
+    res = conn.search(
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 896, in search
+    return self._execute_search(request, timeout, round_decimal=round_decimal, **kwargs)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 837, in _execute_search
+    raise e from e
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/grpc_handler.py", line 826, in _execute_search
+    check_status(response.status)
+  File "/home/mocheng/anaconda3/envs/py38/lib/python3.8/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=65535, message=fail to search on QueryNode 8: worker(8) query failed: invalid format string)>
+Command exited with non-zero status 1
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_100.json 100 40 1000 80 sel_2_100000_random collection_hnsw_sift10M_sel_2_100000_random_efc1000 query 128"
+	User time (seconds): 2.37
+	System time (seconds): 1.65
+	Percent of CPU this job got: 262%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 132736
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 40333
+	Voluntary context switches: 592
+	Involuntary context switches: 618874
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1
+Start time: 05:24
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 80
+distribution: sel_2_100000_random
+collection name: collection_hnsw_sift10M_sel_2_100000_random_efc1000
+mode: query
+d: 128
+collection  collection_hnsw_sift10M_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  99902  postive res from  100000  results, recall@ 10 : 0.99902
+recall dist(10\% per bucket):  [0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
+ 0.000e+00 3.000e-04 9.200e-03 9.905e-01]
+10000  queries cost: 105.14821243286133 , qps: 95.10385168350005
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_6_2_100000_random_6.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_6_2_100000_random_6_10.json 10 40 1000 80 sel_2_100000_random collection_hnsw_sift10M_sel_2_100000_random_efc1000 query 128"
+	User time (seconds): 18.50
+	System time (seconds): 3.97
+	Percent of CPU this job got: 20%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:47.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 93996
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 55811
+	Voluntary context switches: 23487
+	Involuntary context switches: 791213
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:08
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 80
+distribution: sel_2_100000_random
+collection name: collection_hnsw_sift10M_sel_2_100000_random_efc1000
+mode: query
+d: 128
+collection  collection_hnsw_sift10M_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  99989  postive res from  100000  results, recall@ 10 : 0.99989
+recall dist(10\% per bucket):  [0.     0.     0.     0.     0.     0.     0.     0.     0.     0.0011
+ 0.9989]
+10000  queries cost: 138.3892183303833 , qps: 72.2599644730019
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_10_2_100000_random_10.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_10_2_100000_random_10_10.json 10 40 1000 80 sel_2_100000_random collection_hnsw_sift10M_sel_2_100000_random_efc1000 query 128"
+	User time (seconds): 31.61
+	System time (seconds): 6.52
+	Percent of CPU this job got: 27%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:20.70
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 88548
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 60459
+	Voluntary context switches: 23726
+	Involuntary context switches: 417103
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 07:31
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 80
+distribution: sel_2_100000_random
+collection name: collection_hnsw_sift10M_sel_2_100000_random_efc1000
+mode: query
+d: 128
+collection  collection_hnsw_sift10M_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  100000  postive res from  100000  results, recall@ 10 : 1.0
+recall dist(10\% per bucket):  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+10000  queries cost: 155.25759315490723 , qps: 64.40908812764195
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_19_2_100000_random_19.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_19_2_100000_random_19_10.json 10 40 1000 80 sel_2_100000_random collection_hnsw_sift10M_sel_2_100000_random_efc1000 query 128"
+	User time (seconds): 19.05
+	System time (seconds): 6.53
+	Percent of CPU this job got: 16%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:37.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 88668
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 56324
+	Voluntary context switches: 24275
+	Involuntary context switches: 14070
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 08:16
+dataset: sift10M
+N: 10000000
+dataset file: /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs
+query file: /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs
+attr file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json
+query range file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json
+ground truth file: /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json
+K: 10
+M: 40
+ef_construction: 1000
+ef_search: 80
+distribution: sel_2_100000_random
+collection name: collection_hnsw_sift10M_sel_2_100000_random_efc1000
+mode: query
+d: 128
+collection  collection_hnsw_sift10M_sel_2_100000_random_efc1000  exists
+collection size: data: ["{'count(*)': 10000000}"]
+query d: 128
+get query szie: 10000
+get range cnt: 10000
+ngt= 10000  nq= 10000  k= 10
+ids shape: 10000 10
+gt shape: (10000, 10)
+milvus get  100000  postive res from  100000  results, recall@ 10 : 1.0
+recall dist(10\% per bucket):  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+10000  queries cost: 255.74974608421326 , qps: 39.100723082271216
+	Command being timed: "python -u utils/pymilvus_hnsw_arbi.py sift10M 10000000 /mnt/data/mocheng/dataset/sift10m/sift10m.fvecs /mnt/data/mocheng/dataset/sift10m/sift10m_query.fvecs /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/attr_sel_2_100000_random.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/qrangesel_20_2_100000_random_20.json /mnt/data/mocheng/dataset/sift10m/label/sel_2_100000_random/sif_gt_sel_20_2_100000_random_20_10.json 10 40 1000 80 sel_2_100000_random collection_hnsw_sift10M_sel_2_100000_random_efc1000 query 128"
+	User time (seconds): 20.11
+	System time (seconds): 3.09
+	Percent of CPU this job got: 8%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:18.90
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 89876
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 61493
+	Voluntary context switches: 27792
+	Involuntary context switches: 583715
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

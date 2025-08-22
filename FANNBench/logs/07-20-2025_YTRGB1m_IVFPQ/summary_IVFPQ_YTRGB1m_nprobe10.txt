@@ -1,0 +1,109 @@
+Start time: 09:29
+Start time: 05:08
+====================
+START: running TEST_IVFPQ, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 100
+threads: 1
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+query file: /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json
+qrange file: /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json
+gt file: /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json
+index file: /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_1_500_random_1024
+nprobe: 10
+dim: 1024
+loaded base attributes from:/mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json
+[ 0.073s ] Loaded metadata, 1000000 attr's found
+[ 0.073s ] Loading query vectors and attributes
+query vecs data loaded, with dim: 1024, nb=10000
+[ 0.100s ] Loaded query vectors from /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs
+[ 0.101s ] Loaded 10000 YTRGB1m queries
+[ 0.168s ] Loaded ground truth, gt_size: 100
+[ 0.168s ] Index Params -- d: 1024, N: 1000000
+terminate called after throwing an instance of 'faiss::FaissException'
+  what():  Error in faiss::FileIOReader::FileIOReader(const char*) at /home/mocheng/code/faiss/faiss/impl/io.cpp:67: Error: 'f' failed: could not open /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_1_500_random_1024 for reading: No such file or directory
+Command terminated by signal 6
+	Command being timed: "../faiss/build/demos/ivfpq_query YTRGB1m 1000000 100 1 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/rgb_query.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/qrangesel_1_1_500_random_20.json /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/sif_gt_sel_1_1_500_random_20_100.json /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_1_500_random_1024 10 1024"
+	User time (seconds): 0.13
+	System time (seconds): 0.03
+	Percent of CPU this job got: 59%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 63400
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 14493
+	Voluntary context switches: 3
+	Involuntary context switches: 2
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Start time: 05:09
+====================
+START: running IVFPQ_INDEX_CONSTRUCTION, sift data --
+
+dataset: YTRGB1m
+N: 1000000
+topk: 100
+threads: 128
+dataset file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+attr file: /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json
+index file: /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_1_500_random_1024
+dim: 1024
+partition_size: 1024
+train file: /mnt/data/mocheng/dataset/youtube1m/rgb_train.fvecs
+loaded base attributes, size:1000000
+[ 0.074s ] Loaded attributions, 1000000 found
+[ 0.074s ] Index Params -- d: 1024, N: 1000000
+ncentroids: 4000
+====================Vectors====================
+
+[ 0.074s ] Loading database
+[ 2.666s ] Loaded base vectors from file: /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs
+data loaded, with dim: 1024, N=1000000
+[ 2.666s ] Indexing database, size 1000000*1024 from max 1000000
+[ 2.666s ] Adding the vectors to the index
+WARNING clustering 62041 points to 4000 centroids: please provide at least 156000 training points
+train cost:0.593
+index construction total cost:4359.341
+[ 4359.341s ] Vectors added to  index
+Index vectors added:1000000
+====================Write Index================
+
+[ 4362.733s ] Wrote ivbfpq index to file: /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_1_500_random_1024
+[4362.733 s] -----DONE-----
+[ 4362.733s ] -----DONE-----
+	Command being timed: "../faiss/build/demos/ivfpq_build YTRGB1m 1000000 100 128 /mnt/data/mocheng/dataset/youtube1m/rgb.fvecs /mnt/data/mocheng/dataset/youtube1m/label/sel_1_500_random/attr_sel_1_500_random.json /mnt/data/mocheng/dataset/youtube1m/ivfpq/index/index_ivfpq_sel_1_500_random_1024 1024 1024 /mnt/data/mocheng/dataset/youtube1m/rgb_train.fvecs"
+	User time (seconds): 503069.80
+	System time (seconds): 112.47
+	Percent of CPU this job got: 11533%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:12:42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5649752
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 13
+	Minor (reclaiming a frame) page faults: 11859411
+	Voluntary context switches: 13756451
+	Involuntary context switches: 28576287
+	Swaps: 0
+	File system inputs: 510776
+	File system outputs: 2049752
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

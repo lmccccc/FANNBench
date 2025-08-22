@@ -216,20 +216,20 @@ output_likes_file = output_likes_file + '.' + str(index)
 output_publish_dates_file = output_publish_dates_file + '.' + str(index)
 
 # youtube key
-key1 = 'AIzaSyC7zEJzQyhg5BmKpIMQzo_VNq-f0nQ7CP4'
-key2 = 'AIzaSyBCJKs2cfDAvRjY4vJ1Rk2eM6KWzHO-shU'
-key3 = 'AIzaSyBxNBPCjWyg8nnQbXpOiVUJcRbs4lc5BpY'
-key4 = 'AIzaSyCXhimXqB0c4hCc2yCoiZOEM5skpilba2Q'
-key5 = 'AIzaSyAc3H2lHMd9SjZk4SUaJmeuLhg0sw7ZIUA'
-key6 = 'AIzaSyBjd-UyU9vON04jNcPZ9W3MFyRKmNKecL0'
-key7 = 'AIzaSyCCrwuDuw_XrHiZ6ZJBfDt9zRn7FpFNAYM'
-key8 = 'AIzaSyBMCFg1M7tgiNdg7_T_EseEsb587TX6FZ8'
-key9 = 'AIzaSyBnL9WEcknR5-WVnFEZO1_h5wQqg2KyWoE' 
-key10 = 'AIzaSyB9PlbLyapUJayXYuAe08EfxmKF3gdr9FE'
-key11 = 'AIzaSyAzwAz2P4R3pzcWop4PNKAKkqqAvYj5g9E'
-key12 = 'AIzaSyDxYZFFaT27MJsWNCWQJTeHMDRhG3MMhlw'
-key13 = 'AIzaSyD5WyT0bVXCO-D5XStShiVcmxIv1rL0VRI'
-key14 = 'AIzaSyDH-fHAnor3l_QQQvPa0IjAr9RwBwTjnts'
+key1 = "your api key 1"
+key2 = "your api key 2"
+key3 = "your api key 3"
+key4 = "your api key 4"
+key5 = "your api key 5"
+key6 = "your api key 6"
+key7 = "your api key 7"
+key8 = "your api key 8"
+key9 = "your api key 9"
+key10 = "your api key 10"
+key11 = "your api key 11"
+key12 = "your api key 12"
+key13 = "your api key 13"
+key14 = "your api key 14"
 
 api_keys = [key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14]  # Replace with your actual API keys
 api_key_manager = YouTubeAPIKeyManager(api_keys)
