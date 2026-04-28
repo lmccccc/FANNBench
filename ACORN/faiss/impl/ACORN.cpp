@@ -879,17 +879,19 @@ void greedy_update_nearest(
 }
 
 
+
 /// for hybrid search only
 int hybrid_greedy_update_nearest(
         const ACORN& hnsw,
         DistanceComputer& qdis,
-        char* filter_map,
+        uint8_t* filter_map,
         // int filter,
         // Operation op,
         // std::string regex,
         int level,
         storage_idx_t& nearest,
-        float& d_nearest) {
+        float& d_nearest,
+        ACORNStats& stats) {
     debug("%s\n", "reached"); 
     // printf("hybrid_greedy_update_nearest called with parameters: filter: %d, op: %d, regex: %s, level: %d\n", filter, op, regex.c_str(), level);
     int ndis = 0;
@@ -920,7 +922,8 @@ int hybrid_greedy_update_nearest(
 
             // filter
             // printf("---at first filter: op: %d, metadata: %s, regex: %s, check_regex result: %d\n", op, hnsw.metadata_strings[v].c_str(), regex.c_str(), CHECK_REGEX(hnsw.metadata_strings[v], regex));
-            if (filter_map[v]) {
+            stats.nfilter++;
+            if (hnsw.lazy_filter_check(filter_map, v)) {
                 num_found = num_found + 1;
             } else {
                 // not filter & gamma > 1
@@ -933,11 +936,12 @@ int hybrid_greedy_update_nearest(
         
             
             // check if filter pass
-            if (filter_map[v]) {
+            if (hnsw.lazy_filter_check(filter_map, v)) {
     
                 float dis = qdis(v);
                 ndis += 1;
-                if (dis < d_nearest || !filter_map[nearest]) {
+                stats.nfilter++;
+                if (dis < d_nearest || !hnsw.lazy_filter_check(filter_map, nearest)) {
                 
                     nearest = v;
                     d_nearest = dis;
@@ -964,13 +968,14 @@ int hybrid_greedy_update_nearest(
 
 
                     // check filter pass
-                    if (filter_map[v2]) {
+                    stats.nfilter++;
+                    if (hnsw.lazy_filter_check(filter_map, v2)) {
                         num_found = num_found + 1;
                         float dis2 = qdis(v2);
                         ndis += 1;
                         // debug_search("------------found: %d, metadata: %d distance to v: %f\n", v2, metadata2, dis2);
-          
-                        if (dis2 < d_nearest || !filter_map[nearest]) {
+                        stats.nfilter++;
+                        if (dis2 < d_nearest || !hnsw.lazy_filter_check(filter_map, nearest)) {
                             nearest = v2;
                             d_nearest = dis2;
                             // debug_search("----------------new nearest: %d, d_nearest: %f\n", nearest, d_nearest);
@@ -992,6 +997,78 @@ int hybrid_greedy_update_nearest(
 }
 
 } // namespace
+
+
+enum : uint8_t {
+    UNKNOWN = 0,
+    FALSE   = 1,
+    TRUE    = 2
+};
+
+inline bool ACORN::lazy_filter_check(uint8_t *lazy_filter_map, int idx) const{
+    uint8_t &state = lazy_filter_map[idx];
+    if (state != UNKNOWN) {
+        return state == TRUE;
+    }
+
+    // === slow path: compute predicate ===
+    bool ok = predicate_check(idx);
+
+    state = ok ? TRUE : FALSE;
+    return ok;
+}
+
+inline bool ACORN::predicate_check(int xb) const{
+    // DNF: OR over terms, AND within each term
+    for(size_t term_idx = 0; term_idx < predicate.size(); term_idx++){
+        const auto& term = predicate[term_idx];
+        bool term_match = true;
+        for(int attr_idx = 0; attr_idx < attr_type_list.size(); attr_idx++){
+            // empty = don't care for this attr in this term
+            if(term[attr_idx].empty()){
+                continue;
+            }
+            int attr_type = attr_type_list[attr_idx];
+            if(attr_type == 0){
+                // numerical: range [low, high]
+                if(metadata_vec[xb][attr_idx][0] < term[attr_idx][0] ||
+                   metadata_vec[xb][attr_idx][0] > term[attr_idx][1]){
+                    term_match = false;
+                    break;
+                }
+            }
+            else if(attr_type == 1){
+                // categorical: sorted merge intersection, ALL predicate labels must exist
+                int cate_attr_idx = 0;
+                int predicate_idx = 0;
+                bool cate_match = true;
+                while (predicate_idx < term[attr_idx].size()) {
+                    if (cate_attr_idx >= metadata_vec[xb][attr_idx].size()) {
+                        cate_match = false;
+                        break;
+                    }
+                    if (metadata_vec[xb][attr_idx][cate_attr_idx] == term[attr_idx][predicate_idx]) {
+                        cate_attr_idx++;
+                        predicate_idx++;
+                    }
+                    else if (metadata_vec[xb][attr_idx][cate_attr_idx] < term[attr_idx][predicate_idx]) {
+                        cate_attr_idx++;
+                    }
+                    else {
+                        cate_match = false;
+                        break;
+                    }
+                }
+                if(!cate_match){
+                    term_match = false;
+                    break;
+                }
+            }
+        }
+        if(term_match) return true;  // OR: any term match suffices
+    }
+    return false;
+}
 
 // modified from normal hnsw
 void ACORN::add_links_starting_from(
@@ -1223,7 +1300,7 @@ int search_from_candidates(
 int hybrid_search_from_candidates(
         const ACORN& hnsw,
         DistanceComputer& qdis,
-        char* filter_map,
+        uint8_t* filter_map,
         // int filter,
         // Operation op,
         // std::string regex,
@@ -1315,7 +1392,8 @@ int hybrid_search_from_candidates(
             // if (debugSearchFlag) {
             //     neighbors_checked.push_back(std::make_pair(v1, metadata)); // for debugging
             // }
-            if (filter_map[v1]) {
+            stats.nfilter++;
+            if (hnsw.lazy_filter_check(filter_map, v1)) {
                num_found = num_found + 1; // increment num found
             }
             
@@ -1325,7 +1403,7 @@ int hybrid_search_from_candidates(
 
 
             // filter
-            if (filter_map[v1]) {
+            if (hnsw.lazy_filter_check(filter_map, v1)) {
                 vt.set(v1);
                 num_new = num_new + 1; // increment num new
                 ndis++;
@@ -1372,7 +1450,8 @@ int hybrid_search_from_candidates(
                     }
 
                     // if (metadata2 == filter) {
-                    if (filter_map[v2]) {
+                    stats.nfilter++;
+                    if (hnsw.lazy_filter_check(filter_map, v2)) {
                         num_found = num_found + 1; // increment num found
                     } else {
                         continue;
@@ -1540,7 +1619,7 @@ ACORNStats ACORN::hybrid_search(
         idx_t* I,
         float* D,
         VisitedTable& vt,
-        char* filter_map,
+        uint8_t* filter_map,
         // int filter,
         // Operation op,
         // std::string regex,
@@ -1565,7 +1644,7 @@ ACORNStats ACORN::hybrid_search(
         int ndis_upper = 0;
         for (int level = max_level; level >= 1; level--) {
             debug_search("-at level %d, searching for greedy nearest from current nearest: %d, dist: %f, metadata: %d\n", level, nearest, d_nearest, metadata[nearest]);
-            ndis_upper += hybrid_greedy_update_nearest(*this, qdis, filter_map, level, nearest, d_nearest);
+            ndis_upper += hybrid_greedy_update_nearest(*this, qdis, filter_map, level, nearest, d_nearest, stats);
             // ndis_upper += hybrid_greedy_update_nearest(*this, qdis, filter, op, regex, level, nearest, d_nearest);
             debug_search("-at level %d, new nearest: %d, d: %f, metadata: %d\n", level, nearest, d_nearest, metadata[nearest]);
         }

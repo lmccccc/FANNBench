@@ -150,6 +150,15 @@ struct ACORN {
 
     /// use bounded queue during exploration
     bool search_bounded_queue = true;
+    
+    // DNF predicate: predicate[term_idx][attr_idx] = values
+    // Multiple terms are OR'd; within a term, attrs are AND'd.
+    // Legacy AND-only callers can set a single-term DNF.
+    std::vector<std::vector<std::vector<int>>> predicate;
+    std::vector<std::vector<std::vector<int>>> metadata_vec;
+    std::vector<int> attr_type_list;
+    inline bool lazy_filter_check(uint8_t *lazy_filter_map, int idx) const;
+    inline bool predicate_check(int xb) const;
 
 
     // methods that initialize the tree sizes
@@ -243,7 +252,7 @@ struct ACORN {
             idx_t* I,
             float* D,
             VisitedTable& vt,
-            char* filter_map,
+            uint8_t* filter_map,
             // int filter,
             // Operation op,
             // std::string regex,
@@ -277,6 +286,7 @@ struct ACORNStats {
     size_t n1, n2, n3;
     size_t ndis;
     size_t nreorder;
+    size_t nfilter;
     
     // added for timing
     double candidates_loop;
@@ -292,12 +302,13 @@ struct ACORNStats {
             size_t n3 = 0,
             size_t ndis = 0,
             size_t nreorder = 0,
+            size_t nfilter = 0,
             double candidates_loop = 0.0,
             double neighbors_loop = 0.0,
             double tuple_unwrap = 0.0,
             double skips = 0.0,
             double visits = 0.0)
-            : n1(n1), n2(n2), n3(n3), ndis(ndis), nreorder(nreorder), candidates_loop(candidates_loop), neighbors_loop(neighbors_loop), tuple_unwrap(tuple_unwrap), skips(skips), visits(visits) {}
+            : n1(n1), n2(n2), n3(n3), ndis(ndis), nreorder(nreorder), nfilter(nfilter), candidates_loop(candidates_loop), neighbors_loop(neighbors_loop), tuple_unwrap(tuple_unwrap), skips(skips), visits(visits) {}
 
     void reset() {
         n1 = n2 = n3 = 0;
@@ -318,6 +329,7 @@ struct ACORNStats {
         n3 += other.n3;
         ndis += other.ndis;
         nreorder += other.nreorder;
+        nfilter += other.nfilter;
 
         //added
         candidates_loop += other.candidates_loop;

@@ -66,6 +66,115 @@ std::vector<int> splitStringToIntVector(const std::string& str) {
     return result;
 }
 
+template <typename T>
+std::vector<std::vector<std::vector<T>>> load_json_to_3D_vector(std::string filepath) {
+   // Open the JSON file
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open JSON file" << std::endl;
+        // return 1;
+    }
+
+    // Parse the JSON data
+    json data;
+    try {
+        file >> data;
+    } catch (const std::exception& e) {
+        std::cerr << "Failed to parse JSON data from " << filepath << ": " << e.what() << std::endl;
+        // return 1;
+    }
+
+    // Convert data to a vector
+    std::vector<std::vector<std::vector<T>>> v =  data.get<std::vector<std::vector<std::vector<T>>>>();
+
+    // print size
+    std::cout << "metadata or vector loaded from json, size: " << v.size() << std::endl;
+    return v;
+}
+
+template <typename T>
+std::vector<std::vector<std::vector<std::vector<T>>>> load_json_to_4D_vector(std::string filepath) {
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open JSON file: " << filepath << std::endl;
+    }
+    json data;
+    try {
+        file >> data;
+    } catch (const std::exception& e) {
+        std::cerr << "Failed to parse JSON data from " << filepath << ": " << e.what() << std::endl;
+    }
+    std::vector<std::vector<std::vector<std::vector<T>>>> v = data.get<std::vector<std::vector<std::vector<std::vector<T>>>>>();
+    std::cout << "4D vector loaded from json, size: " << v.size() << std::endl;
+    return v;
+}
+
+template <typename T>
+std::vector<std::vector<T>> load_json_to_2D_vector(std::string filepath) {
+   // Open the JSON file
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open JSON file" << std::endl;
+        // return 1;
+    }
+
+    // Parse the JSON data
+    json data;
+    try {
+        file >> data;
+    } catch (const std::exception& e) {
+        std::cerr << "Failed to parse JSON data from " << filepath << ": " << e.what() << std::endl;
+        // return 1;
+    }
+
+    // Convert data to a vector
+    std::vector<std::vector<T>> v =  data.get<std::vector<std::vector<T>>>();
+
+    // print size
+    std::cout << "metadata or vector loaded from json, size: " << v.size() << std::endl;
+    return v;
+}
+
+// Load DNF predicate: predicate[query][term][attr] = values
+std::vector<std::vector<std::vector<std::vector<int>>>> load_predicate(std::string qrangefile) {
+        // Try 4D (DNF) first; fall back to 3D (legacy AND-only, wrap as single term)
+        std::ifstream file(qrangefile);
+        if (!file.is_open()) {
+            std::cerr << "Failed to open predicate file: " << qrangefile << std::endl;
+            return {};
+        }
+        json data;
+        file >> data;
+
+        // Detect: if data[0] is array-of-array-of-array → 4D DNF
+        // if data[0] is array-of-array → 3D legacy (wrap each query as single-term DNF)
+        if (data.size() > 0 && data[0].size() > 0 && data[0][0].size() > 0 && data[0][0][0].is_array()) {
+            // 4D: predicate[query][term][attr][vals]
+            auto v = data.get<std::vector<std::vector<std::vector<std::vector<int>>>>>();
+            printf("loaded DNF predicates (4D) from: %s, nq=%zu\n", qrangefile.c_str(), v.size());
+            return v;
+        } else {
+            // 3D legacy: predicate[query][attr][vals] → wrap as single-term DNF
+            auto v3 = data.get<std::vector<std::vector<std::vector<int>>>>();
+            std::vector<std::vector<std::vector<std::vector<int>>>> v4;
+            v4.reserve(v3.size());
+            for (auto& q : v3) {
+                v4.push_back({q});  // single term
+            }
+            printf("loaded legacy predicates (3D→DNF) from: %s, nq=%zu\n", qrangefile.c_str(), v4.size());
+            return v4;
+        }
+}
+
+std::vector<std::vector<faiss::idx_t>> load_ground_truth(std::string dataset, char* file_path, int n_centroids, int alpha, std::string assignment_type, int N) {
+    
+        std::string filepath = file_path;
+        std::vector<std::vector<faiss::idx_t>> v_tmp = load_json_to_2D_vector<faiss::idx_t>(filepath);
+        // std::vector<faiss::idx_t> v(v_tmp.begin(), v_tmp.end());
+        printf("loaded ground truth from: %s\n", filepath.c_str());
+        return v_tmp;
+}
+
 // create indices for debugging, write indices to file, and get recall stats for all queries
 int main(int argc, char *argv[]) {
     unsigned int nthreads = std::thread::hardware_concurrency();
@@ -106,11 +215,14 @@ int main(int argc, char *argv[]) {
     char* gt_file;
     char* index_file;
     int gt_size;
-
+    char* attr_type_char;
+    std::string attr_type_str;
+    std::vector<int> attr_type_list;
+    int test_query_size = 100;
     int opt;
     {// parse arguments
 
-        if (argc != 16) {
+        if (argc != 18) {
             fprintf(stderr, "Syntax: %s <number vecs> <gamma> <dataset> <M> <M_beta> <dataset file> <query>  <attr>  <qrange> <groundtruth> <k> <index file> <nthreads> <efs> <dim>\n", argv[0]);
             exit(1);
         }
@@ -153,6 +265,30 @@ int main(int argc, char *argv[]) {
         d = atoi(argv[15]);
         std::cout << "dim: " << d << std::endl;
 
+        attr_type_char = argv[16]; // TODO add as argument
+        attr_type_str = std::string(attr_type_char);
+        std::cout << "attr type str: " << attr_type_str << std::endl;
+
+        if (attr_type_str == "[0]"){
+            attr_type_list = {0};
+        }
+        else if (attr_type_str == "[1]"){
+            attr_type_list = {1};
+        }
+        else if (attr_type_str == "[0,1]"){
+            attr_type_list = {0,1};
+        }
+        else if (attr_type_str == "[0,0]"){
+            attr_type_list = {0,0};
+        }
+        else{
+            std::cerr << "Invalid attr type str:" << attr_type_str << std::endl;
+            return -1;
+        }
+
+        test_query_size = atoi(argv[17]);
+        std::cout << "test query size: " << test_query_size << std::endl;
+
     }
     
 
@@ -160,12 +296,12 @@ int main(int argc, char *argv[]) {
 
     // load metadata(attr)
     n_centroids = gamma;
-    std::vector<int> metadata = load_json_to_vector<int>(attr_file);
+    std::vector<std::vector<std::vector<int>>> metadata = load_json_to_3D_vector<int>(attr_file);
     // printf("loaded base attributes from: %s\n", attr_file);
     std::cout << "loaded base attributes from:" << attr_file << std::endl;
     // std::vector<int> metadata = load_ab(dataset, gamma, assignment_type, N);
     // metadata.resize(N);
-    // assert(N == metadata.size());
+    assert(N == metadata.size());
     // printf("[%.3f s] Loaded metadata, %ld attr's found\n", 
     //     elapsed() - t0, metadata.size());
     std::cout << "[ " << elapsed() - t0 << "s ] Loaded metadata, " << metadata.size() << " attr's found" << std::endl;
@@ -174,7 +310,7 @@ int main(int argc, char *argv[]) {
 
     size_t nq;
     float* xq;
-    std::vector<int> aq;
+    std::vector<std::vector<std::vector<std::vector<int>>>> aq;
     { // load query vectors and attributes
         // printf("[%.3f s] Loading query vectors and attributes\n", elapsed() - t0);
         std::cout << "[ " << elapsed() - t0 << "s ] Loading query vectors and attributes" << std::endl;
@@ -194,7 +330,7 @@ int main(int argc, char *argv[]) {
         // printf("[%.3f s] Loaded query vectors from %s\n", elapsed() - t0, query_file);
         std::cout << "[ " << elapsed() - t0 << "s ] Loaded query vectors from " << query_file << std::endl;
         // aq = load_aq(dataset, n_centroids, alpha, N);
-        aq = load_qrange(qrange_file);
+        aq = load_predicate(qrange_file);
         // printf("[%.3f s] Loaded %ld %s queries\n", elapsed() - t0, nq, dataset.c_str());
         std::cout << "[ " << elapsed() - t0 << "s ] Loaded " << nq << " " << dataset << " queries" << std::endl;
  
@@ -204,11 +340,11 @@ int main(int argc, char *argv[]) {
     // if (dataset=="sift1M_test" || dataset=="paper") {
     //     gt_size = 10;
     // } 
-    std::vector<faiss::idx_t> gt(gt_size * nq);
+    std::vector<std::vector<faiss::idx_t>> gt;
     { // load ground truth
-        gt = load_gt(dataset, gt_file, gamma, alpha, assignment_type, N);
+        gt = load_ground_truth(dataset, gt_file, gamma, alpha, assignment_type, N);
         // printf("[%.3f s] Loaded ground truth, gt_size: %d\n", elapsed() - t0, gt_size);
-        std::cout << "[ " << elapsed() - t0 << "s ] Loaded ground truth, gt_size: " << gt_size << std::endl;
+        std::cout << "[ " << elapsed() - t0 << "s ] Loaded ground truth, gt_size: " << gt.size() << std::endl;
     }
 
     // create normal (base) and hybrid index
@@ -257,6 +393,12 @@ int main(int argc, char *argv[]) {
     double t1 = elapsed();
 
     //search start
+    std::vector<double> recall_list;
+    std::vector<double> qps_list;
+    hybrid_index.acorn.metadata_vec = metadata;
+    hybrid_index.acorn.attr_type_list = attr_type_list;
+    bool efs_compute_once = true;
+    uint64_t sel = 0;
     for (int _efs : efs_list){
     hybrid_index.acorn.efSearch = _efs; // default is 16 HybridHNSW.capp
     { // searching the hybrid database
@@ -267,6 +409,8 @@ int main(int argc, char *argv[]) {
         //        k,
         //        nq,
         //        hybrid_index.acorn.efSearch);
+        nq = test_query_size;
+
         std::cout << "==================== ACORN INDEX ====================" << std::endl;
         std::cout << "[ " << elapsed() - t0 << "s ] Searching the " << k << " nearest neighbors of " << nq << " vectors in the index, efsearch " << hybrid_index.acorn.efSearch << std::endl;
 
@@ -285,21 +429,70 @@ int main(int argc, char *argv[]) {
         // }
         
         
-        std::vector<char> filter_ids_map(N);
-        uint64_t sel = 0;
-        double t1_x, t2_x;
+        std::vector<uint8_t> filter_ids_map(N);
+        std::fill(filter_ids_map.begin(), filter_ids_map.end(), 0);
+        double t1_x, t2_x, t3_x;
         double total_t = 0;
         for (int query_i = 0; query_i < nq; query_i++) {
-            for (int xb = 0; xb < N; xb++) {
-                // bool in_range = (metadata[xb] >= aq[query_i*2] && metadata[xb] <= aq[query_i*2+1]);
-                bool in_range = (metadata[xb*2] == aq[query_i*4] && metadata[xb*2+1] >= aq[query_i*4+2] && metadata[xb*2+1] <= aq[query_i*4+3]);
-                filter_ids_map[xb] = in_range;
-                if(in_range) sel++;
-            }
+            faiss::ACORNStats t_stats;
             t1_x = elapsed();
-            hybrid_index.search(1, xq+query_i * d, k, dis2.data()+query_i*k, nns2.data()+query_i*k, filter_ids_map.data()); // TODO change first argument back to nq
+            if (efs_compute_once) {
+                efs_compute_once = false;
+                for (int xb = 0; xb < N; xb++) {
+                    bool match = false;
+                    // DNF: OR over terms
+                    for (size_t term_idx = 0; term_idx < aq[query_i].size() && !match; term_idx++) {
+                        const auto& term = aq[query_i][term_idx];
+                        bool term_match = true;
+                        for(int attr_idx = 0; attr_idx < attr_type_list.size(); attr_idx++){
+                            if(term[attr_idx].empty()) continue;  // don't care
+                            int attr_type = attr_type_list[attr_idx];
+                            if(attr_type == 0 && (metadata[xb][attr_idx][0] < term[attr_idx][0] || metadata[xb][attr_idx][0] > term[attr_idx][1])){
+                                term_match = false;
+                                break;
+                            }
+                            if(attr_type == 1){
+                                int cate_attr_idx = 0;
+                                int predicate_idx = 0;
+                                bool cate_match = true;
+                                while (predicate_idx < term[attr_idx].size()) {
+                                    if (cate_attr_idx >= metadata[xb][attr_idx].size()) {
+                                        cate_match = false;
+                                        break;
+                                    }
+                                    if (metadata[xb][attr_idx][cate_attr_idx] == term[attr_idx][predicate_idx]) {
+                                        cate_attr_idx++;
+                                        predicate_idx++;
+                                    }
+                                    else if (metadata[xb][attr_idx][cate_attr_idx] < term[attr_idx][predicate_idx]) {
+                                        cate_attr_idx++;
+                                    }
+                                    else {
+                                        cate_match = false;
+                                        break;
+                                    }
+                                }
+                                if(!cate_match){
+                                    term_match = false;
+                                    break;
+                                }
+                            }
+                            if (!term_match) break;
+                        }
+                        if(term_match) match = true;  // OR: any term suffices
+                    }
+                    if(match) sel++;
+                }
+            }
+            
+            std::fill(filter_ids_map.begin(), filter_ids_map.end(), 0);
+            hybrid_index.acorn.predicate = aq[query_i];
+            t3_x = elapsed();
+            hybrid_index.search(1, xq+query_i * d, k, dis2.data()+query_i*k, nns2.data()+query_i*k, filter_ids_map.data(), t_stats); // TODO change first argument back to nq
             t2_x = elapsed();
-            total_t += t2_x - t1_x;
+            double filtering_avg_time = (t3_x - t1_x) / N;
+            double search_filtering_time = filtering_avg_time * t_stats.nfilter;
+            total_t += t2_x - t3_x;
         }
         
         double selectivity = sel * 1.0 / (nq * N);
@@ -311,18 +504,18 @@ int main(int argc, char *argv[]) {
         // printf("[%.3f s] Query results (vector ids, then distances):\n",
         //        elapsed() - t0);
         std::cout << "[ " << elapsed() - t0 << "s ] Query results (vector ids, then distances):" << std::endl;
-        int nq_print = std::min(5, (int) nq);
-        for (int i = 0; i < nq_print; i++) {
-            std::cout << "query " << i << " nn's (" << aq[i*4] << ", " << aq[i*4+2] << ", " << aq[i*4+3] << "): ";
-            for (int j = 0; j < k; j++) {
-                std::cout << nns2[j + i * k] << " (" << metadata[nns2[j + i * k]*2] << ", " << metadata[nns2[j + i * k]*2+1] << ") ";
-            }
-            std::cout << std::endl << "     dis: \t";
-            for (int j = 0; j < k; j++) {
-                std::cout << dis2[j + i * k] << " ";
-            }
-            std::cout << std::endl;
-        }
+        // int nq_print = std::min(5, (int) nq);
+        // for (int i = 0; i < nq_print; i++) {
+        //     std::cout << "query " << i << " nn's (" << aq[i] << "): ";
+        //     for (int j = 0; j < k; j++) {
+        //         std::cout << nns2[j + i * k] << " (" << metadata[nns2[j + i * k]] << ") ";
+        //     }
+        //     std::cout << std::endl << "     dis: \t";
+        //     for (int j = 0; j < k; j++) {
+        //         std::cout << dis2[j + i * k] << " ";
+        //     }
+        //     std::cout << std::endl;
+        // }
 
 
         // printf("[%.3f s] *** Query time: %f\n",
@@ -343,7 +536,7 @@ int main(int argc, char *argv[]) {
             {
                 for (size_t gtind = 0; gtind < gt_size; gtind++)//gt
                 {
-                    if(nns2[qind * k + top] == gt[qind * gt_size + gtind]) {
+                    if(nns2[qind * k + top] == gt[qind][gtind]) {
                         positive_size++;
                         q_cnt++;
                     }
@@ -359,6 +552,8 @@ int main(int argc, char *argv[]) {
                      " postive res from " << total_size << 
                      " results, recall@" << k << ":"  << recall << std::endl;
         std::cout << "recall dist(10\% per bucket): ";
+        recall_list.push_back(recall);
+        qps_list.push_back(nq * 1.0 / (total_t));
         for(int i = 0; i < 11; ++i){
             std::cout << hist[i] * 1.0 / nq << " ";
         }
@@ -367,6 +562,10 @@ int main(int argc, char *argv[]) {
 
 
         std::cout << "finished hybrid index examples" << std::endl;
+
+        if (recall > 0.97 || (nq * 1.0 / (total_t) < 10)) {
+            break;
+        }
     }
 
 
@@ -401,4 +600,9 @@ int main(int argc, char *argv[]) {
     
     // printf("[%.3f s] -----DONE-----\n", elapsed() - t0);
     std::cout << "[ " << elapsed() - t0 << "s ] -----DONE-----" << std::endl;
+
+    std::cout << "efs, recall, qps: " << std::endl;
+    for (size_t i = 0; i < recall_list.size(); i++) {
+        std::cout << "[" << efs_list[i] << ", " << recall_list[i] << ", " << qps_list[i]  << "]" << std::endl;
+    }
 }
